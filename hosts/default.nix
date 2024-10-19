@@ -18,11 +18,11 @@
         laptop
         ++ [
           ./vamos
+          "${mod}/core/lanzaboote.nix"
 
           "${mod}/services/greetd.nix"
           "${mod}/programs/niri"
           "${mod}/services/gnome.nix"
-
           self.nixosModules.style
 
           ({pkgs, ...}: {

@@ -66,6 +66,13 @@
       url = "github:sodiboo/niri-flake";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
