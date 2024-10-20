@@ -7,6 +7,8 @@
     ];
 
     gnome.gnome-keyring.enable = true;
+    gnome.gnome-online-accounts.enable = true;
+    accounts-daemon.enable = true;
 
     gvfs.enable = true;
   };
