@@ -830,6 +830,21 @@
         "type": "sourcehut"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1729415156,
+        "narHash": "sha256-Ha5CqNs+mFMzf5O2HVfs9mxqIQnBwt+srspiQWAvN/A=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "fdda803471577189005bac0b4bc934689f52ef59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-parts": "flake-parts_5",
@@ -2655,6 +2670,7 @@
         "niri": "niri",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nur": "nur",
         "nvf": "nvf",
         "plasma-manager": "plasma-manager",
         "systems": "systems_5",

@@ -75,6 +75,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
+    nur.url = "github:nix-community/NUR";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 }
