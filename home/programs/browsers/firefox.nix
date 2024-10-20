@@ -1,18 +1,37 @@
-{pkgs, ...}: {
-  programs.chromium.enable = true;
-  programs.firefox = let
-    betterfox = pkgs.fetchFromGitHub {
-      owner = "yokoffing";
-      repo = "betterfox";
-      rev = "e026ed7d3a763c5d3f96c2680d7bc3340831af4f";
-      hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
-    };
-  in {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  betterfox = pkgs.fetchFromGitHub {
+    owner = "yokoffing";
+    repo = "betterfox";
+    rev = "e026ed7d3a763c5d3f96c2680d7bc3340831af4f";
+    hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
+  };
+in {
+  # https://github.com/jchv/nixos-config/blob/402c2e612529870544e3a96d5d0cc1a239d003a5/modules/users/john/librewolf.nix#L14-L15
+  home.file.".mozilla/firefox/profiles.ini".target = ".librewolf/profiles.ini";
+  home.file.".librewolf/nezia".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/nezia";
+  programs.firefox = {
     enable = true;
+    # https://github.com/jchv/nixos-config/blob/402c2e612529870544e3a96d5d0cc1a239d003a5/modules/users/john/librewolf.nix#L18-L23
+    package = pkgs.wrapFirefox pkgs.librewolf-unwrapped {
+      inherit (pkgs.librewolf-unwrapped) extraPrefsFiles extraPoliciesFiles;
+      wmClass = "LibreWolf";
+      libName = "librewolf";
+    };
     profiles = {
       nezia = {
         settings = {
           "ui.key.menuAccessKeyFocuses" = false;
+          "privacy.clearOnShutdown.cache" = false;
+          "privacy.clearOnShutdown.cookies" = false;
+          "privacy.clearOnShutdown.downloads" = false;
+          "privacy.clearOnShutdown.formdata" = false;
+          "privacy.clearOnShutdown.history" = false;
+          "privacy.clearOnShutdown.offlineApps" = false;
+          "privacy.clearOnShutdown.sessions" = false;
         };
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix
         search = {
@@ -62,7 +81,6 @@
           (builtins.readFile "${betterfox}/Peskyfox.js")
           (builtins.readFile "${betterfox}/Smoothfox.js")
         ];
-        isDefault = true;
       };
     };
   };

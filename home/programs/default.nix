@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./browsers.nix
+    ./browsers
     ./media
     ./xdg.nix
     ./gtk.nix
@@ -16,6 +16,7 @@
   };
 
   home.packages = with pkgs; [
+    geary
     imhex
     logisim-evolution
     obsidian
