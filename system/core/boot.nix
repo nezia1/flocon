@@ -31,11 +31,6 @@
       "udev.log_priority=3"
     ];
 
-    kernelPackages = pkgs.linuxPackages_cachyos;
-  };
-  environment.systemPackages = [pkgs.scx];
-  chaotic = {
-    scx.enable = true;
-    scx.scheduler = "scx_lavd";
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 }
