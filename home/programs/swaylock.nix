@@ -13,6 +13,10 @@ in {
     package = pkgs.swaylock-effects;
 
     settings = {
+      clock = true;
+      timestr = "%H:%M";
+
+      indicator = true;
       indicator-radius = 111;
       indicator-thickness = 9;
 
