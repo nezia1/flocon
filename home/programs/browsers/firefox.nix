@@ -11,40 +11,14 @@
     hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
   };
 in {
-  imports = [inputs.nur.hmModules.nur];
-  # https://github.com/jchv/nixos-config/blob/402c2e612529870544e3a96d5d0cc1a239d003a5/modules/users/john/librewolf.nix#L14-L15
-  home.file.".mozilla/firefox/profiles.ini".target = ".librewolf/profiles.ini";
-  home.file.".librewolf/nezia".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mozilla/firefox/nezia";
   programs.firefox = {
     enable = true;
-    # https://github.com/jchv/nixos-config/blob/402c2e612529870544e3a96d5d0cc1a239d003a5/modules/users/john/librewolf.nix#L18-L23
-    package = pkgs.wrapFirefox pkgs.librewolf-unwrapped {
-      inherit (pkgs.librewolf-unwrapped) extraPrefsFiles extraPoliciesFiles;
-      wmClass = "LibreWolf";
-      libName = "librewolf";
-    };
     profiles = {
       nezia = {
-        extensions = with config.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          proton-pass
-          darkreader
-          stylus
-          sponsorblock
-          return-youtube-dislikes
-        ];
-
         settings = {
           "browser.urlbar.suggest.searches" = true;
           "browser.search.suggest.enabled" = true;
           "ui.key.menuAccessKeyFocuses" = false;
-          "privacy.clearOnShutdown.cache" = false;
-          "privacy.clearOnShutdown.cookies" = false;
-          "privacy.clearOnShutdown.downloads" = false;
-          "privacy.clearOnShutdown.formdata" = false;
-          "privacy.clearOnShutdown.history" = false;
-          "privacy.clearOnShutdown.offlineApps" = false;
-          "privacy.clearOnShutdown.sessions" = false;
         };
 
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix
