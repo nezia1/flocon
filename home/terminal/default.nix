@@ -5,6 +5,6 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "hx";
+    EDITOR = "nvim";
   };
 }
