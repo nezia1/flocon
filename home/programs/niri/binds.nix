@@ -6,11 +6,13 @@
 }: let
   appLauncher = "fuzzel";
   terminal = "foot";
+  browser = "firefox";
   prefix = "Alt";
 in {
   programs.niri.settings.binds = {
     "${prefix}+D".action.spawn = appLauncher;
     "${prefix}+Return".action.spawn = terminal;
+    "${prefix}+W".action.spawn = browser;
     "${prefix}+Shift+E".action.quit.skip-confirmation = true;
     "${prefix}+Shift+Slash".action = config.lib.niri.actions.show-hotkey-overlay;
     "${prefix}+Q".action = config.lib.niri.actions.close-window;
