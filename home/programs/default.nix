@@ -4,8 +4,11 @@
     ./media
     ./xdg.nix
     ./gtk.nix
+    ./editors/neovim.nix
+    ./editors/helix.nix
   ];
 
+  # idk where to put this
   programs = {
     fzf.enable = true;
     hyfetch.enable = true;
@@ -15,6 +18,7 @@
     };
   };
 
+  # miscellaneous programs that do not need to be configured
   home.packages = with pkgs; [
     geary
     imhex

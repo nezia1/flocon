@@ -1,6 +1,7 @@
-let
-  common = [
+{
+  imports = [
     ./core
+
     ./hardware/printing.nix
     ./hardware/fwupd.nix
 
@@ -10,21 +11,4 @@ let
 
     ./services
   ];
-  desktop =
-    common
-    ++ [
-      ./hardware/uni-sync.nix
-    ];
-
-  laptop =
-    common
-    ++ [
-      ./hardware/fprintd.nix
-      ./services/power.nix
-      ./services/brightness.nix
-      ./services/keyd.nix
-      ./services/logind.nix
-    ];
-in {
-  inherit desktop laptop;
 }

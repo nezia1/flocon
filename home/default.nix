@@ -1,6 +1,8 @@
 {
   imports = [
+    ./services/udiskie.nix
     ./terminal
+    ./programs
   ];
   home = {
     username = "nezia";
