@@ -20,7 +20,7 @@ Additionally using a lot of other software you can find in the configuration fil
 | [hosts](hosts/)     | Host-specific (entry-points of the configuration) |
 | [lib](lib/)         | Helper functions                                  |
 | [modules](modules/) | NixOS modules                                     |
-| [system](system/)   | Common NixOS configuration                        |
+| [system](system/)   | NixOS configuration                               |
 
 # 👥 Credits
 
