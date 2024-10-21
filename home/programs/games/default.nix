@@ -1,13 +1,10 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    protonup-qt
     bottles
     lutris
+    mangohud
     path-of-building
+    protonplus
     r2modman
 
     # steamtinkerlaunch dependencies
@@ -15,5 +12,4 @@
     xorg.xwininfo
     yad
   ];
-  programs.mangohud.enable = true;
 }
