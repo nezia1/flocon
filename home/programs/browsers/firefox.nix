@@ -1,6 +1,6 @@
 {
+  lib,
   inputs,
-  config,
   pkgs,
   ...
 }: let
@@ -13,6 +13,51 @@
 in {
   programs.firefox = {
     enable = true;
+    policies = {
+      DisableTelemetry = true;
+      DisablePocket = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxStudies = true;
+      OfferToSaveLogins = false;
+      OffertosaveloginsDefault = false;
+      PasswordManagerEnabled = false;
+
+      # https://github.com/Sly-Harvey/NixOS/blob/f9da2691ea46565256ad757959cfc26ec6cee10d/modules/programs/browser/firefox/default.nix#L58-L163
+      # TODO: declare which block lists are needed
+      "3rdparty".Extensions = {
+        "addon@darkreader.org" = {
+          permissions = ["internal:privateBrowsingAllowed"];
+          enabled = true;
+          automation = {
+            enabled = true;
+            behavior = "OnOff";
+            mode = "system";
+          };
+          detectDarkTheme = true;
+          enabledByDefault = true;
+          changeBrowserTheme = false;
+          enableForProtectedPages = true;
+          fetchNews = false;
+          previewNewDesign = true;
+        };
+        "uBlock0@raymondhill.net" = {
+          permissions = ["internal:privateBrowsingAllowed"];
+          advancedSettings = [
+            [
+              "userResourcesLocation"
+              "https://raw.githubusercontent.com/pixeltris/TwitchAdSolutions/master/video-swap-new/video-swap-new-ublock-origin.js"
+            ]
+          ];
+          adminSettings = {
+            userSettings = {
+              uiTheme = "dark";
+              advancedUserEnabled = true;
+              userFiltersTrusted = true;
+            };
+          };
+        };
+      };
+    };
     profiles = {
       nezia = {
         settings = {
@@ -20,6 +65,16 @@ in {
           "browser.search.suggest.enabled" = true;
           "ui.key.menuAccessKeyFocuses" = false;
         };
+
+        extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+          darkreader
+          proton-pass
+          shinigami-eyes
+          stylus
+          ublock-origin
+          violentmonkey
+          idontcareaboutcookies
+        ];
 
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix
         search = {

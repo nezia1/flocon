@@ -19,6 +19,7 @@ in {
   home-manager = {
     users.nezia.imports = [
       "${self}/home"
+      "${self}/home/programs/games"
 
       "${self}/home/terminal/emulators/foot.nix"
     ];

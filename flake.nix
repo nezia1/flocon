@@ -38,6 +38,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,8 +79,6 @@
     };
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
-
-    nur.url = "github:nix-community/NUR";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
