@@ -8,7 +8,7 @@ My NixOS configurations, using flakes.
 - Text editor: [neovim](https://github.com/neovim/neovim)
 - Shell: [fish](https://github.com/fish-shell/fish-shell)
 - Colors: [Catppuccin](https://github.com/catppuccin/catppuccin)
-- Font: [Intel One Mono](github.com/intel/intel-one-mono)
+- Font: [Intel One Mono](https://github.com/intel/intel-one-mono)
 
 Additionally using a lot of other software you can find in the configuration files.
 
