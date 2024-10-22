@@ -24,39 +24,41 @@
     nixosConfigurations = import ./hosts {inherit self inputs;};
   };
   inputs = {
-    systems.url = "github:nix-systems/default-linux";
+    # nix related
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    systems.url = "github:nix-systems/default-linux";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
+    nix-index-db = {
+      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {url = "github:notashelf/nvf";};
+
+    # other
+    ags.url = "github:Aylur/ags";
     basix.url = "github:notashelf/basix";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {url = "github:sodiboo/niri-flake";};
+    nvf.url = "github:notashelf/nvf";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    ags.url = "github:Aylur/ags";
-    niri = {url = "github:sodiboo/niri-flake";};
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    wezterm = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
