@@ -1,6 +1,6 @@
 {
   inputs,
-  nixosConfig,
+  osConfig,
   lib,
   pkgs,
   ...
@@ -15,7 +15,7 @@
         font = "monospace:size=14";
       };
       colors = let
-        inherit (inputs.basix.schemeData.base16.${nixosConfig.style.scheme}) palette;
+        inherit (inputs.basix.schemeData.base16.${osConfig.theme.scheme}) palette;
       in {
         background = "${palette.base00}ff";
         text = "${palette.base05}ff";

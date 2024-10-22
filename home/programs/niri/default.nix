@@ -6,7 +6,7 @@
   osConfig,
   ...
 }: let
-  colors = inputs.basix.schemeData.base16.${osConfig.style.scheme}.palette;
+  colors = inputs.basix.schemeData.base16.${osConfig.theme.scheme}.palette;
 in {
   imports = [./binds.nix];
 

@@ -1,3 +1,3 @@
 {
-  style = import ./style;
+  theme = import ./theme;
 }

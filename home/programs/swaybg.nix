@@ -2,7 +2,7 @@
 {
   pkgs,
   lib,
-  nixosConfig,
+  osConfig,
   ...
 }: {
   systemd.user.services.swaybg = {
@@ -11,7 +11,7 @@
       PartOf = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = "${lib.getExe pkgs.swaybg} -i ${nixosConfig.style.wallpaper} -m fill";
+      ExecStart = "${lib.getExe pkgs.swaybg} -i ${osConfig.theme.wallpaper} -m fill";
       Restart = "on-failure";
     };
     Install.WantedBy = ["graphical-session.target"];

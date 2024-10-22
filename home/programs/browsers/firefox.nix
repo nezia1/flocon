@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   betterfox = pkgs.fetchFromGitHub {
     owner = "yokoffing";
     repo = "betterfox";
@@ -56,7 +60,6 @@ in {
     profiles = {
       nezia = {
         settings = {
-          "browser.urlbar.suggest.searches" = true;
           "browser.search.suggest.enabled" = true;
           "ui.key.menuAccessKeyFocuses" = false;
         };
@@ -68,7 +71,6 @@ in {
           stylus
           ublock-origin
           violentmonkey
-          idontcareaboutcookies
         ];
 
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix

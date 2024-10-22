@@ -8,9 +8,9 @@
   inherit (lib) mkOption mkEnableOption;
   inherit (lib.types) package str;
 
-  cfg = config.style.gtk;
+  cfg = config.theme.gtk;
 in {
-  options.style.gtk = {
+  options.theme.gtk = {
     enable = mkEnableOption "enable GTK theming options";
     theme = {
       name = mkOption {
@@ -57,7 +57,7 @@ in {
           ${toString themePath} set by the GTK module does not exist!
 
           To suppress this message, make sure that
-          `config.modules.style.gtk.theme.package` contains
+          `config.modules.theme.gtk.theme.package` contains
           the path `${cfg.theme.name}`
         '';
       })

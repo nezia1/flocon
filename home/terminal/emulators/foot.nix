@@ -1,6 +1,6 @@
 {
   inputs,
-  nixosConfig,
+  osConfig,
   config,
   lib,
   ...
@@ -14,7 +14,7 @@
         shell = "${lib.getExe config.programs.fish.package}";
       };
       colors = let
-        schemeData = inputs.basix.schemeData.base16.${nixosConfig.style.scheme};
+        schemeData = inputs.basix.schemeData.base16.${osConfig.theme.scheme};
       in {
         background = schemeData.palette.base00;
         foreground = schemeData.palette.base05;
