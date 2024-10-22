@@ -1,6 +1,10 @@
-# TODO: maybe use flake-parts
-{...}: {
-  # Used to find the project root
+{pkgs, ...}: {
   projectRootFile = "flake.nix";
-  programs.alejandra.enable = true;
+  programs = {
+    alejandra.enable = true;
+    prettier = {
+      enable = true;
+      package = pkgs.prettierd;
+    };
+  };
 }
