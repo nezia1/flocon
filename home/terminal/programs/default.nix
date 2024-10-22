@@ -5,6 +5,7 @@
     ./tmux.nix
     ./direnv.nix
     ./zellij.nix
+    ./nix-index.nix
   ];
 
   home.packages = with pkgs; [
