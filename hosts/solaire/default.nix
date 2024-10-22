@@ -1,6 +1,5 @@
 {
   self,
-  pkgs,
   specialArgs,
   ...
 }: let
@@ -8,6 +7,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
+    ./modules
 
     "${mod}"
     "${mod}/hardware/uni-sync.nix"
@@ -26,8 +26,6 @@ in {
     ];
     extraSpecialArgs = specialArgs;
   };
-
-  theme.wallpaper = ../../wallpapers/lucy-edgerunners-wallpaper.jpg;
 
   networking.hostName = "solaire";
   environment.variables.FLAKE = "/home/nezia/.dotfiles";

@@ -1,0 +1,3 @@
+{
+  imports = [./theme.nix];
+}

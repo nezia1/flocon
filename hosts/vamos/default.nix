@@ -7,6 +7,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
+    ./modules
 
     "${mod}"
     "${mod}/core/lanzaboote.nix"
