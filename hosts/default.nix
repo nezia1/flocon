@@ -25,7 +25,7 @@ in {
     inherit specialArgs;
     modules = [
       ./solaire
-      self.nixosModules.style
+      self.nixosModules.theme
     ];
   };
 }
