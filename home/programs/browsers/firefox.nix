@@ -20,6 +20,7 @@ in {
       OfferToSaveLogins = false;
       OffertosaveloginsDefault = false;
       PasswordManagerEnabled = false;
+      SearchSuggestEnabled = true;
 
       # https://github.com/Sly-Harvey/NixOS/blob/f9da2691ea46565256ad757959cfc26ec6cee10d/modules/programs/browser/firefox/default.nix#L58-L163
       # TODO: declare which block lists are needed
