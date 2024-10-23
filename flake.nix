@@ -22,6 +22,7 @@
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosModules = import ./modules;
     nixosConfigurations = import ./hosts {inherit self inputs;};
+    deploy.nodes = import ./nodes {inherit self inputs;};
   };
   inputs = {
     # nix related
@@ -44,6 +45,7 @@
     # other
     ags.url = "github:Aylur/ags";
     basix.url = "github:notashelf/basix";
+    deploy-rs.url = "github:serokell/deploy-rs";
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

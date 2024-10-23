@@ -28,4 +28,12 @@ in {
       self.nixosModules.theme
     ];
   };
+
+  anastacia = nixosSystem {
+    system = "x86_64-linux";
+    inherit specialArgs;
+    modules = [
+      ./anastacia
+    ];
+  };
 }
