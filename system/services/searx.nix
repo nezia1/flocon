@@ -1,8 +1,14 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  age.secrets.searx-env-file.file = ../../secrets/searx-env-file.age;
   services = {
     searx = {
       enable = true;
       package = pkgs.searxng;
+      environmentFile = config.age.secrets.searx-env-file.path;
       settings = {
         search = {
           safe_search = 1; # 0 = None, 1 = Moderate, 2 = Strict
@@ -10,7 +16,7 @@
           default_lang = "en";
         };
         server = {
-          secret_key = "TODO_USE_SOPS_INSTEAD";
+          secret_key = "@SEARX_SECRET_KEY@";
           port = 8888; # Internal port
           bind_address = "localhost"; # Only listen locally
           base_url = "https://search.nezia.dev/";

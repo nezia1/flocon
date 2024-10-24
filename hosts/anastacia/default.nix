@@ -1,9 +1,15 @@
-{self, ...}: let
+{
+  self,
+  inputs,
+  ...
+}: let
   mod = "${self}/system";
 in {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
+
+    inputs.agenix.nixosModules.default
 
     "${mod}/services/forgejo.nix"
     "${mod}/services/searx.nix"

@@ -5,8 +5,9 @@
     self,
     nixpkgs,
     systems,
-    treefmt-nix,
+    agenix,
     deploy-rs,
+    treefmt-nix,
     ...
   } @ inputs: let
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
@@ -18,6 +19,7 @@
           pkgs.alejandra
           pkgs.git
           deploy-rs.packages.${pkgs.system}.default
+          agenix.packages.${pkgs.system}.default
         ];
       };
     });
@@ -45,6 +47,10 @@
     };
 
     # other
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ags.url = "github:Aylur/ags";
     basix.url = "github:notashelf/basix";
     deploy-rs.url = "github:serokell/deploy-rs";
