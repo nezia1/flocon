@@ -12,47 +12,81 @@
 in {
   programs.firefox = {
     enable = true;
-    policies = {
-      DisableTelemetry = true;
-      DisablePocket = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      OfferToSaveLogins = false;
-      OffertosaveloginsDefault = false;
-      PasswordManagerEnabled = false;
-      SearchSuggestEnabled = true;
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      extraPolicies = {
+        DisableTelemetry = true;
+        DisablePocket = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        OfferToSaveLogins = false;
+        OffertosaveloginsDefault = false;
+        PasswordManagerEnabled = false;
+        SearchSuggestEnabled = true;
 
-      # https://github.com/Sly-Harvey/NixOS/blob/f9da2691ea46565256ad757959cfc26ec6cee10d/modules/programs/browser/firefox/default.nix#L58-L163
-      # TODO: declare which block lists are needed
-      "3rdparty".Extensions = {
-        "addon@darkreader.org" = {
-          permissions = ["internal:privateBrowsingAllowed"];
-          enabled = true;
-          automation = {
+        # https://github.com/Sly-Harvey/NixOS/blob/f9da2691ea46565256ad757959cfc26ec6cee10d/modules/programs/browser/firefox/default.nix#L58-L163
+        "3rdparty".Extensions = {
+          "addon@darkreader.org" = {
+            permissions = ["internal:privateBrowsingAllowed"];
             enabled = true;
-            behavior = "OnOff";
-            mode = "system";
+            automation = {
+              enabled = true;
+              behavior = "OnOff";
+              mode = "system";
+            };
+            detectDarkTheme = true;
+            enabledByDefault = true;
+            changeBrowserTheme = false;
+            enableForProtectedPages = true;
+            fetchNews = false;
+            previewNewDesign = true;
           };
-          detectDarkTheme = true;
-          enabledByDefault = true;
-          changeBrowserTheme = false;
-          enableForProtectedPages = true;
-          fetchNews = false;
-          previewNewDesign = true;
-        };
-        "uBlock0@raymondhill.net" = {
-          permissions = ["internal:privateBrowsingAllowed"];
-          advancedSettings = [
-            [
-              "userResourcesLocation"
-              "https://raw.githubusercontent.com/pixeltris/TwitchAdSolutions/master/video-swap-new/video-swap-new-ublock-origin.js"
-            ]
-          ];
-          adminSettings = {
-            userSettings = {
-              uiTheme = "dark";
-              advancedUserEnabled = true;
-              userFiltersTrusted = true;
+          "uBlock0@raymondhill.net" = {
+            permissions = ["internal:privateBrowsingAllowed"];
+            advancedSettings = [
+              [
+                "userResourcesLocation"
+                "https://raw.githubusercontent.com/pixeltris/TwitchAdSolutions/master/video-swap-new/video-swap-new-ublock-origin.js"
+              ]
+            ];
+            adminSettings = {
+              userSettings = {
+                uiTheme = "dark";
+                advancedUserEnabled = true;
+                userFiltersTrusted = true;
+                importedLists = [
+                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                ];
+                selectedFilterLists = [
+                  "FRA-0"
+                  "adguard-cookies"
+                  "adguard-mobile-app-banners"
+                  "adguard-other-annoyances"
+                  "adguard-popup-overlays"
+                  "adguard-social"
+                  "adguard-spyware-url"
+                  "adguard-widgets"
+                  "easylist"
+                  "easylist-annoyances"
+                  "easylist-chat"
+                  "easylist-newsletters"
+                  "easylist-notifications"
+                  "easyprivacy"
+                  "fanboy-cookiemonster"
+                  "https://filters.adtidy.org/extension/ublock/filters/3.txt"
+                  "https://github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
+                  "plowe-0"
+                  "ublock-annoyances"
+                  "ublock-badware"
+                  "ublock-cookies-adguard"
+                  "ublock-cookies-easylist"
+                  "ublock-filters"
+                  "ublock-privacy"
+                  "ublock-quick-fixes"
+                  "ublock-unbreak"
+                  "urlhaus-1"
+                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                ];
+              };
             };
           };
         };
@@ -73,7 +107,6 @@ in {
           ublock-origin
           violentmonkey
         ];
-
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix
         search = {
           default = "SearxNG";
