@@ -52,7 +52,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {url = "github:sodiboo/niri-flake";};
+    niri.url = "github:sodiboo/niri-flake";
     nvf.url = "github:notashelf/nvf";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
