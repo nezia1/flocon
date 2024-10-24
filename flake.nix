@@ -6,6 +6,7 @@
     nixpkgs,
     systems,
     treefmt-nix,
+    deploy-rs,
     ...
   } @ inputs: let
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
@@ -16,6 +17,7 @@
         packages = [
           pkgs.alejandra
           pkgs.git
+          deploy-rs.packages.${pkgs.system}.default
         ];
       };
     });
