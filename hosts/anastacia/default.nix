@@ -13,6 +13,7 @@ in {
 
     "${mod}/services/forgejo.nix"
     "${mod}/services/searx.nix"
+    "${mod}/services/portfolio.nix"
   ];
 
   boot.tmp.cleanOnBoot = true;

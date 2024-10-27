@@ -60,6 +60,9 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     nvf.url = "github:notashelf/nvf";
+
+    portfolio.url = "github:nezia1/portfolio";
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
