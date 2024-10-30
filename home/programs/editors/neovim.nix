@@ -60,6 +60,10 @@
 
       git.enable = true;
 
+      utility = {
+        vim-wakatime.enable = true;
+      };
+
       lsp = {
         enable = true;
         lspSignature.enable = true;
