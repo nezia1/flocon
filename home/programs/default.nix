@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./browsers
     ./media
@@ -35,5 +39,9 @@
     nautilus
     simple-scan
     entr
+    inputs.self.packages.${pkgs.system}.mcuxpresso.ide
+    dfu-util
+    segger-jlink
+    # inputs.self.packages.${pkgs.system}.mcuxpresso.config-tools
   ];
 }

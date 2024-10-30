@@ -26,6 +26,7 @@
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosModules = import ./modules;
     nixosConfigurations = import ./hosts {inherit self inputs;};
+    packages = eachSystem (pkgs: import ./pkgs pkgs);
     deploy.nodes = import ./nodes {inherit self inputs;};
   };
   inputs = {
