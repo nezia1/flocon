@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   nixpkgs = {
-    config.allowUnfree = true;
     overlays = [
       (_: prev: {
         lib =
@@ -10,6 +9,11 @@
           };
       })
     ];
-    config.permittedInsecurePackages = ["cinny-4.2.2" "cinny-unwrapped-4.2.2"];
+
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = ["cinny-4.2.2" "cinny-unwrapped-4.2.2" "segger-jlink-qt4-796s"];
+      segger-jlink.acceptLicense = true;
+    };
   };
 }

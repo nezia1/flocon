@@ -7,6 +7,7 @@
       "audio"
       "video"
       "wheel"
+      "plugdev"
     ];
   };
 }
