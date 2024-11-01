@@ -15,10 +15,10 @@ in {
     "${mod}/hardware/fprintd.nix"
     "${mod}/services/power.nix"
     "${mod}/services/brightness.nix"
-    "${mod}/services/keyd.nix"
 
     "${mod}/services/logind.nix"
     "${mod}/services/greetd.nix"
+    "${mod}/services/kanata.nix"
 
     "${mod}/programs/niri"
     "${mod}/services/gnome.nix"

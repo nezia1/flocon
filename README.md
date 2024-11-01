@@ -20,6 +20,7 @@ Additionally using a lot of other software you can find in the configuration fil
 | [hosts](hosts/)     | Host-specific              |
 | [lib](lib/)         | Helper functions           |
 | [modules](modules/) | NixOS modules              |
+| [pkgs](pkgs/)       | Custom packages            |
 | [system](system/)   | NixOS configuration        |
 
 My configuration is structured based on the following principles:
