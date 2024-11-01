@@ -7,7 +7,7 @@
   appLauncher = "fuzzel";
   terminal = "foot";
   browser = "firefox";
-  prefix = "Alt";
+  prefix = "Super";
 in {
   programs.niri.settings.binds = {
     "${prefix}+D".action.spawn = appLauncher;
