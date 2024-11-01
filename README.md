@@ -1,4 +1,4 @@
-# ❄️ nix
+# ❄️ flocon
 
 My NixOS configurations, using flakes.
 
