@@ -14,6 +14,10 @@
         name = "fzf";
         inherit (pkgs.fishPlugins.fzf) src;
       }
+      {
+        name = "autopair";
+        inherit (pkgs.fishPlugins.autopair) src;
+      }
     ];
   };
 
