@@ -1,9 +1,8 @@
-_: {
-  virtualisation.docker = {
+{pkgs, ...}: {
+  virtualisation.podman = {
     enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    dockerCompat = true;
   };
+
+  environment.systemPackages = [pkgs.distrobox];
 }
