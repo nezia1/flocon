@@ -1,15 +1,23 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    bottles
-    lutris
-    mangohud
-    path-of-building
-    protonplus
-    r2modman
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  home.packages = [
+    pkgs.bottles
+    pkgs.lutris
+    pkgs.mangohud
+    pkgs.path-of-building
+    pkgs.protonplus
+    pkgs.r2modman
 
-    # steamtinkerlaunch dependencies
-    xdotool
-    xorg.xwininfo
-    yad
+    pkgs
+    . # steamtinkerlaunch dependencies
+    pkgs
+    .xdotool
+    pkgs.xorg.xwininfo
+    pkgs.yad
+
+    inputs.self.packages.${pkgs.system}.bolt-launcher
   ];
 }
