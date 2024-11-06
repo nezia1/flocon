@@ -2,9 +2,7 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) getExe;
-in {
+}: {
   programs.helix = {
     enable = true;
     settings = {

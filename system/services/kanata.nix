@@ -1,4 +1,4 @@
-_: {
+{
   services.kanata = {
     enable = true;
     keyboards.default = {
