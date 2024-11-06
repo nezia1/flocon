@@ -29,6 +29,8 @@
   cups,
   systemd,
   buildFHSEnv,
+  copyDesktopItems,
+  makeDesktopItem,
 }: let
   cef = libcef.overrideAttrs (_: {
     installPhase = let
@@ -77,16 +79,17 @@
       cp -r ../cmake $out
     '';
   });
+
   bolt = stdenv.mkDerivation (finalAttrs: {
     pname = "bolt-launcher";
-    version = "0.9.0";
+    version = "0.10.0";
 
     src = fetchFromGitHub {
       owner = "AdamCake";
       repo = "bolt";
       rev = finalAttrs.version;
       fetchSubmodules = true;
-      hash = "sha256-LIlRDcUWbQwIhFjtqYF+oVpTOPZ7IT0vMgysEVyJ1k8=";
+      hash = "sha256-2IoFzD+yhQv1Y7D+abeNUT23BC4P1xZTALF8Y+Zsg44=";
     };
 
     nativeBuildInputs = [
@@ -94,6 +97,7 @@
       ninja
       luajit
       makeWrapper
+      copyDesktopItems
     ];
 
     buildInputs = [
@@ -106,6 +110,20 @@
       jdk17
     ];
 
+    desktopItems = [
+      (makeDesktopItem {
+        inherit (bolt) name;
+        desktopName = "Bolt Launcher";
+        keywords = [
+          "Game"
+        ];
+        exec = "${bolt.name}";
+        terminal = false;
+        categories = ["Game"];
+        icon = "bolt-launcher";
+      })
+    ];
+
     cmakeFlags = [
       "-D CMAKE_BUILD_TYPE=Release"
       "-D BOLT_LUAJIT_INCLUDE_DIR=${luajit}/include"
@@ -113,6 +131,7 @@
     ];
 
     preConfigure = ''
+      ls -al
       mkdir -p cef/dist/Release cef/dist/Resources cef/dist/include
 
       ln -s ${cef}/lib/* cef/dist/Release
@@ -128,6 +147,16 @@
       ln -s ${cef}/CMakeLists.txt cef/dist
     '';
 
+    postInstall = ''
+      for size in 16 32 64 128 256; do
+          size_dir="''${size}x''${size}"
+          ls -al $src/icon
+          mkdir -p $out/share/icons/hicolor/''${size_dir}/apps
+          cp $src/icon/$size.png $out/share/icons/hicolor/''${size_dir}/apps/bolt-launcher.png
+      done
+      mkdir -p $out/share/icons/hicolor/scalable/apps/
+      cp $src/icon/bolt.svg $out/share/icons/hicolor/scalable/apps/bolt-launcher.svg
+    '';
     postFixup = ''
       makeWrapper "$out/opt/bolt-launcher/bolt" "$out/bin/${finalAttrs.pname}-${finalAttrs.version}" \
       --set JAVA_HOME "${jdk17}"
@@ -158,6 +187,14 @@ in
         SDL2
         libGL
       ]);
+
+    extraInstallCommands = ''
+      mkdir -p $out/share/applications $out/share/icons
+      ln -s ${bolt}/share/applications/*.desktop \
+        $out/share/applications/
+      ln -s ${bolt}/share/icons/hicolor \
+        $out/share/icons/hicolor
+    '';
 
     runScript = "${bolt.name}";
     meta = {
