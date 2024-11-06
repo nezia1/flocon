@@ -1,28 +1,25 @@
-{
-  self,
-  specialArgs,
-  ...
-}: let
-  mod = "${self}/system";
+{specialArgs, ...}: let
+  system = ../../system;
+  home = ../../home;
 in {
   imports = [
     ./hardware-configuration.nix
     ./modules
 
-    "${mod}"
-    "${mod}/hardware/uni-sync.nix"
+    system
+    "${system}/hardware/uni-sync.nix"
 
-    "${mod}/programs/gnome.nix"
-    "${mod}/programs/games.nix"
-    "${mod}/hardware/nvidia.nix"
+    "${system}/programs/gnome.nix"
+    "${system}/programs/games.nix"
+    "${system}/hardware/nvidia.nix"
   ];
 
   home-manager = {
     users.nezia.imports = [
-      "${self}/home"
-      "${self}/home/programs/games"
+      home
+      "${home}/programs/games"
 
-      "${self}/home/terminal/emulators/foot.nix"
+      "${home}/terminal/emulators/foot.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
