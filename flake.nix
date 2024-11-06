@@ -25,7 +25,10 @@
     });
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosModules = import ./modules;
-    nixosConfigurations = import ./hosts {inherit self inputs;};
+    nixosConfigurations = let
+      lib' = import ./lib {inherit inputs lib';};
+    in
+      import ./hosts {inherit inputs lib';};
     packages = eachSystem (pkgs: import ./pkgs pkgs);
     deploy.nodes = import ./nodes {inherit self inputs;};
   };

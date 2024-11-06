@@ -1,8 +1,9 @@
 {
-  pkgs,
-  lib,
+  inputs,
+  lib',
   ...
 }: let
+  inherit (inputs.nixpkgs) lib;
   # convert rrggbb hex to rgba(r, g, b, a)
   rgba = c: let
     r = toString (hexToDec (builtins.substring 0 2 c));
@@ -86,8 +87,25 @@
     ];
 
   # Create a KDE konsole color scheme from base16 colors
-  mkKonsoleColorScheme = scheme:
+  mkKonsoleColorScheme = pkgs: scheme:
     pkgs.writeText "${scheme.name}.colorscheme" (schemeToKonsole scheme);
+
+  # https://github.com/diniamo/niqs/blob/caf396bb470619fa06936a379eec6e283c3c3d95/lib/default.nix#L13-L35C7
+  mkSystem = {system, ...} @ args:
+    lib.nixosSystem {
+      system = null;
+      specialArgs = {inherit inputs;};
+      modules =
+        [
+          {
+            _module.args = {
+              inherit system lib';
+            };
+            nixpkgs = {inherit system;};
+          }
+        ]
+        ++ args.modules or [];
+    };
 in {
-  inherit mkKonsoleColorScheme rgba;
+  inherit mkKonsoleColorScheme rgba mkSystem;
 }

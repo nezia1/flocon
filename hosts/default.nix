@@ -1,37 +1,31 @@
 {
-  self,
   inputs,
+  lib',
   ...
 }: let
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-  specialArgs = {
-    inherit inputs self;
-  };
+  inherit (lib') mkSystem;
 in {
-  vamos = nixosSystem {
+  vamos = mkSystem {
     system = "x86_64-linux";
-    inherit specialArgs;
     modules = [
       ./vamos
 
-      self.nixosModules.theme
+      inputs.self.nixosModules.theme
 
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
   };
 
-  solaire = nixosSystem {
+  solaire = mkSystem {
     system = "x86_64-linux";
-    inherit specialArgs;
     modules = [
       ./solaire
-      self.nixosModules.theme
+      inputs.self.nixosModules.theme
     ];
   };
 
-  anastacia = nixosSystem {
+  anastacia = mkSystem {
     system = "x86_64-linux";
-    inherit specialArgs;
     modules = [
       ./anastacia
     ];
