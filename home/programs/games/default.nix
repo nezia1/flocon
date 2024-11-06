@@ -1,6 +1,6 @@
 {
-  inputs,
   pkgs,
+  inputs,
   ...
 }: {
   home.packages = [
@@ -11,10 +11,8 @@
     pkgs.protonplus
     pkgs.r2modman
 
-    pkgs
-    . # steamtinkerlaunch dependencies
-    pkgs
-    .xdotool
+    # steamtinkerlaunch dependencies
+    pkgs.xdotool
     pkgs.xorg.xwininfo
     pkgs.yad
 
