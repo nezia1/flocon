@@ -29,7 +29,7 @@
       lib' = import ./lib {inherit inputs lib';};
     in
       import ./hosts {inherit inputs lib';};
-    packages = eachSystem (pkgs: import ./pkgs pkgs);
+    packages = eachSystem (pkgs: import ./pkgs {inherit inputs pkgs;});
     deploy.nodes = import ./nodes {inherit self inputs;};
   };
   inputs = {
