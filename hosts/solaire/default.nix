@@ -20,6 +20,7 @@ in {
       "${home}/programs/games"
 
       "${home}/terminal/emulators/foot.nix"
+      "${home}/programs/gnome"
     ];
     extraSpecialArgs = specialArgs;
   };

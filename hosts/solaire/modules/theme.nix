@@ -1,3 +1,3 @@
 {
-  theme.wallpaper = ../../wallpapers/lucy-edgerunners-wallpaper.jpg;
+  theme.wallpaper = ../../../wallpapers/lucy-edgerunners-wallpaper.jpg;
 }
