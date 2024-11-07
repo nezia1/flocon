@@ -135,49 +135,24 @@ in {
                   "type" = "application/x-suggestions+json";
                 }
               ];
-              iconUpdateURL = "https://search.nezia.dev/favicon.ico";
+            };
+            "MyNixOS" = {
+              urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
+              iconUpdateURL = "https://mynixos.com/favicon.ico";
               updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = ["@s"];
-            };
-            "Nix Packages" = {
-              urls = [
-                {
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    {
-                      name = "type";
-                      value = "packages";
-                    }
-                    {
-                      name = "query";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@np"];
-            };
-            "NixOS Wiki" = {
-              urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
-              iconUpdateURL = "https://wiki.nixos.org/favicon.ico";
-              updateInterval = 24 * 60 * 60 * 1000;
-              definedAliases = ["@nw"];
-            };
-            "NixOS Options" = {
-              urls = [{template = "https://search.nixos.org/options?channel=unstable&type=packages&query={searchTerms}";}];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@no"];
+              definedAliases = ["@nx"];
             };
             "Noogle" = {
               urls = [{template = "https://noogle.dev/q?term={searchTerms}";}];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = ["@ng"];
             };
-            "Home Manager" = {
-              urls = [{template = "https://home-manager-options.extranix.com/?release=master&query={searchTerms}";}];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@hm"];
+            "GitHub Nix" = {
+              # https://github.com/search?q=language%3Anix+NOT+is%3Afork+programs.neovim&type=code
+              urls = [{template = "https://github.com/search?q=language:nix NOT is:fork {searchTerms}&type=code";}];
+              iconUpdateURL = "https://github.com/favicon.ico";
+              updateInterval = 24 * 60 * 60 * 1000;
+              definedAliases = ["@ghn"];
             };
             "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
           };

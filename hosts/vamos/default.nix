@@ -1,43 +1,40 @@
-{
-  self,
-  specialArgs,
-  ...
-}: let
-  mod = "${self}/system";
+{specialArgs, ...}: let
+  system = ../../system;
+  home = ../../home;
 in {
   imports = [
     ./hardware-configuration.nix
     ./modules
 
-    "${mod}"
-    "${mod}/core/lanzaboote.nix"
+    "${system}"
+    "${system}/core/lanzaboote.nix"
 
-    "${mod}/hardware/fprintd.nix"
-    "${mod}/services/power.nix"
-    "${mod}/services/brightness.nix"
+    "${system}/hardware/fprintd.nix"
+    "${system}/services/power.nix"
+    "${system}/services/brightness.nix"
 
-    "${mod}/services/logind.nix"
-    "${mod}/services/greetd.nix"
-    "${mod}/services/kanata.nix"
+    "${system}/services/logind.nix"
+    "${system}/services/greetd.nix"
+    "${system}/services/kanata.nix"
 
-    "${mod}/programs/niri"
-    "${mod}/services/gnome.nix"
-    "${mod}/services/mail.nix"
+    "${system}/programs/niri"
+    "${system}/services/gnome.nix"
+    "${system}/services/mail.nix"
   ];
 
   home-manager = {
     users.nezia.imports = [
-      "${self}/home"
-      "${self}/home/services/udiskie.nix"
+      "${home}"
+      "${home}/services/udiskie.nix"
 
-      "${self}/home/programs/niri"
-      "${self}/home/programs/ags"
-      "${self}/home/programs/fuzzel.nix"
-      "${self}/home/programs/swaybg.nix"
-      "${self}/home/programs/swaylock.nix"
-      "${self}/home/programs/swayidle.nix"
+      "${home}/programs/niri"
+      "${home}/programs/ags"
+      "${home}/programs/fuzzel.nix"
+      "${home}/programs/swaybg.nix"
+      "${home}/programs/swaylock.nix"
+      "${home}/programs/swayidle.nix"
 
-      "${self}/home/terminal/emulators/foot.nix"
+      "${home}/terminal/emulators/foot.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
