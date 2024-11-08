@@ -9,9 +9,7 @@ in {
     system = "x86_64-linux";
     modules = [
       ./vamos
-
       inputs.self.nixosModules.theme
-
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
   };
