@@ -38,5 +38,6 @@ People / repositories I have copied / learned from:
 
 - [fufexan/dotfiles](https://github.com/fufexan/dotfiles) for the configuration structure
 - [jacekpoz/nixos](https://git.jacekpoz.pl/poz/niksos) for learning how NixOS modules work
+- [sodiboo](https://github.com/sodiboo) for helping me a whole lot with Niri-specific issues
 
 Some bits have also been borrowed from within the configuration, and credit has been given where its due.
