@@ -49,9 +49,12 @@ in {
       default_session = let
         niri = getExe config.programs.niri.package;
         regreet = getExe config.programs.regreet.package;
+        # needed because we need to run niri msg quit inside of niri itself (it needs the socket)
+        greeterScript = pkgs.writeScript "greeter-script" ''
+          ${regreet} && ${niri} msg action quit --skip-confirmation
+        '';
       in {
-        # TODO: kill niri after logging in so we don't have to wait for greetd to do it (can get pretty long)
-        command = "${niri} -c ${niri-config} -- ${regreet}";
+        command = "${niri} -c ${niri-config} -- ${greeterScript}";
         user = "greeter";
       };
     };
