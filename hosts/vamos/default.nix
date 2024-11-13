@@ -28,7 +28,7 @@ in {
       "${home}/services/udiskie.nix"
 
       "${home}/programs/niri"
-      "${home}/programs/ags"
+      "${home}/programs/ironbar"
       "${home}/programs/fuzzel.nix"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"

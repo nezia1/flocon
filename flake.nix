@@ -13,6 +13,7 @@
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
+    imports = [./modules];
     devShells = eachSystem (pkgs: {
       default = pkgs.mkShell {
         packages = [
@@ -24,7 +25,6 @@
       };
     });
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    nixosModules = import ./modules;
     nixosConfigurations = let
       lib' = import ./lib {inherit inputs lib';};
     in
@@ -58,15 +58,17 @@
     ags.url = "github:Aylur/ags";
     basix.url = "github:notashelf/basix";
     deploy-rs.url = "github:serokell/deploy-rs";
+    ironbar = {
+      url = "github:JakeStanger/ironbar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
     nvf.url = "github:notashelf/nvf";
-
     portfolio.url = "github:nezia1/portfolio";
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

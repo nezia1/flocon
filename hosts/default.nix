@@ -9,7 +9,7 @@ in {
     system = "x86_64-linux";
     modules = [
       ./vamos
-      inputs.self.nixosModules.theme
+      ../modules
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
   };
@@ -18,7 +18,7 @@ in {
     system = "x86_64-linux";
     modules = [
       ./solaire
-      inputs.self.nixosModules.theme
+      ../modules
     ];
   };
 

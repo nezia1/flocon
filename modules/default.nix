@@ -1,3 +1,3 @@
 {
-  theme = import ./theme;
+  imports = [./theme];
 }

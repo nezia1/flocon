@@ -1,19 +1,26 @@
 {pkgs, ...}: {
   fonts = {
+    fontDir = {
+      enable = true;
+      decompressFonts = true;
+    };
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
       noto-fonts-extra
-      (nerdfonts.override {fonts = ["IntelOneMono"];})
+      intel-one-mono
     ];
     enableDefaultPackages = false;
 
-    fontconfig.defaultFonts = {
-      serif = ["Noto Serif"];
-      sansSerif = ["Inter"];
-      monospace = ["IntoneMono NF"];
-      emoji = ["Noto Color Emoji"];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = ["Noto Serif"];
+        sansSerif = ["Inter Medium"];
+        monospace = ["Intel One Mono"];
+        emoji = ["Noto Color Emoji"];
+      };
     };
   };
 }
