@@ -1,15 +1,19 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   fonts = {
     fontDir = {
       enable = true;
       decompressFonts = true;
     };
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      noto-fonts-extra
-      intel-one-mono
+    packages = [
+      pkgs.noto-fonts
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-extra
+      pkgs.intel-one-mono
+      inputs.self.packages.${pkgs.system}.apple-emoji-color
     ];
     enableDefaultPackages = false;
 
@@ -19,7 +23,7 @@
         serif = ["Noto Serif"];
         sansSerif = ["Inter Medium"];
         monospace = ["Intel One Mono"];
-        emoji = ["Noto Color Emoji"];
+        emoji = ["Apple Color Emoji"];
       };
     };
   };
