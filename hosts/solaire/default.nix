@@ -1,6 +1,10 @@
-{specialArgs, ...}: let
-  system = ../../system;
-  home = ../../home;
+{
+  inputs,
+  specialArgs,
+  ...
+}: let
+  system = "${inputs.self}/system";
+  home = "${inputs.self}/home";
 in {
   imports = [
     ./hardware-configuration.nix

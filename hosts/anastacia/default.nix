@@ -1,9 +1,5 @@
-{
-  self,
-  inputs,
-  ...
-}: let
-  mod = "${self}/system";
+{inputs, ...}: let
+  system = "${inputs.self}/system";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -11,9 +7,9 @@ in {
 
     inputs.agenix.nixosModules.default
 
-    "${mod}/services/forgejo.nix"
-    "${mod}/services/searx.nix"
-    "${mod}/services/portfolio.nix"
+    "${system}/services/forgejo.nix"
+    "${system}/services/searx.nix"
+    "${system}/services/portfolio.nix"
   ];
 
   boot.tmp.cleanOnBoot = true;

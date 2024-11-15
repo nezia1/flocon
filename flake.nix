@@ -13,7 +13,6 @@
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
     treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
-    imports = [./modules];
     devShells = eachSystem (pkgs: {
       default = pkgs.mkShell {
         packages = [
@@ -30,7 +29,8 @@
     in
       import ./hosts {inherit inputs lib';};
     packages = eachSystem (pkgs: import ./pkgs {inherit inputs pkgs;});
-    deploy.nodes = import ./nodes {inherit self inputs;};
+    deploy.nodes = import ./nodes {inherit inputs;};
+    checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
   inputs = {
     # nix related
