@@ -6,7 +6,7 @@
   osConfig,
   ...
 }: let
-  colors = inputs.basix.schemeData.base16.${osConfig.theme.scheme}.palette;
+  inherit (inputs.basix.schemeData.base16.${osConfig.theme.scheme}) palette;
   inherit (lib) getExe mkIf;
 in {
   imports = [./binds.nix];
@@ -37,7 +37,7 @@ in {
       layout = {
         focus-ring = {
           enable = true;
-          active.color = "#${colors.base0E}";
+          active.color = palette.base0E;
         };
         always-center-single-column = true;
       };
