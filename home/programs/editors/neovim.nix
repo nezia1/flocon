@@ -53,9 +53,107 @@
       };
       notify.nvim-notify.enable = true;
 
-      statusline.lualine = {
-        enable = true;
-        theme = "auto";
+      statusline = {
+        lualine = {
+          enable = true;
+          theme = "auto";
+          componentSeparator = {
+            left = "";
+          };
+          sectionSeparator = {
+            left = "";
+            right = "";
+          };
+
+          activeSection = {
+            a = [
+              ''
+                {
+                  "mode",
+                  separator = { right = "" },
+                  right_padding = 2
+                }
+              ''
+            ];
+            b = [
+              ''
+                {
+                  "branch",
+                  icon = '',
+                  separator = { right = "" }
+                }
+              ''
+            ];
+            c = [
+              ''
+                "filename"
+              ''
+            ];
+            x = [
+              ''
+                {
+                  "diagnostics",
+                  sources = {'nvim_lsp', 'nvim_diagnostic', 'nvim_diagnostic', 'vim_lsp', 'coc'},
+                  symbols = {error = '󰅙  ', warn = '  ', info = '  ', hint = '󰌵 '},
+                  colored = true,
+                  update_in_insert = false,
+                  always_visible = false,
+                  diagnostics_color = {
+                    color_error = { fg = 'red' },
+                    color_warn = { fg = 'yellow' },
+                    color_info = { fg = 'cyan' },
+                  },
+                }
+              ''
+              ''
+                "filetype"
+              ''
+            ];
+            y = [
+              ''
+                {
+                  "progress",
+                  separator = { left = "" },
+                }
+              ''
+              ''
+              ''
+            ];
+            z = [
+              ''
+                {
+                  "location",
+                  separator = { left = "" },
+                  left_padding = 2
+                }
+              ''
+              ''
+                {
+                  "fileformat",
+                  color = {fg='black'},
+                  symbols = {
+                    unix = '', -- e712
+                    dos = '',  -- e70f
+                    mac = '',  -- e711
+                  },
+                }
+              ''
+            ];
+          };
+
+          inactiveSection = {
+            a = [
+              ''
+                "filename"
+              ''
+            ];
+            z = [
+              ''
+                "location"
+              ''
+            ];
+          };
+        };
       };
 
       git.enable = true;
