@@ -14,6 +14,7 @@
       pkgs.noto-fonts-extra
       pkgs.intel-one-mono
       inputs.self.packages.${pkgs.system}.apple-emoji-color
+      (pkgs.nerdfonts.override {fonts = ["IntelOneMono"];})
     ];
     enableDefaultPackages = false;
 
@@ -22,7 +23,7 @@
       defaultFonts = {
         serif = ["Noto Serif"];
         sansSerif = ["Inter Medium"];
-        monospace = ["Intel One Mono"];
+        monospace = ["IntoneMono NF"];
         emoji = ["Apple Color Emoji"];
       };
     };
