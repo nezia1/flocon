@@ -24,6 +24,8 @@ in {
     "${system}/programs/niri"
     "${system}/services/gnome.nix"
     "${system}/services/mail.nix"
+
+    "${system}/services/syncthing.nix"
   ];
 
   home-manager = {

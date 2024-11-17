@@ -16,6 +16,8 @@ in {
     "${system}/programs/gnome.nix"
     "${system}/programs/games.nix"
     "${system}/hardware/nvidia.nix"
+
+    "${system}/services/syncthing.nix"
   ];
 
   home-manager = {
