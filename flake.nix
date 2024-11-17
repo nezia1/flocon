@@ -67,7 +67,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
-    nvf.url = "github:notashelf/nvf";
+    neovim-flake = {
+      url = "git+https://git.nezia.dev/nezia/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     portfolio.url = "github:nezia1/portfolio";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";

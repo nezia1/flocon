@@ -1,10 +1,13 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./browsers
     ./media
     ./xdg.nix
     ./gtk.nix
-    ./editors/neovim.nix
     ./editors/helix.nix
   ];
 
@@ -35,9 +38,6 @@
     nautilus
     simple-scan
     entr
-    # inputs.self.packages.${pkgs.system}.mcuxpresso.ide
-    # dfu-util
-    # segger-jlink
-    # inputs.self.packages.${pkgs.system}.mcuxpresso.config-tools
+    inputs.neovim-flake.packages.${pkgs.system}.default
   ];
 }
