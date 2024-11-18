@@ -8,14 +8,19 @@
   terminal = "foot";
   browser = "firefox";
   prefix = "Alt";
+  guiFileManager = "nautilus";
+  cliFileManager = "${terminal} -e yazi";
 in {
   programs.niri.settings.binds = {
     "${prefix}+D".action.spawn = appLauncher;
     "${prefix}+Return".action.spawn = terminal;
     "${prefix}+W".action.spawn = browser;
-    "${prefix}+Shift+E".action.quit.skip-confirmation = true;
+    "${prefix}+E".action.spawn = guiFileManager;
+    "${prefix}+Shift+E".action.spawn = cliFileManager;
+
     "${prefix}+Shift+Slash".action = config.lib.niri.actions.show-hotkey-overlay;
     "${prefix}+Q".action = config.lib.niri.actions.close-window;
+    "${prefix}+Shift+Q".action.quit.skip-confirmation = true;
     "${prefix}+F".action = config.lib.niri.actions.maximize-column;
     "${prefix}+Shift+F".action = config.lib.niri.actions.fullscreen-window;
     "${prefix}+C".action = config.lib.niri.actions.center-column;
@@ -157,5 +162,7 @@ in {
     "XF86AudioMedia" = {
       action.spawn = ["sh" "-c" "env XDG_CURRENT_DESKTOP=gnome gnome-control-center"];
     };
+
+    "XF86PowerOff".action.spawn = "wlogout";
   };
 }
