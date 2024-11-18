@@ -4,8 +4,8 @@
     ./gnupg.nix
     ./tmux.nix
     ./direnv.nix
-    ./zellij.nix
     ./nix-index.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [

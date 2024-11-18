@@ -15,10 +15,6 @@
   programs = {
     fzf.enable = true;
     hyfetch.enable = true;
-    yazi = {
-      enable = true;
-      enableFishIntegration = true;
-    };
   };
 
   # miscellaneous programs that do not need to be configured

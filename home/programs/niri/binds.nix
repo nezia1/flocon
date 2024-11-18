@@ -9,14 +9,14 @@
   browser = "firefox";
   prefix = "Alt";
   guiFileManager = "nautilus";
-  cliFileManager = "${terminal} -e yazi";
+  cliFileManager = "yazi";
 in {
   programs.niri.settings.binds = {
     "${prefix}+D".action.spawn = appLauncher;
     "${prefix}+Return".action.spawn = terminal;
     "${prefix}+W".action.spawn = browser;
     "${prefix}+E".action.spawn = guiFileManager;
-    "${prefix}+Shift+E".action.spawn = cliFileManager;
+    "${prefix}+Shift+E".action.spawn = [terminal "-e" cliFileManager];
 
     "${prefix}+Shift+Slash".action = config.lib.niri.actions.show-hotkey-overlay;
     "${prefix}+Q".action = config.lib.niri.actions.close-window;
