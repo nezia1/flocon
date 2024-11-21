@@ -42,7 +42,7 @@ in {
     #workspaces,
     .modules-right box {
       background: @base02;
-      padding: 0.15em 0.25;
+      padding: 0.15em 0.25em;
       border-radius: 1em;
       margin: 0 0.25em;
     }
