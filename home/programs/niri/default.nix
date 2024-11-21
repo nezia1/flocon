@@ -95,10 +95,6 @@ in {
         "DISPLAY" = ":0";
         "_JAVA_AWT_WM_NONREPARENTING" = "1"; # https://wiki.archlinux.org/title/Sway#Java_applications
       };
-
-      spawn-at-startup = [
-        (mkIf config.programs.ironbar.enable {command = [(getExe inputs.ironbar.packages.${pkgs.system}.default)];})
-      ];
     };
   };
 
