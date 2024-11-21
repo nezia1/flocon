@@ -98,7 +98,7 @@ in {
     (mkIf osConfig.theme.enable (let
       inherit (osConfig.theme.scheme) palette;
     in {
-      layout.focus-ring.active.color = palette.base0E;
+      settings.layout.focus-ring.active.color = palette.base0E;
     }))
   ];
 
