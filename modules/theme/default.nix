@@ -14,7 +14,7 @@ in {
     enable = mkEnableOption "theme";
     schemeName = mkOption {
       description = ''
-        Name of the tinted-scheming color scheme to use.
+        Name of the tinted-theming color scheme to use.
       '';
       type = enum (attrNames inputs.basix.schemeData.base16);
       example = "catppuccin-macchiato";
@@ -23,7 +23,7 @@ in {
 
     scheme = mkOption {
       description = ''
-        Resolved scheme from the tinted-scheming library.
+        Resolved scheme from the tinted-theming library.
       '';
       type = lib.types.attrs;
     };
