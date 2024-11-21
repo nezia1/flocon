@@ -34,7 +34,7 @@ in {
       "${home}/services/udiskie.nix"
 
       "${home}/programs/niri"
-      "${home}/programs/ironbar"
+      "${home}/programs/waybar"
       "${home}/programs/fuzzel.nix"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"

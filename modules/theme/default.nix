@@ -3,11 +3,12 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkOption;
+  inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) string path package;
 in {
   imports = [./gtk.nix];
   options.theme = {
+    enable = mkEnableOption "theme";
     scheme = mkOption {
       description = ''
         Name of the tinted-scheming color scheme to use.

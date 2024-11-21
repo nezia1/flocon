@@ -14,7 +14,7 @@
       pkgs.noto-fonts-extra
       pkgs.intel-one-mono
       inputs.self.packages.${pkgs.system}.apple-emoji-color
-      (pkgs.nerdfonts.override {fonts = ["IntelOneMono"];})
+      (pkgs.nerdfonts.override {fonts = ["IntelOneMono" "NerdFontsSymbolsOnly"];})
     ];
     enableDefaultPackages = false;
 
