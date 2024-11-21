@@ -1,22 +1,33 @@
 {
+  inputs,
+  config,
   lib,
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption;
-  inherit (lib.types) string path package;
+  inherit (lib) mkEnableOption mkOption mkIf attrNames;
+  inherit (lib.types) path package enum;
+  cfg = config.theme;
 in {
   imports = [./gtk.nix];
   options.theme = {
     enable = mkEnableOption "theme";
-    scheme = mkOption {
+    schemeName = mkOption {
       description = ''
         Name of the tinted-scheming color scheme to use.
       '';
-      type = string;
-      example = lib.literalExpression "catppuccin-macchiato";
+      type = enum (attrNames inputs.basix.schemeData.base16);
+      example = "catppuccin-macchiato";
       default = "catppuccin-macchiato";
     };
+
+    scheme = mkOption {
+      description = ''
+        Resolved scheme from the tinted-scheming library.
+      '';
+      type = lib.types.attrs;
+    };
+
     wallpaper = mkOption {
       description = ''
         Location of the wallpaper that will be used throughout the system.
@@ -50,5 +61,8 @@ in {
         default = 24;
       };
     };
+  };
+  config.theme = mkIf cfg.enable {
+    scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
   };
 }

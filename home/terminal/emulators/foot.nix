@@ -1,5 +1,4 @@
 {
-  inputs,
   osConfig,
   config,
   lib,
@@ -17,7 +16,7 @@
         inherit (lib) mapAttrs;
         inherit (lib.strings) removePrefix;
         # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
-        palette = mapAttrs (_: color: removePrefix "#" color) inputs.basix.schemeData.base16.${osConfig.theme.scheme}.palette;
+        palette = mapAttrs (_: color: removePrefix "#" color) osConfig.theme.scheme.palette;
       in {
         background = palette.base00;
         foreground = palette.base05;

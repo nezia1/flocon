@@ -1,13 +1,11 @@
 {
-  inputs,
   lib,
   pkgs,
   config,
   osConfig,
   ...
 }: let
-  inherit (inputs.basix.schemeData.base16.${osConfig.theme.scheme}) palette;
-  inherit (lib) getExe mkIf;
+  inherit (osConfig.theme.scheme) palette;
 in {
   imports = [./binds.nix];
 

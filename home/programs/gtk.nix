@@ -1,12 +1,11 @@
 {
-  inputs,
   pkgs,
   config,
   osConfig,
   lib,
   ...
 }: let
-  isDark = inputs.basix.schemeData.base16.${osConfig.theme.scheme}.variant == "dark";
+  isDark = osConfig.theme.scheme.variant == "dark";
 in {
   home.pointerCursor = {
     inherit (osConfig.theme.cursorTheme) name package size;

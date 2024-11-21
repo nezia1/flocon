@@ -1,10 +1,9 @@
 {
-  inputs,
   pkgs,
   osConfig,
   ...
 }: let
-  inherit (inputs.basix.schemeData.base16.${osConfig.theme.scheme}) palette;
+  inherit (osConfig.theme.scheme) palette;
 in {
   # requires `security.pam.services.swaylock = { };` at the system level or else
   # unlock will not work.

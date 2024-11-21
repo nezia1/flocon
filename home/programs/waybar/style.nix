@@ -1,10 +1,9 @@
 {
-  inputs,
   lib,
   osConfig,
   ...
 }: let
-  inherit (inputs.basix.schemeData.base16.${osConfig.theme.scheme}) palette;
+  inherit (osConfig.theme.scheme) palette;
   inherit (builtins) concatStringsSep;
   inherit (lib) mapAttrsToList;
 
