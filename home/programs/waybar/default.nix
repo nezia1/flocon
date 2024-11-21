@@ -129,14 +129,20 @@ in {
         network = {
           interface = "wlp1s0";
           format = "{ifname}";
-          format-wifi = "({signalStrength}%) ";
+          format-wifi = "{icon}";
           format-ethernet = "{ipaddr}/{cidr} 󰊗";
           format-disconnected = "";
           tooltip-format = "{ifname} via {gwaddr} 󰊗";
-          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname} ";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
+          format-icons = [
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
         };
       };
     };
