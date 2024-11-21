@@ -2,10 +2,12 @@
   inputs,
   config,
   lib,
+  lib',
   pkgs,
   ...
 }: let
   inherit (lib) getExe evalModules;
+  inherit (lib') blurImage;
   inherit (inputs) niri;
 in {
   services.greetd = let
@@ -72,7 +74,8 @@ in {
     };
     settings = {
       background = {
-        path = config.theme.wallpaper;
+        path = blurImage pkgs config.theme.wallpaper;
+
         fit = "Fill";
       };
       GTK = {
