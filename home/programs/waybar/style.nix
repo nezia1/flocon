@@ -85,10 +85,11 @@ in {
 
       #battery,
       #clock,
+      #network,
       #pulseaudio,
       #tray,
       #power-profiles-daemon {
-        padding: 0 0.8em;
+        padding: 0 0.5em;
       }
 
       .modules-left,
