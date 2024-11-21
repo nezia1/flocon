@@ -26,12 +26,14 @@ in {
         modules-right = ["tray" "group/status" "group/power"];
 
         battery = {
-          interval = 60;
+          interval = 10;
           states = {
             warning = 30;
             critical = 15;
           };
           format = "{icon} {capacity}%";
+          format-charging = " {capacity}% - {time}";
+          format-full = " {capacity}% - Full";
           format-icons = [
             ""
             ""
