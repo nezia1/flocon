@@ -4,17 +4,16 @@
   ...
 }: let
   inherit (osConfig.theme.scheme) palette;
-  inherit (builtins) concatStringsSep;
-  inherit (lib) mapAttrsToList mkIf mkMerge;
+  inherit (lib) mapAttrsToList concatLines optionalString;
 
-  generateGtkColors = palette: (concatStringsSep "\n"
+  generateGtkColors = palette: (concatLines
     (mapAttrsToList
       (name: color: "@define-color ${name} ${color};")
       palette));
 in {
-  programs.waybar.style = mkMerge [
-    (mkIf osConfig.theme.enable generateGtkColors palette)
-    ''
+  programs.waybar.style =
+    optionalString osConfig.theme.enable generateGtkColors palette
+    + ''
       * {
         /* `otf-font-awesome` is required to be installed for icons */
         border: none;
@@ -102,6 +101,5 @@ in {
         padding: 0 1.2em;
         color: @base08;
       }
-    ''
-  ];
+    '';
 }
