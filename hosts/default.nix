@@ -1,12 +1,12 @@
-{
-  inputs,
-  lib',
-  ...
-}: let
-  inherit (lib') mkSystem;
+{inputs, ...}: let
+  lib' = import ../lib;
+  mkSystem = args:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs lib';};
+      modules = args.modules or [];
+    };
 in {
   vamos = mkSystem {
-    system = "x86_64-linux";
     modules = [
       ./vamos
       ../modules
@@ -15,7 +15,6 @@ in {
   };
 
   solaire = mkSystem {
-    system = "x86_64-linux";
     modules = [
       ./solaire
       ../modules
@@ -23,7 +22,6 @@ in {
   };
 
   anastacia = mkSystem {
-    system = "x86_64-linux";
     modules = [
       ./anastacia
     ];
