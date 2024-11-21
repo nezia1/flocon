@@ -3,7 +3,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+in {
   programs.foot = {
     enable = true;
     settings = {
@@ -12,7 +14,7 @@
         font = "monospace:size=14";
         shell = "${lib.getExe config.programs.fish.package}";
       };
-      colors = let
+      colors = mkIf osConfig.theme.enable (let
         inherit (lib) mapAttrs;
         inherit (lib.strings) removePrefix;
         # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
@@ -38,7 +40,7 @@
         bright5 = palette.base0E;
         bright6 = palette.base0C;
         bright7 = palette.base07;
-      };
+      });
     };
   };
 }
