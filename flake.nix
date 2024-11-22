@@ -31,7 +31,7 @@
   };
   inputs = {
     # nix related
-    nixpkgs.url = "github:NixOS/nixpkgs/dc460ec76cbff0e66e269457d7b728432263166c"; # TODO: remove when 24.11 is out
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     lanzaboote = {
