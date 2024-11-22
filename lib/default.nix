@@ -1,13 +1,13 @@
 let
   # convert rrggbb hex to rgba(r, g, b, a)
-  rgba = c: let
-    r = toString (hexToDec (builtins.substring 0 2 c));
-    g = toString (hexToDec (builtins.substring 2 2 c));
-    b = toString (hexToDec (builtins.substring 4 2 c));
-  in "rgba(${r}, ${g}, ${b}, .5)";
+  rgba = lib: color: opacity: let
+    r = toString (hexToDec lib (builtins.substring 0 2 color));
+    g = toString (hexToDec lib (builtins.substring 2 2 color));
+    b = toString (hexToDec lib (builtins.substring 4 2 color));
+  in "rgba(${r}, ${g}, ${b}, ${opacity})";
 
-  # Helper function to convert hex color to decimal RGB values
   hexToDec = lib: v: let
+    # Map of hex characters to their decimal values
     hexToInt = {
       "0" = 0;
       "1" = 1;
@@ -32,13 +32,16 @@ let
       "E" = 14;
       "F" = 15;
     };
-    chars = lib.strings.stringToCharacters v;
+    # Remove any leading `#` from the input
+    cleanHex =
+      if lib.strings.substring 0 1 v == "#"
+      then lib.strings.substring 1 (builtins.stringLength v - 1) v
+      else v;
+    # Convert the cleaned string into characters
+    chars = lib.strings.stringToCharacters cleanHex;
   in
-    lib.foldl' (a: v: a + v) 0
-    (lib.imap (k: v: hexToInt."${v}" * (pow 16 (builtins.length chars - k - 1))) chars);
-
-  # Power function for exponentiation
-  pow = lib: base: exponent: lib.foldl' (acc: _: acc * base) 1 (lib.range 1 exponent);
+    # Fold over the characters to calculate the decimal value
+    builtins.foldl' (acc: char: acc * 16 + hexToInt."${char}") 0 chars;
 
   blurImage = pkgs: path:
     pkgs.runCommand "${builtins.baseNameOf path}-blurred" {
