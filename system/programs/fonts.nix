@@ -4,19 +4,15 @@
   ...
 }: {
   fonts = {
-    fontDir = {
-      enable = true;
-      decompressFonts = true;
-    };
+    enableDefaultPackages = false;
     packages = [
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
       pkgs.noto-fonts-extra
       pkgs.intel-one-mono
-      inputs.self.packages.${pkgs.system}.apple-emoji-color
+      pkgs.noto-fonts-color-emoji
       (pkgs.nerdfonts.override {fonts = ["IntelOneMono" "NerdFontsSymbolsOnly"];})
     ];
-    enableDefaultPackages = false;
 
     fontconfig = {
       enable = true;
@@ -24,7 +20,7 @@
         serif = ["Noto Serif"];
         sansSerif = ["Inter Medium"];
         monospace = ["IntoneMono NF"];
-        emoji = ["Apple Color Emoji"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };

@@ -12,5 +12,4 @@
     })
     .callPackage
     ./bolt-launcher.nix {};
-  apple-emoji-color = pkgs.callPackage ./apple-emoji-color.nix {};
 }
