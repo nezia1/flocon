@@ -30,7 +30,5 @@
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
-
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 }
