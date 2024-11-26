@@ -50,6 +50,11 @@ let
     ''
       magick ${path} -gaussian-blur 0x12 "$out"
     '';
+
+  generateGtkColors = lib: palette: (lib.concatLines
+    (lib.mapAttrsToList
+      (name: color: "@define-color ${name} ${color};")
+      palette));
 in {
-  inherit blurImage rgba;
+  inherit blurImage generateGtkColors rgba;
 }
