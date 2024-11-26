@@ -5,15 +5,11 @@
   ...
 }: let
   inherit (lib) optionalString;
-  inherit (lib') generateGtkColors;
-  inherit (osConfig.theme.scheme) palette;
   inherit (builtins) readFile;
 in {
   services.swaync = {
     enable = true;
-    style =
-      optionalString osConfig.theme.enable generateGtkColors lib palette
-      + readFile ./style.css;
+    style = readFile ./style.css;
     settings = {
       positionX = "right";
       positionY = "top";

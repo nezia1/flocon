@@ -1,8 +1,4 @@
-{
-  config,
-  inputs,
-  ...
-}: {
+_: {
   programs.gnome-terminal = {
     enable = true;
     showMenubar = true;
@@ -14,14 +10,6 @@
         boldIsBright = true;
         visibleName = "default";
         font = "Intel One Mono 14";
-        colors = let
-          inherit (inputs.basix.schemeData.base16.${config.theme.scheme}) palette;
-        in {
-          backgroundColor = "#${palette.base00}";
-          foregroundColor = builtins.trace "#${palette.base05}" "#${palette.base05}";
-
-          palette = builtins.attrValues (builtins.mapAttrs (_: color: "#${color}") palette);
-        };
       };
     };
   };
