@@ -14,7 +14,16 @@
   # idk where to put this
   programs = {
     fzf.enable = true;
-    hyfetch.enable = true;
+    fastfetch.enable = true;
+    hyfetch = {
+      enable = true;
+      settings = {
+        preset = "nonbinary";
+        mode = "rgb";
+        backend = "fastfetch";
+        color_align.mode = "horizontal";
+      };
+    };
   };
 
   # miscellaneous programs that do not need to be configured
