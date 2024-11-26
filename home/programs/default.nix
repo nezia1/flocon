@@ -27,13 +27,15 @@
     vesktop
     wl-clipboard
     fractal
-    cinny-desktop
     gnome-control-center
-    mission-center
     playerctl
     nautilus
     simple-scan
     entr
     inputs.neovim-flake.packages.${pkgs.system}.default
+
+    # https://nixpkgs-tracker.ocfox.me/?pr=357219
+    # mission-center
+    # cinny-desktop
   ];
 }
