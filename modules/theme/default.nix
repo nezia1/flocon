@@ -25,6 +25,7 @@ in {
       description = ''
         Resolved scheme from the tinted-theming library.
       '';
+      readOnly = true;
       type = lib.types.attrs;
     };
 
