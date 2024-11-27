@@ -156,12 +156,12 @@ in {
         (mkIf config.services.swaync.enable {
           "custom/notification" = {
             tooltip = false;
-            format = "{icon}";
+            format = "{icon} ";
             format-icons = {
-              notification = "󱅫";
-              none = "󰂚";
-              dnd-notification = "󱏧";
-              dnd-none = "󱏧";
+              notification = "󱥁";
+              none = "󰍥";
+              dnd-notification = "󱅮";
+              dnd-none = "󱅯";
             };
             return-type = "json";
             exec = "swaync-client -swb";
