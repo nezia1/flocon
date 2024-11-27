@@ -17,7 +17,7 @@ in {
     "${system}/programs/games.nix"
     "${system}/hardware/nvidia.nix"
 
-    "${system}/services/syncthing.nix"
+    "${system}/services/documentation.nix"
   ];
 
   home-manager = {
