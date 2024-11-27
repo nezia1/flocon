@@ -13,20 +13,32 @@ in {
     system
     "${system}/hardware/uni-sync.nix"
 
-    "${system}/programs/gnome.nix"
     "${system}/programs/games.nix"
     "${system}/hardware/nvidia.nix"
+
+    "${system}/services/logind.nix"
+    "${system}/services/greetd.nix"
+
+    "${system}/programs/niri"
 
     "${system}/services/documentation.nix"
   ];
 
   home-manager = {
     users.nezia.imports = [
-      home
+      "${home}"
+      "${home}/services/udiskie.nix"
       "${home}/programs/games"
 
+      "${home}/programs/niri"
+      "${home}/programs/waybar"
+      "${home}/services/swaync"
+      "${home}/programs/fuzzel.nix"
+      "${home}/programs/swaybg.nix"
+      "${home}/programs/swaylock.nix"
+      "${home}/programs/swayidle.nix"
+
       "${home}/terminal/emulators/foot.nix"
-      "${home}/programs/gnome"
     ];
     extraSpecialArgs = specialArgs;
   };
