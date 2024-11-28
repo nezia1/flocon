@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  appLauncher = "fuzzel";
+  appLauncher = "anyrun";
   terminal = "foot";
   browser = "firefox";
-  prefix = "Alt";
+  prefix = "Mod";
   guiFileManager = "nautilus";
   cliFileManager = "yazi";
 in {
@@ -125,7 +125,7 @@ in {
     "Ctrl+Print".action = config.lib.niri.actions.screenshot;
 
     # System
-    "${prefix}+Mod+L".action.spawn = [
+    "${prefix}+Alt+L".action.spawn = [
       "${lib.getExe' pkgs.systemd "loginctl"}"
       "lock-session"
     ];

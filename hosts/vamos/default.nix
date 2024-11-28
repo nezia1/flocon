@@ -25,7 +25,7 @@ in {
     "${system}/services/gnome.nix"
     "${system}/services/mail.nix"
 
-    "${system}/services/syncthing.nix"
+    "${system}/services/documentation.nix"
   ];
 
   home-manager = {
@@ -35,8 +35,9 @@ in {
 
       "${home}/programs/niri"
       "${home}/programs/waybar"
+      "${home}/programs/anyrun.nix"
+
       "${home}/services/swaync"
-      "${home}/programs/fuzzel.nix"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"
       "${home}/programs/swayidle.nix"

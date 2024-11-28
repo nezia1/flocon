@@ -20,6 +20,7 @@ in {
     "${system}/services/greetd.nix"
 
     "${system}/programs/niri"
+    "${system}/programs/gnome"
 
     "${system}/services/documentation.nix"
   ];
@@ -32,8 +33,9 @@ in {
 
       "${home}/programs/niri"
       "${home}/programs/waybar"
+      "${home}/programs/anyrun.nix"
+
       "${home}/services/swaync"
-      "${home}/programs/fuzzel.nix"
       "${home}/programs/swaybg.nix"
       "${home}/programs/swaylock.nix"
       "${home}/programs/swayidle.nix"

@@ -52,7 +52,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags.url = "github:Aylur/ags";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     basix.url = "github:notashelf/basix";
     deploy-rs.url = "github:serokell/deploy-rs";
     firefox-addons = {
