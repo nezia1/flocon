@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts = {
     enableDefaultPackages = false;
     packages = [
@@ -11,7 +7,7 @@
       pkgs.noto-fonts-extra
       pkgs.intel-one-mono
       pkgs.noto-fonts-color-emoji
-      (pkgs.nerdfonts.override {fonts = ["IntelOneMono" "NerdFontsSymbolsOnly"];})
+      (pkgs.nerdfonts.override {fonts = ["0xProto" "NerdFontsSymbolsOnly"];})
     ];
 
     fontconfig = {
@@ -19,7 +15,7 @@
       defaultFonts = {
         serif = ["Noto Serif"];
         sansSerif = ["Inter Medium"];
-        monospace = ["IntoneMono NF"];
+        monospace = ["0xProto NF"];
         emoji = ["Noto Color Emoji"];
       };
     };
