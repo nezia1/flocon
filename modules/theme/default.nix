@@ -77,7 +77,10 @@ in {
           };
 
           gtk3.extraConfig = {
-            gtk-application-prefer-dark-theme = scheme.variant == "dark";
+            gtk-application-prefer-dark-theme =
+              if scheme.variant == "dark"
+              then "1"
+              else "0";
           };
         };
 
@@ -89,6 +92,60 @@ in {
             settings.layout.focus-ring.active.color = scheme.palette.base0E;
           };
 
+          kitty.settings = {
+            foreground = scheme.palette.base05;
+            background = scheme.palette.base00;
+            selection_foreground = scheme.palette.base00;
+            selection_background = scheme.palette.base06;
+
+            cursor = scheme.palette.base06;
+            cursor_text_color = scheme.palette.base00;
+
+            url_color = scheme.palette.base06;
+
+            active_border_color = scheme.palette.base07;
+            inactive_border_color = scheme.palette.base04;
+            bell_border_color = scheme.palette.base0A;
+
+            wayland_titlebar_color = scheme.palette.base00;
+
+            active_tab_foreground = scheme.palette.base01;
+            active_tab_background = scheme.palette.base0E;
+            inactive_tab_foreground = scheme.palette.base05;
+            inactive_tab_background = scheme.palette.base01;
+            tab_bar_background = scheme.palette.base01;
+
+            mark1_foreground = scheme.palette.base00;
+            mark1_background = scheme.palette.base07;
+            mark2_foreground = scheme.palette.base00;
+            mark2_background = scheme.palette.base0E;
+            mark3_foreground = scheme.palette.base00;
+            mark3_background = scheme.palette.base0C;
+
+            color0 = scheme.palette.base03;
+            color8 = scheme.palette.base03;
+
+            color1 = scheme.palette.base08;
+            color9 = scheme.palette.base08;
+
+            color2 = scheme.palette.base0B;
+            color10 = scheme.palette.base0B;
+
+            color3 = scheme.palette.base0A;
+            color11 = scheme.palette.base0A;
+
+            color4 = scheme.palette.base0D;
+            color12 = scheme.palette.base0D;
+
+            color5 = scheme.palette.base0E;
+            color13 = scheme.palette.base0E;
+
+            color6 = scheme.palette.base0C;
+            color14 = scheme.palette.base0C;
+
+            color7 = scheme.palette.base07;
+            color15 = scheme.palette.base07;
+          };
           foot.settings.colors = let
             inherit (lib.strings) removePrefix;
             # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
