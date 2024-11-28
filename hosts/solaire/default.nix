@@ -20,7 +20,7 @@ in {
     "${system}/services/greetd.nix"
 
     "${system}/programs/niri"
-    "${system}/programs/gnome"
+    "${system}/services/gnome.nix"
 
     "${system}/services/documentation.nix"
   ];
