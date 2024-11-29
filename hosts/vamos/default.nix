@@ -35,7 +35,7 @@ in {
 
       "${home}/programs/niri"
       "${home}/programs/waybar"
-      "${home}/programs/anyrun.nix"
+      "${home}/programs/walker.nix"
 
       "${home}/services/swaync"
       "${home}/programs/swaybg.nix"

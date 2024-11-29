@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  appLauncher = "anyrun";
+  appLauncher = "walker";
   terminal = "foot";
   browser = "firefox";
   prefix = "Mod";
