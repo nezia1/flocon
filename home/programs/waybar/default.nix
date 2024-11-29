@@ -28,7 +28,12 @@ in {
           modules-center = ["group/clock"];
           modules-right =
             ["tray" "group/status" "group/power"]
-            ++ lib.optional config.services.swaync.enable "custom/notification";
+            ++ lib.optional config.services.swaync.enable "custom/swaync";
+
+          tray = {
+            icon-size = 16;
+            spacing = 12;
+          };
 
           battery = {
             interval = 10;
@@ -154,24 +159,27 @@ in {
           };
         })
         (mkIf config.services.swaync.enable {
-          "custom/notification" = {
-            tooltip = false;
-            format = "{icon} ";
+          "custom/swaync" = {
+            format = "<big>{icon}</big>";
             format-icons = {
               notification = "󱥁";
               none = "󰍥";
               dnd-notification = "󱅮";
               dnd-none = "󱅯";
             };
+            max-length = 3;
             return-type = "json";
-            exec = "swaync-client -swb";
-            on-click = "swaync-client -t -sw";
+            escape = true;
+            exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
+            exec = "${pkgs.swaynotificationcenter}/bin/swaync-client --subscribe-waybar";
+            on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-panel --skip-wait";
+            on-click-middle = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-dnd --skip-wait";
+            tooltip-format = "󰵚  {} notification(s)";
           };
         })
       ];
     };
   };
-
   home.packages = [
     pkgs.pavucontrol
   ];
