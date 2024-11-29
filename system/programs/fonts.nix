@@ -15,7 +15,7 @@
       defaultFonts = {
         serif = ["Noto Serif"];
         sansSerif = ["Inter Medium"];
-        monospace = ["0xProto NF"];
+        monospace = ["0xProto Nerd Font"];
         emoji = ["Noto Color Emoji"];
       };
     };
