@@ -74,9 +74,14 @@
       inputs.home-manager.follows = "home-manager";
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
+    walker = {
+      url = "github:abenz1267/walker";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://walker.cachix.org" "https://walker-git.cachix.org"];
+    extra-trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM=" "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="];
   };
 }

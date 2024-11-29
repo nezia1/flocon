@@ -4,6 +4,8 @@
   nix = {
     package = pkgs.lix;
     settings = {
+      accept-flake-config = true;
+      warn-dirty = false;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
