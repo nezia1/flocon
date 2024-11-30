@@ -3,8 +3,8 @@
     enable = true;
     fonts = [
       {
-        name = "IntoneMono NF";
-        package = pkgs.nerdfonts.override {fonts = ["IntelOneMono"];};
+        name = "0xProto NF";
+        package = pkgs.nerd-fonts._0xproto;
       }
     ];
     extraConfig = ''

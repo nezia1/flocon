@@ -7,7 +7,8 @@
       pkgs.noto-fonts-extra
       pkgs.intel-one-mono
       pkgs.noto-fonts-color-emoji
-      (pkgs.nerdfonts.override {fonts = ["0xProto" "NerdFontsSymbolsOnly"];})
+      pkgs.nerd-fonts._0xproto
+      pkgs.nerd-fonts.symbols-only
     ];
 
     fontconfig = {
