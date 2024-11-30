@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  appLauncher = "walker";
+  appLauncher = "fuzzel";
   terminal = "foot";
   browser = "firefox";
   prefix = "Mod";

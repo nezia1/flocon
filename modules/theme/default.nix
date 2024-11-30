@@ -40,14 +40,14 @@ in {
         description = ''
           Name of the cursor theme.
         '';
-        default = "Bibata-Modern-Classic";
+        default = "phinger-cursors-dark";
       };
       package = mkOption {
         type = package;
         description = ''
           Package providing the cursor theme.
         '';
-        default = pkgs.bibata-cursors;
+        default = pkgs.phinger-cursors;
       };
       size = mkOption {
         description = ''
@@ -175,14 +175,20 @@ in {
 
           waybar.style =
             generateGtkColors lib scheme.palette;
-          fuzzel.settings.colors = {
-            background = "${scheme.palette.base00}ff";
-            text = "${scheme.palette.base05}ff";
-            input = "${scheme.palette.base05}ff";
-            selection = "${scheme.palette.base02}ff";
-            selection-text = "${scheme.palette.base07}ff";
-            selection-match = "${scheme.palette.base0D}ff";
-            border = "${scheme.palette.base0E}ff";
+
+          fuzzel.settings = {
+            main = {
+              font = "sans-serif:size=16";
+            };
+            colors = {
+              background = "${scheme.palette.base00}ff";
+              text = "${scheme.palette.base05}ff";
+              input = "${scheme.palette.base05}ff";
+              selection = "${scheme.palette.base02}ff";
+              selection-text = "${scheme.palette.base07}ff";
+              selection-match = "${scheme.palette.base0D}ff";
+              border = "${scheme.palette.base0E}ff";
+            };
           };
 
           swaylock.settings = {

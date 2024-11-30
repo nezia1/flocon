@@ -33,7 +33,7 @@ in {
 
       "${home}/programs/niri"
       "${home}/programs/waybar"
-      "${home}/programs/anyrun.nix"
+      "${home}/programs/fuzzel.nix"
 
       "${home}/services/swaync"
       "${home}/programs/swaybg.nix"
