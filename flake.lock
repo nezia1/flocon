@@ -421,11 +421,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1731867828,
-        "narHash": "sha256-7OSiuI0Jgc5rLXkBuKzj7mNxKkkESqO2rwD+PDQHoqw=",
+        "lastModified": 1733074310,
+        "narHash": "sha256-zX3NaLRH2R8B1Ho2KcAr+zaJH27CPB+pLULYqxG1pVs=",
         "ref": "refs/heads/main",
-        "rev": "5bbc441313c556a4dbc9f27a369e1bcfe5ccce65",
-        "revCount": 1,
+        "rev": "c19ae83264a4a009e980de5f261be7d1bb4080c4",
+        "revCount": 3,
         "type": "git",
         "url": "https://git.nezia.dev/nezia/neovim-flake"
       },
@@ -866,11 +866,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1731058322,
-        "narHash": "sha256-PCR/lHTzZDD7R9HtkSoC24yHbOwqX0VCf4rqWXJLh9I=",
+        "lastModified": 1731965250,
+        "narHash": "sha256-QASoYqFt/lbz1YVSdW0XraOH24nYyN5BK6JisiQ6nIY=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "8997e62b3b00ece6d51685b23949e3062a19dd06",
+        "rev": "ea7469f1c8ea990d49fcd1edf7d5b4bde02c397b",
         "type": "github"
       },
       "original": {
