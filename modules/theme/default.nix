@@ -89,7 +89,13 @@ in {
 
         programs = {
           niri = {
-            settings.layout.focus-ring.active.color = scheme.palette.base0E;
+            settings = {
+              layout.focus-ring.active.color = scheme.palette.base0E;
+              cursor = {
+                inherit (config.theme.cursorTheme) size;
+                theme = config.theme.cursorTheme.name;
+              };
+            };
           };
 
           kitty.settings = {
