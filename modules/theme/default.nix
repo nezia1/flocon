@@ -53,7 +53,7 @@ in {
         description = ''
           Size of the cursor.
         '';
-        default = 24;
+        default = 32;
       };
     };
   };
