@@ -43,6 +43,8 @@ in {
       "${home}/programs/swayidle.nix"
 
       "${home}/terminal/emulators/foot.nix"
+
+      "${home}/services/syncthing.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
