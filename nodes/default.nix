@@ -1,6 +1,6 @@
 {inputs, ...}: {
   anastacia = {
-    hostname = "2a01:4f8:1c1c:8495::1";
+    hostname = "78.47.146.254";
     profiles.system = {
       sshUser = "root";
       user = "root";
