@@ -50,7 +50,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: @base0E;
+  background: @base0D;
   color: @base02;
 }
 
