@@ -6,13 +6,17 @@
   ...
 }: let
   inherit (builtins) pathExists;
-  inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.types) package str;
+  inherit (lib) mkIf mkOption;
+  inherit (lib.types) bool package str;
 
   cfg = config.theme.gtk;
 in {
   options.theme.gtk = {
-    enable = mkEnableOption "enable GTK theming options";
+    enable = mkOption {
+      type = bool;
+      description = "enable GTK theming options";
+      default = config.theme.enable;
+    };
     theme = {
       name = mkOption {
         type = str;
