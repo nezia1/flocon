@@ -42,9 +42,11 @@ in {
       "${home}/programs/swaylock.nix"
       "${home}/programs/swayidle.nix"
 
-      "${home}/terminal/emulators/foot.nix"
-
       "${home}/services/syncthing.nix"
+
+      "${home}/programs/editors/neovim.nix"
+
+      "${home}/terminal/emulators/foot.nix"
     ];
     extraSpecialArgs = specialArgs;
   };

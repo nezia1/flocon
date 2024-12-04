@@ -90,7 +90,7 @@ in {
         programs = {
           niri = {
             settings = {
-              layout.focus-ring.active.color = scheme.palette.base0E;
+              layout.focus-ring.active.color = scheme.palette.base0D;
               cursor = {
                 inherit (config.theme.cursorTheme) size;
                 theme = config.theme.cursorTheme.name;

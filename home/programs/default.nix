@@ -7,7 +7,6 @@
     ./browsers
     ./media
     ./xdg.nix
-    ./gtk.nix
     ./editors/helix.nix
   ];
 
@@ -45,7 +44,5 @@
     simple-scan
     vesktop
     wl-clipboard
-
-    inputs.neovim-flake.packages.${pkgs.system}.default
   ];
 }
