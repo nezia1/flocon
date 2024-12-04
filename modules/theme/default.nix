@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault mkEnableOption mkOption mkIf attrNames;
+  inherit (lib) mkEnableOption mkOption mkIf attrNames;
   inherit (lib.types) path package enum;
   inherit (lib') generateGtkColors;
   cfg = config.theme;
