@@ -1,11 +1,12 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
   inherit (builtins) pathExists;
-  inherit (lib) mkOption mkEnableOption;
+  inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.types) package str;
 
   cfg = config.theme.gtk;
@@ -62,5 +63,26 @@ in {
         '';
       })
     ];
+
+    home-manager.users.nezia = mkIf config.theme.enable (let
+      scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
+    in {
+      gtk = rec {
+        iconTheme = {
+          inherit (config.theme.gtk.iconTheme) name package;
+        };
+
+        theme = {
+          inherit (config.theme.gtk.theme) name package;
+        };
+
+        gtk3.extraConfig = {
+          gtk-application-prefer-dark-theme = scheme.variant == "dark";
+        };
+        gtk4.extraConfig = gtk3.extraConfig;
+      };
+
+      dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-${scheme.variant}";
+    });
   };
 }
