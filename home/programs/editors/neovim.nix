@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -12,9 +13,11 @@
       vimAlias = true;
       enableLuaLoader = true;
       preventJunkFiles = true;
-      options.tabstop = 4;
-      autoIndent = false;
       useSystemClipboard = true;
+      options = {
+        tabstop = 4;
+        autoindent = false;
+      };
 
       luaConfigPost = ''
         vim.opt.formatoptions:remove('c')
@@ -34,7 +37,7 @@
           };
         };
       };
-      theme = {
+      theme = lib.mkDefault {
         enable = true;
         name = "catppuccin";
         style = "macchiato";

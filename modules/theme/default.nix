@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption mkIf attrNames;
+  inherit (lib) mkDefault mkEnableOption mkOption mkIf attrNames;
   inherit (lib.types) path package enum;
   inherit (lib') generateGtkColors;
   cfg = config.theme;
@@ -272,6 +272,12 @@ in {
               foregroundColor = "#${scheme.palette.base05}" "#${scheme.palette.base05}";
               palette = builtins.attrValues (builtins.mapAttrs (_: color: "#${color}") scheme.palette);
             };
+          };
+
+          nvf.settings.vim.theme = {
+            enable = true;
+            name = "base16";
+            base16-colors = scheme.palette;
           };
         };
       };
