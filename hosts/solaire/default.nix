@@ -23,6 +23,8 @@ in {
     "${system}/services/gnome.nix"
 
     "${system}/services/documentation.nix"
+
+    "${system}/services/flatpak.nix"
   ];
 
   home-manager = {
@@ -41,6 +43,8 @@ in {
       "${home}/programs/swayidle.nix"
 
       "${home}/terminal/emulators/foot.nix"
+
+      "${home}/services/flatpak.nix"
       "${home}/services/syncthing.nix"
     ];
     extraSpecialArgs = specialArgs;
