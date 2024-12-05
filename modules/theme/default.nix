@@ -183,7 +183,7 @@ in {
               selection = "${scheme.palette.base02}ff";
               selection-text = "${scheme.palette.base07}ff";
               selection-match = "${scheme.palette.base0D}ff";
-              border = "${scheme.palette.base0E}ff";
+              border = "${scheme.palette.base0D}ff";
             };
           };
 
