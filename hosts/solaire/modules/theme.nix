@@ -1,8 +1,11 @@
-{
+{pkgs, ...}: {
   theme = {
-    wallpaper = ../../../wallpapers/lucy-edgerunners-wallpaper.jpg;
-    schemeName = "catppuccin-macchiato";
     enable = true;
-    gtk.enable = false;
+    wallpaper = ../../../wallpapers/lucy-edgerunners-wallpaper.jpg;
+    schemeName = "rose-pine";
+    gtk.theme = {
+      name = "rose-pine";
+      package = pkgs.rose-pine-gtk-theme;
+    };
   };
 }
