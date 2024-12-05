@@ -72,6 +72,8 @@ in {
       scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
     in {
       gtk = rec {
+        enable = true;
+
         iconTheme = {
           inherit (config.theme.gtk.iconTheme) name package;
         };
