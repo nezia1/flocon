@@ -11,7 +11,9 @@
   inherit (lib') generateGtkColors;
   cfg = config.theme;
 in {
-  imports = [./gtk.nix];
+  imports = [
+    ./gtk.nix
+  ];
   options.theme = {
     enable = mkEnableOption "theme";
     schemeName = mkOption {
@@ -63,6 +65,8 @@ in {
     mkIf cfg.enable
     {
       home-manager.users.nezia = {
+        imports = [inputs.nvf.homeManagerModules.default];
+
         home.pointerCursor = {
           inherit (config.theme.cursorTheme) name package size;
         };
