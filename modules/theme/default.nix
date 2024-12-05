@@ -21,8 +21,8 @@ in {
         Name of the tinted-theming color scheme to use.
       '';
       type = enum (attrNames inputs.basix.schemeData.base16);
-      example = "catppuccin-macchiato";
-      default = "catppuccin-macchiato";
+      example = "rose-pine";
+      default = "rose-pine";
     };
 
     wallpaper = mkOption {
@@ -42,14 +42,14 @@ in {
         description = ''
           Name of the cursor theme.
         '';
-        default = "phinger-cursors-dark";
+        default = "BreezeX-RosePine-Linux";
       };
       package = mkOption {
         type = package;
         description = ''
           Package providing the cursor theme.
         '';
-        default = pkgs.phinger-cursors;
+        default = pkgs.rose-pine-cursor;
       };
       size = mkOption {
         description = ''
@@ -65,10 +65,10 @@ in {
     mkIf cfg.enable
     {
       home-manager.users.nezia = {
-        imports = [inputs.nvf.homeManagerModules.default];
-
         home.pointerCursor = {
           inherit (config.theme.cursorTheme) name package size;
+          x11.enable = true;
+          gtk.enable = true;
         };
 
         services.swaync.style =
