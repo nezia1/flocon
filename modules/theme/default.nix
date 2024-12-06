@@ -218,9 +218,9 @@ in {
             text-wrong-color = scheme.palette.base00;
 
             caps-lock-bs-hl-color = scheme.palette.base08;
-            caps-lock-key-hl-color = scheme.palette.base0C;
+            caps-lock-key-hl-color = scheme.palette.base0D;
             bs-hl-color = scheme.palette.base08;
-            key-hl-color = scheme.palette.base0C;
+            key-hl-color = scheme.palette.base0D;
 
             separator-color = "#00000000"; # transparent
             layout-bg-color = "#00000050"; # semi-transparent black
