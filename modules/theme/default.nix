@@ -193,30 +193,37 @@ in {
 
           swaylock.settings = {
             inside-color = scheme.palette.base01;
-            inside-clear-color = scheme.palette.base0C;
-            inside-caps-lock-color = scheme.palette.base09;
+            line-color = scheme.palette.base01;
+            ring-color = scheme.palette.base05;
+            text-color = scheme.palette.base05;
+
+            inside-clear-color = scheme.palette.base0A;
+            line-clear-color = scheme.palette.base0A;
+            ring-clear-color = scheme.palette.base00;
+            text-clear-color = scheme.palette.base00;
+
+            inside-caps-lock-color = scheme.palette.base03;
+            line-caps-lock-color = scheme.palette.base03;
+            ring-caps-lock-color = scheme.palette.base00;
+            text-caps-lock-color = scheme.palette.base00;
+
             inside-ver-color = scheme.palette.base0D;
-            inside-wrong-color = scheme.palette.base08;
-            key-hl-color = scheme.palette.base0B;
-            layout-bg-color = scheme.palette.base00;
-            layout-border-color = scheme.palette.base05;
-            layout-text-color = scheme.palette.base07;
-            line-color = scheme.palette.base00;
-            line-clear-color = scheme.palette.base0C;
-            line-caps-lock-color = scheme.palette.base09;
             line-ver-color = scheme.palette.base0D;
+            ring-ver-color = scheme.palette.base00;
+            text-ver-color = scheme.palette.base00;
+
+            inside-wrong-color = scheme.palette.base08;
             line-wrong-color = scheme.palette.base08;
-            ring-color = scheme.palette.base02;
-            ring-clear-color = scheme.palette.base0C;
-            ring-caps-lock-color = scheme.palette.base09;
-            ring-ver-color = scheme.palette.base0D;
-            ring-wrong-color = scheme.palette.base08;
-            separator-color = scheme.palette.base02;
-            text-color = scheme.palette.base07;
-            text-clear-color = scheme.palette.base04;
-            text-caps-lock-color = scheme.palette.base04;
-            text-ver-color = scheme.palette.base04;
-            text-wrong-color = scheme.palette.base04;
+            ring-wrong-color = scheme.palette.base00;
+            text-wrong-color = scheme.palette.base00;
+
+            caps-lock-bs-hl-color = scheme.palette.base08;
+            caps-lock-key-hl-color = scheme.palette.base0C;
+            bs-hl-color = scheme.palette.base08;
+            key-hl-color = scheme.palette.base0C;
+
+            separator-color = "#00000000"; # transparent
+            layout-bg-color = "#00000050"; # semi-transparent black
           };
 
           zathura.options = {
