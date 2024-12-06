@@ -18,5 +18,6 @@
     pkgs.yad
 
     inputs.self.packages.${pkgs.system}.bolt-launcher
+    inputs.self.packages.${pkgs.system}.ankama-launcher
   ];
 }
