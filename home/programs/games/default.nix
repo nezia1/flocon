@@ -5,7 +5,6 @@
 }: {
   home.packages = [
     pkgs.bottles
-    pkgs.lutris
     pkgs.mangohud
     pkgs.protonplus
 
