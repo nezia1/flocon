@@ -5,10 +5,8 @@
   pkgs,
   ...
 }: let
-  inherit (builtins) pathExists;
-  inherit (lib) mkIf mkOption;
+  inherit (lib) mkIf mkOption pathExists;
   inherit (lib.types) bool package str;
-
   cfg = config.theme.gtk;
 in {
   options.theme.gtk = {
@@ -21,20 +19,16 @@ in {
       name = mkOption {
         type = str;
         description = "Name for the GTK theme";
-        default = "catppuccin-macchiato-lavender-standard";
+        default = "rose-pine";
       };
       package = mkOption {
         type = package;
         description = "Package providing the GTK theme";
 
-        default = pkgs.catppuccin-gtk.override {
-          # https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/data/themes/catppuccin-gtk/default.nix
-          variant = "macchiato";
-          accents = ["lavender"];
-          size = "standard";
-        };
+        default = pkgs.rose-pine-gtk-theme;
       };
     };
+
     iconTheme = {
       name = mkOption {
         type = str;
@@ -45,10 +39,7 @@ in {
       package = mkOption {
         type = package;
         description = "The GTK icon theme to be used";
-        default = pkgs.catppuccin-papirus-folders.override {
-          accent = "lavender";
-          flavor = "macchiato";
-        };
+        default = pkgs.papirus-icon-theme;
       };
     };
   };
