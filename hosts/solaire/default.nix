@@ -46,6 +46,8 @@ in {
 
       "${home}/services/flatpak.nix"
       "${home}/services/syncthing.nix"
+
+      "${home}/programs/editors/neovim.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
