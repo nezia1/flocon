@@ -61,10 +61,6 @@
     niri.url = "github:sodiboo/niri-flake";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
     nvf.url = "github:notashelf/nvf";
-    neovim-flake = {
-      url = "git+https://git.nezia.dev/nezia/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     portfolio.url = "github:nezia1/portfolio";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
