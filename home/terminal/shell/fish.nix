@@ -1,10 +1,28 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  starshipTransient = lib.strings.optionalString config.programs.starship.enableTransience ''
+    function starship_transient_prompt_func
+      starship module character
+    end
+
+    function starship_transient_rprompt_func
+      starship module cmd_duration
+    end
+  '';
+in {
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-      fish_vi_key_bindings # Enable Vi mode
-    '';
+    interactiveShellInit =
+      starshipTransient
+      + ''
+        set fish_greeting # Disable greeting
+        fish_vi_key_bindings # Enable Vi mode
+
+      '';
     shellAbbrs = {
       cd = "z";
       ngc = "sudo nix-collect-garbage -d";
