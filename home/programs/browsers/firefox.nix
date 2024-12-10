@@ -109,6 +109,7 @@ in {
         ];
         # https://git.jacekpoz.pl/poz/niksos/src/commit/a48647a1c5bc6877a1100a65f4dc169b2fc11ed7/hosts/hape/firefox.nix
         search = {
+          force = true;
           default = "SearxNG";
           engines = {
             "SearxNG" = {
