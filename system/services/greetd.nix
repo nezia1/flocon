@@ -63,15 +63,6 @@ in {
   };
   programs.regreet = {
     enable = true;
-    theme = {
-      inherit (config.theme.gtk.theme) name package;
-    };
-    iconTheme = {
-      inherit (config.theme.gtk.iconTheme) name package;
-    };
-    cursorTheme = {
-      inherit (config.theme.cursorTheme) name package;
-    };
     settings = {
       background = {
         path = blurImage pkgs config.theme.wallpaper;

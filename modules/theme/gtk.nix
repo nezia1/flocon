@@ -59,6 +59,18 @@ in {
       })
     ];
 
+    programs.regreet = {
+      theme = {
+        inherit (cfg.theme) name package;
+      };
+      iconTheme = {
+        inherit (cfg.iconTheme) name package;
+      };
+      cursorTheme = {
+        inherit (config.theme.cursorTheme) name package;
+      };
+    };
+
     home-manager.users.nezia = mkIf config.theme.enable (let
       scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
     in {
