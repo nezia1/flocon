@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -33,13 +32,13 @@ in {
       name = mkOption {
         type = str;
         description = "The name for the icon theme that will be used for GTK programs";
-        default = "Papirus-Dark";
+        default = "rose-pine";
       };
 
       package = mkOption {
         type = package;
         description = "The GTK icon theme to be used";
-        default = pkgs.papirus-icon-theme;
+        default = pkgs.rose-pine-icon-theme;
       };
     };
   };
@@ -66,32 +65,21 @@ in {
       iconTheme = {
         inherit (cfg.iconTheme) name package;
       };
-      cursorTheme = {
+      cursorTheme = mkIf config.theme.enable {
         inherit (config.theme.cursorTheme) name package;
       };
     };
 
-    home-manager.users.nezia = mkIf config.theme.enable (let
-      scheme = inputs.basix.schemeData.base16.${config.theme.schemeName};
-    in {
-      gtk = rec {
+    home-manager.users.nezia = {
+      gtk = {
         enable = true;
-
         iconTheme = {
-          inherit (config.theme.gtk.iconTheme) name package;
+          inherit (cfg.iconTheme) name package;
         };
-
         theme = {
-          inherit (config.theme.gtk.theme) name package;
+          inherit (cfg.theme) name package;
         };
-
-        gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = scheme.variant == "dark";
-        };
-        gtk4.extraConfig = gtk3.extraConfig;
       };
-
-      dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-${scheme.variant}";
-    });
+    };
   };
 }
