@@ -81,6 +81,7 @@ in {
           env = [
             "HYPRCURSOR_THEME,phinger-cursors-light"
             "HYPRCURSOR_SIZE,32"
+            "XCURSOR_SIZE,32"
           ];
           general = {
             border_size = 4;
