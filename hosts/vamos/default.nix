@@ -39,6 +39,7 @@ in {
 
       "${home}/services/swaync"
       "${home}/programs/swaybg.nix"
+      "${home}/programs/wlogout.nix"
 
       "${home}/services/syncthing.nix"
 
