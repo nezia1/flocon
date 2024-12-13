@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkOption pathExists;
+  inherit (lib) mkOption pathExists;
   inherit (lib.types) bool package str;
   cfg = config.theme.gtk;
 in {
@@ -18,13 +18,15 @@ in {
       name = mkOption {
         type = str;
         description = "Name for the GTK theme";
-        default = "rose-pine";
+        default = "Catppuccin-GTK-Dark";
       };
       package = mkOption {
         type = package;
         description = "Package providing the GTK theme";
 
-        default = pkgs.rose-pine-gtk-theme;
+        default = pkgs.magnetic-catppuccin-gtk.overrideAttrs {
+          accent = "purple";
+        };
       };
     };
 
@@ -57,18 +59,6 @@ in {
         '';
       })
     ];
-
-    programs.regreet = {
-      theme = {
-        inherit (cfg.theme) name package;
-      };
-      iconTheme = {
-        inherit (cfg.iconTheme) name package;
-      };
-      cursorTheme = mkIf config.theme.enable {
-        inherit (config.theme.cursorTheme) name package;
-      };
-    };
 
     home-manager.users.nezia = {
       gtk = {

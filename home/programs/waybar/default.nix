@@ -24,7 +24,7 @@ in {
           margin-right = 6;
           margin-bottom = 0;
 
-          modules-left = ["niri/workspaces" "niri/window"];
+          modules-left = ["hyprland/workspaces" "hyprland/window"];
           modules-center = ["group/clock"];
           modules-right =
             ["tray" "group/status" "group/power"]

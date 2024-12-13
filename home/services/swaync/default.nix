@@ -1,10 +1,4 @@
-{
-  osConfig,
-  lib,
-  lib',
-  ...
-}: let
-  inherit (lib) optionalString;
+{lib, ...}: let
   inherit (builtins) readFile;
 in {
   services.swaync = {

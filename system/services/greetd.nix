@@ -1,82 +1,50 @@
 {
   inputs,
-  config,
   lib,
-  lib',
   pkgs,
   ...
-}: let
-  inherit (lib) getExe evalModules;
-  inherit (lib') blurImage;
-  inherit (inputs) niri;
+}:
+# thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
+let
+  inherit (lib) getExe getExe' concatStringsSep;
+  inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
+
+  hyprctl = getExe' hyprland "hyprctl";
+  Hyprland = getExe' hyprland "Hyprland";
+
+  greeter = getExe pkgs.greetd.gtkgreet;
+
+  hyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
+    misc {
+        force_default_wallpaper=0
+        focus_on_activate=1
+    }
+
+    animations {
+        enabled=0
+        first_launch_animation=0
+    }
+
+    workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
+
+    exec-once=[workspace 1;fullscreen;noanim] ${greeter} -l; ${hyprctl} dispatch exit
+    exec-once=${hyprctl} dispatch focuswindow ${greeter}
+  '';
 in {
-  services.greetd = let
-    home-config = config.home-manager.users.nezia;
-    # huge thanks to https://github.com/sodiboo/system/blob/262e7e80ac9ae0511f8565713feaa8315d084025/login.mod.nix#L22-L67
-    # this is needed because we are also importing the default settings
-    niri-cfg-modules = evalModules {
-      modules = [
-        niri.lib.internal.settings-module
-        (let
-          cfg = home-config.programs.niri.settings;
-        in {
-          programs.niri.settings = {
-            inherit (cfg) input outputs layout;
-            hotkey-overlay.skip-at-startup = true;
-            # causes a deprecation warning otherwise
-            cursor = builtins.removeAttrs cfg.cursor ["hide-on-key-press"];
-
-            window-rules = [
-              {
-                draw-border-with-background = false;
-                clip-to-geometry = true;
-                geometry-corner-radius = {
-                  top-left = 8.0;
-                  top-right = 8.0;
-                  bottom-left = 8.0;
-                  bottom-right = 8.0;
-                };
-              }
-            ];
-          };
-        })
-      ];
-    };
-
-    # validates config and creates a derivation
-    niri-config = niri.lib.internal.validated-config-for pkgs config.programs.niri.package niri-cfg-modules.config.programs.niri.finalConfig;
-  in {
+  services.greetd = {
     enable = true;
     settings = {
-      default_session = let
-        niri = getExe config.programs.niri.package;
-        regreet = getExe config.programs.regreet.package;
-        # needed because we need to run niri msg quit inside of niri itself (it needs the socket)
-        greeterScript = pkgs.writeScript "greeter-script" ''
-          ${regreet} && ${niri} msg action quit --skip-confirmation
-        '';
-      in {
-        command = "${niri} -c ${niri-config} -- ${greeterScript}";
-        user = "greeter";
+      default_session = {
+        command = "${Hyprland} --config ${hyprlandConfig}";
+        user = "nezia";
       };
     };
   };
-  programs.regreet = {
-    enable = true;
-    settings = {
-      background = {
-        path = blurImage pkgs config.theme.wallpaper;
+  environment.etc."greetd/environments".text = concatStringsSep "\n" ["Hyprland"];
 
-        fit = "Fill";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
-      };
-    };
-  };
   security.pam.services = {
-    login.enableGnomeKeyring = true;
     greetd.enableGnomeKeyring = true;
+    login.enableGnomeKeyring = true;
     greetd.fprintAuth = false;
   };
 }

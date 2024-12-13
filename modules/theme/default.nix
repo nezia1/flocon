@@ -7,12 +7,15 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf attrNames;
+  inherit (lib.strings) removePrefix;
   inherit (lib.types) path package enum;
-  inherit (lib') generateGtkColors;
+  inherit (lib') generateGtkColors rgba;
   cfg = config.theme;
 in {
   imports = [
     ./gtk.nix
+    inputs.niri.nixosModules.niri
+    inputs.hyprland.nixosModules.default
   ];
   options.theme = {
     enable = mkEnableOption "theme";
@@ -21,8 +24,8 @@ in {
         Name of the tinted-theming color scheme to use.
       '';
       type = enum (attrNames inputs.basix.schemeData.base16);
-      example = "rose-pine";
-      default = "rose-pine";
+      example = "catppuccin-mocha";
+      default = "catppuccin-mocha";
     };
 
     wallpaper = mkOption {
@@ -42,14 +45,14 @@ in {
         description = ''
           Name of the cursor theme.
         '';
-        default = "BreezeX-RosePine-Linux";
+        default = "phinger-cursors-dark";
       };
       package = mkOption {
         type = package;
         description = ''
           Package providing the cursor theme.
         '';
-        default = pkgs.rose-pine-cursor;
+        default = pkgs.phinger-cursors;
       };
       size = mkOption {
         description = ''
@@ -74,6 +77,20 @@ in {
         services.swaync.style =
           generateGtkColors lib scheme.palette;
 
+        wayland.windowManager.hyprland.settings = {
+          env = [
+            "HYPRCURSOR_THEME,phinger-cursors-light"
+            "HYPRCURSOR_SIZE,32"
+          ];
+          general = {
+            border_size = 4;
+            "col.active_border" = "rgb(${removePrefix "#" scheme.palette.base0E})";
+          };
+          decoration = {
+            rounding = 10;
+            blur.enabled = true;
+          };
+        };
         programs = {
           niri = {
             settings = {
@@ -86,7 +103,6 @@ in {
           };
 
           foot.settings.colors = let
-            inherit (lib.strings) removePrefix;
             # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
             palette = builtins.mapAttrs (_: color: removePrefix "#" color) scheme.palette;
           in {
@@ -129,11 +145,11 @@ in {
             colors = {
               background = "${scheme.palette.base01}f2";
               text = "${scheme.palette.base05}ff";
-              match = "${scheme.palette.base0D}ff";
+              match = "${scheme.palette.base0E}ff";
               selection = "${scheme.palette.base03}ff";
               selection-text = "${scheme.palette.base06}ff";
-              selection-match = "${scheme.palette.base0D}ff";
-              border = "${scheme.palette.base0D}ff";
+              selection-match = "${scheme.palette.base0E}ff";
+              border = "${scheme.palette.base0E}ff";
             };
           };
 
