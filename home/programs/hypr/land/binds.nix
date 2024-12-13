@@ -53,9 +53,12 @@ _: {
     binde = [
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
-      ", XF86MonBrightnessUp, exec, brightnessctl set 2%+"
-      ", XF86MonBrightnessDown, exec, brightnessctl set 2%- -n"
+      ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
+      ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
+      ", XF86AudioMedia, exec, sh -c env XDG_CURRENT_DESKTOP=gnome gnome-control-center"
+      ", XF86PowerOff, exec, wlogout"
     ];
   };
 }
