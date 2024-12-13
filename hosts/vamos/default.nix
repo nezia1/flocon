@@ -21,7 +21,7 @@ in {
     "${system}/services/greetd.nix"
     "${system}/services/kanata.nix"
 
-    "${system}/programs/niri"
+    "${system}/programs/hyprland.nix"
     "${system}/services/gnome.nix"
     "${system}/services/mail.nix"
 
@@ -33,14 +33,12 @@ in {
       "${home}"
       "${home}/services/udiskie.nix"
 
-      "${home}/programs/niri"
+      "${home}/programs/hypr"
       "${home}/programs/waybar"
       "${home}/programs/fuzzel.nix"
 
       "${home}/services/swaync"
       "${home}/programs/swaybg.nix"
-      "${home}/programs/swaylock.nix"
-      "${home}/programs/swayidle.nix"
 
       "${home}/services/syncthing.nix"
 
