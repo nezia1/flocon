@@ -16,6 +16,13 @@
     };
 
     settings = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
+      env = [
+        "GDK_SCALE,2"
+      ];
       monitor = [
         "eDP-1, preferred, auto, 1.566667"
       ];
