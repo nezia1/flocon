@@ -24,7 +24,7 @@
         "GDK_SCALE,2"
       ];
       monitor = [
-        "eDP-1, preferred, auto, 1.566667"
+        "eDP-1, preferred, auto, 1.33"
       ];
       workspace = [
         "special:terminal, on-created-empty:foot"
