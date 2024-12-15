@@ -68,7 +68,7 @@ in {
       description = ''
         Path to an avatar image (used for hyprlock).
       '';
-      default = ../../images/avatar.png;
+      default = ../../assets/avatar.png;
     };
   };
   config = let
