@@ -3,6 +3,7 @@ _: {
     "$mod" = "SUPER";
     bind = [
       "$mod, Return, exec, foot"
+      "$mod, n, exec, neovide"
       "$mod, w, exec, firefox"
       ", Print, exec, grimblast --notify copy output"
       "$mod, q, killactive"
