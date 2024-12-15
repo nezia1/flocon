@@ -34,13 +34,16 @@ in {
       name = mkOption {
         type = str;
         description = "The name for the icon theme that will be used for GTK programs";
-        default = "rose-pine";
+        default = "Papirus-Dark";
       };
 
       package = mkOption {
         type = package;
         description = "The GTK icon theme to be used";
-        default = pkgs.rose-pine-icon-theme;
+        default = pkgs.catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "lavender";
+        };
       };
     };
   };
