@@ -20,6 +20,7 @@
   };
 
   home.shellAliases = {
+    lg = "lazygit";
     g = "git";
     gs = "git status";
     gsh = "git show HEAD";
