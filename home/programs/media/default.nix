@@ -6,6 +6,7 @@
     pkgs.loupe
     pkgs.spotify
     pkgs.stremio
+    pkgs.tidal-hifi
     pkgs.celluloid
   ];
 }
