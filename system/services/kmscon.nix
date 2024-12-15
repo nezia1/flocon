@@ -3,12 +3,12 @@
     enable = true;
     fonts = [
       {
-        name = "0xProto NF";
+        name = "0xProto Nerd Font";
         package = pkgs.nerd-fonts._0xproto;
       }
     ];
     extraConfig = ''
-      font-size=14
+      font-size=13
       font-dpi=144
     '';
   };
