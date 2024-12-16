@@ -2,12 +2,15 @@
   inputs,
   config,
   lib,
+  lib',
   pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf attrNames;
   inherit (lib.strings) removePrefix;
   inherit (lib.types) path package enum;
+
+  inherit (lib') generateGtkColors;
 
   cfg = config.theme;
 in {
@@ -411,12 +414,12 @@ in {
               --online-indicator: ${base0B}; /* change to #23a55a for default green */
            --dnd-indicator: ${base08};       /* change to #f13f43 for default red */
            --idle-indicator: ${base0A};      /* change to #f0b232 for default yellow */
-           --streaming-indicator: ${base0D}; /* change to #593695 for default purple */
+           --streaming-indicator: ${base0E}; /* change to #593695 for default purple */
 
            /* accent colors */
-              --accent-1: ${base0D};     /* links */
-           --accent-2: ${base0D};        /* general unread/mention elements, some icons when active */
-           --accent-3: ${base0D};        /* accent buttons */
+           --accent-1: ${base0D};        /* links */
+           --accent-2: ${base0E};        /* general unread/mention elements, some icons when active */
+           --accent-3: ${base0E};        /* accent buttons */
            --accent-4: ${base03};        /* accent buttons when hovered */
            --accent-5: ${base07};        /* accent buttons when clicked */
            --mention:  ${base00}1a;      /* mentions & mention messages */
@@ -431,7 +434,7 @@ in {
            --text-5: ${base04};   /* muted channels/chats and timestamps */
 
            /* background and dark colors */
-            --bg-1: ${base0D};         /* dark buttons when clicked */
+           --bg-1: ${base0E};          /* dark buttons when clicked */
            --bg-2: ${base02};          /* dark buttons */
            --bg-3: ${base01};          /* spacing, secondary elements */
            --bg-4: ${base00};          /* main background color */
