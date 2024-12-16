@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./browsers
     ./media
@@ -29,6 +25,7 @@
   home.packages = with pkgs; [
     cinny-desktop
     entr
+    equibop
     fractal
     geary
     gnome-control-center
@@ -42,7 +39,6 @@
     playerctl
     proton-pass
     simple-scan
-    vesktop
     wl-clipboard
   ];
 }
