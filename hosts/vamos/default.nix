@@ -3,53 +3,62 @@
   specialArgs,
   ...
 }: let
-  system = "${inputs.self}/system";
-  home = "${inputs.self}/home";
+  nixos = "${inputs.self}/config/nixos";
+  hm = "${inputs.self}/config/home-manager";
 in {
+  local.systemVars = {
+    hostName = "vamos";
+    username = "nezia";
+  };
+
+  local.homeVars = {
+    fullName = "Anthony Rodriguez";
+    email = "anthony@nezia.dev";
+  };
+
   imports = [
     ./hardware-configuration.nix
-    ./modules
+    ./config/theme.nix
 
-    "${system}"
-    "${system}/core/lanzaboote.nix"
+    "${nixos}"
+    "${nixos}/core/lanzaboote.nix"
 
-    "${system}/hardware/fprintd.nix"
-    "${system}/services/power.nix"
-    "${system}/services/brightness.nix"
+    "${nixos}/hardware/fprintd.nix"
+    "${nixos}/services/power.nix"
+    "${nixos}/services/brightness.nix"
 
-    "${system}/services/logind.nix"
-    "${system}/services/greetd.nix"
-    "${system}/services/kanata.nix"
+    "${nixos}/services/logind.nix"
+    "${nixos}/services/greetd.nix"
+    "${nixos}/services/kanata.nix"
 
-    "${system}/programs/hyprland.nix"
-    "${system}/services/gnome.nix"
-    "${system}/services/mail.nix"
+    "${nixos}/programs/hyprland.nix"
+    "${nixos}/services/gnome.nix"
+    "${nixos}/services/mail.nix"
 
-    "${system}/services/documentation.nix"
+    "${nixos}/services/documentation.nix"
   ];
 
   home-manager = {
     users.nezia.imports = [
-      "${home}"
-      "${home}/services/udiskie.nix"
+      "${hm}"
+      "${hm}/services/udiskie.nix"
 
-      "${home}/programs/hypr"
-      "${home}/programs/waybar"
-      "${home}/programs/fuzzel.nix"
+      "${hm}/programs/hypr"
+      "${hm}/programs/waybar"
+      "${hm}/programs/fuzzel.nix"
 
-      "${home}/services/swaync"
-      "${home}/programs/swaybg.nix"
-      "${home}/programs/wlogout.nix"
+      "${hm}/services/swaync"
+      "${hm}/programs/swaybg.nix"
+      "${hm}/programs/wlogout.nix"
 
-      "${home}/services/syncthing.nix"
+      "${hm}/services/syncthing.nix"
 
-      "${home}/programs/editors/neovim.nix"
+      "${hm}/programs/editors/neovim.nix"
 
-      "${home}/terminal/emulators/foot.nix"
+      "${hm}/terminal/emulators/foot.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
 
-  networking.hostName = "vamos";
   environment.variables.FLAKE = "/home/nezia/.dotfiles";
 }

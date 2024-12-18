@@ -3,54 +3,63 @@
   specialArgs,
   ...
 }: let
-  system = "${inputs.self}/system";
-  home = "${inputs.self}/home";
+  nixos = "${inputs.self}/config/nixos";
+  hm = "${inputs.self}/config/home-manager";
 in {
+  local.systemVars = {
+    hostName = "solaire";
+    username = "nezia";
+  };
+
+  local.homeVars = {
+    fullName = "Anthony Rodriguez";
+    email = "anthony@nezia.dev";
+  };
+
   imports = [
     ./hardware-configuration.nix
-    ./modules
+    ./config/nvidia.nix
+    ./config/theme.nix
 
-    system
-    "${system}/hardware/uni-sync.nix"
+    nixos
+    "${nixos}/hardware/uni-sync.nix"
 
-    "${system}/programs/games.nix"
-    "${system}/hardware/nvidia.nix"
+    "${nixos}/programs/games.nix"
 
-    "${system}/services/logind.nix"
-    "${system}/services/greetd.nix"
+    "${nixos}/services/logind.nix"
+    "${nixos}/services/greetd.nix"
 
-    "${system}/programs/hyprland.nix"
-    "${system}/services/gnome.nix"
+    "${nixos}/programs/hyprland.nix"
+    "${nixos}/services/gnome.nix"
 
-    "${system}/services/documentation.nix"
+    "${nixos}/services/documentation.nix"
 
-    "${system}/services/flatpak.nix"
+    "${nixos}/services/flatpak.nix"
   ];
 
   home-manager = {
     users.nezia.imports = [
-      "${home}"
-      "${home}/services/udiskie.nix"
-      "${home}/programs/games"
+      hm
+      "${hm}/services/udiskie.nix"
+      "${hm}/programs/games"
 
-      "${home}/programs/waybar"
-      "${home}/programs/fuzzel.nix"
-      "${home}/programs/hypr"
+      "${hm}/programs/waybar"
+      "${hm}/programs/fuzzel.nix"
+      "${hm}/programs/hypr"
 
-      "${home}/services/swaync"
-      "${home}/programs/swaybg.nix"
-      "${home}/programs/swaylock.nix"
+      "${hm}/services/swaync"
+      "${hm}/programs/swaybg.nix"
+      "${hm}/programs/swaylock.nix"
 
-      "${home}/terminal/emulators/foot.nix"
+      "${hm}/terminal/emulators/foot.nix"
 
-      "${home}/services/flatpak.nix"
-      "${home}/services/syncthing.nix"
+      "${hm}/services/flatpak.nix"
+      "${hm}/services/syncthing.nix"
 
-      "${home}/programs/editors/neovim.nix"
+      "${hm}/programs/editors/neovim.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
 
-  networking.hostName = "solaire";
   environment.variables.FLAKE = "/home/nezia/.dotfiles";
 }
