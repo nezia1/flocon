@@ -6,6 +6,24 @@
   imports = [./binds.nix];
   home.packages = [
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
+    # disable unused panels - https://github.com/maydayv7/dotfiles/blob/4de45008a6915753834aa7e1cbafbacfff8b7adc/modules/gui/desktop/hyprland/apps/utilities.nix#L42-L57
+    (pkgs.gnome-control-center.overrideAttrs (old: {
+      postInstall =
+        old.postInstall
+        + ''
+          dir=$out/share/applications
+          for panel in $dir/*
+          do
+            [ "$panel" = "$dir/gnome-network-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-bluetooth-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wifi-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wwan-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-sharing-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wacom-panel.desktop" ] && continue
+            rm "$panel"
+          done
+        '';
+    }))
   ];
   wayland.windowManager.hyprland = {
     enable = true;

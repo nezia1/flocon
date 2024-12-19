@@ -28,7 +28,6 @@
     equibop
     fractal
     geary
-    gnome-control-center
     gns3-gui
     gns3-server
     imhex
