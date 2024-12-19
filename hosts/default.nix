@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  lib' = import ../shared/lib;
+  lib' = import ../shared/lib inputs.nixpkgs.lib;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs lib';};

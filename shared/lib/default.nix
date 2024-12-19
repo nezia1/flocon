@@ -1,13 +1,27 @@
-let
-  # convert rrggbb hex to rgba(r, g, b, a)
-  rgba = lib: color: opacity: let
-    r = toString (hexToDec lib (builtins.substring 0 2 color));
-    g = toString (hexToDec lib (builtins.substring 2 2 color));
-    b = toString (hexToDec lib (builtins.substring 4 2 color));
-  in "rgba(${r}, ${g}, ${b}, ${opacity})";
+lib:
+with lib; let
+  # thanks fufexan https://github.com/fufexan/dotfiles/blob/2947f27791e97ea33c48af4ee2d0188fe03f80dd/lib/colors/default.nix#L8-L66
+  # convert rrggbb hex to rgba(r, g, b, a) css
+  rgba = c: alpha: let
+    color = removePrefix "#" c;
+    r = toString (hexToDec (__substring 0 2 color));
+    g = toString (hexToDec (__substring 2 2 color));
+    b = toString (hexToDec (__substring 4 2 color));
+    a = toString alpha;
+    res = "rgba(${r}, ${g}, ${b}, ${a})";
+  in
+    res;
 
-  hexToDec = lib: v: let
-    # Map of hex characters to their decimal values
+  blurImage = pkgs: path:
+    pkgs.runCommand "${builtins.baseNameOf path}-blurred" {
+      buildInputs = [pkgs.imagemagick];
+    }
+    ''
+      magick ${path} -gaussian-blur 0x12 "$out"
+    '';
+  # functions copied from https://gist.github.com/corpix/f761c82c9d6fdbc1b3846b37e1020e11
+  # convert a hex value to an integer
+  hexToDec = v: let
     hexToInt = {
       "0" = 0;
       "1" = 1;
@@ -32,25 +46,27 @@ let
       "E" = 14;
       "F" = 15;
     };
-    # Remove any leading `#` from the input
-    cleanHex =
-      if lib.strings.substring 0 1 v == "#"
-      then lib.strings.substring 1 (builtins.stringLength v - 1) v
-      else v;
-    # Convert the cleaned string into characters
-    chars = lib.strings.stringToCharacters cleanHex;
+    chars = stringToCharacters v;
+    charsLen = length chars;
   in
-    # Fold over the characters to calculate the decimal value
-    builtins.foldl' (acc: char: acc * 16 + hexToInt."${char}") 0 chars;
+    foldl
+    (a: v: a + v)
+    0
+    (imap0
+      (k: v: hexToInt."${v}" * (pow 16 (charsLen - k - 1)))
+      chars);
 
-  blurImage = pkgs: path:
-    pkgs.runCommand "${builtins.baseNameOf path}-blurred" {
-      buildInputs = [pkgs.imagemagick];
-    }
-    ''
-      magick ${path} -gaussian-blur 0x12 "$out"
-    '';
-
+  pow = let
+    pow' = base: exponent: value:
+    # FIXME: It will silently overflow on values > 2**62 :(
+    # The value will become negative or zero in this case
+      if exponent == 0
+      then 1
+      else if exponent <= 1
+      then value
+      else (pow' base (exponent - 1) (value * base));
+  in
+    base: exponent: pow' base exponent base;
   generateGtkColors = lib: palette: (lib.concatLines
     (lib.mapAttrsToList
       (name: color: "@define-color ${name} ${color};")
