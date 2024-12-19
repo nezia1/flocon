@@ -3,7 +3,7 @@
   programs.mpv.enable = true;
   home.packages = [
     pkgs.gnome-calculator
-    pkgs.loupe
+    pkgs.gthumb
     pkgs.spotify
     pkgs.stremio
     pkgs.tidal-hifi

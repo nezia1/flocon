@@ -15,10 +15,10 @@
         "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
         "inode/directory" = ["yazi.desktop"];
         "application/pdf" = ["org.pwmt.zathura-pdf-mupdf.desktop"];
-        "image/png" = ["org.gnome.Loupe.desktop"];
-        "image/svg" = [" org.gnome.Loupe.desktop"];
-        "image/jpeg" = ["org.gnome.Loupe.desktop"];
-        "image/gif" = [" org.gnome.Loupe.desktop"];
+        "image/png" = ["org.gnome.gThumb.desktop"];
+        "image/svg" = [" org.gnome.gThumb.desktop"];
+        "image/jpeg" = ["org.gnome.gThumb.desktop"];
+        "image/gif" = [" org.gnome.gThumb.desktop"];
         "video/mp4" = ["io.github.celluloid_player.Celluloid.desktop"];
         "video/avi" = ["io.github.celluloid_player.Celluloid.desktop"];
         "video/mkv" = ["io.github.celluloid_player.Celluloid.desktop"];
