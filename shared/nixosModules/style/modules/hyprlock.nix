@@ -1,10 +1,12 @@
 {
   lib,
+  lib',
   config,
   ...
 }: let
   cfg = config.local.style;
   inherit (cfg) scheme;
+  rgbaPalette = builtins.mapAttrs (_: c: (lib'.rgba c 1)) scheme.palette;
 in {
   config.home-manager.sharedModules = lib.mkIf cfg.enable [
     {
@@ -28,7 +30,7 @@ in {
               monitor = "";
               text = "Layout: $LAYOUT";
               font_size = 25;
-              color = scheme.palette.base05;
+              color = rgbaPalette.base05;
 
               position = "30, -30";
               halign = "left";
@@ -38,7 +40,7 @@ in {
               monitor = "";
               text = "$TIME";
               font_size = 90;
-              color = scheme.palette.base05;
+              color = rgbaPalette.base05;
 
               position = "-30, 0";
               halign = "right";
@@ -48,7 +50,7 @@ in {
               monitor = "";
               text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
               font_size = 25;
-              color = scheme.palette.base05;
+              color = rgbaPalette.base05;
 
               position = "-30, -150";
               halign = "right";
@@ -60,7 +62,7 @@ in {
             monitor = "";
             path = "${cfg.avatar}"; # Replace with your avatar path
             size = 100;
-            border_color = scheme.palette.base0D;
+            border_color = rgbaPalette.base0D;
 
             position = "0, 75";
             halign = "center";
@@ -77,19 +79,19 @@ in {
               dots_spacing = 0.2;
               dots_center = true;
 
-              outer_color = scheme.palette.base0D;
-              inner_color = scheme.palette.base02;
-              font_color = scheme.palette.base05;
+              outer_color = rgbaPalette.base0D;
+              inner_color = rgbaPalette.base02;
+              font_color = rgbaPalette.base05;
 
               fade_on_empty = false;
               placeholder_text = "<span foreground=\"#${scheme.palette.base03}\"><i>󰌾 Logged in as </i><span foreground=\"#${scheme.palette.base0D}\">$USER</span></span>";
 
               hide_input = false;
-              check_color = scheme.palette.base0D;
-              fail_color = scheme.palette.base08;
+              check_color = rgbaPalette.base0D;
+              fail_color = rgbaPalette.base08;
 
               fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-              capslock_color = scheme.palette.base0E;
+              capslock_color = rgbaPalette.base0E;
 
               position = "0, -47";
               halign = "center";
