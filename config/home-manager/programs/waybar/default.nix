@@ -56,7 +56,7 @@
         "pulseaudio" = {
           format = "{icon} {volume}%";
           format-bluetooth = "{icon} {volume}%";
-          format-muted = " ";
+          format-muted = "";
           format-icons = {
             "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
             "alsa_output.pci-0000_00_1f.3.analog-stereo-muted" = "";
@@ -155,7 +155,7 @@
           tooltip = false;
           format = "<big>{icon}</big>";
           format-icons = {
-            none = "";
+            none = "";
             notification = "<span foreground='red'><sup></sup></span>";
             dnd-notification = "<span foreground='red'><sup></sup></span>";
             dnd-none = "";
