@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   imports = [
     ./browsers
+    ./gnome
     ./media
     ./xdg.nix
     ./editors/helix.nix
+    ./editors/neovim.nix
   ];
 
   # idk where to put this
