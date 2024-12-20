@@ -55,8 +55,6 @@ in {
 
       "${hm}/services/flatpak.nix"
       "${hm}/services/syncthing.nix"
-
-      "${hm}/programs/editors/neovim.nix"
     ];
     extraSpecialArgs = specialArgs;
   };

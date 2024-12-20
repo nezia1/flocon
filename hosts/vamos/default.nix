@@ -53,8 +53,6 @@ in {
 
       "${hm}/services/syncthing.nix"
 
-      "${hm}/programs/editors/neovim.nix"
-
       "${hm}/terminal/emulators/foot.nix"
     ];
     extraSpecialArgs = specialArgs;
