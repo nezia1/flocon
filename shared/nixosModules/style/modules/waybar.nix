@@ -57,11 +57,11 @@ in {
         }
         tooltip {
           background: ${base00};
-          border: 1px solid ${base08};
+          border: 1px solid ${base0E};
           border-radius: 12px;
         }
         tooltip label {
-          color: ${base08};
+          color: ${base0E};
         }
         #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
           font-weight: bold;
