@@ -4,11 +4,10 @@
   ...
 }: let
   cfg = config.local.style;
-  inherit (cfg) scheme;
 in {
   config.home-manager.sharedModules = lib.mkIf cfg.enable [
     {
-      xdg.configFile."equibop/themes/midnight-base16.css".text = with scheme.palette; ''
+      xdg.configFile."equibop/themes/midnight-base16.css".text = with cfg.scheme.palette; ''
         /**
          * @name Midnight-base16
          * @description A dark, rounded discord theme. Updated to use base16 colors.
@@ -31,7 +30,7 @@ in {
          --font: 'gg sans';
 
          /* top left corner text */
-         --corner-text: '${scheme.name}';
+         --corner-text: '${cfg.scheme.name}';
 
          /* color of status indicators and window controls */
             --online-indicator: ${base0B}; /* change to #23a55a for default green */

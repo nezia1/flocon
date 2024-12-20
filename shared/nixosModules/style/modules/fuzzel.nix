@@ -12,14 +12,14 @@ in {
         main = {
           font = "sans-serif:size=16";
         };
-        colors = {
-          background = "${scheme.palette.base01}f2";
-          text = "${scheme.palette.base05}ff";
-          match = "${scheme.palette.base0E}ff";
-          selection = "${scheme.palette.base03}ff";
-          selection-text = "${scheme.palette.base06}ff";
-          selection-match = "${scheme.palette.base0E}ff";
-          border = "${scheme.palette.base0E}ff";
+        colors = with scheme.palette; {
+          background = "${base01}f2";
+          text = "${base05}ff";
+          match = "${base0E}ff";
+          selection = "${base03}ff";
+          selection-text = "${base06}ff";
+          selection-match = "${base0E}ff";
+          border = "${base0E}ff";
         };
       };
     }

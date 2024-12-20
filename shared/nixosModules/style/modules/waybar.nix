@@ -8,7 +8,7 @@
 in {
   config.home-manager.sharedModules = lib.mkIf cfg.enable [
     {
-      programs.waybar.style = ''
+      programs.waybar.style = with cfg.scheme.palette; ''
         * {
           font-family: "0xProto Nerd Font";
           font-size: 16px;
@@ -20,8 +20,8 @@ in {
           background: rgba(0,0,0,0);
         }
         #workspaces {
-          color: ${cfg.scheme.palette.base00};
-          background: ${cfg.scheme.palette.base01};
+          color: ${base00};
+          background: ${base01};
           margin: 4px 4px;
           padding: 5px 5px;
           border-radius: 16px;
@@ -31,8 +31,8 @@ in {
           padding: 0px 5px;
           margin: 0px 3px;
           border-radius: 16px;
-          color: ${cfg.scheme.palette.base00};
-          background: linear-gradient(45deg, ${cfg.scheme.palette.base08}, ${cfg.scheme.palette.base0D});
+          color: ${base00};
+          background: linear-gradient(45deg, ${base08}, ${base0D});
           opacity: 0.5;
           transition: ${betterTransition};
         }
@@ -41,8 +41,8 @@ in {
           padding: 0px 5px;
           margin: 0px 3px;
           border-radius: 16px;
-          color: ${cfg.scheme.palette.base00};
-          background: linear-gradient(45deg, ${cfg.scheme.palette.base08}, ${cfg.scheme.palette.base0D});
+          color: ${base00};
+          background: linear-gradient(45deg, ${base08}, ${base0D});
           transition: ${betterTransition};
           opacity: 1.0;
           min-width: 40px;
@@ -50,33 +50,33 @@ in {
         #workspaces button:hover {
           font-weight: bold;
           border-radius: 16px;
-          color: ${cfg.scheme.palette.base00};
-          background: linear-gradient(45deg, ${cfg.scheme.palette.base08}, ${cfg.scheme.palette.base0D});
+          color: ${base00};
+          background: linear-gradient(45deg, ${base08}, ${base0D});
           opacity: 0.8;
           transition: ${betterTransition};
         }
         tooltip {
-          background: ${cfg.scheme.palette.base00};
-          border: 1px solid ${cfg.scheme.palette.base08};
+          background: ${base00};
+          border: 1px solid ${base08};
           border-radius: 12px;
         }
         tooltip label {
-          color: ${cfg.scheme.palette.base08};
+          color: ${base08};
         }
         #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
           padding: 0px 18px;
-          background: ${cfg.scheme.palette.base00};
-          color: ${cfg.scheme.palette.base05};
+          background: ${base00};
+          color: ${base05};
           border-radius: 24px 10px 24px 10px;
         }
         #network, #battery,
         #custom-swaync, #tray, #custom-power {
           font-weight: bold;
-          background: ${cfg.scheme.palette.base00};
-          color: ${cfg.scheme.palette.base05};
+          background: ${base00};
+          color: ${base05};
           margin: 4px 0px;
           margin-right: 7px;
           border-radius: 10px 24px 10px 24px;
@@ -84,8 +84,8 @@ in {
         }
         #clock {
           font-weight: bold;
-          color: ${cfg.scheme.palette.base00};
-          background: linear-gradient(90deg, ${cfg.scheme.palette.base0E}, ${cfg.scheme.palette.base0C});
+          color: ${base00};
+          background: linear-gradient(90deg, ${base0E}, ${base0C});
           margin: 0px;
           padding: 0px 15px 0px 30px;
           border-radius: 0px 0px 0px 40px;

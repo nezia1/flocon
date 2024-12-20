@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  scheme,
   ...
 }: let
   cfg = config.local.style;
