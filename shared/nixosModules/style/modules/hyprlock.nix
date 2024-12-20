@@ -88,7 +88,7 @@ in {
                 fade_on_empty = false;
 
                 # the span elements still use #RRGGBB, so we use scheme directly
-                placeholder_text = "<span foreground=\"#${cfg.scheme.palette.base03}\"><i>󰌾 Logged in as </i><span foreground=\"#${cfg.scheme.palette.base0D}\">$USER</span></span>";
+                placeholder_text = "<span foreground=\"#${cfg.scheme.palette.base05}\"><i>󰌾 Logged in as </i><span foreground=\"#${cfg.scheme.palette.base0D}\">$USER</span></span>";
 
                 hide_input = false;
                 check_color = base0D;
