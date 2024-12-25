@@ -1,15 +1,22 @@
-_: {
+_: let
+  # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
+  toggle = program: let
+    prog = builtins.substring 0 14 program;
+  in "pkill ${prog} || uwsm app -- ${program}";
+  runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
+  run = program: "uwsm app -- ${program}";
+in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind = [
-      "$mod, Return, exec, foot"
-      "$mod, n, exec, neovide"
-      "$mod, w, exec, firefox"
-      ", Print, exec, grimblast --notify copy output"
+      "$mod, Return, exec, ${run "foot"}"
+      "$mod, n, exec, ${run "neovide"}"
+      "$mod, w, exec, ${run "firefox"}"
+      ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
       "$mod, q, killactive"
-      "$mod SHIFT, q, exit"
-      "$mod, Space, exec, fuzzel"
-      "CTRL, Print, exec, grimblast --notify --freeze copy area"
+      "$mod SHIFT, q, exec, uwsm stop"
+      "$mod, Space, exec, ${toggle "fuzzel"}"
+      "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"
@@ -49,9 +56,11 @@ _: {
 
       "$mod, e, togglespecialworkspace, file_manager_tui"
       "$mod SHIFT, e, togglespecialworkspace, file_manager_gui"
+
+      ", XF86PowerOff, exec, ${toggle "wlogout"}"
     ];
 
-    binde = [
+    bindel = [
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -59,7 +68,8 @@ _: {
       ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
       ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
       ", XF86AudioMedia, exec, XDG_CURRENT_DESKTOP=gnome gnome-control-center"
-      ", XF86PowerOff, exec, wlogout"
+    ];
+    binde = [
       "$mod Alt, l, exec, loginctl lock-session"
     ];
   };

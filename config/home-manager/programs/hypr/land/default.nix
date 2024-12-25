@@ -28,10 +28,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd = {
-      enable = true;
-      variables = ["--all"];
-    };
+
+    systemd.enable = false;
 
     settings = {
       xwayland = {
