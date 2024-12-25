@@ -24,6 +24,7 @@ in {
     "${nixos}/core/lanzaboote.nix"
 
     "${nixos}/hardware/fprintd.nix"
+    "${nixos}/hardware/mcuxpresso.nix"
     "${nixos}/services/power.nix"
     "${nixos}/services/brightness.nix"
 

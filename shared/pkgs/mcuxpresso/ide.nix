@@ -1,5 +1,8 @@
-# https://github.com/KoviRobi/nixos-config/blob/3ab3f8372d1fd021a235de4d314ef7147846513e/overlays/mcuxpresso.nix
-{pkgs, ...}: let
+{
+  pkgs,
+  onlyUdevRules ? false,
+  ...
+}: let
   name = "mcuxpressoide";
   version = "24.9.25";
   description = "MCUXpresso IDE";
@@ -50,7 +53,6 @@
       pkgs.stdenv.cc.cc.lib
       pkgs.gcc
       pkgs.libgcc
-      pkgs.libstdcxx5
       pkgs.xorg.libXext
       pkgs.xorg.libX11
       pkgs.xorg.libXrender
@@ -73,7 +75,6 @@
     runScript = "${mcuxpressoide}/bin/eclipse";
   };
 in
-  # wrapper with desktop entry and udev rules
   pkgs.stdenv.mkDerivation {
     inherit name version description;
     dontUnpack = true;
@@ -90,11 +91,20 @@ in
     ];
     installPhase = ''
       runHook preInstall
-      mkdir -p $out/bin $out/lib/udev/rules.d $out/eclipse $out/mcu_data
+      mkdir -p $out/lib/udev/rules.d
 
-      cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
+      if [ ${toString onlyUdevRules} = "true" ]; then
+        # only copy udev rules
+        cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
+      else
+        # copy full installation
+        mkdir -p $out/bin $out/eclipse $out/mcu_data
+        cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
+        cp -r ${mcuxpressoide}/eclipse $out/eclipse
+        cp -r ${mcuxpressoide}/mcu_data $out/mcu_data
+        ln -s ${mcuxpressoFhsEnv}/bin/mcuxpresso-env $out/bin/mcuxpresso
+      fi
 
-      ln -s ${mcuxpressoFhsEnv}/bin/mcuxpresso-env $out/bin/mcuxpresso
       runHook postInstall
     '';
   }
