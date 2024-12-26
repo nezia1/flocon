@@ -3234,7 +3234,8 @@
         "nvf": "nvf",
         "plasma-manager": "plasma-manager",
         "portfolio": "portfolio",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "xdg-autostart": "xdg-autostart"
       }
     },
     "rust-overlay": {
@@ -3438,6 +3439,21 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "xdg-autostart": {
+      "locked": {
+        "lastModified": 1735223330,
+        "narHash": "sha256-IeJ60TI+75keBwxQ5kN/W6KfFYsVXTWEYUSpqUZMTXE=",
+        "owner": "nezia1",
+        "repo": "home-manager-xdg-autostart",
+        "rev": "8f9c965af14ef728137b961a916a68773b0d843d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nezia1",
+        "repo": "home-manager-xdg-autostart",
         "type": "github"
       }
     },

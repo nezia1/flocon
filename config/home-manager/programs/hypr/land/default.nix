@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./binds.nix];
+  imports = [./autostart.nix ./binds.nix];
   home.packages = [
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
     # disable unused panels - https://github.com/maydayv7/dotfiles/blob/4de45008a6915753834aa7e1cbafbacfff8b7adc/modules/gui/desktop/hyprland/apps/utilities.nix#L42-L57
