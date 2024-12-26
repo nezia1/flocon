@@ -7,30 +7,34 @@
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
 let
-  inherit (lib) getExe getExe' concatStringsSep;
+  inherit (lib) getExe getExe';
   inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
 
   hyprctl = getExe' hyprland "hyprctl";
   Hyprland = getExe' hyprland "Hyprland";
 
-  greeter = getExe pkgs.greetd.gtkgreet;
+  greeter = getExe config.programs.regreet.package;
 
-  hyprlandConfig = pkgs.writeText "greetd-hyprland-config" ''
-    misc {
-        force_default_wallpaper=0
-        focus_on_activate=1
-    }
+  hyprlandConfig = let
+    cfg = config.local.style;
+  in
+    pkgs.writeText "greetd-hyprland-config"
+    ''
+      misc {
+          force_default_wallpaper=0
+          focus_on_activate=1
+      }
 
-    animations {
-        enabled=0
-        first_launch_animation=0
-    }
+      animations {
+          enabled=0
+          first_launch_animation=0
+      }
 
-    workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
+      workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
 
-    exec-once=[workspace 1;fullscreen;noanim] ${greeter} -l; ${hyprctl} dispatch exit
-    exec-once=${hyprctl} dispatch focuswindow ${greeter}
-  '';
+      exec-once=[workspace 1;fullscreen;noanim] ${greeter}; ${hyprctl} dispatch exit
+      exec-once=${hyprctl} dispatch focuswindow ${greeter}
+    '';
 in {
   services.greetd = {
     enable = true;
@@ -41,11 +45,15 @@ in {
       };
     };
   };
-  environment.etc."greetd/environments".text = concatStringsSep "\n" ["Hyprland"];
+
+  programs.regreet = {
+    enable = true;
+  };
 
   security.pam.services = {
     greetd.enableGnomeKeyring = true;
     login.enableGnomeKeyring = true;
+    gdm-password.enableGnomeKeyring = true;
     greetd.fprintAuth = false;
   };
 }
