@@ -5,6 +5,9 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = [
+    inputs.hyprland-qtutils.packages.${pkgs.system}.default
+  ];
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
