@@ -14,7 +14,7 @@ in {
       "$mod, w, exec, ${run "firefox"}"
       ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
       "$mod, q, killactive"
-      "$mod SHIFT, q, exec, uwsm stop"
+      "$mod SHIFT, q, exec, loginctl terminate-user ''"
       "$mod, Space, exec, ${toggle "fuzzel"}"
       "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
