@@ -13,11 +13,9 @@ let
   hyprctl = getExe' hyprland "hyprctl";
   Hyprland = getExe' hyprland "Hyprland";
 
-  greeter = getExe config.programs.regreet.package;
+  greeter = getExe pkgs.greetd.gtkgreet;
 
-  hyprlandConfig = let
-    cfg = config.local.style;
-  in
+  hyprlandConfig =
     pkgs.writeText "greetd-hyprland-config"
     ''
       misc {
@@ -32,7 +30,7 @@ let
 
       workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
 
-      exec-once=[workspace 1;fullscreen;noanim] ${greeter}; ${hyprctl} dispatch exit
+      exec-once=[workspace 1;fullscreen;noanim] ${greeter} -l; ${hyprctl} dispatch exit
       exec-once=${hyprctl} dispatch focuswindow ${greeter}
     '';
 in {
@@ -56,4 +54,17 @@ in {
     gdm-password.enableGnomeKeyring = true;
     greetd.fprintAuth = false;
   };
+
+  environment.etc."greetd/environments".text = lib.strings.concatStringsSep "\n" [
+    (lib.optionalString
+      config.programs.hyprland.enable
+      (
+        if config.programs.hyprland.withUWSM
+        then "uwsm start -S hyprland-uwsm.desktop"
+        else "Hyprland"
+      ))
+    (lib.optionalString
+      config.programs.sway.enable
+      "sway")
+  ];
 }
