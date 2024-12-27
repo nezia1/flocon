@@ -48,8 +48,7 @@ in {
       "${hm}/programs/hypr"
 
       "${hm}/services/swaync"
-      "${hm}/programs/swaybg.nix"
-      "${hm}/programs/swaylock.nix"
+      "${hm}/programs/hypr/paper.nix"
 
       "${hm}/terminal/emulators/foot.nix"
 

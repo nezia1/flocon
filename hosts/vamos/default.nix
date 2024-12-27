@@ -49,7 +49,7 @@ in {
       "${hm}/programs/fuzzel.nix"
 
       "${hm}/services/swaync"
-      "${hm}/programs/swaybg.nix"
+      "${hm}/programs/hypr/paper.nix"
       "${hm}/programs/wlogout.nix"
 
       "${hm}/services/syncthing.nix"
