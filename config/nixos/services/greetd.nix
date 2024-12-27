@@ -55,16 +55,21 @@ in {
     greetd.fprintAuth = false;
   };
 
-  environment.etc."greetd/environments".text = lib.strings.concatStringsSep "\n" [
-    (
-      lib.optionalString
-      config.programs.hyprland.enable
-      (
-        if config.programs.hyprland.withUWSM
-        then "uwsm start -S hyprland-uwsm.desktop"
-        else "Hyprland"
-      )
-    )
-    (lib.optionalString config.programs.sway.enable "sway")
-  ];
+  environment.etc."greetd/environments".text = let
+    environments = [
+      {
+        name = "Hyprland";
+        condition = with config.programs.hyprland; enable && !withUWSM;
+      }
+      {
+        name = "uwsm start -S hyprland-uwsm.desktop";
+        condition = with config.programs.hyprland; enable && withUWSM;
+      }
+      {
+        name = "sway";
+        condition = config.programs.sway.enable;
+      }
+    ];
+  in
+    builtins.concatStringsSep "\n" (map (env: env.name) (builtins.filter (env: env.condition) environments));
 }
