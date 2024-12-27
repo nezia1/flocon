@@ -56,15 +56,15 @@ in {
   };
 
   environment.etc."greetd/environments".text = lib.strings.concatStringsSep "\n" [
-    (lib.optionalString
+    (
+      lib.optionalString
       config.programs.hyprland.enable
       (
         if config.programs.hyprland.withUWSM
         then "uwsm start -S hyprland-uwsm.desktop"
         else "Hyprland"
-      ))
-    (lib.optionalString
-      config.programs.sway.enable
-      "sway")
+      )
+    )
+    (lib.optionalString config.programs.sway.enable "sway")
   ];
 }
