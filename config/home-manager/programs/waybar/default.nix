@@ -175,6 +175,12 @@
       };
     };
   };
+
+  systemd.user.services.waybar = {
+    Unit.After = lib.mkForce "graphical-session.target";
+    Service.Slice = "app-graphical.slice";
+  };
+
   home.packages = [
     pkgs.pavucontrol
   ];
