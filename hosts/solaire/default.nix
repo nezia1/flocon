@@ -24,17 +24,18 @@ in {
     nixos
     "${nixos}/hardware/uni-sync.nix"
 
-    "${nixos}/programs/games.nix"
-
     "${nixos}/services/logind.nix"
     "${nixos}/services/greetd.nix"
 
     "${nixos}/programs/hyprland.nix"
     "${nixos}/services/gnome.nix"
 
+    "${nixos}/programs/games.nix"
+
     "${nixos}/services/documentation.nix"
 
     "${nixos}/services/flatpak.nix"
+    "${nixos}/services/location.nix"
   ];
 
   home-manager = {
@@ -54,6 +55,7 @@ in {
 
       "${hm}/services/flatpak.nix"
       "${hm}/services/syncthing.nix"
+      "${hm}/services/gammastep.nix"
     ];
     extraSpecialArgs = specialArgs;
   };

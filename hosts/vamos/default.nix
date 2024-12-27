@@ -37,6 +37,8 @@ in {
     "${nixos}/services/mail.nix"
 
     "${nixos}/services/documentation.nix"
+
+    "${nixos}/services/location.nix"
   ];
 
   home-manager = {
@@ -55,6 +57,8 @@ in {
       "${hm}/services/syncthing.nix"
 
       "${hm}/terminal/emulators/foot.nix"
+
+      "${hm}/services/gammastep.nix"
     ];
     extraSpecialArgs = specialArgs;
   };
