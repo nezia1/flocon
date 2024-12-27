@@ -1,6 +1,6 @@
 {
   lib,
-  config,
+  osConfig,
   inputs,
   pkgs,
   ...
@@ -10,11 +10,11 @@
     package = inputs.hyprpaper.packages.${pkgs.system}.default;
 
     settings = {
-      preload = ["${config.local.style.wallpaper}"];
-      wallpaper = [", ${config.local.style.wallpaper}"];
+      preload = ["${osConfig.local.style.wallpaper}"];
+      wallpaper = [", ${osConfig.local.style.wallpaper}"];
     };
   };
 
   systemd.user.services.hyprpaper.Unit.After = lib.mkForce "graphical-session.target";
-  systemd.user.services.hyprpaper.Unit.Slice = "background-graphical.slice";
+  systemd.user.services.hyprpaper.Service.Slice = "background-graphical.slice";
 }
