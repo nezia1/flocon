@@ -4,7 +4,6 @@
   ...
 }: {
   home.packages = [
-    pkgs.bottles
     pkgs.mangohud
     pkgs.protonplus
 
