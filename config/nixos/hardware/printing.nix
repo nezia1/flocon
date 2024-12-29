@@ -11,7 +11,7 @@
 
     printing.drivers = [
       pkgs.gutenprint
-      pkgs.hplip
+      # pkgs.hplip
     ];
     udev.packages = [
       pkgs.sane-airscan
@@ -22,7 +22,7 @@
   hardware.sane.enable = true; # enables support for SANE scanners
   hardware.sane.extraBackends = [
     pkgs.sane-airscan # generic
-    pkgs.hplip # HP
+    # pkgs.hplip # HP
     pkgs.utsushi # other printers
   ];
 }
