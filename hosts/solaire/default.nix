@@ -22,6 +22,8 @@ in {
     ./config/theme.nix
 
     nixos
+    "${nixos}/core/home-manager.nix"
+
     "${nixos}/hardware/uni-sync.nix"
 
     "${nixos}/services/logind.nix"

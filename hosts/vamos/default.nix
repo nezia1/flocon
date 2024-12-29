@@ -22,6 +22,7 @@ in {
 
     "${nixos}"
     "${nixos}/core/lanzaboote.nix"
+    "${nixos}/core/home-manager.nix"
 
     "${nixos}/hardware/fprintd.nix"
     "${nixos}/hardware/mcuxpresso.nix"
