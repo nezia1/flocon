@@ -3,7 +3,9 @@
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs lib';};
-      modules = [../shared/nixosModules] ++ (args.modules or []);
+      modules =
+        [../modules]
+        ++ (args.modules or []);
     };
 in {
   vamos = mkSystem {

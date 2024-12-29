@@ -1,7 +1,8 @@
 {
   imports = [
-    ./systemVars.nix
     ./homeVars.nix
+    ./systemVars.nix
+    ./roles
     ./style
   ];
 }
