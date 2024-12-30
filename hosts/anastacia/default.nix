@@ -6,10 +6,6 @@ in {
     ./networking.nix # generated at runtime by nixos-infect
 
     inputs.agenix.nixosModules.default
-
-    "${system}/services/forgejo.nix"
-    "${system}/services/searx.nix"
-    "${system}/services/portfolio.nix"
   ];
 
   boot.tmp.cleanOnBoot = true;
