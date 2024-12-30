@@ -37,6 +37,7 @@
           };
         };
       };
+
       theme = lib.mkDefault {
         enable = true;
         name = "catppuccin";
@@ -155,6 +156,7 @@
 
       utility = {
         vim-wakatime.enable = true;
+        surround.enable = true;
       };
 
       lsp = {
