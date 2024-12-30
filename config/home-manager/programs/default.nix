@@ -27,7 +27,6 @@
   home.packages = with pkgs; [
     cinny-desktop
     entr
-    equibop
     fractal
     geary
     gns3-gui
@@ -40,6 +39,7 @@
     playerctl
     proton-pass
     simple-scan
+    vesktop
     wl-clipboard
   ];
 }
