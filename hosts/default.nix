@@ -10,9 +10,6 @@
     ../config/nixos
     ../config/nixos/core/home-manager.nix
 
-    ../config/nixos/services/logind.nix
-    ../config/nixos/services/greetd.nix
-
     ../config/nixos/services/documentation.nix
 
     ../config/nixos/services/location.nix
@@ -36,6 +33,9 @@
   ];
 
   graphical = [
+    ../config/nixos/services/logind.nix
+    ../config/nixos/services/greetd.nix
+
     ../config/nixos/programs/hyprland.nix
     ../config/nixos/services/gnome.nix
     ({config, ...}: {
