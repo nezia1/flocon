@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  self,
+  inputs,
+  ...
+}: let
   lib' = import ../shared/lib inputs.nixpkgs.lib;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
@@ -7,12 +11,12 @@
     };
 
   base = [
-    ../config/nixos
-    ../config/nixos/core/home-manager.nix
+    "${self}/config/nixos"
+    "${self}/config/nixos/core/home-manager.nix"
 
-    ../config/nixos/services/documentation.nix
+    "${self}/config/nixos/services/documentation.nix"
 
-    ../config/nixos/services/location.nix
+    "${self}/config/nixos/services/location.nix"
 
     ({
       config,
@@ -21,10 +25,10 @@
     }: {
       home-manager = {
         users.${config.local.systemVars.username}.imports = [
-          ../config/home-manager
+          "${self}/config/home-manager"
 
-          ../config/home-manager/services/udiskie.nix
-          ../config/home-manager/services/syncthing.nix
+          "${self}/config/home-manager/services/udiskie.nix"
+          "${self}/config/home-manager/services/syncthing.nix"
         ];
 
         extraSpecialArgs = specialArgs;
@@ -33,22 +37,22 @@
   ];
 
   graphical = [
-    ../config/nixos/services/logind.nix
-    ../config/nixos/services/greetd.nix
+    "${self}/config/nixos/services/logind.nix"
+    "${self}/config/nixos/services/greetd.nix"
 
-    ../config/nixos/programs/hyprland.nix
-    ../config/nixos/services/gnome.nix
+    "${self}/config/nixos/programs/hyprland.nix"
+    "${self}/config/nixos/services/gnome.nix"
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
-        ../config/home-manager/programs/waybar
-        ../config/home-manager/programs/fuzzel.nix
-        ../config/home-manager/programs/hypr
-        ../config/home-manager/programs/wlogout.nix
+        "${self}/config/home-manager/programs/waybar"
+        "${self}/config/home-manager/programs/fuzzel.nix"
+        "${self}/config/home-manager/programs/hypr"
+        "${self}/config/home-manager/programs/wlogout.nix"
 
-        ../config/home-manager/services/swaync
+        "${self}/config/home-manager/services/swaync"
 
-        ../config/home-manager/terminal/emulators/foot.nix
-        ../config/home-manager/services/gammastep.nix
+        "${self}/config/home-manager/terminal/emulators/foot.nix"
+        "${self}/config/home-manager/services/gammastep.nix"
       ];
     })
   ];
@@ -57,21 +61,21 @@
     ../config/nixos/programs/games.nix
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
-        ../config/home-manager/programs/games
-        ../config/home-manager/services/flatpak.nix
+        "${self}/config/home-manager/programs/games"
+        "${self}/config/home-manager/services/flatpak.nix"
       ];
     })
   ];
 
   laptop = [
-    ../config/nixos/core/lanzaboote.nix
+    "${self}/config/nixos/core/lanzaboote.nix"
 
-    ../config/nixos/hardware/fprintd.nix
-    ../config/nixos/services/kanata.nix
-    ../config/nixos/services/power.nix
-    ../config/nixos/services/brightness.nix
+    "${self}/config/nixos/hardware/fprintd.nix"
+    "${self}/config/nixos/services/kanata.nix"
+    "${self}/config/nixos/services/power.nix"
+    "${self}/config/nixos/services/brightness.nix"
 
-    ../config/nixos/hardware/mcuxpresso.nix
+    "${self}/config/nixos/hardware/mcuxpresso.nix"
   ];
 in {
   vamos = mkSystem {
@@ -99,9 +103,9 @@ in {
     modules = [
       ./anastacia
 
-      ../config/nixos/services/forgejo.nix
-      ../config/nixos/services/searx.nix
-      ../config/nixos/services/portfolio.nix
+      "${self}/config/nixos/services/forgejo.nix"
+      "${self}/config/nixos/services/searx.nix"
+      "${self}/config/nixos/services/portfolio.nix"
     ];
   };
 }

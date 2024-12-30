@@ -23,7 +23,7 @@
       };
     });
     formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    nixosConfigurations = import ./hosts {inherit inputs;};
+    nixosConfigurations = import ./hosts {inherit self inputs;};
     packages = eachSystem (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
     deploy.nodes = import ./nodes.nix {inherit inputs;};
     checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
