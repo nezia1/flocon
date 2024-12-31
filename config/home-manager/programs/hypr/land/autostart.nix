@@ -8,6 +8,6 @@
   ];
 
   xdg.autoStart.packages = with pkgs; [
-    equibop
+    vesktop
   ];
 }
