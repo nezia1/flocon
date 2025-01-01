@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   name = "mcuxpressoide";
   version = "24.9.25";
   description = "MCUXpresso IDE";
@@ -63,16 +59,18 @@
       tar -czf $out ./
     '';
   };
-  mcuxpressoide = pkgs.eclipses.buildEclipse {
+  mcuxpresso = pkgs.eclipses.buildEclipse {
     name = "mcuxpresso-eclipse";
     inherit description;
     src = mcuxpressoideSrc;
   };
-
-  # needed because of the integrated toolchain
-  mcuxpressoFhsEnv = pkgs.buildFHSEnv {
-    name = "mcuxpresso-env";
-    targetPkgs = pkgs: [
+in
+  pkgs.stdenv.mkDerivation {
+    inherit name version description;
+    dontUnpack = true;
+    dontConfigure = true;
+    nativeBuildInputs = [pkgs.copyDesktopItems pkgs.autoPatchelfHook];
+    buildInputs = [
       pkgs.dfu-util
       pkgs.stdenv.cc.cc.lib
       pkgs.gcc
@@ -95,32 +93,12 @@
       pkgs.libxcrypt-legacy
       pkgs.libusb-compat-0_1
       pkgs.xorg.libxcb
-      pkgs.python3
       pkgs.usbutils
       pkgs.libuuid
       pkgs.libudev-zero
+
+      pkgs.python39
     ];
-    profile = ''
-      export LD_LIBRARY_PATH=${lib.makeLibraryPath [pkgs.ncurses5 pkgs.ncurses]}:$LD_LIBRARY_PATH
-    '';
-
-    extraBuildCommands = ''
-      # Ensure necessary directories exist
-      mkdir -p $out/usr/local/LinkServer_24.9.75/lpcscrypt $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
-
-      cp -r ${mcuxpressoide}/usr/local/LinkServer_24.9.75/* $out/usr/local/LinkServer_24.9.75
-      cp -r ${mcuxpressoide}/usr/local/lpcscrypt-2.1.3_83/* $out/usr/local/LinkServer_24.9.75/lpcscrypt
-      cp -r ${mcuxpressoide}/usr/local/MCU-LINK_installer_3.148/* $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
-    '';
-    # runScript = "${mcuxpressoide}/bin/eclipse";
-  };
-in
-  pkgs.stdenv.mkDerivation {
-    inherit name version description;
-    dontUnpack = true;
-    dontConfigure = true;
-    dontBuild = true;
-    nativeBuildInputs = [pkgs.copyDesktopItems];
     desktopItems = [
       (pkgs.makeDesktopItem {
         inherit name;
@@ -130,23 +108,19 @@ in
       })
     ];
 
+    buildPhase = ''
+      # Ensure necessary directories exist
+      mkdir -p $out/usr/local/LinkServer_24.9.75/lpcscrypt $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
+
+      cp -r ${mcuxpresso}/usr/local/LinkServer_24.9.75/* $out/usr/local/LinkServer_24.9.75
+      cp -r ${mcuxpresso}/usr/local/lpcscrypt-2.1.3_83/* $out/usr/local/LinkServer_24.9.75/lpcscrypt
+      cp -r ${mcuxpresso}/usr/local/MCU-LINK_installer_3.148/* $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
+    '';
+
     installPhase = ''
-       runHook preInstall
-
-       # Create necessary directories
-       mkdir -p $out/lib/udev/rules.d
-       mkdir -p $out/bin $out/eclipse $out/mcu_data
-
-       # Copy udev rules
-       cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
-
-       # Copy full installation
-       cp -r ${mcuxpressoide}/eclipse $out/eclipse
-       cp -r ${mcuxpressoide}/mcu_data $out/mcu_data
-
-       # Create symlink for the environment
-       ln -s ${mcuxpressoFhsEnv}/bin/mcuxpresso-env $out/bin/mcuxpresso
-
+      runHook preInstall
+      mkdir -p $out/bin
+      ln -s ${mcuxpresso}/bin/eclipse $out/bin/mcuxpresso
       runHook postInstall
     '';
   }
