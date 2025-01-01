@@ -104,8 +104,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    # TODO: switch to Zocker1999NET if PR gets merged
-    xdg-autostart.url = "github:nezia1/home-manager-xdg-autostart";
   };
   nixConfig = {
     extra-substituters = [
