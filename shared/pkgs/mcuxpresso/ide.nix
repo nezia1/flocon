@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   name = "mcuxpressoide";
   version = "24.9.25";
   description = "MCUXpresso IDE";
@@ -39,7 +43,6 @@
       id=com.nxp.${name}
       version=${version}
       " > final/eclipse/.eclipseproduct
-
       # Install udev rules
       mkdir -p final/lib/udev/rules.d
       mv ./lib/udev/rules.d/56-pemicro.rules ./lib/udev/rules.d/85-mcuxpresso.rules final/lib/udev/rules.d/
@@ -54,7 +57,7 @@
       mv ./linkserver/usr/local/MCU-LINK_installer_3.148 ./final/usr/local
 
       # Install LinkServer udev rules
-      # mv ./linkserver/lib/udev/rules.d/{85-linkserver_24.9.75.rules,85-mcu-link_3.148.rules,99-lpcscrypt.rules} final/lib/udev/rules.d
+      mv ./linkserver/lib/udev/rules.d/{85-linkserver_24.9.75.rules,85-mcu-link_3.148.rules,99-lpcscrypt.rules} final/lib/udev/rules.d
 
       cd ./final
       tar -czf $out ./
@@ -70,6 +73,7 @@
   mcuxpressoFhsEnv = pkgs.buildFHSEnv {
     name = "mcuxpresso-env";
     targetPkgs = pkgs: [
+      pkgs.dfu-util
       pkgs.stdenv.cc.cc.lib
       pkgs.gcc
       pkgs.libgcc
@@ -92,13 +96,23 @@
       pkgs.libusb-compat-0_1
       pkgs.xorg.libxcb
       pkgs.python3
+      pkgs.usbutils
+      pkgs.libuuid
+      pkgs.libudev-zero
     ];
+    profile = ''
+      export LD_LIBRARY_PATH=${lib.makeLibraryPath [pkgs.ncurses5 pkgs.ncurses]}:$LD_LIBRARY_PATH
+    '';
 
     extraBuildCommands = ''
-      mkdir -p $out/usr/local
-      cp -r ${mcuxpressoide}/usr/local $out/usr
+      # Ensure necessary directories exist
+      mkdir -p $out/usr/local/LinkServer_24.9.75/lpcscrypt $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
+
+      cp -r ${mcuxpressoide}/usr/local/LinkServer_24.9.75/* $out/usr/local/LinkServer_24.9.75
+      cp -r ${mcuxpressoide}/usr/local/lpcscrypt-2.1.3_83/* $out/usr/local/LinkServer_24.9.75/lpcscrypt
+      cp -r ${mcuxpressoide}/usr/local/MCU-LINK_installer_3.148/* $out/usr/local/LinkServer_24.9.75/MCU-LINK_installer
     '';
-    runScript = "${mcuxpressoide}/bin/eclipse";
+    # runScript = "${mcuxpressoide}/bin/eclipse";
   };
 in
   pkgs.stdenv.mkDerivation {
@@ -117,21 +131,21 @@ in
     ];
 
     installPhase = ''
-      runHook preInstall
+       runHook preInstall
 
-      # Create necessary directories
-      mkdir -p $out/lib/udev/rules.d
-      mkdir -p $out/bin $out/eclipse $out/mcu_data
+       # Create necessary directories
+       mkdir -p $out/lib/udev/rules.d
+       mkdir -p $out/bin $out/eclipse $out/mcu_data
 
-      # Copy udev rules
-      cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
+       # Copy udev rules
+       cp ${mcuxpressoide}/lib/udev/rules.d/85-mcuxpresso.rules ${mcuxpressoide}/lib/udev/rules.d/56-pemicro.rules $out/lib/udev/rules.d/
 
-      # Copy full installation
-      cp -r ${mcuxpressoide}/eclipse $out/eclipse
-      cp -r ${mcuxpressoide}/mcu_data $out/mcu_data
+       # Copy full installation
+       cp -r ${mcuxpressoide}/eclipse $out/eclipse
+       cp -r ${mcuxpressoide}/mcu_data $out/mcu_data
 
-      # Create symlink for the environment
-      ln -s ${mcuxpressoFhsEnv}/bin/mcuxpresso-env $out/bin/mcuxpresso
+       # Create symlink for the environment
+       ln -s ${mcuxpressoFhsEnv}/bin/mcuxpresso-env $out/bin/mcuxpresso
 
       runHook postInstall
     '';
