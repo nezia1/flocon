@@ -23,10 +23,6 @@ in {
         fish_vi_key_bindings # Enable Vi mode
 
       '';
-    shellAbbrs = {
-      cd = "z";
-      ngc = "sudo nix-collect-garbage -d";
-    };
     plugins = [
       {
         name = "fzf";
