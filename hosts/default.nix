@@ -7,10 +7,11 @@
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs lib';};
-      modules = [../shared/nixosModules] ++ (args.modules or []);
+      modules = args.modules or [];
     };
 
   base = [
+    ../shared/nixosModules
     "${self}/config/nixos"
     "${self}/config/nixos/core/home-manager.nix"
 
@@ -18,6 +19,7 @@
 
     "${self}/config/nixos/services/location.nix"
 
+    "${self}/config/nixos/hardware/mcuxpresso.nix"
     ({
       config,
       specialArgs,
@@ -41,6 +43,7 @@
     "${self}/config/nixos/services/greetd.nix"
 
     "${self}/config/nixos/programs/hyprland.nix"
+    "${self}/config/nixos/programs/xdg.nix"
     "${self}/config/nixos/services/gnome.nix"
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
@@ -59,6 +62,7 @@
 
   gaming = [
     ../config/nixos/programs/games.nix
+    ../config/nixos/services/flatpak.nix
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
         "${self}/config/home-manager/programs/games"
@@ -74,8 +78,6 @@
     "${self}/config/nixos/services/kanata.nix"
     "${self}/config/nixos/services/power.nix"
     "${self}/config/nixos/services/brightness.nix"
-
-    "${self}/config/nixos/hardware/mcuxpresso.nix"
   ];
 in {
   vamos = mkSystem {
