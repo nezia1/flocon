@@ -12,7 +12,7 @@
     };
     "nezia.dev" = {
       extraConfig = ''
-        root * ${inputs.portfolio.packages.${pkgs.system}.default}
+        root * ${inputs."nezia.dev".packages.${pkgs.system}.default}
         file_server
         encode gzip
       '';

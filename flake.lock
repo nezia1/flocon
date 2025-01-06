@@ -1299,22 +1299,6 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1731531548,
-        "narHash": "sha256-sz8/v17enkYmfpgeeuyzniGJU0QQBfmAjlemAUYhfy8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "24f0d4acd634792badd6470134c387a3b039dace",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_9": {
-      "locked": {
         "lastModified": 1733097829,
         "narHash": "sha256-9hbb1rqGelllb4kVUCZ307G2k3/UhmA8PPGBoyuWaSw=",
         "owner": "nixos",
@@ -1324,6 +1308,22 @@
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_9": {
+      "locked": {
+        "lastModified": 1735915915,
+        "narHash": "sha256-Q4HuFAvoKAIiTRZTUxJ0ZXeTC7lLfC9/dggGHNXNlCw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a27871180d30ebee8aa6b11bf7fef8a52f024733",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -3401,25 +3401,6 @@
         "type": "github"
       }
     },
-    "portfolio": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_8",
-        "sam-zola": "sam-zola"
-      },
-      "locked": {
-        "lastModified": 1731578190,
-        "narHash": "sha256-9T5+xa1Qz4iJn31oq3q4T5JLr4bx3KHolwtPx1EBvlk=",
-        "owner": "nezia1",
-        "repo": "portfolio",
-        "rev": "34130f9c530d0f009865a443bef40531ef9b3dbe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nezia1",
-        "repo": "portfolio",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -3471,6 +3452,27 @@
         "type": "github"
       }
     },
+    "resume": {
+      "inputs": {
+        "nixpkgs": [
+          "website",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736107608,
+        "narHash": "sha256-3Fjl0Kq0vPNmVW6ah6iwoXEPn2m14EInLqAoYT/F5Js=",
+        "owner": "nezia1",
+        "repo": "resume",
+        "rev": "bdb17114ce001a1e18c39a0e931c6e773fd983cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nezia1",
+        "repo": "resume",
+        "type": "github"
+      }
+    },
     "rnix-lsp": {
       "inputs": {
         "naersk": "naersk",
@@ -3512,8 +3514,8 @@
         "nixpkgs": "nixpkgs_5",
         "nvf": "nvf",
         "plasma-manager": "plasma-manager",
-        "portfolio": "portfolio",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "website": "website"
       }
     },
     "rust-overlay": {
@@ -3686,7 +3688,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1735135567,
@@ -3732,6 +3734,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "website": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_9",
+        "resume": "resume",
+        "sam-zola": "sam-zola"
+      },
+      "locked": {
+        "lastModified": 1736118510,
+        "narHash": "sha256-huTaWMYOEiZv9Dx5BKSkp6hEziVil0cGKYLwLGrIB3I=",
+        "owner": "nezia1",
+        "repo": "nezia.dev",
+        "rev": "84b169145fb39a35dff675afdfb8d1779bcc1dd5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nezia1",
+        "repo": "nezia.dev",
         "type": "github"
       }
     },

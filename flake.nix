@@ -97,7 +97,7 @@
     niri.url = "github:sodiboo/niri-flake";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
     nvf.url = "github:notashelf/nvf";
-    portfolio.url = "github:nezia1/portfolio";
+    website.url = "github:nezia1/nezia.dev";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";

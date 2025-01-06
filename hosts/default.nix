@@ -107,7 +107,7 @@ in {
 
       "${self}/config/nixos/services/forgejo.nix"
       "${self}/config/nixos/services/searx.nix"
-      "${self}/config/nixos/services/portfolio.nix"
+      "${self}/config/nixos/services/website.nix"
     ];
   };
 }
