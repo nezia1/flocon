@@ -199,6 +199,7 @@
         python.enable = true;
         ts.enable = true;
         css.enable = true;
+        typst.enable = true;
       };
 
       treesitter = {
