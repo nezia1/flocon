@@ -15,7 +15,7 @@ in {
       ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
       "$mod, q, killactive"
       "$mod SHIFT, q, exec, loginctl terminate-user ''"
-      "$mod, Space, exec, ${toggle "fuzzel"}"
+      "$mod, Space, exec, walker" # not using uwsm as it already runs as a service
       "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
       "$mod, h, movefocus, l"
