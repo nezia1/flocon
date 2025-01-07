@@ -63,6 +63,7 @@
   gaming = [
     ../config/nixos/programs/games.nix
     ../config/nixos/services/flatpak.nix
+    ../config/nixos/hardware/uni-sync.nix
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
         "${self}/config/home-manager/programs/games"
