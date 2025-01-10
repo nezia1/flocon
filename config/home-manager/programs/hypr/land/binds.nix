@@ -1,13 +1,16 @@
-_: let
+{lib, ...}: let
   # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
-  toggle = program: let
+  toggle = program: uwsm: let
     prog = builtins.substring 0 14 program;
-  in "pkill ${prog} || uwsm app -- ${program}";
+  in "pkill ${prog} || ${lib.optionalString uwsm "uwsm app --"} ${program}";
   runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
   run = program: "uwsm app -- ${program}";
 in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
+    bindr = [
+      "$mod, SUPER_L, exec, ${toggle "walker" false}" # not using uwsm as it already runs as a service
+    ];
     bind = [
       "$mod, Return, exec, ${run "foot"}"
       "$mod, n, exec, ${run "neovide"}"
@@ -15,7 +18,6 @@ in {
       ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
       "$mod, q, killactive"
       "$mod SHIFT, q, exec, loginctl terminate-user ''"
-      "$mod, Space, exec, walker" # not using uwsm as it already runs as a service
       "$mod, period, exec, walker -m emojis" # not using uwsm as it already runs as a service
       "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
@@ -58,7 +60,7 @@ in {
       "$mod, e, togglespecialworkspace, file_manager_tui"
       "$mod SHIFT, e, togglespecialworkspace, file_manager_gui"
 
-      ", XF86PowerOff, exec, ${toggle "wlogout"}"
+      ", XF86PowerOff, exec, ${toggle "wlogout" true}"
     ];
 
     bindel = [
