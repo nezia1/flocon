@@ -7,12 +7,12 @@
 in {
   config.home-manager.sharedModules = lib.mkIf cfg.enable [
     {
-      programs.walker = {
+      programs.walker = with cfg.scheme.palette; {
         theme = {
           style = ''
-            @define-color foreground ${cfg.scheme.palette.base05};
-            @define-color background ${cfg.scheme.palette.base00};
-            @define-color accent ${cfg.scheme.palette.base0E};
+            @define-color foreground ${base05};
+            @define-color background ${base00};
+            @define-color accent ${base0E};
 
             #window,
             #box,
