@@ -1,4 +1,8 @@
-# ❄️ flocon
+<h1 id="header" align="center">
+  <img src="assets/nix-snowflake-colors.svg" width="128px" height="128px" />
+  <br>
+  flocon
+</h1>
 
 My NixOS configurations, using flakes.
 
