@@ -48,7 +48,6 @@
     ({config, ...}: {
       home-manager.users.${config.local.systemVars.username}.imports = [
         "${self}/config/home-manager/programs/waybar"
-        "${self}/config/home-manager/programs/fuzzel.nix"
         "${self}/config/home-manager/programs/walker.nix"
         "${self}/config/home-manager/programs/hypr"
         "${self}/config/home-manager/programs/wlogout.nix"
