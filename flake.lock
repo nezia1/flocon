@@ -3747,22 +3747,6 @@
         "type": "github"
       }
     },
-    "sam-zola": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1612976548,
-        "narHash": "sha256-ut1NiSM0GooRrHFikvuTCLU2XhpplhFQejFSbTa9ZdU=",
-        "owner": "janbaudisch",
-        "repo": "zola-sam",
-        "rev": "890b51b4105fd2e63f5e417e5cb63b8e25d5721f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "janbaudisch",
-        "repo": "zola-sam",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -3883,6 +3867,22 @@
         "type": "github"
       }
     },
+    "tabi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735987152,
+        "narHash": "sha256-fVfwNGlSJkfg93YIkRion1HiYANcDBywr4g8x35e1+k=",
+        "owner": "welpo",
+        "repo": "tabi",
+        "rev": "de6fa58fe3b276c12f16f9ddc1cf9f93269161f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "welpo",
+        "repo": "tabi",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": "nixpkgs_9"
@@ -3983,14 +3983,14 @@
       "inputs": {
         "nixpkgs": "nixpkgs_11",
         "resume": "resume",
-        "sam-zola": "sam-zola"
+        "tabi": "tabi"
       },
       "locked": {
-        "lastModified": 1736118510,
-        "narHash": "sha256-huTaWMYOEiZv9Dx5BKSkp6hEziVil0cGKYLwLGrIB3I=",
+        "lastModified": 1736513892,
+        "narHash": "sha256-5aWUxeMV9pWBfcp+8hDVRzmLN8jMX5grBZ5FDtvuMxc=",
         "owner": "nezia1",
         "repo": "nezia.dev",
-        "rev": "84b169145fb39a35dff675afdfb8d1779bcc1dd5",
+        "rev": "de6f376fcc7cf763db853024b7303c3b66491155",
         "type": "github"
       },
       "original": {
