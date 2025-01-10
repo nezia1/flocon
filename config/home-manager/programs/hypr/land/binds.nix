@@ -16,6 +16,7 @@ in {
       "$mod, q, killactive"
       "$mod SHIFT, q, exec, loginctl terminate-user ''"
       "$mod, Space, exec, walker" # not using uwsm as it already runs as a service
+      "$mod, period, exec, walker -m emojis" # not using uwsm as it already runs as a service
       "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
       "$mod, h, movefocus, l"
