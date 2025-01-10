@@ -1046,18 +1046,18 @@
         "type": "github"
       }
     },
-    "nezia.dev": {
+    "nezia_dev": {
       "inputs": {
         "nixpkgs": "nixpkgs_4",
         "resume": "resume",
         "tabi": "tabi"
       },
       "locked": {
-        "lastModified": 1736513892,
-        "narHash": "sha256-5aWUxeMV9pWBfcp+8hDVRzmLN8jMX5grBZ5FDtvuMxc=",
+        "lastModified": 1736528498,
+        "narHash": "sha256-6u7BdZNYuHQWUK2yttWFkfTctqBaH4x8fB6r1B2V7rQ=",
         "owner": "nezia1",
         "repo": "nezia.dev",
-        "rev": "de6f376fcc7cf763db853024b7303c3b66491155",
+        "rev": "69a0166fac125ea4898e3315b7b7eb20d2749639",
         "type": "github"
       },
       "original": {
@@ -3655,7 +3655,7 @@
     "resume": {
       "inputs": {
         "nixpkgs": [
-          "nezia.dev",
+          "nezia_dev",
           "nixpkgs"
         ]
       },
@@ -3707,7 +3707,7 @@
         "hyprpaper": "hyprpaper",
         "hyprwm-contrib": "hyprwm-contrib",
         "lanzaboote": "lanzaboote",
-        "nezia.dev": "nezia.dev",
+        "nezia_dev": "nezia_dev",
         "niri": "niri",
         "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",

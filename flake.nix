@@ -105,7 +105,7 @@
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
     walker.url = "github:abenz1267/walker";
-    "nezia.dev".url = "github:nezia1/nezia.dev";
+    "nezia_dev".url = "github:nezia1/nezia.dev";
   };
   nixConfig = {
     extra-substituters = [
