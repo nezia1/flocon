@@ -9,7 +9,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bindr = [
-      "$mod, SUPER_L, exec, ${toggle "walker" false}" # not using uwsm as it already runs as a service
+      "$mod, SUPER_L, exec, walker"
     ];
     bind = [
       "$mod, Return, exec, ${run "foot"}"
