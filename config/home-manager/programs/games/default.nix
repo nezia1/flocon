@@ -5,5 +5,6 @@
     pkgs.ankama-launcher
     pkgs.lutris
     pkgs.qbittorrent
+    pkgs.protonplus
   ];
 }
