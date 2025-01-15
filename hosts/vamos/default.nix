@@ -1,5 +1,8 @@
 _: {
-  imports = [./hardware-configuration.nix ./config/theme.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./config/theme.nix
+  ];
 
   local = {
     systemVars = {
@@ -10,6 +13,15 @@ _: {
     homeVars = {
       fullName = "Anthony Rodriguez";
       email = "anthony@nezia.dev";
+    };
+
+    profiles = {
+      desktop.enable = true;
+      laptop.enable = true;
+    };
+
+    modules = {
+      hyprland.enable = true;
     };
   };
 
