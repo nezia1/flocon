@@ -159,6 +159,9 @@
         utility = {
           vim-wakatime.enable = true;
           surround.enable = true;
+          motion.leap = {
+            enable = true;
+          };
         };
 
         lsp = {
