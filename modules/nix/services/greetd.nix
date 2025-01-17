@@ -1,14 +1,16 @@
 {
-  config,
-  inputs,
   lib,
+  inputs,
   pkgs,
+  config,
   ...
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
 let
   inherit (lib) getExe getExe';
   inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
+
+  styleCfg = config.local.style;
 
   hyprctl = getExe' hyprland "hyprctl";
   Hyprland = getExe' hyprland "Hyprland";
@@ -46,9 +48,25 @@ in {
       };
     };
 
-    programs.regreet = {
-      enable = true;
-    };
+    programs.regreet = lib.mkMerge [
+      {
+        enable = true;
+      }
+
+      (lib.mkIf styleCfg.enable {
+        theme = {
+          inherit (styleCfg.gtk.theme) name package;
+        };
+
+        cursorTheme = {
+          inherit (styleCfg.cursorTheme) name package;
+        };
+
+        iconTheme = {
+          inherit (styleCfg.gtk.iconTheme) name package;
+        };
+      })
+    ];
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
