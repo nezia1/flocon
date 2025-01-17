@@ -43,6 +43,11 @@
         env = [
           "GDK_SCALE,1"
         ];
+
+        cursor = {
+          no_hardware_cursors = 1;
+        };
+
         monitor = [
           "eDP-1, preferred, auto, 1.33"
         ];
