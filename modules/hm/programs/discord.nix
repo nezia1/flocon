@@ -1,13 +1,15 @@
 {
   lib,
-  config,
+  pkgs,
+  osConfig,
   ...
 }: let
-  cfg = config.local.style;
+  styleCfg = osConfig.local.style;
 in {
-  config.home-manager.sharedModules = lib.mkIf cfg.enable [
-    {
-      xdg.configFile."vesktop/themes/midnight-base16.css".text = with cfg.scheme.palette; ''
+  config = lib.mkIf osConfig.local.profiles.desktop.enable {
+    home.packages = [pkgs.vesktop];
+    xdg.configFile."vesktop/themes/midnight-base16.css".text = with styleCfg.scheme.palette;
+      lib.mkIf styleCfg.enable ''
         /**
          * @name Midnight-base16
          * @description A dark, rounded discord theme. Updated to use base16 colors.
@@ -30,7 +32,7 @@ in {
          --font: 'gg sans';
 
          /* top left corner text */
-         --corner-text: '${cfg.scheme.name}';
+         --corner-text: '${styleCfg.scheme.name}';
 
          /* color of status indicators and window controls */
             --online-indicator: ${base0B}; /* change to #23a55a for default green */
@@ -108,6 +110,5 @@ in {
             fill: var(--text-0) !important;
         }
       '';
-    }
-  ];
+  };
 }
