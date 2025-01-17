@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (config.local.systemVars) username;
+  lib' = import ../../../shared/lib inputs.nixpkgs.lib;
 in {
   imports = [
     inputs.home-manager.nixosModules.default
@@ -16,7 +17,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
 
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs lib';};
       sharedModules = [../../hm];
     };
 
