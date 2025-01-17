@@ -1,20 +1,19 @@
 {
   lib,
-  config,
+  osConfig,
   ...
 }: let
-  cfg = config.local.style;
-  inherit (cfg) scheme;
+  styleCfg = osConfig.local.style;
 in {
-  home-manager.sharedModules = lib.mkIf cfg.enable [
-    {
+  config = with styleCfg;
+    lib.mkIf styleCfg.enable {
       gtk = rec {
         enable = true;
         iconTheme = {
-          inherit (cfg.gtk.iconTheme) name package;
+          inherit (gtk.iconTheme) name package;
         };
         theme = {
-          inherit (cfg.gtk.theme) name package;
+          inherit (gtk.theme) name package;
         };
 
         gtk3.extraConfig = {
@@ -24,6 +23,5 @@ in {
       };
 
       dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-${scheme.variant}";
-    }
-  ];
+    };
 }
