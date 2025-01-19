@@ -6,6 +6,7 @@
     ./media
     ./terminal
 
+    ./discord.nix
     ./games.nix
     ./gnome.nix
     ./misc.nix

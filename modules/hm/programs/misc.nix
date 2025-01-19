@@ -19,7 +19,6 @@
       playerctl
       proton-pass
       simple-scan
-      vesktop
       wl-clipboard
     ];
 
