@@ -1,14 +1,16 @@
 {
   lib,
-  config,
+  osConfig,
+  pkgs,
   ...
 }: let
-  cfg = config.local.style;
+  styleCfg = osConfig.local.style;
 in {
-  config.home-manager.sharedModules = lib.mkIf cfg.enable [
-    {
-      # based on https://github.com/rose-pine/tidal. adapted to work with base16 colors.
-      xdg.configFile."tidal-hifi/themes/base16.css".text = with cfg.scheme.palette; ''
+  config = lib.mkIf osConfig.local.profiles.desktop.enable {
+    home.packages = [pkgs.tidal-hifi];
+    # based on https://github.com/rose-pine/tidal. adapted to work with base16 colors.
+    xdg.configFile."tidal-hifi/themes/base16.css".text = with styleCfg.scheme.palette;
+      lib.mkIf styleCfg.enable ''
         :root {
           --glass-white-1: ${base05};
           --glass-white-1-hover: ${base06};
@@ -190,6 +192,5 @@ in {
             stroke: var(--wave-color-solid-rainbow-purple-fill) !important;
         }
       '';
-    }
-  ];
+  };
 }

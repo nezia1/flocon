@@ -4,7 +4,10 @@
   osConfig,
   ...
 }: {
-  imports = [./zathura.nix];
+  imports = [
+    ./tidal-hifi.nix
+    ./zathura.nix
+  ];
 
   config = lib.mkIf osConfig.local.profiles.desktop.enable {
     programs.mpv.enable = true;
@@ -13,7 +16,6 @@
       pkgs.gthumb
       pkgs.spotify
       pkgs.stremio
-      pkgs.tidal-hifi
       pkgs.celluloid
     ];
   };
