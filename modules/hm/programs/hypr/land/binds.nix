@@ -14,7 +14,7 @@ in {
     wayland.windowManager.hyprland.settings = {
       "$mod" = "SUPER";
       bindr = [
-        "$mod, SUPER_L, exec, walker"
+        "$mod, SUPER_L, exec, ${toggle "anyrun" true}"
       ];
       bind = [
         "$mod, Return, exec, ${run "foot"}"
@@ -23,7 +23,7 @@ in {
         ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
         "$mod, q, killactive"
         "$mod SHIFT, q, exec, loginctl terminate-user ''"
-        "$mod, period, exec, ${toggle "walker -m emojis" false}" # not using uwsm as it already runs as a service
+        "$mod, period, exec, ${toggle "anyrun-symbols" true}"
         "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
 
         "$mod, h, movefocus, l"
