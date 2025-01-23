@@ -67,7 +67,7 @@ in {
         "applications.ron".text = ''
           Config(
             // Also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
-            desktop_actions: true,
+            desktop_actions: false,
             max_entries: 5,
             // The terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
             // to determine what terminal to use.
