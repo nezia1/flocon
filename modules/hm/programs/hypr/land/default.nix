@@ -72,7 +72,7 @@ in {
             "fullscreen, initialclass:^(steam_app_)(.*)$"
 
             # inhibit idle on every fullscreen app except games
-            "idleinhibit always, fullscreen:1,!initialclass:^(steam_app_)(.*)$"
+            "idleinhibit fullscreen,class:.*"
           ];
 
           render = {
