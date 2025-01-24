@@ -19,7 +19,6 @@ in {
         gtk3.extraConfig = {
           gtk-application-prefer-dark-theme = scheme.variant == "dark";
         };
-        gtk4.extraConfig = gtk3.extraConfig;
       };
 
       dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-${scheme.variant}";
