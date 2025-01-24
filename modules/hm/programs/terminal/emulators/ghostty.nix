@@ -45,11 +45,33 @@ in {
     programs.ghostty = lib.mkMerge [
       {
         enable = true;
+
         settings = {
           font-family = ["monospace" "Symbols Nerd Font"];
           font-size = 14;
           gtk-single-instance = true;
+          gtk-adwaita = false;
           confirm-close-surface = false;
+
+          keybind = [
+            "ctrl+h=goto_split:left"
+            "ctrl+j=goto_split:bottom"
+            "ctrl+k=goto_split:top"
+            "ctrl+l=goto_split:right"
+            "super+shift+t=new_tab"
+            "super+shift+h=previous_tab"
+            "super+shift+l=next_tab"
+            "super+shift+comma=move_tab:-1"
+            "super+shift+period=move_tab:1"
+            "super+shift+c=copy_to_clipboard"
+            "super+shift+v=paste_from_clipboard"
+            "super+shift+enter=new_split:auto"
+            "super+shift+i=inspector:toggle"
+            "super+shift+m=toggle_split_zoom"
+            "super+shift+r=reload_config"
+            "super+shift+s=write_screen_file:open"
+            "super+shift+w=close_surface"
+          ];
         };
       }
       (optionalAttrs styleCfg.enable {
