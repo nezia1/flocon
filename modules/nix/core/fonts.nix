@@ -8,13 +8,13 @@
     fonts = {
       enableDefaultPackages = false;
       packages = [
+        pkgs._0xproto
+        pkgs.noto-fonts-color-emoji
+        pkgs.nerd-fonts.symbols-only
+
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-extra
-        pkgs.intel-one-mono
-        pkgs.noto-fonts-color-emoji
-        pkgs.nerd-fonts._0xproto
-        pkgs.nerd-fonts.symbols-only
       ];
 
       fontconfig = {
@@ -22,7 +22,7 @@
         defaultFonts = {
           serif = ["Noto Serif"];
           sansSerif = ["Inter Medium"];
-          monospace = ["0xProto Nerd Font"];
+          monospace = ["0xProto"];
           emoji = ["Noto Color Emoji"];
         };
       };
