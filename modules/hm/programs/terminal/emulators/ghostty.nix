@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   osConfig,
   ...
 }: let
@@ -44,11 +45,35 @@ in {
     programs.ghostty = lib.mkMerge [
       {
         enable = true;
+        settings = {
+          font-family = ["monospace" "Symbols Nerd Font"];
+          font-size = 14;
+          gtk-single-instance = true;
+          confirm-close-surface = false;
+        };
       }
       (optionalAttrs styleCfg.enable {
         settings.theme = "base16";
         themes.base16 = mkIf styleCfg.enable (mkGhosttyTheme styleCfg.scheme.palette);
       })
     ];
+
+    systemd.user.services.ghosttyd = {
+      Unit = {
+        Description = "ghosttyd™";
+        PartOf = "graphical-session.target";
+        After = "graphical-session.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.ghostty}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
+        Slice = "background-graphical.slice";
+        Restart = "on-failure";
+      };
+
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
   };
 }
