@@ -3,7 +3,7 @@
   osConfig,
   ...
 }: {
-  config = lib.mkIf osConfig.local.profiles.laptop.enable {
+  config = lib.mkIf osConfig.local.profiles.desktop.enable {
     services.gammastep = {
       enable = true;
       tray = true;
