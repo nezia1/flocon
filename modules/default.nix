@@ -1,6 +1,8 @@
 {
   imports = [
+    ./core
     ./options
-    ./nix
+    ./programs
+    ./services
   ];
 }

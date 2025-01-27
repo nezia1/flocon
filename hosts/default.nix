@@ -10,11 +10,15 @@ in {
     modules = [
       ./vamos
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
+      inputs.hjem.nixosModules.default
     ];
   };
 
   solaire = mkSystem {
-    modules = [./solaire];
+    modules = [
+      ./solaire
+      inputs.hjem.nixosModules.default
+    ];
   };
 
   anastacia = mkSystem {
