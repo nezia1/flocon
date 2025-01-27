@@ -1,9 +1,11 @@
 {
   lib,
+  lib',
   pkgs,
   osConfig,
   ...
 }: let
+  inherit (lib') rgba;
   styleCfg = osConfig.local.style;
 in {
   config = lib.mkIf osConfig.local.profiles.desktop.enable {
@@ -35,7 +37,7 @@ in {
          --corner-text: '${styleCfg.scheme.name}';
 
          /* color of status indicators and window controls */
-            --online-indicator: ${base0B}; /* change to #23a55a for default green */
+         --online-indicator: ${base0B};    /* change to #23a55a for default green */
          --dnd-indicator: ${base08};       /* change to #f13f43 for default red */
          --idle-indicator: ${base0A};      /* change to #f0b232 for default yellow */
          --streaming-indicator: ${base0E}; /* change to #593695 for default purple */
@@ -46,8 +48,8 @@ in {
          --accent-3: ${base0E};        /* accent buttons */
          --accent-4: ${base03};        /* accent buttons when hovered */
          --accent-5: ${base07};        /* accent buttons when clicked */
-         --mention:  ${base00}1a;      /* mentions & mention messages */
-         --mention-hover: ${base00}0d; /* mentions & mention messages when hovered */
+         --mention:  ${rgba base0E 0.1};      /* mentions & mention messages */
+         --mention-hover: ${rgba base0E 0.05}; /* mentions & mention messages when hovered */
 
          /* text colors */
          --text-0: var(--bg-4); /* text on colored elements */
@@ -58,13 +60,13 @@ in {
          --text-5: ${base04};   /* muted channels/chats and timestamps */
 
          /* background and dark colors */
-         --bg-1: ${base0E};          /* dark buttons when clicked */
-         --bg-2: ${base02};          /* dark buttons */
-         --bg-3: ${base01};          /* spacing, secondary elements */
-         --bg-4: ${base00};          /* main background color */
-         --hover: ${base03}1a;       /* channels and buttons when hovered */
-         --active: ${base03}33;      /* channels and buttons when clicked or selected */
-         --message-hover: #0000001a; /* messages when hovered */
+         --bg-1: ${base03};                   /* dark buttons when clicked */
+         --bg-2: ${base02};                   /* dark buttons */
+         --bg-3: ${base01};                   /* spacing, secondary elements */
+         --bg-4: ${base00};                   /* main background color */
+         --hover: ${rgba base03 0.1};         /* channels and buttons when hovered */
+         --active: ${rgba base03 0.2};        /* channels and buttons when clicked or selected */
+         --message-hover: ${rgba base00 0.1}; /* messages when hovered */
 
          /* amount of spacing and padding */
          --spacing: 12px;
