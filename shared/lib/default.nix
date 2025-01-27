@@ -67,10 +67,11 @@ with lib; let
       else (pow' base (exponent - 1) (value * base));
   in
     base: exponent: pow' base exponent base;
-  generateGtkColors = lib: palette: (lib.concatLines
-    (lib.mapAttrsToList
+  generateGtkColors = palette: (concatLines
+    (mapAttrsToList
       (name: color: "@define-color ${name} ${color};")
       palette));
 in {
   inherit blurImage generateGtkColors rgba;
+  generators = import ./generators lib;
 }
