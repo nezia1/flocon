@@ -7,6 +7,8 @@
   inherit (lib) mapAttrs mkIf optionalAttrs removePrefix;
   styleCfg = osConfig.local.style;
 
+  prefix = "ctrl+a";
+
   mkGhosttyTheme = palette: let
     colors = mapAttrs (_: value: removePrefix "#" value) palette;
   in {
@@ -54,26 +56,32 @@ in {
           confirm-close-surface = false;
 
           keybind = [
-            "ctrl+h=goto_split:left"
-            "ctrl+j=goto_split:bottom"
-            "ctrl+k=goto_split:top"
-            "ctrl+l=goto_split:right"
-            "super+shift+t=new_tab"
-            "super+shift+h=previous_tab"
-            "super+shift+l=next_tab"
-            "super+shift+comma=move_tab:-1"
-            "super+shift+period=move_tab:1"
-            "super+shift+c=copy_to_clipboard"
-            "super+shift+v=paste_from_clipboard"
-            "super+shift+enter=new_split:auto"
-            "super+shift+i=inspector:toggle"
-            "super+shift+m=toggle_split_zoom"
-            "super+shift+r=reload_config"
-            "super+shift+s=write_screen_file:open"
-            "super+shift+w=close_surface"
+            "${prefix}>c=new_tab"
+            "${prefix}>p=move_tab:-1"
+            "${prefix}>n=move_tab:1"
+
+            "${prefix}>\\=new_split:right"
+            "${prefix}>-=new_split:down"
+            "${prefix}>h=goto_split:left"
+            "${prefix}>j=goto_split:bottom"
+            "${prefix}>k=goto_split:top"
+            "${prefix}>l=goto_split:right"
+            "${prefix}>shift+h=resize_split:left,10"
+            "${prefix}>shift+j=resize_split:down,10"
+            "${prefix}>shift+k=resize_split:up,10"
+            "${prefix}>shift+l=resize_split:right,10"
+            "${prefix}>z=toggle_split_zoom"
           ];
+
+          adw-toolbar-style = "flat";
+          gtk-tabs-location = "bottom";
+          gtk-wide-tabs = false;
+          window-decoration = false;
+
+          linux-cgroup = "always";
         };
       }
+
       (optionalAttrs styleCfg.enable {
         settings.theme = "base16";
         themes.base16 = mkIf styleCfg.enable (mkGhosttyTheme styleCfg.scheme.palette);
