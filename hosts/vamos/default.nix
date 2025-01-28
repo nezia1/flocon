@@ -25,6 +25,4 @@ _: {
       hyprland.enable = true;
     };
   };
-
-  environment.variables.FLAKE = "/home/nezia/.dotfiles";
 }
