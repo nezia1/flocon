@@ -1,3 +1,6 @@
 {
-  imports = [./hyprland.nix];
+  imports = [
+    ./hyprland.nix
+    ./nvidia.nix
+  ];
 }
