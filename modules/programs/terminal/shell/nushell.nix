@@ -91,5 +91,11 @@ in {
         '';
       };
     };
+
+    # needed for ghostty, as it runs as a systemd service (for faster startups)
+    systemd.user.services.ghosttyd.path = [
+      pkgs.carapace
+      pkgs.zoxide
+    ];
   };
 }
