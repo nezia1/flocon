@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (lib) mkIf;
+  inherit (config.local.systemVars) username;
+in {
   nix = {
     package = pkgs.lix;
     settings = {
@@ -31,5 +39,11 @@
       ];
       segger-jlink.acceptLicense = true;
     };
+  };
+
+  hjem.users.${username} = {
+    files.".config/environment.d/${config.local.homeVars.userEnvFile}.conf".text = ''
+      FLAKE="${config.hjem.users.${username}.directory}/.dotfiles"
+    '';
   };
 }
