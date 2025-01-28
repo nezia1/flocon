@@ -15,7 +15,7 @@ in {
     hjem.users.${username} = {
       files = {
         ".config/environment.d/${userEnvFile}.conf".text = ''
-          EDITOR="nvim";
+          EDITOR="nvim"
         '';
       };
     };

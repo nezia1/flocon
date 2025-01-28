@@ -22,8 +22,8 @@ in {
         };
 
         ".config/environment.d/${userEnvFile}.conf".text = ''
-          MANPAGER = "sh -c 'col -bx | bat --language man' ";
-          MANROFFOPT = "-c";
+          MANPAGER = "sh -c 'col -bx | bat --language man' "
+          MANROFFOPT = "-c"
         '';
       };
     };
