@@ -11,7 +11,7 @@ in {
     "$mod, SUPER_L, exec, ${toggle "anyrun" false}"
   ];
   bind = [
-    "$mod, Return, exec, ${run "ghostty"}"
+    "$mod, Return, exec, ${run "foot"}"
     "$mod, n, exec, ${run "neovide"}"
     "$mod, w, exec, ${run "firefox"}"
     ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
