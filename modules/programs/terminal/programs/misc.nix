@@ -15,6 +15,7 @@ in {
         unrar
 
         # utils
+        comma
         fd
         file
         ripgrep
