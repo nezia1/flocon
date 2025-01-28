@@ -102,6 +102,7 @@ in {
       partOf = ["graphical-session.target"];
       after = ["graphical-session.target"];
       wantedBy = ["graphical-session.target"];
+      path = with pkgs; [carapace starship zoxide];
 
       serviceConfig = {
         Type = "simple";
