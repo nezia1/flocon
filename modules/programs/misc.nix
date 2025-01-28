@@ -11,7 +11,6 @@ in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = with pkgs; [
-        cinny-desktop
         entr
         fastfetch
         fractal
