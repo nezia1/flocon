@@ -20,7 +20,6 @@ in {
         imhex
         logisim-evolution
         mission-center
-        nautilus
         obsidian
         playerctl
         proton-pass
