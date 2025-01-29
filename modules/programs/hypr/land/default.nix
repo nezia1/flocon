@@ -85,7 +85,7 @@ in {
               workspace = [
                 "special:terminal, on-created-empty:foot"
                 "special:mixer_gui, on-created-empty:pavucontrol"
-                "special:file_manager_gui, on-created-empty:nautilus"
+                "special:file_manager_gui, on-created-empty:thunar"
                 "special:file_manager_tui, on-created-empty:foot -- yazi"
               ];
 
