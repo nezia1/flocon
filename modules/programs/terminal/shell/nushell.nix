@@ -37,6 +37,11 @@ in {
           }
           $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent"
 
+          # remove indicator chars besides the one provided by starship
+          $env.PROMPT_INDICATOR_VI_INSERT = ""
+          $env.PROMPT_INDICATOR_VI_NORMAL = ""
+          $env.PROMPT_MULTILINE_INDICATOR = "| "
+
           # aliases
           alias ll = ls -l
           alias lg = lazygit
