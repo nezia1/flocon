@@ -7,6 +7,7 @@
     ./terminal
 
     ./discord.nix
+    ./fastfetch.nix
     ./firefox.nix
     ./games.nix
     ./misc.nix

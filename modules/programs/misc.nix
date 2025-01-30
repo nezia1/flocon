@@ -12,7 +12,6 @@ in {
     hjem.users.${username} = {
       packages = with pkgs; [
         entr
-        fastfetch
         fractal
         fzf
         geary
