@@ -83,10 +83,12 @@ in {
                 "Unknown-1,disabled"
               ];
               workspace = [
-                "special:terminal, on-created-empty:foot"
-                "special:mixer_gui, on-created-empty:pavucontrol"
+                "special:terminal, on-created-empty:ghostty"
                 "special:file_manager_gui, on-created-empty:thunar"
-                "special:file_manager_tui, on-created-empty:foot -- yazi"
+                "special:file_manager_tui, on-created-empty:ghostty -e yazi"
+
+                "special:calculator_gui, on-created-empty:qalculate-gtk"
+                "special:mixer_gui, on-created-empty:pavucontrol"
               ];
 
               windowrulev2 = [
