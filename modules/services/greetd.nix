@@ -10,8 +10,6 @@ let
   inherit (lib) getExe getExe';
   inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
 
-  styleCfg = config.local.style;
-
   hyprctl = getExe' hyprland "hyprctl";
   Hyprland = getExe' hyprland "Hyprland";
 
@@ -21,13 +19,14 @@ let
     pkgs.writeText "greetd-hyprland-config"
     ''
       misc {
-          force_default_wallpaper=0
-          focus_on_activate=1
+          disable_hyprland_logo=true
+          force_default_wallpaper=false
+          focus_on_activate=true
       }
 
       animations {
-          enabled=0
-          first_launch_animation=0
+          enabled=false
+          first_launch_animation=false
       }
 
       workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
@@ -47,26 +46,6 @@ in {
         };
       };
     };
-
-    programs.regreet = lib.mkMerge [
-      {
-        enable = true;
-      }
-
-      (lib.mkIf styleCfg.enable {
-        theme = {
-          inherit (styleCfg.gtk.theme) name package;
-        };
-
-        cursorTheme = {
-          inherit (styleCfg.cursorTheme) name package;
-        };
-
-        iconTheme = {
-          inherit (styleCfg.gtk.iconTheme) name package;
-        };
-      })
-    ];
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
