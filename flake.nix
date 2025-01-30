@@ -9,10 +9,15 @@
     treefmt-nix,
     ...
   } @ inputs: let
-    eachSystem = f: nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (system: f nixpkgs.legacyPackages.${system});
-    treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    supportedSystems = nixpkgs.lib.singleton "x86_64-linux";
+
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs
+      supportedSystems
+      (system: function nixpkgs.legacyPackages.${system});
+    treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
-    devShells = eachSystem (pkgs: {
+    devShells = forAllSystems (pkgs: {
       default = pkgs.mkShell {
         packages = [
           pkgs.alejandra
@@ -22,9 +27,9 @@
         ];
       };
     });
-    formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+    formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = import ./hosts {inherit self inputs;};
-    packages = eachSystem (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
+    packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
     deploy.nodes = import ./nodes.nix {inherit inputs;};
     checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
