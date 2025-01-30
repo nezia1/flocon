@@ -32,10 +32,6 @@
     # nix related
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-index-db = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,10 +48,6 @@
     };
     basix.url = "github:notashelf/basix";
     deploy-rs.url = "github:serokell/deploy-rs";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-qtutils = {
@@ -97,7 +89,6 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nvf.url = "github:notashelf/nvf";
