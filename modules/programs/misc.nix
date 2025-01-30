@@ -23,6 +23,7 @@ in {
         obsidian
         playerctl
         proton-pass
+        qalculate-gtk
         simple-scan
         wl-clipboard
       ];
