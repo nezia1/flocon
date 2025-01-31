@@ -23,6 +23,7 @@ in {
           eval "$(starship init zsh)"
           eval "$(zoxide init zsh)"
 
+          source <(fzf --zsh)
           source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
