@@ -13,7 +13,6 @@
   zoxideCache = "${config.hjem.users.${username}.directory}/.cache/zoxide";
 in {
   config = mkIf config.local.profiles.desktop.enable {
-    users.users.${username}.shell = pkgs.nushell;
     hjem.users.${username} = {
       packages = with pkgs; [carapace nushell];
       files = {
@@ -96,11 +95,5 @@ in {
         '';
       };
     };
-
-    # needed for ghostty, as it runs as a systemd service (for faster startups)
-    systemd.user.services.ghosttyd.path = [
-      pkgs.carapace
-      pkgs.zoxide
-    ];
   };
 }
