@@ -32,5 +32,7 @@ in {
         nvidiaSupport = true;
       };
     };
+
+    services.hardware.openrgb.enable = true;
   };
 }
