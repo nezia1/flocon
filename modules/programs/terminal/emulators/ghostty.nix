@@ -96,5 +96,20 @@ in {
       ];
       packages = [pkgs.ghostty];
     };
+
+    systemd.user.services.ghosttyd = {
+      description = "ghosttyd™";
+      partOf = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+      wantedBy = ["graphical-session.target"];
+      path = lib.mkForce [];
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.ghostty}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
+        Slice = "background-graphical.slice";
+        Restart = "on-failure";
+      };
+    };
   };
 }
