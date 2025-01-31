@@ -2,6 +2,7 @@
   lib,
   inputs,
   config,
+  lib',
   pkgs,
   ...
 }: let
@@ -22,7 +23,7 @@ in {
             // to determine what terminal to use.
             terminal: Some(Terminal(
               // The main terminal command
-              command: "foot",
+              command: "ghostty -e",
               // What arguments should be passed to the terminal process to run the command correctly
               // {} is replaced with the command in the desktop entry
               args: "uwsm app -- {}",

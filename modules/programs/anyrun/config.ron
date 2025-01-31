@@ -7,14 +7,8 @@ Config(
   x: Fraction(0.5),
 
   // The vertical position, works the same as `x`
-  y: Absolute(0),
+  y: Fraction(0.2),
 
-  // The width of the runner
-  width: Absolute(800),
-
-  // The minimum height of the runner, the runner will expand to fit all the entries
-  height: Absolute(0),
-  
   // Hide match and plugin info icons  
   hide_icons: false, 
 
@@ -28,11 +22,11 @@ Config(
   hide_plugin_info: false, 
 
   // Close window when a click outside the main box is received
-  close_on_click: false,
+  close_on_click: true,
 
   // Show search results immediately when Anyrun starts
   show_results_immediately: true,
 
   // Limit amount of entries shown in total
-  max_entries: None,
+  max_entries: Some(10),
 )
