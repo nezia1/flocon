@@ -17,6 +17,9 @@ in {
     };
 
     # https://wiki.hyprland.org/Nvidia/#suspendwakeup-issues
-    boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+    boot.kernelParams = [
+      "nvidia_drm.fbdev=1"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    ];
   };
 }
