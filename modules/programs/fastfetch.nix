@@ -6,8 +6,8 @@
 }: let
   inherit (config.local.systemVars) username;
   logo = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/gytis-ivaskevicius/high-quality-nix-content/refs/heads/master/anime/cirnos-logo.png";
-    sha256 = "1nr2rqr465h5icj699ssah9mwwiy3n3lnbvslwffxwzimc96hgj2";
+    url = "https://raw.githubusercontent.com/gytis-ivaskevicius/high-quality-nix-content/refs/heads/master/emoji/nix-owo-transparent.png";
+    sha256 = "137k3i7z4va68v4rvrazy26szc7p2w59h7bc2h8japzjyj6xjs71";
   };
 in {
   config = lib.mkIf config.local.profiles.desktop.enable {
