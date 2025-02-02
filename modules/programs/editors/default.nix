@@ -5,7 +5,6 @@
 }: let
   inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
-  inherit (config.local.homeVars) userEnvFile;
 in {
   imports = [
     ./neovim.nix
@@ -20,10 +19,8 @@ in {
       unset -v EDITOR
     '';
     hjem.users.${username} = {
-      files = {
-        ".config/environment.d/${userEnvFile}.conf".text = ''
-          EDITOR="nvim"
-        '';
+      environment.variables = {
+        EDITOR = "nvim";
       };
     };
   };
