@@ -27,7 +27,7 @@ in {
           source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
           ZSH_HIGHLIGHT_STYLES[default]=none
-          ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=gray,underline
+          ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,underline
           ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
           ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
           ZSH_HIGHLIGHT_STYLES[global-alias]=fg=green,bold
