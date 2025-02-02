@@ -97,7 +97,8 @@ in {
       packages = [pkgs.ghostty];
     };
 
-    systemd.user.services.ghosttyd = {
+    systemd.user.services.ghostty = {
+      name = "ghostty";
       description = "ghosttyd™";
       partOf = ["graphical-session.target"];
       after = ["graphical-session.target"];
