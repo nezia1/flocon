@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  inherit (lib.filesystem) listFilesRecursive;
   inherit (config.local.systemVars) username;
 in {
   config = lib.mkIf (!config.local.profiles.server.enable) {
@@ -25,9 +24,10 @@ in {
         enable = true;
         directory = "/home/${username}";
         user = "${username}";
-        environment.enable = true;
+        environment = {
+          forceOverride = true;
+        };
       };
-      extraModules = listFilesRecursive ../../shared/modules/hjem;
     };
   };
 }
