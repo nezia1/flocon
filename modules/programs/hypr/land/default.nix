@@ -6,7 +6,6 @@
   config,
   ...
 }: let
-  inherit (builtins) toString;
   inherit (lib) mkIf mkMerge optionalAttrs;
   inherit (lib'.generators) toHyprConf;
   inherit (config.local.systemVars) username;
@@ -31,10 +30,6 @@
   });
 in {
   config = mkIf config.local.modules.hyprland.enable {
-    environment.systemPackages = [
-      inputs.hyprland-qtutils.packages.${pkgs.system}.default
-    ];
-
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -167,9 +162,9 @@ in {
           GDK_SCALE = 1;
         }
         (mkIf styleCfg.enable {
-          HYPRCURSOR_THEME = "${styleCfg.cursorTheme.name}";
-          HYPRCURSOR_SIZE = "${toString styleCfg.cursorTheme.size}";
-          XCURSOR_SIZE = "${toString styleCfg.cursorTheme.size}";
+          HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
+          HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
+          XCURSOR_SIZE = styleCfg.cursorTheme.size;
         })
         (mkIf config.local.modules.nvidia.enable {
           LIBVA_DRIVER_NAME = "nvidia";
