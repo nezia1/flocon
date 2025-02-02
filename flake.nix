@@ -55,10 +55,6 @@
     deploy-rs.url = "github:serokell/deploy-rs";
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-qtutils = {
-      url = "github:hyprwm/hyprland-qtutils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs = {
@@ -91,7 +87,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hjem = {
-      url = "github:feel-co/hjem";
+      url = "github:nezia1/hjem/implement-environment-variables"; # TODO: change to github:feel-co/hjem if env var PR gets in
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
