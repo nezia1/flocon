@@ -51,8 +51,14 @@
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    basix.url = "github:notashelf/basix";
-    deploy-rs.url = "github:serokell/deploy-rs";
+    basix = {
+      url = "github:notashelf/basix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland.url = "github:hyprwm/Hyprland";
     hypridle = {
@@ -90,11 +96,22 @@
       url = "github:nezia1/hjem/implement-environment-variables"; # TODO: change to github:feel-co/hjem if env var PR gets in
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.5.0";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    nvf.url = "github:notashelf/nvf";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    nezia_dev.url = "github:nezia1/nezia.dev";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nezia_dev = {
+      url = "github:nezia1/nezia.dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [
