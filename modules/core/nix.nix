@@ -41,9 +41,5 @@ in {
     };
   };
 
-  hjem.users.${username} = {
-    files.".config/environment.d/${config.local.homeVars.userEnvFile}.conf".text = ''
-      FLAKE="${config.hjem.users.${username}.directory}/.dotfiles"
-    '';
-  };
+  hjem.users.${username}.environment.variables.FLAKE = "${config.hjem.users.${username}.directory}/.dotfiles";
 }

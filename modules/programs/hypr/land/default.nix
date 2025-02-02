@@ -7,7 +7,7 @@
   ...
 }: let
   inherit (builtins) toString;
-  inherit (lib) mkIf optionalAttrs optionalString;
+  inherit (lib) mkIf mkMerge optionalAttrs;
   inherit (lib'.generators) toHyprConf;
   inherit (config.local.systemVars) username;
 
@@ -146,7 +146,6 @@ in {
                 force_default_wallpaper = 0;
                 disable_hyprland_logo = true;
                 middle_click_paste = false;
-                vrr = 1;
               };
             }
             // optionalAttrs styleCfg.enable {
@@ -161,24 +160,24 @@ in {
             }
             // import ./binds.nix lib;
         };
-        ".config/environment.d/${config.local.homeVars.userEnvFile}.conf".text =
-          ''
-            GDK_SCALE="1"
-          ''
-          + optionalString styleCfg.enable ''
-
-            HYPRCURSOR_THEME="${styleCfg.cursorTheme.name}"
-            HYPRCURSOR_SIZE="${toString styleCfg.cursorTheme.size}"
-            XCURSOR_SIZE="${toString styleCfg.cursorTheme.size}"
-
-          ''
-          + optionalString config.local.modules.nvidia.enable ''
-            LIBVA_DRIVER_NAME="nvidia"
-            __GLX_VENDOR_LIBRARY_NAME="nvidia"
-            XDG_SESSION_TYPE="wayland"
-            GBM_BACKEND="nvidia-drm"
-          '';
       };
+
+      environment.variables = mkMerge [
+        {
+          GDK_SCALE = 1;
+        }
+        (mkIf styleCfg.enable {
+          HYPRCURSOR_THEME = "${styleCfg.cursorTheme.name}";
+          HYPRCURSOR_SIZE = "${toString styleCfg.cursorTheme.size}";
+          XCURSOR_SIZE = "${toString styleCfg.cursorTheme.size}";
+        })
+        (mkIf config.local.modules.nvidia.enable {
+          LIBVA_DRIVER_NAME = "nvidia";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+          XDG_SESSION_TYPE = "wayland";
+          GBM_BACKEND = "nvidia-drm";
+        })
+      ];
     };
   };
 }

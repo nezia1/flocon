@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (config.local.systemVars) username;
-  inherit (config.local.homeVars) userEnvFile;
   toConf = attrs:
     builtins.concatStringsSep "\n"
     (lib.mapAttrsToList (option: value: "--${option}=\"${value}\"") attrs);
@@ -20,11 +19,10 @@ in {
         ".config/bat/config".text = toConf {
           theme = "base16";
         };
-
-        ".config/environment.d/${userEnvFile}.conf".text = ''
-          MANPAGER = "sh -c 'col -bx | bat --language man' "
-          MANROFFOPT = "-c"
-        '';
+      };
+      environment.variables = {
+        MANPAGER = "sh -c 'col -bx | bat --language man'";
+        MANROFFOPT = "-c";
       };
     };
   };
