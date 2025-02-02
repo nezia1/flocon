@@ -2,7 +2,6 @@
   lib,
   inputs,
   config,
-  lib',
   pkgs,
   ...
 }: let
@@ -28,6 +27,26 @@ in {
               // {} is replaced with the command in the desktop entry
               args: "uwsm app -- {}",
             )),
+          )
+        '';
+        ".config/anyrun/symbols.ron".text = ''
+          Config(
+            prefix: ":s",
+            symbols: {
+              "shrug": "¯\\_(ツ)_/¯",
+            },
+            max_entries: 5,
+          )
+        '';
+        ".config/anyrun/shell.ron".text = ''
+          Config(
+            prefix: ">"
+          )
+        '';
+        ".config/anyrun/randr.ron".text = ''
+          Config(
+            prefi: ":dp",
+            max_entries: 5,
           )
         '';
         ".config/anyrun/style.css".source = ./style.css;
