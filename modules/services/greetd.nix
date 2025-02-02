@@ -3,37 +3,51 @@
   inputs,
   pkgs,
   config,
+  lib',
   ...
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
 let
-  inherit (lib) getExe getExe';
+  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.meta) getExe getExe';
+
   inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
+  inherit (lib'.generators) toHyprConf;
+
+  styleCfg = config.local.style;
 
   hyprctl = getExe' hyprland "hyprctl";
   Hyprland = getExe' hyprland "Hyprland";
 
   greeter = getExe pkgs.greetd.gtkgreet;
 
-  hyprlandConfig =
-    pkgs.writeText "greetd-hyprland-config"
-    ''
-      misc {
-          disable_hyprland_logo=true
-          force_default_wallpaper=false
-          focus_on_activate=true
+  hyprlandConfig = pkgs.writeText "greetd-hyprland-config" (toHyprConf {
+    attrs =
+      {
+        misc = {
+          disable_hyprland_logo = true;
+          force_default_wallpaper = false;
+          focus_on_activate = true;
+        };
+
+        animations = {
+          enabled = false;
+          first_launch_animation = false;
+        };
+        workspace = "1,default:true,gapsout:0,gapsin:0,border:false,decorate:false";
+
+        exec-once = [
+          "[workspace 1;fullscreen;noanim] ${greeter} -l; ${hyprctl} dispatch exit"
+          "${hyprctl} dispatch focuswindow ${greeter}"
+        ];
       }
-
-      animations {
-          enabled=false
-          first_launch_animation=false
-      }
-
-      workspace=1,default:true,gapsout:0,gapsin:0,border:false,decorate:false
-
-      exec-once=[workspace 1;fullscreen;noanim] ${greeter} -l; ${hyprctl} dispatch exit
-      exec-once=${hyprctl} dispatch focuswindow ${greeter}
-    '';
+      // optionalAttrs styleCfg.enable {
+        env = {
+          HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
+          HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
+        };
+      };
+  });
 in {
   # TODO: perhaps turn this into a more generic module if we wanna use other wayland compositors
   config = lib.mkIf config.local.modules.hyprland.enable {

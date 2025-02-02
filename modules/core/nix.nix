@@ -1,10 +1,8 @@
 {
-  lib,
   pkgs,
   config,
   ...
 }: let
-  inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
 in {
   nix = {
