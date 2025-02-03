@@ -42,10 +42,10 @@ let
         ];
       }
       // optionalAttrs styleCfg.enable {
-        env = {
-          HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
-          HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
-        };
+        env = [
+          "HYPRCURSOR_THEME,${styleCfg.cursorTheme.name}"
+          "HYPRCURSOR_SIZE,${toString styleCfg.cursorTheme.size}"
+        ];
       };
   });
 in {
