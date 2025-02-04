@@ -35,9 +35,15 @@ in {
           ".config/gtk-4.0/gtk.css".source = gtkCss;
         };
         packages = with styleCfg; [
+          gtk.theme.package
           cursorTheme.package
           gtk.iconTheme.package
         ];
+
+        environment.sessionVariables = {
+          GTK2_RC_FILES = "${config.hjem.users.${username}.directory}/.gtkrc-2.0";
+          GTK_THEME = "${gtkSettings.gtk-theme-name}";
+        };
       };
     };
 }
