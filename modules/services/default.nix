@@ -1,5 +1,6 @@
 {
   imports = [
+    ./gtk
     ./swaync
 
     ./brightness.nix
@@ -10,7 +11,6 @@
     ./gammastep.nix
     ./gnome.nix
     ./greetd.nix
-    ./gtk.nix
     ./keyd.nix
     ./kmscon.nix
     ./location.nix

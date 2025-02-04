@@ -1,6 +1,7 @@
 # heavily borrowed from https://github.com/Lunarnovaa/nixconf/blob/f88254f1938211853f6005426fe19ba4b889e854/modules/desktop/theming/gtk.nix
 {
   lib,
+  pkgs,
   config,
   lib',
   ...
@@ -19,7 +20,9 @@
 in {
   config = with styleCfg;
     lib.mkIf styleCfg.enable {
-      hjem.users.${username} = {
+      hjem.users.${username} = let
+        gtkCss = pkgs.writeText "gtk-colors" (import ./style.nix lib' styleCfg.scheme.palette);
+      in {
         files = {
           ".gtkrc-2.0".text = finalGtk2Text {attrs = gtkSettings;};
           ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
@@ -28,11 +31,11 @@ in {
           ".config/gtk-4.0/settings.ini".text = toGtk3Ini {
             Settings = gtkSettings;
           };
-          ".config/gtk-4.0/gtk.css".source = with styleCfg; "${gtk.theme.package}/share/themes/${gtk.theme.name}/gtk-4.0/gtk-dark.css";
+          ".config/gtk-3.0/gtk.css".source = gtkCss;
+          ".config/gtk-4.0/gtk.css".source = gtkCss;
         };
         packages = with styleCfg; [
           cursorTheme.package
-          gtk.theme.package
           gtk.iconTheme.package
         ];
       };
