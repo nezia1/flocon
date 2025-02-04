@@ -157,7 +157,7 @@ in {
         };
       };
 
-      environment.variables = mkMerge [
+      environment.sessionVariables = mkMerge [
         {
           GDK_SCALE = 1;
         }
