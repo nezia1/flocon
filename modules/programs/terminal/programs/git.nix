@@ -18,6 +18,7 @@ in {
             email = "anthony@nezia.dev";
             signingkey = signingKey;
           };
+          init.defaultBranch = "main";
           commit.gpgsign = true;
           tag.gpgsign = true;
           gpg.format = "ssh";
