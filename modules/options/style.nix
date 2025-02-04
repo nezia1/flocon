@@ -80,15 +80,13 @@ in {
         name = mkOption {
           type = str;
           description = "Name for the GTK theme";
-          default = "Catppuccin-GTK-Purple-Dark";
+          default = "adw-gtk3";
         };
         package = mkOption {
           type = package;
           description = "Package providing the GTK theme";
 
-          default = pkgs.magnetic-catppuccin-gtk.override {
-            accent = ["purple"];
-          };
+          default = pkgs.adw-gtk3;
         };
       };
 
