@@ -5,7 +5,6 @@
 box#main {
   border-radius: 10px;
   background-color: @theme_bg_color;
-  border-color: @purple_1;
 }
 
 list#main {
