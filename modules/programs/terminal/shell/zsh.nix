@@ -70,6 +70,7 @@ in {
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
           # aliases
+          ## git
           alias lg='lazygit'
           alias g='git'
           alias gs='git status'
@@ -87,6 +88,10 @@ in {
           alias gt='git stash'
           alias gtp='git stash pop'
           alias gu='git pull'
+
+          ## bat
+          alias man='batman'
+          alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
         '';
       };
     };
