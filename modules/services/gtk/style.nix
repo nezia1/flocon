@@ -3,8 +3,8 @@ lib': palette: let
   black = "#000000";
 in
   with palette; ''
-    @define-color accent_color ${base0D};
-    @define-color accent_bg_color ${base0D};
+    @define-color accent_color ${base0E};
+    @define-color accent_bg_color ${base0E};
     @define-color accent_fg_color ${base00};
     @define-color destructive_color ${base08};
     @define-color destructive_bg_color ${base08};
