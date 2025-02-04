@@ -20,10 +20,6 @@ in {
           theme = "base16";
         };
       };
-      environment.variables = {
-        MANPAGER = "sh -c 'col -bx | bat --language man'";
-        MANROFFOPT = "-c";
-      };
     };
   };
 }

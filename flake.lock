@@ -314,11 +314,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738531378,
-        "narHash": "sha256-5r1LcMRDt6uyIPyApfrce/ijucp83aZt+/Kq3w+zMSQ=",
+        "lastModified": 1738545878,
+        "narHash": "sha256-Gcq6/+dAhYigHVY524y1S1J/ahqGVtL/uX41im5T4rw=",
         "owner": "nezia1",
         "repo": "hjem",
-        "rev": "f9a2fc1b176601fcb304168ab5b37e3943a0a87e",
+        "rev": "800cf2a0a3d100b44cb9d39766755926942d46d6",
         "type": "github"
       },
       "original": {

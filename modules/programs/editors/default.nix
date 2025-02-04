@@ -19,7 +19,7 @@ in {
       unset -v EDITOR
     '';
     hjem.users.${username} = {
-      environment.variables = {
+      environment.sessionVariables = {
         EDITOR = "nvim";
       };
     };
