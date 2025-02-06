@@ -3,9 +3,7 @@
   pkgs,
   config,
   ...
-}: let
-  inherit (config.local.systemVars) username;
-in {
+}: {
   nix = {
     package = pkgs.lix;
     settings = {
@@ -21,14 +19,6 @@ in {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep-since 30d --keep 3";
-    };
-  };
-
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -40,6 +30,4 @@ in {
       segger-jlink.acceptLicense = true;
     };
   };
-
-  hjem.users.${username}.environment.sessionVariables.FLAKE = "${config.hjem.users.${username}.directory}/.dotfiles";
 }
