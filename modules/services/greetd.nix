@@ -62,6 +62,7 @@ in {
     };
 
     security.pam.services = {
+      greetd.enableGnomeKeyring = true;
       gdm-password.enableGnomeKeyring = true;
       greetd.fprintAuth = false;
     };
