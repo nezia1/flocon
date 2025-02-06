@@ -3,22 +3,23 @@
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs lib';};
-      modules = (args.modules or []) ++ [../modules];
+      modules =
+        (args.modules or [])
+        ++ [
+          ../modules
+          inputs.hjem.nixosModules.default
+        ];
     };
 in {
   vamos = mkSystem {
     modules = [
       ./vamos
       inputs.nixos-hardware.nixosModules.framework-13-7040-amd
-      inputs.hjem.nixosModules.default
     ];
   };
 
   solaire = mkSystem {
-    modules = [
-      ./solaire
-      inputs.hjem.nixosModules.default
-    ];
+    modules = [./solaire];
   };
 
   anastacia = mkSystem {

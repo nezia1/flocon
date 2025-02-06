@@ -1,6 +1,4 @@
-{inputs, ...}: let
-  system = "${inputs.self}/system";
-in {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
