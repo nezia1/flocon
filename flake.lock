@@ -1273,11 +1273,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1738841331,
-        "narHash": "sha256-9k2HQAtkn8Xavoy785BbCBGfPXLeYz/sWz3KqAzVs0Y=",
+        "lastModified": 1738860330,
+        "narHash": "sha256-c5ZZRuIQJEqVm6pY/4o4LhliGUJalEDb709W1T63Omw=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "a6d9e75f37f7ef50e2bcbd5cd2bb5ece0d7114ed",
+        "rev": "ff31e0fe25ab21e138efa8d7a3f8628c75a845fd",
         "type": "github"
       },
       "original": {
