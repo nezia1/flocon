@@ -15,7 +15,7 @@ in {
     username = mkOption {
       type = str;
       description = "username for the home directory";
-      default = null;
+      default = "user";
     };
   };
 

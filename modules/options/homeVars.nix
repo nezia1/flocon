@@ -11,7 +11,7 @@ in {
     fullName = mkOption {
       type = str;
       description = "your full name (used for git commits and user description)";
-      default = null;
+      default = "User";
     };
     email = mkOption {
       type = str;
