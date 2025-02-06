@@ -204,7 +204,10 @@
             enableLSP = true;
             enableTreesitter = true;
 
-            nix.enable = true;
+            nix = {
+              enable = true;
+              lsp.server = "nixd";
+            };
             clang.enable = true;
             python.enable = true;
             ts.enable = true;
