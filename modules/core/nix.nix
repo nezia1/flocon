@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   config,
   ...
@@ -17,6 +18,7 @@ in {
         "flakes"
       ];
     };
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
   programs.nh = {
