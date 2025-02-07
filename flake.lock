@@ -791,7 +791,7 @@
         "type": "github"
       }
     },
-    "nix-index-db": {
+    "nix-index-database": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -3802,7 +3802,7 @@
         "hyprwm-contrib": "hyprwm-contrib",
         "nezia_dev": "nezia_dev",
         "nix-gaming": "nix-gaming",
-        "nix-index-db": "nix-index-db",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
