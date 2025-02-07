@@ -46,28 +46,43 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
+
+      inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
     };
     basix = {
       url = "github:notashelf/basix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
+
+      inputs.utils.follows = "flake-utils"; # Yes, it's actually called `utils`, not a typo
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland =
+    {
+      url = "github:hyprwm/Hyprland";
+      inputs.systems.follows = "systems";
+    };
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs = {
         hyprlang.follows = "hyprland/hyprlang";
         hyprutils.follows = "hyprland/hyprutils";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+        hyprland-protocols.follows = "hyprland/hyprland-protocols";
+
         nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
+        systems.follows = "systems";
       };
     };
     hyprlock = {
@@ -75,8 +90,11 @@
       inputs = {
         hyprlang.follows = "hyprland/hyprlang";
         hyprutils.follows = "hyprland/hyprutils";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+
         nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
+        systems.follows = "systems";
       };
     };
     hyprpaper = {
@@ -84,8 +102,11 @@
       inputs = {
         hyprlang.follows = "hyprland/hyprlang";
         hyprutils.follows = "hyprland/hyprutils";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+
         nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
+        systems.follows = "systems";
       };
     };
     hyprwm-contrib = {
@@ -99,10 +120,15 @@
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
+
+      inputs.systems.follows = "systems";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-parts.follows = "flake-parts";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -112,6 +138,15 @@
       url = "github:nezia1/nezia.dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Dependency pinning to prevent duplicate versions
+    systems.url = "github:nix-systems/default";
+    flake-utils =
+    {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
   nixConfig = {
     extra-substituters = [
