@@ -67,8 +67,7 @@
       inputs.utils.follows = "flake-utils"; # Yes, it's actually called `utils`, not a typo
     };
 
-    hyprland =
-    {
+    hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.systems.follows = "systems";
     };
@@ -77,7 +76,6 @@
       inputs = {
         hyprlang.follows = "hyprland/hyprlang";
         hyprutils.follows = "hyprland/hyprutils";
-        hyprgraphics.follows = "hyprland/hyprgraphics";
         hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
         hyprland-protocols.follows = "hyprland/hyprland-protocols";
 
@@ -141,8 +139,7 @@
 
     # Dependency pinning to prevent duplicate versions
     systems.url = "github:nix-systems/default";
-    flake-utils =
-    {
+    flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
