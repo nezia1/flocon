@@ -7,6 +7,7 @@
     ./media
     ./terminal
 
+    ./comma.nix
     ./fastfetch.nix
     ./firefox.nix
     ./games.nix
