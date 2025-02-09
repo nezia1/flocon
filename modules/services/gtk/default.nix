@@ -6,6 +6,7 @@
   lib',
   ...
 }: let
+  inherit (lib.lists) singleton;
   inherit (lib'.generators.gtk) finalGtk2Text toGtk3Ini;
   inherit (config.local.systemVars) username;
 
@@ -46,16 +47,14 @@ in {
         };
       };
 
-      programs.dconf.profiles.user.databases = [
-        {
-          lockAll = false;
-          settings = {
-            "org/gnome/desktop/interface" = {
-              color-scheme = "prefer-${styleCfg.scheme.variant}";
-              gtk-theme = styleCfg.gtk.theme.name;
-            };
+      programs.dconf.profiles.user.databases = singleton {
+        lockAll = false;
+        settings = {
+          "org/gnome/desktop/interface" = {
+            color-scheme = "prefer-${styleCfg.scheme.variant}";
+            gtk-theme = styleCfg.gtk.theme.name;
           };
-        }
-      ];
+        };
+      };
     };
 }
