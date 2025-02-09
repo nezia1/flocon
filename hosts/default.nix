@@ -5,10 +5,7 @@
       specialArgs = {inherit inputs lib';};
       modules =
         (args.modules or [])
-        ++ [
-          ../modules
-          inputs.hjem.nixosModules.default
-        ];
+        ++ [../modules];
     };
 in {
   vamos = mkSystem {

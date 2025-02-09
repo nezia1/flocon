@@ -1,13 +1,17 @@
 {
+  inputs,
   lib,
   config,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
+  inherit (lib.lists) singleton;
+  inherit (lib.filesystem) listFilesRecursive;
   inherit (config.local.systemVars) username;
   inherit (config.local.homeVars) fullName;
   inherit (config.local.profiles) desktop;
 in {
+  imports = [inputs.hjem.nixosModules.default];
   users.users.${username} = {
     isNormalUser = true;
     description = fullName;
@@ -26,9 +30,11 @@ in {
       enable = true;
       directory = "/home/${username}";
       user = "${username}";
-      environment = {
-        forceOverride = true;
-      };
+      environment.forceOverride = true;
+    };
+
+    extraModules = singleton {
+      imports = listFilesRecursive ../../shared/modules/hjem;
     };
   };
 }

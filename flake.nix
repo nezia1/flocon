@@ -113,7 +113,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hjem = {
-      url = "github:nezia1/hjem/implement-environment-variables"; # TODO: change to github:feel-co/hjem if env var PR gets in
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming = {
