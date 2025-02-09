@@ -30,7 +30,6 @@ in {
       enable = true;
       directory = "/home/${username}";
       user = "${username}";
-      environment.forceOverride = true;
     };
 
     extraModules = singleton {
