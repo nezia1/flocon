@@ -269,16 +269,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1738780311,
-        "narHash": "sha256-78uYeNb6yGvd2PClTNbtY25AdLyND1Sv6oMN1reN2ww=",
-        "owner": "nezia1",
+        "lastModified": 1737619027,
+        "narHash": "sha256-jEzZs9dHdmVP5X9HCC/7jrv08aWFfqZV5cZ+cZWYGA4=",
+        "owner": "feel-co",
         "repo": "hjem",
-        "rev": "f8b3fb8f46aba8768001cca1936ca3d40d7e12ab",
+        "rev": "48cfa21987672a31a358b7e4d582fc174556e633",
         "type": "github"
       },
       "original": {
-        "owner": "nezia1",
-        "ref": "implement-environment-variables",
+        "owner": "feel-co",
         "repo": "hjem",
         "type": "github"
       }
