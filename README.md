@@ -13,7 +13,7 @@ My NixOS configurations, using flakes.
 | [assets](assets/)   | Resources used throughout the system (images etc.)               |
 | [hosts](hosts/)     | Host-specific                                                    |
 | [modules](modules/) | Local module system (where the bulk of the configurations lives) |
-| [shared](shared/)   | Exported components (so far only packages)                       |
+| [shared](shared/)   | Exported components (packages and NixOS modules)                 |
 
 My configuration is structured based on the following principles:
 
