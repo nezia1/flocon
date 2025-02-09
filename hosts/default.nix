@@ -1,8 +1,12 @@
-{inputs, ...}: let
+{
+  self,
+  inputs,
+  ...
+}: let
   lib' = import ../lib inputs.nixpkgs.lib;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs lib';};
+      specialArgs = {inherit self inputs lib';};
       modules =
         (args.modules or [])
         ++ [../modules];

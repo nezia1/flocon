@@ -17,6 +17,8 @@
       (system: function nixpkgs.legacyPackages.${system});
     treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
   in {
+    checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+    deploy.nodes = import ./nodes.nix {inherit inputs;};
     devShells = forAllSystems (pkgs: {
       default = pkgs.mkShell {
         packages = [
@@ -29,9 +31,8 @@
     });
     formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = import ./hosts {inherit self inputs;};
+    nixosModules.hjemModules = import ./shared/modules/hjem/nixos.nix {inherit (nixpkgs) lib;};
     packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
-    deploy.nodes = import ./nodes.nix {inherit inputs;};
-    checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
   inputs = {
     # nix related
