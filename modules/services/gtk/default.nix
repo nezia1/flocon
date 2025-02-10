@@ -7,6 +7,7 @@
   ...
 }: let
   inherit (lib.lists) singleton;
+  inherit (lib.gvariant) mkInt32;
   inherit (lib'.generators.gtk) finalGtk2Text toGtk3Ini;
   inherit (config.local.systemVars) username;
 
@@ -26,12 +27,8 @@ in {
       in {
         files = {
           ".gtkrc-2.0".text = finalGtk2Text {attrs = gtkSettings;};
-          ".config/gtk-3.0/settings.ini".text = toGtk3Ini {
-            Settings = gtkSettings;
-          };
-          ".config/gtk-4.0/settings.ini".text = toGtk3Ini {
-            Settings = gtkSettings;
-          };
+          ".config/gtk-3.0/settings.ini".text = toGtk3Ini {Settings = gtkSettings;};
+          ".config/gtk-4.0/settings.ini".text = toGtk3Ini {Settings = gtkSettings;};
           ".config/gtk-3.0/gtk.css".source = gtkCss;
           ".config/gtk-4.0/gtk.css".source = gtkCss;
         };
@@ -43,7 +40,7 @@ in {
 
         environment.sessionVariables = {
           GTK2_RC_FILES = "${config.hjem.users.${username}.directory}/.gtkrc-2.0";
-          GTK_THEME = "${gtkSettings.gtk-theme-name}";
+          GTK_THEME = "${gtkSettings.gtk-theme-name}"; # force a GTK theme on libadwaita apps
         };
       };
 
@@ -52,9 +49,12 @@ in {
         profiles.user.databases = singleton {
           lockAll = true;
           settings = {
-            "org/gnome/desktop/interface" = {
-              color-scheme = "prefer-${styleCfg.scheme.variant}";
-              gtk-theme = styleCfg.gtk.theme.name;
+            "org/gnome/desktop/interface" = with styleCfg; {
+              color-scheme = "prefer-${scheme.variant}";
+              cursor-size = mkInt32 cursorTheme.size;
+              cursor-theme = cursorTheme.name;
+              gtk-theme = gtk.theme.name;
+              icon-theme = gtk.iconTheme.name;
             };
           };
         };
