@@ -46,6 +46,18 @@ in {
           GTK_THEME = "${gtkSettings.gtk-theme-name}";
         };
       };
-      programs.dconf.enable = false;
+
+      programs.dconf = {
+        enable = true;
+        profiles.user.databases = singleton {
+          lockAll = true;
+          settings = {
+            "org/gnome/desktop/interface" = {
+              color-scheme = "prefer-${styleCfg.scheme.variant}";
+              gtk-theme = styleCfg.gtk.theme.name;
+            };
+          };
+        };
+      };
     };
 }
