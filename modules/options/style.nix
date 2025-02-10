@@ -94,7 +94,7 @@ in {
         name = mkOption {
           type = str;
           description = "The name for the icon theme that will be used for GTK programs";
-          default = "Kora";
+          default = "kora";
         };
 
         package = mkOption {
@@ -116,8 +116,20 @@ in {
           ${toString themePath} set by the GTK module does not exist!
 
           To suppress this message, make sure that
-          `config.modules.theme.gtk.theme.package` contains
-          the path `${cfg.theme.name}`
+          `config.local.theme.gtk.theme.package` contains
+          the path `${cfg.gtk.theme.name}`
+        '';
+      })
+      (let
+        iconPath = cfg.gtk.iconTheme.package + /share/icons + "/${cfg.gtk.iconTheme.name}";
+      in {
+        assertion = cfg.gtk.enable -> pathExists iconPath;
+        message = ''
+          ${toString iconPath} set by the GTK module does not exist!
+
+          To suppress this message, make sure that
+          `config.local.theme.gtk.iconTheme.package` contains
+          the path `${cfg.gtk.iconTheme.name}`
         '';
       })
       {
