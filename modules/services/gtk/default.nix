@@ -46,15 +46,6 @@ in {
           GTK_THEME = "${gtkSettings.gtk-theme-name}";
         };
       };
-
-      programs.dconf.profiles.user.databases = singleton {
-        lockAll = false;
-        settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-${styleCfg.scheme.variant}";
-            gtk-theme = styleCfg.gtk.theme.name;
-          };
-        };
-      };
+      programs.dconf.enable = false;
     };
 }
