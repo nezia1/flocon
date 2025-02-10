@@ -47,11 +47,11 @@ in {
         };
       };
 
-      programs.dconf.profiles.user.databases = singleton {
-        lockAll = false;
-        settings = {
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-${styleCfg.scheme.variant}";
+      programs.dconf = {
+        enable = true;
+        profiles.user.databases = singleton {
+          lockAll = true;
+          settings."org/gnome/desktop/interface" = {
             gtk-theme = styleCfg.gtk.theme.name;
           };
         };
