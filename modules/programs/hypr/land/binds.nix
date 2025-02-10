@@ -8,7 +8,7 @@ lib: let
 in {
   "$mod" = "SUPER";
   bindr = [
-    "$mod, SUPER_L, exec, ${toggle "anyrun" false}"
+    "$mod, SUPER_L, exec, ${toggle "anyrun" true}"
   ];
   bind = [
     "$mod, Return, exec, ${run "ghostty"}"
