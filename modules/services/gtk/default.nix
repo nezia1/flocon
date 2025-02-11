@@ -36,6 +36,7 @@ in {
           gtk.theme.package
           cursorTheme.package
           gtk.iconTheme.package
+          pkgs.adwaita-icon-theme # add as fallback
         ];
 
         environment.sessionVariables = {
