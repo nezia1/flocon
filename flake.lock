@@ -719,6 +719,22 @@
         "type": "github"
       }
     },
+    "morewaita": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736335410,
+        "narHash": "sha256-gdU4GcNrxMktsMbxRkzd3NdD7oYSAhSo29lBMWp+HQ4=",
+        "owner": "somepaulo",
+        "repo": "MoreWaita",
+        "rev": "29ddd25363bf1c4be306f3bf1ea1507b443d8dee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "somepaulo",
+        "repo": "MoreWaita",
+        "type": "github"
+      }
+    },
     "nezia_dev": {
       "inputs": {
         "nixpkgs": [
@@ -3799,6 +3815,7 @@
         "hyprlock": "hyprlock",
         "hyprpaper": "hyprpaper",
         "hyprwm-contrib": "hyprwm-contrib",
+        "morewaita": "morewaita",
         "nezia_dev": "nezia_dev",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
