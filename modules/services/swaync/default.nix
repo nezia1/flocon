@@ -42,10 +42,11 @@ in {
       partOf = ["graphical-session.target"];
       wantedBy = ["graphical-session.target"];
       serviceConfig = {
+        Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
         Restart = "on-failure";
-        Type = "dbus";
+        Slice = "background-graphical.slice";
       };
     };
   };

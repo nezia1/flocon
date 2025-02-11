@@ -108,8 +108,8 @@ in {
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.ghostty}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
-        Slice = "background-graphical.slice";
         Restart = "on-failure";
+        Slice = "background-graphical.slice";
       };
     };
   };

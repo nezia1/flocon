@@ -52,7 +52,7 @@ in {
       wantedBy = ["graphical-session.target"];
       restartTriggers = ["${config.hjem.users.${username}.files.".config/hypr/hypridle.conf".text}"];
       serviceConfig = {
-        Type = "exec";
+        Type = "simple";
         ExecStart = "${hypridle}/bin/hypridle";
         Restart = "on-failure";
         Slice = "background-graphical.slice";

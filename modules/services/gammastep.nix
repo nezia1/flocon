@@ -27,6 +27,7 @@ in {
       wants = ["geoclue-agent.service"];
       wantedBy = ["graphical-session.target"];
       serviceConfig = {
+        Type = "simple";
         ExecStart = "${pkgs.gammastep}/bin/gammastep-indicator";
         Restart = "on-failure";
         RestartSec = 3;
