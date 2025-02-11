@@ -25,6 +25,7 @@ in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [discord krisp-patcher];
+      autostart.programs = [discord];
       files.".config/Vencord/themes/midnight-base16.css".text = with styleCfg.scheme.palette;
         mkIf styleCfg.enable ''
           /**
