@@ -79,7 +79,7 @@ in {
               ];
               workspace = [
                 "special:terminal, on-created-empty:ghostty"
-                "special:file_manager_gui, on-created-empty:thunar"
+                "special:file_manager_gui, on-created-empty:pcmanfm"
                 "special:file_manager_tui, on-created-empty:ghostty -e yazi"
 
                 "special:calculator_gui, on-created-empty:qalculate-gtk"

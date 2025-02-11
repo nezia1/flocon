@@ -17,7 +17,7 @@ in {
           image/jpeg=org.gnome.gThumb.desktop
           image/png=org.gnome.gThumb.desktop
           image/svg= org.gnome.gThumb.desktop
-          inode/directory=thunar.desktop
+          inode/directory=pcmanfm.desktop
           text/html=firefox.desktop
           video/avi=io.github.celluloid_player.Celluloid.desktop
           video/mkv=io.github.celluloid_player.Celluloid.desktop

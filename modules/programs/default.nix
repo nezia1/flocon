@@ -13,7 +13,7 @@
     ./games.nix
     ./misc.nix
     ./nh.nix
-    ./thunar.nix
+    ./pcmanfm.nix
     ./waybar.nix
     ./wlogout.nix
     ./xdg.nix
