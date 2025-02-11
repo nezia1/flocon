@@ -80,7 +80,7 @@ in {
         name = mkOption {
           type = str;
           description = "Name for the GTK theme";
-          default = "adw-gtk3";
+          default = "adw-gtk3-dark";
         };
         package = mkOption {
           type = package;
@@ -94,13 +94,15 @@ in {
         name = mkOption {
           type = str;
           description = "The name for the icon theme that will be used for GTK programs";
-          default = "kora";
+          default = "MoreWaita";
         };
 
         package = mkOption {
           type = package;
           description = "The GTK icon theme to be used";
-          default = pkgs.kora-icon-theme;
+          default = pkgs.morewaita-icon-theme.overrideAttrs {
+            src = inputs.morewaita;
+          };
         };
       };
     };
