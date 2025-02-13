@@ -13,19 +13,64 @@ in {
       packages = [pkgs.zsh];
       files = {
         ".zshrc".text = ''
-          SAVEHIST=2000
-          HISTSIZE=2000
-          ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
-
-          ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+          # enable vi mode
           bindkey -v
 
+          # history
+          SAVEHIST=2000
+          HISTSIZE=5000
+
+          # prompt
           eval "$(starship init zsh)"
           eval "$(zoxide init zsh)"
 
-          source <(fzf --zsh)
-          source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          # aliases
+          ## git
+          alias lg='lazygit'
+          alias g='git'
+          alias gs='git status'
+          alias ga='git add'
+          alias gc='git commit'
+          alias gca='git commit --amend'
+          alias gcm='git commit --message'
+          alias gk='git checkout'
+          alias gd='git diff'
+          alias gf='git fetch'
+          alias gl='git log'
+          alias gp='git push'
+          alias gpf='git push --force-with-lease'
+          alias gr='git reset'
+          alias gt='git stash'
+          alias gtp='git stash pop'
+          alias gu='git pull'
 
+          ## bat
+          alias man='batman'
+          alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+          # add extra completions
+          fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
+          fpath+=(${pkgs.nix-zsh-completions}/share/zsh/site-functions)
+          source ${pkgs.nix-zsh-completions}/share/zsh/plugins/nix/nix-zsh-completions.plugin.zsh
+
+          # fzf integration
+          source <(fzf --zsh)
+          source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+
+          # completion styling
+          zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+          zstyle ':completion:*' list-colors "\$\{s.:. LS_COLORS}"
+          zstyle ':completion:*' menu no
+          zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+          zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+          # autosuggestions
+          ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+          source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+          # highlighting
+          source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
           ZSH_HIGHLIGHT_STYLES[default]=none
           ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,underline
           ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
@@ -67,31 +112,6 @@ in {
           ZSH_HIGHLIGHT_STYLES[bracket-level-4]=fg=yellow,bold
           ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
           ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
-          source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-          # aliases
-          ## git
-          alias lg='lazygit'
-          alias g='git'
-          alias gs='git status'
-          alias ga='git add'
-          alias gc='git commit'
-          alias gca='git commit --amend'
-          alias gcm='git commit --message'
-          alias gk='git checkout'
-          alias gd='git diff'
-          alias gf='git fetch'
-          alias gl='git log'
-          alias gp='git push'
-          alias gpf='git push --force-with-lease'
-          alias gr='git reset'
-          alias gt='git stash'
-          alias gtp='git stash pop'
-          alias gu='git pull'
-
-          ## bat
-          alias man='batman'
-          alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
         '';
       };
     };
