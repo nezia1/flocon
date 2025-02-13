@@ -53,6 +53,14 @@
 
           ui = {
             noice.enable = true;
+            smartcolumn = {
+              enable = true;
+              setupOpts = {
+                custom_colorcolumn = {
+                  nix = "110";
+                };
+              };
+            };
           };
           notify.nvim-notify.enable = true;
 
