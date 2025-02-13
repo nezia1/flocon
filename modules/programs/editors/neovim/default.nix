@@ -167,7 +167,10 @@
             };
           };
 
-          git.enable = true;
+          git = {
+            enable = true;
+            gitsigns.enable = true;
+          };
 
           utility = {
             vim-wakatime.enable = true;
