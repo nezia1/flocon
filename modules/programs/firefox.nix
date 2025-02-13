@@ -14,8 +14,21 @@
     hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
   };
 
-  firefox = pkgs.wrapFirefox pkgs.firefox-esr-128-unwrapped {
+  firefox = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
     extraPolicies = {
+      DisableTelemetry = true;
+      DisablePocket = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxStudies = true;
+      OfferToSaveLogins = false;
+      OffertosaveloginsDefault = false;
+      PasswordManagerEnabled = false;
+      SearchSuggestEnabled = true;
+      FirefoxHome = {
+        Pocket = false;
+        Snippets = false;
+      };
+
       SearchEngines.Default = "SearxNG";
       SearchEngines.Add = [
         {
@@ -65,14 +78,6 @@
           URLTemplate = "https://github.com/search?q=language:nix NOT is:fork {searchTerms}&type=code";
         }
       ];
-      DisableTelemetry = true;
-      DisablePocket = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      OfferToSaveLogins = false;
-      OffertosaveloginsDefault = false;
-      PasswordManagerEnabled = false;
-      SearchSuggestEnabled = true;
 
       # https://github.com/Sly-Harvey/NixOS/blob/f9da2691ea46565256ad757959cfc26ec6cee10d/modules/programs/browser/firefox/default.nix#L58-L163
       "3rdparty".Extensions = {
