@@ -118,7 +118,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     morewaita = {
-      url = "github:somepaulo/MoreWaita";
+      url = "github:nezia1/MoreWaita"; # using my own fork for caffeine icons
       flake = false;
     };
     nix-gaming = {

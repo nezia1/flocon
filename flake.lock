@@ -738,15 +738,15 @@
     "morewaita": {
       "flake": false,
       "locked": {
-        "lastModified": 1736335410,
-        "narHash": "sha256-gdU4GcNrxMktsMbxRkzd3NdD7oYSAhSo29lBMWp+HQ4=",
-        "owner": "somepaulo",
+        "lastModified": 1739553699,
+        "narHash": "sha256-gmFavqgaklS1XuWXD9KofAAL48qcRe5daNGH531PUig=",
+        "owner": "nezia1",
         "repo": "MoreWaita",
-        "rev": "29ddd25363bf1c4be306f3bf1ea1507b443d8dee",
+        "rev": "bd7328ed13bd11cdc545f039e1c635aef292a90f",
         "type": "github"
       },
       "original": {
-        "owner": "somepaulo",
+        "owner": "nezia1",
         "repo": "MoreWaita",
         "type": "github"
       }
