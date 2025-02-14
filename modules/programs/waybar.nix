@@ -278,7 +278,6 @@ in {
           After = ["graphical-session.target"];
           PartOf = ["graphical-session.target"];
           Requisite = ["graphical-session.target"];
-          X-Reload-Triggers = ["${config.hjem.users.${username}.files.".config/waybar/config".text}"];
         };
 
         Service = {
