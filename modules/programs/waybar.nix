@@ -270,22 +270,27 @@ in {
             }
           '';
       };
-    };
 
-    systemd.user.services.waybar = {
-      description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
-      documentation = ["https://github.com/Alexays/Waybar/wiki/"];
-      after = ["graphical-session.target"];
-      partOf = ["graphical-session.target"];
-      requisite = ["graphical-session.target"];
-      wantedBy = ["graphical-session.target"];
+      systemd.services.waybar.settings = {
+        Unit = {
+          Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
+          Documentation = ["https://github.com/Alexays/Waybar/wiki/"];
+          After = ["graphical-session.target"];
+          PartOf = ["graphical-session.target"];
+          Requisite = ["graphical-session.target"];
+          X-Reload-Triggers = ["${config.hjem.users.${username}.files.".config/waybar/config".text}"];
+        };
 
-      reloadTriggers = ["${config.hjem.users.${username}.files.".config/waybar/config".text}"];
-      serviceConfig = {
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        ExecReload = "kill -SIGUSR2 $MAINPID";
-        Restart = "on-failure";
-        Slice = "app-graphical.slice";
+        Service = {
+          ExecStart = "${pkgs.waybar}/bin/waybar";
+          ExecReload = "kill -SIGUSR2 $MAINPID";
+          Restart = "on-failure";
+          Slice = "app-graphical.slice";
+        };
+
+        Install = {
+          WantedBy = ["graphical-session.target"];
+        };
       };
     };
   };
