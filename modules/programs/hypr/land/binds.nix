@@ -14,11 +14,11 @@ in {
     "$mod, Return, exec, ${run "ghostty"}"
     "$mod, n, exec, ${run "neovide"}"
     "$mod, w, exec, ${run "firefox"}"
-    ", Print, exec, ${runOnce "grimblast"} --notify --cursor copysave output"
+    ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
     "$mod, q, killactive"
     "$mod SHIFT, q, exec, loginctl terminate-user ''"
     "$mod, period, exec, ${toggle "walker -m emojis" false}" # not using uwsm as it already runs as a service
-    "CTRL, Print, exec, ${runOnce "grimblast"} --notify --cursor --freeze copysave area"
+    "CTRL, Print, exec, ${runOnce "grimblast"} --notify --freeze copysave area"
 
     "$mod, h, movefocus, l"
     "$mod, j, movefocus, d"
