@@ -1,13 +1,13 @@
 {
   imports = [
     ./anyrun
-    ./discord
     ./editors
     ./hypr
     ./media
     ./terminal
 
     ./comma.nix
+    ./discord.nix
     ./fastfetch.nix
     ./firefox.nix
     ./games.nix

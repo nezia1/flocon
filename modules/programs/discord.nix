@@ -7,26 +7,16 @@
   inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
   styleCfg = config.local.style;
-  discord = pkgs.discord-canary.override {
-    withOpenASAR = true;
-    withVencord = true;
+  # TODO remove override when https://github.com/NixOS/nixpkgs/issues/380429 gets merged
+  discord = pkgs.vesktop.override {
+    electron = pkgs.electron_33;
   };
-
-  # run once with krisp-patcher ~/.config/discordcanary/*/modules/discord_krisp/discord_krisp.node
-  krisp-patcher = pkgs.writers.writePython3Bin "krisp-patcher" {
-    libraries = with pkgs.python3Packages; [capstone pyelftools];
-    flakeIgnore = [
-      "E501" # line too long (82 > 79 characters)
-      "F403" # ‘from module import *’ used; unable to detect undefined names
-      "F405" # name may be undefined, or defined from star imports: module
-    ];
-  } (builtins.readFile ./krisp-patcher.py);
 in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
-      packages = [discord krisp-patcher];
+      packages = [discord];
       autostart.programs = [discord];
-      files.".config/Vencord/themes/midnight-base16.css".text = with styleCfg.scheme.palette;
+      files.".config/vesktop/themes/midnight-base16.css".text = with styleCfg.scheme.palette;
         mkIf styleCfg.enable ''
           /**
            * @name Midnight-base16
