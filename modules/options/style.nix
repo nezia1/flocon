@@ -8,6 +8,7 @@
 }: let
   inherit (lib) attrNames mkEnableOption mkOption pathExists;
   inherit (lib.types) attrs bool enum package path str;
+  inherit (lib.lists) singleton;
 
   cfg = config.local.style;
 in {
@@ -102,6 +103,33 @@ in {
           description = "The GTK icon theme to be used";
           default = pkgs.morewaita-icon-theme.overrideAttrs {
             src = inputs.morewaita;
+            installPhase = ''
+              runHook preInstall
+
+              install -d $out/share/icons/MoreWaita
+              cp -r . $out/share/icons/MoreWaita
+              cp ${../../assets/icons/my-caffeine-on-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-on-symbolic.svg
+              cp ${../../assets/icons/my-caffeine-off-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-off-symbolic.svg
+              gtk-update-icon-cache -f -t $out/share/icons/MoreWaita && xdg-desktop-menu forceupdate
+
+              runHook postInstall
+            '';
+
+            /*
+            a patch is needed because MoreWaita expects a `meson.build` file in the directory, containing the
+            name of every icon.
+            */
+            patches = singleton (pkgs.writeText "add-caffeine-icons.patch" ''
+              diff --git a/symbolic/status/meson.build b/symbolic/status/meson.build
+              index 4e5bfc5..3bbf989 100644
+              --- a/symbolic/status/meson.build
+              +++ b/symbolic/status/meson.build
+              @@ -17,2 +17,4 @@ regular_files = [
+                   'keepassxc-unlocked.svg',
+              +    'my-caffeine-off-symbolic.svg',
+              +    'my-caffeine-on-symbolic.svg',
+                   'pamac-tray-no-update.svg',
+            '');
           };
         };
       };
