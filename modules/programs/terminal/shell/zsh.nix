@@ -15,6 +15,7 @@ in {
         ".zshrc".text = ''
           # enable vi mode
           bindkey -v
+          export KEYTIMEOUT=1
 
           # history
           SAVEHIST=2000
