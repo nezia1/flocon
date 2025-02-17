@@ -23,8 +23,20 @@
   in
     attrs:
       writeShellScript "load-env"
-      (concatStringsSep "\n"
-        (mapAttrsToList (name: value: "export ${name}=\"${toEnv value}\"") attrs));
+      (
+        ''
+          # Only execute this file once per shell.
+          if [ -n "$__ETC_PROFILE_SOURCED" ]; then return; fi
+          __ETC_PROFILE_SOURCED=1
+
+          # Prevent this file from being sourced by interactive non-login child shells.
+          export __ETC_PROFILE_DONE=1
+
+          # Session variables
+        ''
+        + (concatStringsSep "\n"
+          (mapAttrsToList (name: value: "export ${name}=\"${toEnv value}\"") attrs))
+      );
 in {
   options.environment = {
     sessionVariables = mkOption {
@@ -36,10 +48,9 @@ in {
       };
       description = ''
         A set of environment variables used in the user environment.
-        These variables will be set as systemd user environment
-        variables, using `~/.profile`. The value of each
-        variable can be either a string or a list of strings. The
-        latter is concatenated, interspersed with colon
+        These variables will be set using {file}`~/.profile`.
+
+        If a list of strings is used, they will be concatenated with colon
         characters.
       '';
     };
