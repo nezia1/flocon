@@ -40,7 +40,7 @@ in {
         ];
 
         environment.sessionVariables = {
-          GTK2_RC_FILES = "${config.hjem.users.${username}.directory}/.gtkrc-2.0";
+          GTK2_RC_FILES = "/home/${username}/.gtkrc-2.0";
           GTK_THEME = "${gtkSettings.gtk-theme-name}"; # force a GTK theme on libadwaita apps
         };
       };

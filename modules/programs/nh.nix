@@ -16,6 +16,6 @@ in {
       };
     };
 
-    hjem.users.${username}.environment.sessionVariables.FLAKE = "${config.hjem.users.${username}.directory}/.dotfiles";
+    hjem.users.${username}.environment.sessionVariables.FLAKE = "/home/${username}/.dotfiles";
   };
 }
