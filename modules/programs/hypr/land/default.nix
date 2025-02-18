@@ -11,6 +11,7 @@
   inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
+
   gnomeControlCenter = pkgs.gnome-control-center.overrideAttrs (old: {
     postInstall =
       old.postInstall
@@ -155,6 +156,8 @@ in {
             }
             // import ./binds.nix lib;
         };
+
+        ".config/uwsm/env-hyprland".source = config.hjem.users.${username}.environment.setEnvironment;
       };
 
       environment.sessionVariables = mkMerge [
