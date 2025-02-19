@@ -12,6 +12,7 @@
 in {
   imports = [
     inputs.hjem.nixosModules.default
+    inputs.hjem-rum.nixosModules.default
     self.outputs.nixosModules.hjemModules
   ];
   users.users.${username} = {
