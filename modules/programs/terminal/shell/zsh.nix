@@ -26,6 +26,7 @@ in {
           eval "$(zoxide init zsh)"
 
           # aliases
+          alias ls=lsd
           ## git
           alias lg='lazygit'
           alias g='git'
@@ -62,8 +63,8 @@ in {
           zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
           zstyle ':completion:*' list-colors "\$\{s.:. LS_COLORS}"
           zstyle ':completion:*' menu no
-          zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-          zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+          zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd'
+          zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd'
 
           # autosuggestions
           ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
