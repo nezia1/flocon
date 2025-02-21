@@ -113,12 +113,15 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: change to upstream once https://github.com/feel-co/hjem/pull/16 gets merged
     hjem = {
-      url = "github:feel-co/hjem";
+      url = "github:nezia1/hjem/implement-environment-variables";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO: change to upstream once https://github.com/snugnug/hjem-rum/pull/14 gets merged
     hjem-rum = {
-      url = "github:snugnug/hjem-rum";
+      url = "github:nezia1/hjem-rum/add-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     morewaita = {

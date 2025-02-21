@@ -269,15 +269,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1737619027,
-        "narHash": "sha256-jEzZs9dHdmVP5X9HCC/7jrv08aWFfqZV5cZ+cZWYGA4=",
-        "owner": "feel-co",
+        "lastModified": 1740156578,
+        "narHash": "sha256-qdDMmhzHCzM0NLhC/oC6pnapeys2H9dhQJbfwCnf7Fw=",
+        "owner": "nezia1",
         "repo": "hjem",
-        "rev": "48cfa21987672a31a358b7e4d582fc174556e633",
+        "rev": "5a659b1a7c404278095f7086a73493dd2afc19b9",
         "type": "github"
       },
       "original": {
-        "owner": "feel-co",
+        "owner": "nezia1",
+        "ref": "implement-environment-variables",
         "repo": "hjem",
         "type": "github"
       }
@@ -290,15 +291,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1739301619,
-        "narHash": "sha256-lUpzQdeTne3CfHfW6QlgNmIVvKq6jO1tWQOyuhgUDt4=",
-        "owner": "snugnug",
+        "lastModified": 1740181011,
+        "narHash": "sha256-GKEhv8VV5aRRxiE6YZxFij8L/6+EEZ/X8J4NWkDXaUc=",
+        "owner": "nezia1",
         "repo": "hjem-rum",
-        "rev": "0537c6ad02f26c28ed70f286a418087d581df2e5",
+        "rev": "c3f0f85e00a7278fbff0f2d99337a6eb47375abd",
         "type": "github"
       },
       "original": {
-        "owner": "snugnug",
+        "owner": "nezia1",
+        "ref": "add-hyprland",
         "repo": "hjem-rum",
         "type": "github"
       }
@@ -311,11 +313,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735415443,
-        "narHash": "sha256-t/OSIIGVflXP70kQieq72x+zhLVYfMejRopPgOZnV0s=",
+        "lastModified": 1739891453,
+        "narHash": "sha256-dnJMqM3SVKSOOaRZOLDaRckFRHKInvwM9kqrOlS16VU=",
         "owner": "feel-co",
         "repo": "hjem",
-        "rev": "2979f66c4a1e6f662e4cb7fa9e20b9a6609919f9",
+        "rev": "f57c3210c08815cb141de3e49383a020d37ed36c",
         "type": "github"
       },
       "original": {
