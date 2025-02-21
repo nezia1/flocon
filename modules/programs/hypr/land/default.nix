@@ -59,105 +59,103 @@ in {
         inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
         gnomeControlCenter
       ];
-      files = {
-        ".config/hypr/hyprland.conf".text = toHyprConf {
-          attrs =
-            {
-              xwayland = {
-                force_zero_scaling = true;
-              };
 
-              env = [
+      rum.programs.hyprland = {
+        enable = true;
+        settings =
+          {
+            xwayland = {
+              force_zero_scaling = true;
+            };
+
+            env = [
+            ];
+
+            cursor = {
+              no_hardware_cursors = 1;
+            };
+
+            monitor = [
+              "eDP-1, preferred, auto, 1.33"
+              "Unknown-1,disabled"
+            ];
+            workspace = [
+              "special:terminal, on-created-empty:ghostty"
+              "special:file_manager_gui, on-created-empty:pcmanfm"
+              "special:file_manager_tui, on-created-empty:ghostty -e yazi"
+
+              "special:calculator_gui, on-created-empty:qalculate-gtk"
+              "special:mixer_gui, on-created-empty:pavucontrol"
+            ];
+
+            windowrulev2 = [
+              # fixes fullscreen windows (mostly games)
+              "stayfocused, initialtitle:^()$, initialclass:^(steam)$"
+              "minsize 1 1, initialtitle:^()$, initialclass:^(steam)$"
+              "maximize, initialtitle:^(\S+)$, initialclass:^(steamwebhelper)$"
+
+              "immediate, initialclass:^(steam_app_)(.*)$"
+              "fullscreen, initialclass:^(steam_app_)(.*)$"
+
+              # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
+              "idleinhibit always, fullscreen:1"
+            ];
+
+            render = {
+              explicit_sync = 1;
+              explicit_sync_kms = 1;
+              expand_undersized_textures = false;
+            };
+
+            bezier = "overshot, 0.05, 0.9, 0.1, 1.1";
+
+            animations = {
+              enabled = true;
+              animation = [
+                "windows, 1, 5, overshot"
+                "windowsOut, 1, 5, default, popin 80%"
+                "windowsMove, 1, 5, default, popin 80%"
+                "fade, 1, 5, default"
+                "border, 1, 5, default"
+                "borderangle, 0, 8, default"
+                "workspaces, 0"
+                "specialWorkspace, 0"
               ];
+            };
 
-              cursor = {
-                no_hardware_cursors = 1;
+            input = {
+              kb_options = "compose:ralt";
+              touchpad = {
+                natural_scroll = true;
+                scroll_factor = 0.8;
+                tap-to-click = true;
+                clickfinger_behavior = true;
               };
+            };
 
-              monitor = [
-                "eDP-1, preferred, auto, 1.33"
-                "Unknown-1,disabled"
-              ];
-              workspace = [
-                "special:terminal, on-created-empty:ghostty"
-                "special:file_manager_gui, on-created-empty:pcmanfm"
-                "special:file_manager_tui, on-created-empty:ghostty -e yazi"
+            gestures = {
+              workspace_swipe = true;
+              workspace_swipe_direction_lock = false;
+              workspace_swipe_cancel_ratio = 0.15;
+            };
 
-                "special:calculator_gui, on-created-empty:qalculate-gtk"
-                "special:mixer_gui, on-created-empty:pavucontrol"
-              ];
-
-              windowrulev2 = [
-                # fixes fullscreen windows (mostly games)
-                "stayfocused, initialtitle:^()$, initialclass:^(steam)$"
-                "minsize 1 1, initialtitle:^()$, initialclass:^(steam)$"
-                "maximize, initialtitle:^(\S+)$, initialclass:^(steamwebhelper)$"
-
-                "immediate, initialclass:^(steam_app_)(.*)$"
-                "fullscreen, initialclass:^(steam_app_)(.*)$"
-
-                # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
-                "idleinhibit always, fullscreen:1"
-              ];
-
-              render = {
-                explicit_sync = 1;
-                explicit_sync_kms = 1;
-                expand_undersized_textures = false;
-              };
-
-              bezier = "overshot, 0.05, 0.9, 0.1, 1.1";
-
-              animations = {
-                enabled = true;
-                animation = [
-                  "windows, 1, 5, overshot"
-                  "windowsOut, 1, 5, default, popin 80%"
-                  "windowsMove, 1, 5, default, popin 80%"
-                  "fade, 1, 5, default"
-                  "border, 1, 5, default"
-                  "borderangle, 0, 8, default"
-                  "workspaces, 0"
-                  "specialWorkspace, 0"
-                ];
-              };
-
-              input = {
-                kb_options = "compose:ralt";
-                touchpad = {
-                  natural_scroll = true;
-                  scroll_factor = 0.8;
-                  tap-to-click = true;
-                  clickfinger_behavior = true;
-                };
-              };
-
-              gestures = {
-                workspace_swipe = true;
-                workspace_swipe_direction_lock = false;
-                workspace_swipe_cancel_ratio = 0.15;
-              };
-
-              misc = {
-                force_default_wallpaper = 0;
-                disable_hyprland_logo = true;
-                middle_click_paste = false;
-              };
-            }
-            // optionalAttrs styleCfg.enable {
-              general = {
-                border_size = 4;
-                "col.active_border" = "rgb(${lib.removePrefix "#" styleCfg.scheme.palette.base0E})";
-              };
-              decoration = {
-                rounding = 10;
-                blur.enabled = true;
-              };
-            }
-            // import ./binds.nix lib;
-        };
-
-        ".config/uwsm/env-hyprland".source = config.hjem.users.${username}.environment.setEnvironment;
+            misc = {
+              force_default_wallpaper = 0;
+              disable_hyprland_logo = true;
+              middle_click_paste = false;
+            };
+          }
+          // optionalAttrs styleCfg.enable {
+            general = {
+              border_size = 4;
+              "col.active_border" = "rgb(${lib.removePrefix "#" styleCfg.scheme.palette.base0E})";
+            };
+            decoration = {
+              rounding = 10;
+              blur.enabled = true;
+            };
+          }
+          // import ./binds.nix lib;
       };
 
       environment.sessionVariables = mkMerge [
