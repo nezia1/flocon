@@ -62,8 +62,12 @@
               };
             };
           };
-          notify.nvim-notify.enable = true;
 
+          mini = {
+            comment.enable = true;
+            notify.enable = true;
+            surround.enable = true;
+          };
           statusline = {
             lualine = {
               enable = true;
@@ -174,7 +178,6 @@
 
           utility = {
             vim-wakatime.enable = true;
-            surround.enable = true;
             motion.leap = {
               enable = true;
             };
