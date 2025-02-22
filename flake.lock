@@ -290,15 +290,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1740074218,
-        "narHash": "sha256-1aS0eUNRbEsmAYEU858aq3D1otmy5rwk68RsYeiJsSU=",
+        "lastModified": 1740243076,
+        "narHash": "sha256-4Unura/XH/BrhRci/5uLHAKjyGPyJDwMyAKAD6nJnj8=",
         "owner": "nezia1",
         "repo": "hjem-rum",
-        "rev": "ff1e34a3a6382bacdc081644c025ca44c738d140",
+        "rev": "0fa5f8ad91783297fc862d7c84dbafef95f26d5f",
         "type": "github"
       },
       "original": {
         "owner": "nezia1",
+        "ref": "add-hyprland",
         "repo": "hjem-rum",
         "type": "github"
       }

@@ -118,8 +118,9 @@
       url = "github:nezia1/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO: remove once https://github.com/snugnug/hjem-rum/pull/14 gets merged
     hjem-rum = {
-      url = "github:nezia1/hjem-rum";
+      url = "github:nezia1/hjem-rum/add-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
