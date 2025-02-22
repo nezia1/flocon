@@ -269,16 +269,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1740156578,
-        "narHash": "sha256-qdDMmhzHCzM0NLhC/oC6pnapeys2H9dhQJbfwCnf7Fw=",
+        "lastModified": 1740199244,
+        "narHash": "sha256-BiNUbNWLcG8AuKiAZmJ8tS+fr+JO8vGwB7QQ54cezKk=",
         "owner": "nezia1",
         "repo": "hjem",
-        "rev": "5a659b1a7c404278095f7086a73493dd2afc19b9",
+        "rev": "829109220c14352990bee4cf092f4918f45fb6a1",
         "type": "github"
       },
       "original": {
         "owner": "nezia1",
-        "ref": "implement-environment-variables",
         "repo": "hjem",
         "type": "github"
       }
@@ -291,16 +290,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1740181011,
-        "narHash": "sha256-GKEhv8VV5aRRxiE6YZxFij8L/6+EEZ/X8J4NWkDXaUc=",
+        "lastModified": 1740074218,
+        "narHash": "sha256-1aS0eUNRbEsmAYEU858aq3D1otmy5rwk68RsYeiJsSU=",
         "owner": "nezia1",
         "repo": "hjem-rum",
-        "rev": "c3f0f85e00a7278fbff0f2d99337a6eb47375abd",
+        "rev": "ff1e34a3a6382bacdc081644c025ca44c738d140",
         "type": "github"
       },
       "original": {
         "owner": "nezia1",
-        "ref": "add-hyprland",
         "repo": "hjem-rum",
         "type": "github"
       }

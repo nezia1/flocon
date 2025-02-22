@@ -113,17 +113,16 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: change to upstream once https://github.com/feel-co/hjem/pull/16 gets merged
+
     hjem = {
-      url = "github:nezia1/hjem/implement-environment-variables";
+      url = "github:nezia1/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hjem-rum = {
+      url = "github:nezia1/hjem-rum";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: change to upstream once https://github.com/snugnug/hjem-rum/pull/14 gets merged
-    hjem-rum = {
-      url = "github:nezia1/hjem-rum/add-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     morewaita = {
       url = "github:somepaulo/MoreWaita";
       flake = false;
@@ -151,7 +150,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Dependency pinning to prevent duplicate versions
+    # dependency pinning to prevent duplicate versions
     systems.url = "github:nix-systems/default";
     flake-utils = {
       url = "github:numtide/flake-utils";
