@@ -220,7 +220,7 @@
 
             nix = {
               enable = true;
-              lsp.server = "nixd";
+              lsp.server = "nil";
             };
             clang.enable = true;
             python.enable = true;
