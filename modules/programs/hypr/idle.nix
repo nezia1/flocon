@@ -6,13 +6,17 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
+
   inherit (lib'.generators) toHyprConf;
+
   inherit (config.local.systemVars) username;
+
   inherit (inputs.hypridle.packages.${pkgs.system}) hypridle;
 
   hyprlock = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
       packages = [hypridle];
       files = {

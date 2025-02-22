@@ -4,6 +4,8 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
 in {
   imports = [
@@ -11,7 +13,7 @@ in {
     ./zathura.nix
   ];
 
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username}.packages = [
       pkgs.gnome-calculator
       pkgs.gthumb

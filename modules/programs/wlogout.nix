@@ -4,6 +4,10 @@
   config,
   ...
 }: let
+  inherit (builtins) concatStringsSep map;
+  inherit (lib.meta) getExe';
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
 
   mkLayout = items: let
@@ -15,15 +19,15 @@
           "keybind" : "${item.keybind}"
       }'';
   in
-    builtins.concatStringsSep "\n" (map formatItem items);
+    concatStringsSep "\n" (map formatItem items);
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
       packages = [pkgs.wlogout];
       files = {
         ".config/wlogout/layout".text = let
-          loginctl = lib.getExe' pkgs.systemd "loginctl";
-          systemctl = lib.getExe' pkgs.systemd "systemctl";
+          loginctl = getExe' pkgs.systemd "loginctl";
+          systemctl = getExe' pkgs.systemd "systemctl";
         in
           mkLayout [
             {

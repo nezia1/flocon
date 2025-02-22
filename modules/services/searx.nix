@@ -4,12 +4,14 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  inherit (lib.modules) mkIf;
+in {
   imports = [
     inputs.agenix.nixosModules.default
   ];
 
-  config = lib.mkIf config.local.profiles.server.enable {
+  config = mkIf config.local.profiles.server.enable {
     age.secrets.searx-env-file.file = ../../secrets/searx-env-file.age;
     services = {
       searx = {

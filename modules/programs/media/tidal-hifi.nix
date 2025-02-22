@@ -4,16 +4,19 @@
   pkgs,
   ...
 }: let
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
+
   styleCfg = config.local.style;
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [pkgs.tidal-hifi];
       files = {
         # based on https://github.com/rose-pine/tidal. adapted to work with base16 colors.
         "tidal-hifi/themes/base16.css".text = with styleCfg.scheme.palette;
-          lib.mkIf styleCfg.enable ''
+          mkIf styleCfg.enable ''
             :root {
               --glass-white-1: ${base05};
               --glass-white-1-hover: ${base06};

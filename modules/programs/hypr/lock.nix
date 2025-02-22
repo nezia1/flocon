@@ -6,13 +6,17 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (builtins) mapAttrs;
+  inherit (lib.modules) mkIf;
+
+  inherit (lib') rgba;
   inherit (lib'.generators) toHyprConf;
-  inherit (config.local.systemVars) username;
+
   inherit (inputs.hyprlock.packages.${pkgs.system}) hyprlock;
+  inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
-  rgbaPalette = builtins.mapAttrs (_: c: (lib'.rgba c 1)) styleCfg.scheme.palette;
+  rgbaPalette = mapAttrs (_: c: (rgba c 1)) styleCfg.scheme.palette;
 in {
   config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {

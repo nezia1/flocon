@@ -4,7 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkAfter removePrefix removeSuffix;
+  inherit (builtins) attrNames concatStringsSep map readDir toString;
+  inherit (lib.modules) mkAfter mkIf;
+  inherit (lib.strings) removePrefix removeSuffix;
+
   srv = config.services.forgejo.settings.server;
 
   # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L19-L23
@@ -14,7 +17,7 @@
     stripRoot = false;
   };
 in {
-  config = lib.mkIf config.local.profiles.server.enable {
+  config = mkIf config.local.profiles.server.enable {
     services = {
       forgejo = {
         enable = true;
@@ -40,10 +43,10 @@ in {
           };
           ui = {
             DEFAULT_THEME = "catppuccin-mocha-lavender";
-            THEMES = builtins.concatStringsSep "," (
+            THEMES = concatStringsSep "," (
               ["auto,forgejo-auto,forgejo-dark,forgejo-light,arc-gree,gitea"]
               ++ (map (name: removePrefix "theme-" (removeSuffix ".css" name)) (
-                builtins.attrNames (builtins.readDir theme)
+                attrNames (readDir theme)
               ))
             );
           };

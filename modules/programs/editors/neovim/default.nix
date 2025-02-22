@@ -5,13 +5,18 @@
   config,
   ...
 }: let
+  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.lists) singleton;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
+
   styleCfg = config.local.style;
 
   customNeovim = inputs.nvf.lib.neovimConfiguration {
     inherit pkgs;
-    modules = lib.singleton {
-      config.vim = lib.mkMerge [
+    modules = singleton {
+      config.vim =
         {
           viAlias = true;
           vimAlias = true;
@@ -245,19 +250,18 @@
 
           telescope.enable = true;
         }
-        (lib.mkIf styleCfg.enable {
+        // (optionalAttrs styleCfg.enable {
           theme = {
             enable = true;
             name = "base16";
             base16-colors = styleCfg.scheme.palette;
           };
-        })
-      ];
+        });
     };
   };
 in {
   imports = [./basedpyright-fix.nix];
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [customNeovim.neovim];
     };

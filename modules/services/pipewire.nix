@@ -3,12 +3,14 @@
   inputs,
   config,
   ...
-}: {
+}: let
+  inherit (lib.modules) mkIf;
+in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     services = {
       pulseaudio.enable = false;
       pipewire = {

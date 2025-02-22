@@ -4,6 +4,7 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) attrs lines package str;
 
@@ -57,7 +58,7 @@ in {
       '';
     };
   };
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     packages = [firefox];
     files = {
       ".mozilla/firefox/profiles.ini".text = toINI {

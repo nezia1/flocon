@@ -2,8 +2,10 @@
   lib,
   config,
   ...
-}: {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf config.local.modules.hyprland.enable {
     location.provider = "geoclue2";
 
     services.geoclue2 = {

@@ -2,8 +2,10 @@
   lib,
   config,
   ...
-}: {
-  config = lib.mkIf config.local.profiles.laptop.enable {
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf config.local.profiles.laptop.enable {
     hardware.brillo.enable = true;
   };
 }

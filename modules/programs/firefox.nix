@@ -4,7 +4,9 @@
   config,
   ...
 }: let
-  inherit (builtins) readFile;
+  inherit (builtins) concatStringsSep readFile;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
 
   betterfox = pkgs.fetchFromGitHub {
@@ -14,7 +16,7 @@
     hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
   };
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       programs.firefox = {
         enable = true;
@@ -153,7 +155,7 @@ in {
           };
         };
 
-        extraConfig = builtins.concatStringsSep "\n" [
+        extraConfig = concatStringsSep "\n" [
           (readFile "${betterfox}/user.js")
           (readFile "${betterfox}/Securefox.js")
           (readFile "${betterfox}/Fastfox.js")

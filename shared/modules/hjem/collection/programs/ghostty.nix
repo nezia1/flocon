@@ -4,15 +4,17 @@
   pkgs,
   ...
 }: let
+  inherit (builtins) concatStringsSep;
   inherit (lib.attrsets) isAttrs mapAttrs' mapAttrsToList nameValuePair;
   inherit (lib.generators) mkKeyValueDefault mkValueStringDefault toINIWithGlobalSection;
+  inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) attrs attrsOf package;
 
   mkKeyValue = key: value:
     if isAttrs value
     # ghostty's configuration format supports (so far) one level of nested keys as key1=key2=value
-    then builtins.concatStringsSep "\n" (mapAttrsToList (k: v: "${key}=${k}=${v}") value)
+    then concatStringsSep "\n" (mapAttrsToList (k: v: "${key}=${k}=${v}") value)
     else (mkKeyValueDefault {mkValueString = mkValueStringDefault {};} "=" key value);
 
   toGhosttyConf = toINIWithGlobalSection {
@@ -96,7 +98,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     packages = [cfg.package];
     files =
       {

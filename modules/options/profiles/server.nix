@@ -3,13 +3,14 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption;
 in {
   options = {
     local.profiles.server.enable = mkEnableOption "the server profile";
   };
 
-  config.assertions = lib.mkIf config.local.profiles.server.enable [
+  config.assertions = mkIf config.local.profiles.server.enable [
     {
       assertion = !config.local.profiles.desktop.enable;
       message = "The server profile cannot be enabled if `local.profiles.desktop.enable` is set to true.";

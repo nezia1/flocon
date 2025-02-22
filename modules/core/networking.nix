@@ -2,8 +2,10 @@
   lib,
   config,
   ...
-}: {
-  config = lib.mkIf (!config.local.profiles.server.enable) {
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf (!config.local.profiles.server.enable) {
     networking = {
       inherit (config.local.systemVars) hostName;
       nameservers = ["1.1.1.1" "1.0.0.1"];

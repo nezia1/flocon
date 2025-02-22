@@ -6,9 +6,12 @@
   inputs,
   ...
 }: let
-  inherit (lib) attrNames mkEnableOption mkOption pathExists;
-  inherit (lib.types) attrs bool enum package path str;
+  inherit (builtins) pathExists toString;
+  inherit (lib.attrsets) attrNames;
   inherit (lib.lists) singleton;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) attrs bool enum package path str;
 
   cfg = config.local.style;
 in {
@@ -136,7 +139,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     assertions = [
       (let
         themePath = cfg.gtk.theme.package + /share/themes + "/${cfg.gtk.theme.name}";

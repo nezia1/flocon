@@ -6,12 +6,16 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
+
   inherit (lib'.generators) toHyprConf;
-  inherit (config.local.systemVars) username;
-  inherit (config.local.style) wallpaper;
+
   inherit (inputs.hyprpaper.packages.${pkgs.system}) hyprpaper;
+
+  inherit (config.local.style) wallpaper;
+  inherit (config.local.systemVars) username;
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
       packages = [hyprpaper];
       files = {

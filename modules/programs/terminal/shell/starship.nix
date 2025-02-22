@@ -4,11 +4,14 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStrings;
-  toTOML = (pkgs.formats.toml {}).generate;
+
   inherit (config.local.systemVars) username;
+
+  toTOML = (pkgs.formats.toml {}).generate;
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [pkgs.starship];
       files = {

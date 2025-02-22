@@ -4,9 +4,11 @@
   config,
   ...
 }: let
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [pkgs.zoxide];
     };

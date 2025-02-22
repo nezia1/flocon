@@ -6,9 +6,12 @@
   lib',
   ...
 }: let
-  inherit (lib.lists) singleton;
   inherit (lib.gvariant) mkInt32;
+  inherit (lib.lists) singleton;
+  inherit (lib.modules) mkIf;
+
   inherit (lib'.generators.gtk) finalGtk2Text toGtk3Ini;
+
   inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
@@ -21,7 +24,7 @@
   };
 in {
   config = with styleCfg;
-    lib.mkIf styleCfg.enable {
+    mkIf styleCfg.enable {
       hjem.users.${username} = let
         gtkCss = pkgs.writeText "gtk-colors" (import ./style.nix lib' styleCfg.scheme.palette);
       in {

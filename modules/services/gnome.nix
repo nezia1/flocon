@@ -3,8 +3,10 @@
   pkgs,
   config,
   ...
-}: {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf config.local.profiles.desktop.enable {
     services = {
       # needed for GNOME services outside of GNOME Desktop
       dbus.packages = with pkgs; [

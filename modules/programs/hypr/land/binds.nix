@@ -1,7 +1,9 @@
 lib: let
+  inherit (builtins) substring;
+
   # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
   toggle = program: uwsm: let
-    prog = builtins.substring 0 14 program;
+    prog = substring 0 14 program;
   in "pkill ${prog} || ${lib.optionalString uwsm "uwsm app -- "} ${program}";
   runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
   run = program: "uwsm app -- ${program}";

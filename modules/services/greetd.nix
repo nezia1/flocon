@@ -8,11 +8,14 @@
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
 let
+  inherit (builtins) concatStringsSep filter toString;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.meta) getExe getExe';
+  inherit (lib.modules) mkIf;
+
+  inherit (lib'.generators) toHyprConf;
 
   inherit (inputs.hyprland.packages.${pkgs.stdenv.system}) hyprland;
-  inherit (lib'.generators) toHyprConf;
 
   styleCfg = config.local.style;
 
@@ -50,7 +53,7 @@ let
   });
 in {
   # TODO: perhaps turn this into a more generic module if we wanna use other wayland compositors
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     services.greetd = {
       enable = true;
       settings = {
@@ -83,6 +86,6 @@ in {
         }
       ];
     in
-      builtins.concatStringsSep "\n" (map (env: env.name) (builtins.filter (env: env.condition) environments));
+      concatStringsSep "\n" (map (env: env.name) (filter (env: env.condition) environments));
   };
 }

@@ -4,17 +4,22 @@
   config,
   ...
 }: let
+  inherit (builtins) fetchurl;
+  inherit (lib.generators) toJSON;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
-  logo = builtins.fetchurl {
+
+  logo = fetchurl {
     url = "https://raw.githubusercontent.com/gytis-ivaskevicius/high-quality-nix-content/refs/heads/master/emoji/nix-owo-transparent.png";
     sha256 = "137k3i7z4va68v4rvrazy26szc7p2w59h7bc2h8japzjyj6xjs71";
   };
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [pkgs.fastfetch];
       files = {
-        ".config/fastfetch/config.jsonc".text = builtins.toJSON {
+        ".config/fastfetch/config.jsonc".text = toJSON {} {
           logo = {
             source = logo;
             type = "kitty";

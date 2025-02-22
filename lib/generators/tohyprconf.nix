@@ -3,6 +3,7 @@ lib: {
   indentLevel ? 0,
   importantPrefixes ? ["$" "bezier" "name"],
 }: let
+  inherit (builtins) removeAttrs;
   inherit
     (lib)
     all
@@ -26,7 +27,7 @@ lib: {
       filterAttrs (_: v: isAttrs v || (isList v && all isAttrs v)) attrs;
 
     mkSection = n: attrs:
-      if lib.isList attrs
+      if isList attrs
       then (concatMapStringsSep "\n" (a: mkSection n a) attrs)
       else ''
         ${indent}${n} {
@@ -53,7 +54,7 @@ lib: {
     importantFields = filterAttrs isImportantField allFields;
 
     fields =
-      builtins.removeAttrs allFields
+      removeAttrs allFields
       (mapAttrsToList (n: _: n) importantFields);
   in
     mkFields importantFields

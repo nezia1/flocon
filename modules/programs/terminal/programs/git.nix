@@ -4,11 +4,14 @@
   config,
   ...
 }: let
-  inherit (config.local.systemVars) username;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.homeVars) signingKey;
+  inherit (config.local.systemVars) username;
+
   toINI = lib.generators.toINI {};
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = with pkgs; [git lazygit];
       files = {

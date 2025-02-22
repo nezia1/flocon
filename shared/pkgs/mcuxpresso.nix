@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  inherit (lib.strings) makeLibraryPath;
   name = "mcuxpressoide";
   version = "24.9.25";
   description = "MCUXpresso IDE";
@@ -104,7 +105,7 @@
       pkgs.libudev-zero
     ];
     profile = ''
-      export LD_LIBRARY_PATH=${lib.makeLibraryPath [pkgs.ncurses5 pkgs.ncurses]}:$LD_LIBRARY_PATH
+      export LD_LIBRARY_PATH=${makeLibraryPath [pkgs.ncurses5 pkgs.ncurses]}:$LD_LIBRARY_PATH
     '';
 
     extraBuildCommands = ''

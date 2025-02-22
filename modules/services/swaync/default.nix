@@ -5,11 +5,14 @@
   lib',
   ...
 }: let
-  inherit (builtins) toJSON;
-  inherit (config.local.systemVars) username;
+  inherit (builtins) readFile toJSON;
+  inherit (lib.modules) mkIf;
+
   inherit (lib') generateGtkColors;
+
+  inherit (config.local.systemVars) username;
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
       files = {
         ".config/swaync/config.json".text = toJSON {
@@ -29,7 +32,7 @@ in {
           notification-body-image-height = 100;
           notification-body-image-width = 200;
         };
-        ".config/swaync/style.css".text = (generateGtkColors config.local.style.scheme.palette) + builtins.readFile ./style.css;
+        ".config/swaync/style.css".text = (generateGtkColors config.local.style.scheme.palette) + readFile ./style.css;
       };
 
       packages = [pkgs.swaynotificationcenter];

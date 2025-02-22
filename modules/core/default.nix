@@ -1,4 +1,6 @@
-{lib, ...}: {
+{lib, ...}: let
+  inherit (lib.modules) mkDefault;
+in {
   imports = [
     ./hardware
 
@@ -10,6 +12,6 @@
     ./users.nix
     ./security.nix
   ];
-  system.stateVersion = lib.mkDefault "24.05";
+  system.stateVersion = mkDefault "24.05";
   zramSwap.enable = true;
 }

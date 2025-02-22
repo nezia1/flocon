@@ -1,19 +1,23 @@
-lib:
-with lib; let
+lib: let
+  inherit (builtins) baseNameOf length toString;
+  inherit (lib.attrsets) mapAttrsToList;
+  inherit (lib.lists) foldl imap0;
+  inherit (lib.strings) concatLines removePrefix stringToCharacters substring;
+
   # thanks fufexan https://github.com/fufexan/dotfiles/blob/2947f27791e97ea33c48af4ee2d0188fe03f80dd/lib/colors/default.nix#L8-L66
   # convert rrggbb hex to rgba(r, g, b, a) css
   rgba = c: alpha: let
     color = removePrefix "#" c;
-    r = toString (hexToDec (__substring 0 2 color));
-    g = toString (hexToDec (__substring 2 2 color));
-    b = toString (hexToDec (__substring 4 2 color));
+    r = toString (hexToDec (substring 0 2 color));
+    g = toString (hexToDec (substring 2 2 color));
+    b = toString (hexToDec (substring 4 2 color));
     a = toString alpha;
     res = "rgba(${r}, ${g}, ${b}, ${a})";
   in
     res;
 
   blurImage = pkgs: path:
-    pkgs.runCommand "${builtins.baseNameOf path}-blurred" {
+    pkgs.runCommand "${baseNameOf path}-blurred" {
       buildInputs = [pkgs.imagemagick];
     }
     ''

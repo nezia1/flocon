@@ -4,12 +4,16 @@
   config,
   ...
 }: let
-  inherit (lib) optionalAttrs;
+  inherit (builtins) mapAttrs;
+  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
+
   # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
-  palette = builtins.mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.scheme.palette;
+  palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.scheme.palette;
   toINI = lib.generators.toINI {};
   mkColors = palette: {
     background = palette.base00;
@@ -38,7 +42,7 @@
     "21" = palette.base06;
   };
 in {
-  config = lib.mkIf config.local.modules.hyprland.enable {
+  config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
       packages = [pkgs.foot];
       files = {

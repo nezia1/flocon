@@ -4,12 +4,16 @@
   config,
   ...
 }: let
+  inherit (builtins) concatStringsSep toString;
+  inherit (lib.modules) mkIf;
+
   inherit (config.local.systemVars) username;
+
   toZathura = attrs:
-    builtins.concatStringsSep "\n"
+    concatStringsSep "\n"
     (lib.mapAttrsToList (option: value: "set ${option} \"${toString value}\"") attrs);
 in {
-  config = lib.mkIf config.local.profiles.desktop.enable {
+  config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [pkgs.zathura];
       files = {

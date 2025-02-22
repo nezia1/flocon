@@ -4,8 +4,10 @@
   pkgs,
   config,
   ...
-}: {
-  config = lib.mkIf config.local.profiles.server.enable {
+}: let
+  inherit (lib.modules) mkIf;
+in {
+  config = mkIf config.local.profiles.server.enable {
     services.caddy.enable = true;
     services.caddy.virtualHosts = {
       "www.nezia.dev" = {
