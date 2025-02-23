@@ -115,6 +115,8 @@ in {
           ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
           ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
         '';
+
+        ".zshenv".source = config.hjem.users.${username}.environment.loadEnv;
       };
     };
   };
