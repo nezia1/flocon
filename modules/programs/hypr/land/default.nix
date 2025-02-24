@@ -1,13 +1,11 @@
 {
   lib,
-  lib',
   inputs,
   pkgs,
   config,
   ...
 }: let
   inherit (lib) mkIf mkMerge optionalAttrs;
-  inherit (lib'.generators) toHyprConf;
   inherit (config.local.systemVars) username;
 
   styleCfg = config.local.style;
@@ -38,6 +36,12 @@ in {
       withUWSM = true;
       systemd.setPath.enable = true;
     };
+
+    /*
+    needed so that loginctl can cleanup the session correctly with uwsm
+    (see https://github.com/Vladimir-csp/uwsm?tab=readme-ov-file#universal-wayland-session-manager)
+    */
+    services.dbus.implementation = "broker";
 
     # copied from https://github.com/linyinfeng/dotfiles/blob/91b0363b093303f57885cbae9da7f8a99bbb4432/nixos/profiles/graphical/niri/default.nix#L17-L29
     security.pam.services.hyprlock.text = mkIf config.services.fprintd.enable ''
