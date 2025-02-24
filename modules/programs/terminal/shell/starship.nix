@@ -60,7 +60,7 @@ in {
                 "[($untracked)](green)"
                 "\\])"
 
-                "( \\[$ahead_behind\\])"
+                "( $ahead_behind)"
 
                 " )]"
                 "($style)"
