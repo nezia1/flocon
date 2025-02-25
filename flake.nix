@@ -150,6 +150,11 @@
       url = "github:nezia1/nezia.dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    swww = {
+      url = "github:LGFae/swww";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
 
     # dependency pinning to prevent duplicate versions
     systems.url = "github:nix-systems/default";
