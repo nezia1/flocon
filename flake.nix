@@ -73,6 +73,10 @@
       url = "github:hyprwm/Hyprland";
       inputs.systems.follows = "systems";
     };
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs = {

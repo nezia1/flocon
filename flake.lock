@@ -693,6 +693,26 @@
         "type": "github"
       }
     },
+    "hyprsplit": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738616954,
+        "narHash": "sha256-zxA+ad1meC19xwyIOcvwd2Ej4FytY3wC3LI6iTQ74bw=",
+        "owner": "shezdy",
+        "repo": "hyprsplit",
+        "rev": "ae21754c90f1eaa839cc20b4981f8c9556c866bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shezdy",
+        "repo": "hyprsplit",
+        "type": "github"
+      }
+    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -1050,6 +1070,7 @@
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
         "hyprpaper": "hyprpaper",
+        "hyprsplit": "hyprsplit",
         "hyprwm-contrib": "hyprwm-contrib",
         "morewaita": "morewaita",
         "nezia_dev": "nezia_dev",
