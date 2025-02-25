@@ -4,8 +4,9 @@
   config,
   ...
 }: let
-  inherit (lib) mapAttrs mkIf mkMerge optionalAttrs removePrefix;
+  inherit (lib) mapAttrs mkIf optionalAttrs removePrefix;
   inherit (config.local.systemVars) username;
+
   styleCfg = config.local.style;
 
   prefix = "ctrl+a";
@@ -49,48 +50,49 @@
 in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
-      programs.ghostty = mkMerge [
+      rum.programs.ghostty =
         {
           enable = true;
-          settings = {
-            font-family = ["monospace" "Symbols Nerd Font"];
-            font-size = 14;
-            gtk-single-instance = true;
-            gtk-adwaita = false;
-            confirm-close-surface = false;
+          settings =
+            {
+              font-family = ["monospace" "Symbols Nerd Font"];
+              font-size = 14;
+              gtk-single-instance = true;
+              gtk-adwaita = false;
+              confirm-close-surface = false;
 
-            keybind = {
-              "${prefix}>c" = "new_tab";
-              "${prefix}>p" = "move_tab:-1";
-              "${prefix}>n" = "move_tab:1";
+              keybind = {
+                "${prefix}>c" = "new_tab";
+                "${prefix}>p" = "move_tab:-1";
+                "${prefix}>n" = "move_tab:1";
 
-              "${prefix}>\\" = "new_split:right";
-              "${prefix}>-" = "new_split:down";
-              "${prefix}>h" = "goto_split:left";
-              "${prefix}>j" = "goto_split:bottom";
-              "${prefix}>k" = "goto_split:top";
-              "${prefix}>l" = "goto_split:right";
-              "${prefix}>shift+h" = "resize_split:left,10";
-              "${prefix}>shift+j" = "resize_split:down,10";
-              "${prefix}>shift+k" = "resize_split:up,10";
-              "${prefix}>shift+l" = "resize_split:right,11";
-              "${prefix}>z" = "toggle_split_zoom";
-            };
+                "${prefix}>\\" = "new_split:right";
+                "${prefix}>-" = "new_split:down";
+                "${prefix}>h" = "goto_split:left";
+                "${prefix}>j" = "goto_split:bottom";
+                "${prefix}>k" = "goto_split:top";
+                "${prefix}>l" = "goto_split:right";
+                "${prefix}>shift+h" = "resize_split:left,10";
+                "${prefix}>shift+j" = "resize_split:down,10";
+                "${prefix}>shift+k" = "resize_split:up,10";
+                "${prefix}>shift+l" = "resize_split:right,11";
+                "${prefix}>z" = "toggle_split_zoom";
+              };
 
-            adw-toolbar-style = "flat";
-            gtk-tabs-location = "bottom";
-            gtk-wide-tabs = false;
-            window-decoration = false;
+              adw-toolbar-style = "flat";
+              gtk-tabs-location = "bottom";
+              gtk-wide-tabs = false;
+              window-decoration = false;
 
-            linux-cgroup = "always";
-          };
+              linux-cgroup = "always";
+            }
+            // (optionalAttrs styleCfg.enable {
+              theme = "base16";
+            });
         }
-        (optionalAttrs styleCfg.enable
-          {
-            settings.theme = "base16";
-            themes.base16 = mkGhosttyTheme styleCfg.scheme.palette;
-          })
-      ];
+        // (optionalAttrs styleCfg.enable {
+          themes.base16 = mkGhosttyTheme styleCfg.scheme.palette;
+        });
     };
 
     systemd.user.services.ghostty = {
@@ -103,7 +105,7 @@ in {
 
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.ghostty}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
+        ExecStart = "${config.hjem.users.${username}.rum.programs.ghostty.package}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
         Restart = "on-failure";
         Slice = "background-graphical.slice";
       };
