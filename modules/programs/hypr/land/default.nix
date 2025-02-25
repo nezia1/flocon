@@ -151,6 +151,11 @@ in {
               disable_hyprland_logo = true;
               middle_click_paste = false;
             };
+            plugin = {
+              hyprsplit = {
+                num_workspaces = 6;
+              };
+            };
           }
           // optionalAttrs styleCfg.enable {
             general = {
