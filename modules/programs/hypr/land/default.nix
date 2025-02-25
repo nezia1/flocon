@@ -66,6 +66,9 @@ in {
 
       rum.programs.hyprland = {
         enable = true;
+        plugins = [
+          inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+        ];
         settings =
           {
             xwayland = {
