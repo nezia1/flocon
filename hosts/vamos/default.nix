@@ -1,8 +1,5 @@
 _: {
-  imports = [
-    ./hardware-configuration.nix
-    ./config/theme.nix
-  ];
+  imports = [./hardware-configuration.nix];
 
   local = {
     systemVars = {
@@ -23,6 +20,10 @@ _: {
 
     modules = {
       hyprland.enable = true;
+    };
+
+    style = {
+      enable = true;
     };
   };
 }

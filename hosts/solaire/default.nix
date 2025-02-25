@@ -1,4 +1,6 @@
-_: {
+{lib, ...}: let
+  inherit (lib.lists) singleton;
+in {
   imports = [./hardware-configuration.nix ./config/theme.nix];
 
   local = {
@@ -20,6 +22,11 @@ _: {
     modules = {
       hyprland.enable = true;
       nvidia.enable = true;
+    };
+
+    style = {
+      enable = true;
+      wallpapers = singleton ../../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
     };
   };
 }
