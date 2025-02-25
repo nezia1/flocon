@@ -14,6 +14,7 @@
     ./misc.nix
     ./nh.nix
     ./pcmanfm.nix
+    ./swww.nix
     ./waybar.nix
     ./wlogout.nix
     ./xdg.nix

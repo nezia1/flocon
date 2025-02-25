@@ -1,6 +1,8 @@
-_: {
+{lib, ...}: let
+  inherit (lib.lists) singleton;
+in {
   local.style = {
     enable = true;
-    wallpaper = ../../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
+    wallpapers = singleton ../../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
   };
 }
