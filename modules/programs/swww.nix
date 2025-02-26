@@ -9,12 +9,14 @@
 
   inherit (pkgs) swww;
 
+  inherit (config.local.systemVars) username;
+
   updateWallpaper = pkgs.writeShellScript "wallpaper-change" ''
     ${swww}/bin/swww img "$(${pkgs.coreutils}/bin/shuf -e ${concatStringsSep " " config.local.style.wallpapers} -n 1)"
   '';
 in {
   config = mkIf config.local.profiles.desktop.enable {
-    systemd.user.services = {
+    hjem.users.${username}.systemd.services = {
       swww = {
         name = "swww";
         description = "Wayland wallpaper daemon";

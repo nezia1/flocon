@@ -119,10 +119,11 @@
     };
 
     hjem = {
-      url = "github:nezia1/hjem";
+      # TODO: switch to upstream once https://github.com/feel-co/hjem/pull/18 gets merged
+      url = "github:nezia1/hjem/add-systemd-services-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: remove once https://github.com/snugnug/hjem-rum/pull/14 gets merged
+    # TODO: switch to upstream once https://github.com/snugnug/hjem-rum/pull/14 gets merged
     hjem-rum = {
       url = "github:nezia1/hjem-rum/add-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";

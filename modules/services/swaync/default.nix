@@ -36,20 +36,20 @@ in {
       };
 
       packages = [pkgs.swaynotificationcenter];
-    };
 
-    systemd.user.services.swaync = {
-      description = "Swaync notification daemon";
-      documentation = ["https://github.com/ErikReider/SwayNotificationCenter"];
-      after = ["graphical-session.target"];
-      partOf = ["graphical-session.target"];
-      wantedBy = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "dbus";
-        BusName = "org.freedesktop.Notifications";
-        ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
-        Restart = "on-failure";
-        Slice = "background-graphical.slice";
+      systemd.services.swaync = {
+        description = "Swaync notification daemon";
+        documentation = ["https://github.com/ErikReider/SwayNotificationCenter"];
+        after = ["graphical-session.target"];
+        partOf = ["graphical-session.target"];
+        wantedBy = ["graphical-session.target"];
+        serviceConfig = {
+          Type = "dbus";
+          BusName = "org.freedesktop.Notifications";
+          ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
+          Restart = "on-failure";
+          Slice = "background-graphical.slice";
+        };
       };
     };
   };

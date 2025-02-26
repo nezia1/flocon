@@ -22,19 +22,19 @@ in {
           };
         };
       };
-    };
 
-    systemd.user.services.gammastep = {
-      description = "Gammastep colour temperature adjuster";
-      after = ["graphical-session.target"];
-      wants = ["geoclue-agent.service"];
-      wantedBy = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.gammastep}/bin/gammastep-indicator";
-        Restart = "on-failure";
-        RestartSec = 3;
-        Slice = "background-graphical.slice";
+      systemd.services.gammastep = {
+        description = "Gammastep colour temperature adjuster";
+        after = ["graphical-session.target"];
+        wants = ["geoclue-agent.service"];
+        wantedBy = ["graphical-session.target"];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.gammastep}/bin/gammastep-indicator";
+          Restart = "on-failure";
+          RestartSec = 3;
+          Slice = "background-graphical.slice";
+        };
       };
     };
   };

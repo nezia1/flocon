@@ -271,8 +271,9 @@ in {
           '';
       };
 
-      systemd.services.waybar.settings = {
-        Unit = {
+      systemd.services.waybar = {
+        wantedBy = ["graphical-session.target"];
+        unitConfig = {
           Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";
           Documentation = ["https://github.com/Alexays/Waybar/wiki/"];
           After = ["graphical-session.target"];
@@ -280,15 +281,11 @@ in {
           Requisite = ["graphical-session.target"];
         };
 
-        Service = {
+        serviceConfig = {
           ExecStart = "${pkgs.waybar}/bin/waybar";
           ExecReload = "kill -SIGUSR2 $MAINPID";
           Restart = "on-failure";
           Slice = "app-graphical.slice";
-        };
-
-        Install = {
-          WantedBy = ["graphical-session.target"];
         };
       };
     };

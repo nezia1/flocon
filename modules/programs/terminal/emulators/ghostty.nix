@@ -93,21 +93,21 @@ in {
         // (optionalAttrs styleCfg.enable {
           themes.base16 = mkGhosttyTheme styleCfg.scheme.palette;
         });
-    };
 
-    systemd.user.services.ghostty = {
-      name = "ghostty";
-      description = "ghosttyd™";
-      partOf = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      wantedBy = ["graphical-session.target"];
-      path = lib.mkForce [];
+      systemd.services.ghostty = {
+        name = "ghostty";
+        description = "ghosttyd™";
+        partOf = ["graphical-session.target"];
+        after = ["graphical-session.target"];
+        wantedBy = ["graphical-session.target"];
+        path = lib.mkForce [];
 
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${config.hjem.users.${username}.rum.programs.ghostty.package}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
-        Restart = "on-failure";
-        Slice = "background-graphical.slice";
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${config.hjem.users.${username}.rum.programs.ghostty.package}/bin/ghostty --initial-window=false --quit-after-last-window-closed=false";
+          Restart = "on-failure";
+          Slice = "background-graphical.slice";
+        };
       };
     };
   };
