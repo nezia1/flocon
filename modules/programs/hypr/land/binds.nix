@@ -73,4 +73,9 @@ in {
   binde = [
     "$mod Alt, l, exec, loginctl lock-session"
   ];
+
+  bindm = [
+    "$mod, mouse:272, movewindow"
+    "$mod, mouse:273, resizewindow"
+  ];
 }
