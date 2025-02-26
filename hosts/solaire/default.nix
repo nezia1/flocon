@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib.lists) singleton;
 in {
-  imports = [./hardware-configuration.nix ./config/theme.nix];
+  imports = [./hardware-configuration.nix];
 
   local = {
     systemVars = {
@@ -26,7 +26,7 @@ in {
 
     style = {
       enable = true;
-      wallpapers = singleton ../../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
+      wallpapers = singleton ../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
     };
   };
 }
