@@ -269,15 +269,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1740199244,
-        "narHash": "sha256-BiNUbNWLcG8AuKiAZmJ8tS+fr+JO8vGwB7QQ54cezKk=",
+        "lastModified": 1740583574,
+        "narHash": "sha256-sMPmRVClzolzAZu/JVJmoS8IXF9TiFEd3zYTcJu+R1w=",
         "owner": "nezia1",
         "repo": "hjem",
-        "rev": "829109220c14352990bee4cf092f4918f45fb6a1",
+        "rev": "18e6f8077331b2797bd4de8b441077434cca6e61",
         "type": "github"
       },
       "original": {
         "owner": "nezia1",
+        "ref": "add-systemd-services-config",
         "repo": "hjem",
         "type": "github"
       }
