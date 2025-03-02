@@ -59,22 +59,33 @@ in {
           source <(fzf --zsh)
           source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
-          # completion styling
-          zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-          zstyle ':completion:*' list-colors "\$\{s.:. LS_COLORS}"
-          zstyle ':completion:*' menu no
+          # use lsd for fzf preview
           zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd'
           zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd'
 
           # autosuggestions
-          ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+          ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=gray,underline"
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
           # highlighting
           source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          zstyle ':completion:*:*:*:*:*' menu select
+          zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+          zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+          zstyle ':completion:*' auto-description 'specify: %d'
+          zstyle ':completion:*' completer _expand _complete
+          zstyle ':completion:*' format 'Completing %d'
+          zstyle ':completion:*' group-name ' '
+          zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+          zstyle ':completion:*' rehash true
+          zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+          zstyle ':completion:*' use-compctl false
+          zstyle ':completion:*' verbose true
+          zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+          typeset -gA ZSH_HIGHLIGHT_STYLES
           ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
           ZSH_HIGHLIGHT_STYLES[default]=none
-          ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,underline
+          ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=gray,underline
           ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
           ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
           ZSH_HIGHLIGHT_STYLES[global-alias]=fg=green,bold
