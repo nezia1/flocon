@@ -84,6 +84,7 @@ in {
               gtk-wide-tabs = false;
               window-decoration = false;
 
+              background-opacity = 0.8;
               linux-cgroup = "always";
             }
             // (optionalAttrs styleCfg.enable {
