@@ -103,14 +103,12 @@ in {
 
               "immediate, initialclass:^(steam_app_)(.*)$"
               "fullscreen, initialclass:^(steam_app_)(.*)$"
-              "opacity 1.0 override 1.0 override, initialclass:^(steam_app_)(.*)$"
 
               # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
               "idleinhibit always, fullscreen:1"
 
               "float, title:^(Picture-in-Picture)$"
               "pin, title:^(Picture-in-Picture)$"
-              "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
             ];
 
             render = {
@@ -170,18 +168,17 @@ in {
             decoration = {
               rounding = 16;
 
-              inactive_opacity = 0.40;
-              active_opacity = 0.90;
-
               blur = {
                 enabled = true;
-                size = 10;
-                passes = 1;
-                new_optimizations = true;
+                size = 5;
+                passes = 3;
                 ignore_opacity = true;
+                new_optimizations = 1;
                 xray = true;
-                noise = 0;
-                brightness = 0.60;
+                contrast = 0.7;
+                brightness = 0.8;
+                vibrancy = 0.2;
+                special = true;
               };
 
               shadow = {
