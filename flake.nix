@@ -123,8 +123,10 @@
       url = "github:nezia1/hjem/add-systemd-services-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # switch to upstream once https://github.com/snugnug/hjem-rum/pull/21 gets merged
     hjem-rum = {
-      url = "github:snugnug/hjem-rum";
+      url = "github:nezia1/hjem-rum/init-starship";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
