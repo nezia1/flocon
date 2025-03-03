@@ -31,6 +31,12 @@ in {
           x-scheme-handler/unknown=firefox.desktop
         '';
       };
+
+      # TODO: add xdg hjr module for automatic xdg dirs creation and var handling
+      # (or upstream to hjem?)
+      environment.sessionVariables = {
+        XDG_SCREENSHOTS_DIR = "/home/${username}/Pictures/Screenshots";
+      };
     };
     xdg.portal = {
       enable = true;
