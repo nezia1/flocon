@@ -260,7 +260,6 @@
     };
   };
 in {
-  imports = [./basedpyright-fix.nix];
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [customNeovim.neovim];

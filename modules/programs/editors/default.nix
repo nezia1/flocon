@@ -7,7 +7,7 @@
   inherit (config.local.systemVars) username;
 in {
   imports = [
-    ./neovim
+    ./neovim.nix
   ];
 
   config = mkIf config.local.profiles.desktop.enable {
