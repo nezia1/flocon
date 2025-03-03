@@ -77,7 +77,7 @@ in {
           condition = with config.programs.hyprland; enable && !withUWSM;
         }
         {
-          name = "uwsm start -S hyprland-uwsm.desktop";
+          name = "uwsm start hyprland-uwsm.desktop";
           condition = with config.programs.hyprland; enable && withUWSM;
         }
         {
