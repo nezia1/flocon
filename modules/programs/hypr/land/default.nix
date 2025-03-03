@@ -85,6 +85,9 @@ in {
             monitor = [
               "eDP-1, preferred, auto, 1.33"
               "Unknown-1,disabled"
+
+              "HDMI-A-1, preferred, 0x0, 1"
+              "DP-1, preferred, 1920x0, 1"
             ];
             workspace = [
               "special:terminal, on-created-empty:ghostty"
