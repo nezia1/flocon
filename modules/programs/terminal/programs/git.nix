@@ -26,6 +26,7 @@ in {
           tag.gpgsign = true;
           gpg.format = "ssh";
           push.autoSetupRemote = true;
+          pull.rebase = true;
         };
       };
     };
