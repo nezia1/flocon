@@ -126,7 +126,7 @@
 
     # switch to upstream once https://github.com/snugnug/hjem-rum/pull/21 gets merged
     hjem-rum = {
-      url = "github:nezia1/hjem-rum/init-starship";
+      url = "github:snugnug/hjem-rum";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
