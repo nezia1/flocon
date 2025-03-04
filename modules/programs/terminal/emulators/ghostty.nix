@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
@@ -15,37 +14,35 @@
     colors = mapAttrs (_: value: removePrefix "#" value) palette;
   in
     with colors; {
-      base16 = {
-        palette = {
-          "0" = "#${base00}";
-          "1" = "#${base08}";
-          "2" = "#${base0B}";
-          "3" = "#${base0A}";
-          "4" = "#${base0D}";
-          "5" = "#${base0E}";
-          "6" = "#${base0C}";
-          "7" = "#${base05}";
-          "8" = "#${base02}";
-          "9" = "#${base08}";
-          "10" = "#${base0B}";
-          "11" = "#${base0A}";
-          "12" = "#${base0D}";
-          "13" = "#${base0E}";
-          "14" = "#${base0C}";
-          "15" = "#${base07}";
-          "16" = "#${base09}";
-          "17" = "#${base0F}";
-          "18" = "#${base01}";
-          "19" = "#${base02}";
-          "20" = "#${base04}";
-          "21" = "#${base06}";
-        };
-        background = base00;
-        foreground = base05;
-        cursor-color = base06;
-        selection-background = base02;
-        selection-foreground = base05;
-      };
+      palette = [
+        "0=#${base00}"
+        "1=#${base08}"
+        "2=#${base0B}"
+        "3=#${base0A}"
+        "4=#${base0D}"
+        "5=#${base0E}"
+        "6=#${base0C}"
+        "7=#${base05}"
+        "8=#${base02}"
+        "9=#${base08}"
+        "10=#${base0B}"
+        "11=#${base0A}"
+        "12=#${base0D}"
+        "13=#${base0E}"
+        "14=#${base0C}"
+        "15=#${base07}"
+        "16=#${base09}"
+        "17=#${base0F}"
+        "18=#${base01}"
+        "19=#${base02}"
+        "20=#${base04}"
+        "21=#${base06}"
+      ];
+      background = base00;
+      foreground = base05;
+      cursor-color = base06;
+      selection-background = base02;
+      selection-foreground = base05;
     };
 in {
   config = mkIf config.local.profiles.desktop.enable {
@@ -61,23 +58,23 @@ in {
               gtk-adwaita = false;
               confirm-close-surface = false;
 
-              keybind = {
-                "${prefix}>c" = "new_tab";
-                "${prefix}>p" = "move_tab:-1";
-                "${prefix}>n" = "move_tab:1";
+              keybind = [
+                "${prefix}>c=new_tab"
+                "${prefix}>p=move_tab:-1"
+                "${prefix}>n=move_tab:1"
 
-                "${prefix}>\\" = "new_split:right";
-                "${prefix}>-" = "new_split:down";
-                "${prefix}>h" = "goto_split:left";
-                "${prefix}>j" = "goto_split:bottom";
-                "${prefix}>k" = "goto_split:top";
-                "${prefix}>l" = "goto_split:right";
-                "${prefix}>shift+h" = "resize_split:left,10";
-                "${prefix}>shift+j" = "resize_split:down,10";
-                "${prefix}>shift+k" = "resize_split:up,10";
-                "${prefix}>shift+l" = "resize_split:right,11";
-                "${prefix}>z" = "toggle_split_zoom";
-              };
+                "${prefix}>\\=new_split:right"
+                "${prefix}>-=new_split:down"
+                "${prefix}>h=goto_split:left"
+                "${prefix}>j=goto_split:bottom"
+                "${prefix}>k=goto_split:top"
+                "${prefix}>l=goto_split:right"
+                "${prefix}>shift+h=resize_split:left,10"
+                "${prefix}>shift+j=resize_split:down,10"
+                "${prefix}>shift+k=resize_split:up,10"
+                "${prefix}>shift+l=resize_split:right,11"
+                "${prefix}>z=toggle_split_zoom"
+              ];
 
               adw-toolbar-style = "flat";
               gtk-tabs-location = "bottom";
