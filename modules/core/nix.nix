@@ -29,4 +29,5 @@
       segger-jlink.acceptLicense = true;
     };
   };
+  programs.nix-ld.enable = true;
 }
