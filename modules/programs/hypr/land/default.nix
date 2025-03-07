@@ -75,8 +75,7 @@ in {
               force_zero_scaling = true;
             };
 
-            env = [
-            ];
+            exec-once = ["${pkgs.xorg.xrandr}/bin/xrandr --output 'DP-1' --primary"];
 
             cursor = {
               no_hardware_cursors = 1;
