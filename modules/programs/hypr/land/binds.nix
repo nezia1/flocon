@@ -13,13 +13,14 @@ in {
     "$mod, SUPER_L, exec, ${toggle "anyrun" true}"
   ];
   bind = [
+    "$mod, Tab, overview:toggle"
+    "$mod SHIFT, Tab, overview:toggle, all"
     "$mod, Return, exec, ${run "ghostty"}"
     "$mod, n, exec, ${run "neovide"}"
     "$mod, w, exec, ${run "firefox"}"
     ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
     "$mod, q, killactive"
     "$mod SHIFT, q, exec, loginctl terminate-user ''"
-    "$mod, period, exec, ${toggle "walker -m emojis" false}" # not using uwsm as it already runs as a service
     "CTRL, Print, exec, ${runOnce "grimblast"} --notify --freeze copysave area"
 
     "$mod, h, movefocus, l"

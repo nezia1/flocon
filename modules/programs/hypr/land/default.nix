@@ -68,6 +68,7 @@ in {
         enable = true;
         plugins = [
           inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+          inputs.hyprspace.packages.${pkgs.system}.Hyprspace
         ];
         settings =
           {
