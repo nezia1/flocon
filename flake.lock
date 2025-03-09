@@ -678,6 +678,29 @@
         "type": "github"
       }
     },
+    "hyprspace": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740777046,
+        "narHash": "sha256-hPp+DnTYjE6M9Mdau7inbqMeLR1SpSPVyuxd+nabwaA=",
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "rev": "b5c8adb16f4729572c67883da1bcb46e11f195d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "type": "github"
+      }
+    },
     "hyprsplit": {
       "inputs": {
         "hyprland": [
@@ -1058,6 +1081,7 @@
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
         "hyprpaper": "hyprpaper",
+        "hyprspace": "hyprspace",
         "hyprsplit": "hyprsplit",
         "hyprwm-contrib": "hyprwm-contrib",
         "morewaita": "morewaita",
