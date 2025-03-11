@@ -2,6 +2,7 @@
   imports = [
     ./anyrun
     ./editors
+    ./gtk
     ./hypr
     ./media
     ./terminal

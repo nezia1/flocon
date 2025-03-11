@@ -1,6 +1,5 @@
 {
   imports = [
-    ./gtk
     ./swaync
 
     ./brightness.nix
