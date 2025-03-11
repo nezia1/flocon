@@ -17,7 +17,7 @@ in {
     "$mod SHIFT, Tab, overview:toggle, all"
     "$mod, Return, exec, ${run "ghostty"}"
     "$mod, n, exec, ${run "neovide"}"
-    "$mod, w, exec, ${run "firefox"}"
+    "$mod, w, exec, ${run "librewolf"}"
     ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
     "$mod, q, killactive"
     "$mod SHIFT, q, exec, loginctl terminate-user ''"

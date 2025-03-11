@@ -19,8 +19,8 @@ in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       programs.firefox = {
-        enable = true;
         inherit username;
+        enable = true;
 
         policies = {
           DisableTelemetry = true;

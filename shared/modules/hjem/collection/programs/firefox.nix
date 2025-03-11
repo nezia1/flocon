@@ -19,8 +19,8 @@ in {
     enable = mkEnableOption "firefox module.";
     package = mkOption {
       type = package;
-      default = pkgs.firefox-esr-unwrapped;
-      example = pkgs.firefox-unwrapped;
+      default = pkgs.librewolf-unwrapped;
+      example = pkgs.firefox-esr-unwrapped;
       description = ''
         The Firefox package to use. As hjem's module implementation of Firefox uses wrapping, this package
         is expected to be one of the unwrapped versions. Changing this is not recommended, as some policies
@@ -61,7 +61,7 @@ in {
   config = mkIf cfg.enable {
     packages = [firefox];
     files = {
-      ".mozilla/firefox/profiles.ini".text = toINI {
+      ".librewolf/profiles.ini".text = toINI {
         Profile0 = {
           Name = "${cfg.username}";
           IsRelative = 1;
@@ -69,7 +69,7 @@ in {
           Default = 1;
         };
       };
-      ".mozilla/firefox/${cfg.username}/user.js".text = cfg.extraConfig;
+      ".librewolf/${cfg.username}/user.js".text = cfg.extraConfig;
     };
   };
 }
