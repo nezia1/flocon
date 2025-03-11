@@ -12,8 +12,8 @@ in {
     hjem.users.${username} = {
       packages = with pkgs; [
         devenv
-        element-desktop
         entr
+        fractal
         fzf
         geary
         hyfetch
