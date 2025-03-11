@@ -49,7 +49,6 @@ in {
         Extra preferences to add to user.js.
       '';
     };
-
     username = mkOption {
       type = str;
       example = "user";
@@ -60,16 +59,5 @@ in {
   };
   config = mkIf cfg.enable {
     packages = [firefox];
-    files = {
-      ".librewolf/profiles.ini".text = toINI {
-        Profile0 = {
-          Name = "${cfg.username}";
-          IsRelative = 1;
-          Path = "${cfg.username}";
-          Default = 1;
-        };
-      };
-      ".librewolf/${cfg.username}/user.js".text = cfg.extraConfig;
-    };
   };
 }
