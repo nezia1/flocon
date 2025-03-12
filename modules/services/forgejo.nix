@@ -77,6 +77,10 @@ in {
             mkdir -p ${stateDir}/custom/public/assets
             ln -sf ${theme} ${stateDir}/custom/public/assets/css
           '';
+        serviceConfig = {
+          MemoryHigh = "768M";
+          MemoryMax = "1G";
+        };
       };
     };
 
