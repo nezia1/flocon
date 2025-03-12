@@ -283,7 +283,7 @@ in {
 
         serviceConfig = {
           ExecStart = "${pkgs.waybar}/bin/waybar";
-          ExecReload = "kill -SIGUSR2 $MAINPID";
+          ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
           Restart = "on-failure";
           Slice = "app-graphical.slice";
         };
