@@ -6,9 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.types) attrs lines package str;
-
-  toINI = lib.generators.toINI {};
+  inherit (lib.types) attrs package str;
 
   cfg = config.programs.firefox;
   firefox = pkgs.wrapFirefox cfg.package {
@@ -40,13 +38,6 @@ in {
       description = ''
         An attribute set of policies to add to Firefox. The full list of policies can be found
         [here](https://mozilla.github.io/policy-templates/).
-      '';
-    };
-    extraConfig = mkOption {
-      type = lines;
-      default = "";
-      description = ''
-        Extra preferences to add to user.js.
       '';
     };
     username = mkOption {

@@ -1,20 +1,11 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
-  inherit (builtins) concatStringsSep readFile;
   inherit (lib.modules) mkIf;
 
   inherit (config.local.systemVars) username;
-
-  betterfox = pkgs.fetchFromGitHub {
-    owner = "yokoffing";
-    repo = "betterfox";
-    rev = "e026ed7d3a763c5d3f96c2680d7bc3340831af4f";
-    hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
-  };
 in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
@@ -154,14 +145,6 @@ in {
             };
           };
         };
-
-        extraConfig = concatStringsSep "\n" [
-          (readFile "${betterfox}/user.js")
-          (readFile "${betterfox}/Securefox.js")
-          (readFile "${betterfox}/Fastfox.js")
-          (readFile "${betterfox}/Peskyfox.js")
-          (readFile "${betterfox}/Smoothfox.js")
-        ];
       };
     };
   };
