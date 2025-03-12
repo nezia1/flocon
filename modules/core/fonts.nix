@@ -17,6 +17,8 @@ in {
         pkgs.noto-fonts
         pkgs.noto-fonts-cjk-sans
         pkgs.noto-fonts-extra
+
+        pkgs.inter
       ];
 
       fontconfig = {
