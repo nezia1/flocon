@@ -131,9 +131,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # switch to upstream once https://github.com/snugnug/hjem-rum/pull/25 gets merged
     hjem-rum = {
-      url = "github:nezia1/hjem-rum/init-zsh";
+      url = "github:snugnug/hjem-rum";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

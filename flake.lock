@@ -291,16 +291,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1741509625,
-        "narHash": "sha256-QmqhB1w2uYKKbD3M3yNwOfMBrZ7ET9uovA595dmrCls=",
-        "owner": "nezia1",
+        "lastModified": 1741837649,
+        "narHash": "sha256-bO2wyIC0zDiNqMzc+U5PDxFuwoq5dTfBnIAjjAbnfho=",
+        "owner": "snugnug",
         "repo": "hjem-rum",
-        "rev": "b2a8871e28aaeb9ee094d7c259ef95cc50db2458",
+        "rev": "d46dc7c1dcd3977d78b0f471686f0c1f0d4d306a",
         "type": "github"
       },
       "original": {
-        "owner": "nezia1",
-        "ref": "init-zsh",
+        "owner": "snugnug",
         "repo": "hjem-rum",
         "type": "github"
       }
