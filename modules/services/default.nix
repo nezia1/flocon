@@ -3,6 +3,7 @@
     ./swaync
 
     ./brightness.nix
+    ./caddy.nix
     ./docker.nix
     ./documentation.nix
     ./flatpak.nix
