@@ -9,6 +9,10 @@
   inherit (lib.strings) removePrefix removeSuffix;
 
   alibabaSlop = [
+    "47.74.0.0/15"
+    "47.76.0.0/14"
+    "47.80.0.0/13"
+    "8.208.0.0/12"
     "47.235.0.0/16"
     "47.240.0.0/14"
     "47.236.0.0/14"
@@ -79,8 +83,18 @@ in {
       caddy = {
         enable = true;
         virtualHosts."git.nezia.dev".extraConfig = ''
+          @badbot2 header Referer https://{host}{uri}
+          @badbot3 header Referrer https://{host}{uri}
+          @badbot `header_regexp('User-Agent','(?i).*(censys|semrush|amazon|microsoft|chatgpt|claude|cohere|facebook|crawler|img2dataset|omgili|peer39|anthropic|bytespider|applebot|baiduspider|bing|msn|adidx|google|slurp|yandex|duckduck|twitter|tweet|copilot).*')
+                  || header_regexp('User-Agent','(?i).*(bot\b|-ai\b|bot;|-ai;).*')
+                  || header_regexp('Referer','(?i).*(google.com).*') || header_regexp('Referrer','(?i).*(google.com).*')`
+          respond @badbot "その目、誰の目？" 200
+          respond @badbot2 "その目、誰の目？" 200
+          respond @badbot3 "その目、誰の目？" 200
+
           defender garbage {
               ranges aws openai githubcopilot aws-us-east-1 aws-us-west-1 aws-eu-west-1 gcloud azurepubliccloud ${concatStringsSep " " alibabaSlop}
+              serve_ignore
           }
           reverse_proxy * localhost:${toString srv.HTTP_PORT}
         '';

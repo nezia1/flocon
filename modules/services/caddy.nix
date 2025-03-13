@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.strings) concatStringsSep;
 in {
   config = mkIf config.local.profiles.server.enable {
     services = {
