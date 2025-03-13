@@ -8,28 +8,32 @@
   inherit (lib.modules) mkAfter mkIf;
   inherit (lib.strings) removePrefix removeSuffix;
 
-  srv = config.services.forgejo.settings.server;
+  alibabaSlop = [
+    "47.235.0.0/16"
+    "47.240.0.0/14"
+    "47.236.0.0/14"
+    "47.246.0.0/16"
+    "47.244.0.0/15"
+    "8.210.190.0/24"
+    "8.210.179.0/24"
+    "8.210.147.0/24"
+    "8.210.164.0/24"
+    "8.210.154.0/24"
+    "8.218.91.0/24"
+    "8.210.188.0/24"
+    "8.210.187.0/24"
+    "8.210.176.0/24"
+    "8.210.189.0/24"
+  ];
 
-  no-robots = ''
-    respond /robots.txt `# Fuck off.
-    User-agent: *
-    Disallow: /`
-
-    @badbot2 header Referer https://{host}{uri}
-    @badbot3 header Referrer https://{host}{uri}
-    @badbot `header_regexp('User-Agent','(?i).*(censys|semrush|amazon|microsoft|chatgpt|claude|cohere|facebook|crawler|img2dataset|omgili|peer39|anthropic|bytespider|applebot|baiduspider|bing|msn|adidx|google|slurp|yandex|duckduck|twitter|tweet|copilot).*')
-            || header_regexp('User-Agent','(?i).*(bot\b|-ai\b|bot;|-ai;).*')
-            || header_regexp('Referer','(?i).*(google.com).*') || header_regexp('Referrer','(?i).*(google.com).*')`
-    respond @badbot "その目、誰の目？" 200
-    respond @badbot2 "その目、誰の目？" 200
-    respond @badbot3 "その目、誰の目？" 200
-  '';
   # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L19-L23
   theme = pkgs.fetchzip {
     url = "https://github.com/catppuccin/gitea/releases/download/v1.0.1/catppuccin-gitea.tar.gz";
     sha256 = "et5luA3SI7iOcEIQ3CVIu0+eiLs8C/8mOitYlWQa/uI=";
     stripRoot = false;
   };
+
+  srv = config.services.forgejo.settings.server;
 in {
   config = mkIf config.local.profiles.server.enable {
     services = {
@@ -74,11 +78,12 @@ in {
 
       caddy = {
         enable = true;
-        virtualHosts."git.nezia.dev".extraConfig =
-          ''
-            reverse_proxy * localhost:${toString srv.HTTP_PORT}
-          ''
-          + no-robots;
+        virtualHosts."git.nezia.dev".extraConfig = ''
+          defender garbage {
+              ranges aws openai githubcopilot aws-us-east-1 aws-us-west-1 aws-eu-west-1 gcloud azurepubliccloud ${concatStringsSep " " alibabaSlop}
+          }
+          reverse_proxy * localhost:${toString srv.HTTP_PORT}
+        '';
       };
     };
 
@@ -99,35 +104,5 @@ in {
         };
       };
     };
-
-    # TODO: block alibaba slop
-    # # Alibaba crawler
-    # 47.235.0.0/16
-    # 47.240.0.0/14
-    # 47.236.0.0/14
-    # 47.246.0.0/16
-    # 47.244.0.0/15
-    # 8.210.190.0/24
-    # 8.210.179.0/24
-    # 8.210.147.0/24
-    # 8.210.164.0/24
-    # 8.210.154.0/24
-    # 8.218.91.0/24
-    # 8.210.188.0/24
-    # 8.210.187.0/24
-    # 8.210.176.0/24
-    # 8.210.189.0/24
-    networking.firewall = {
-      enable = true;
-      allowedTCPPorts = [80 443];
-
-      # if using nftables
-      extraForwardRules = ''
-        ip6 saddr { ::/0 } accept
-      '';
-    };
-
-    # ensure IPv6 is enabled
-    networking.enableIPv6 = true;
   };
 }
