@@ -13,7 +13,7 @@
 in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
-      packages = with pkgs; [git lazygit];
+      packages = with pkgs; [git gh lazygit];
       files = {
         ".config/git/config".text = toINI {
           user = {
