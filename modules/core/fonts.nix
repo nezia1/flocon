@@ -25,7 +25,7 @@ in {
         enable = true;
         defaultFonts = {
           serif = ["Noto Serif"];
-          sansSerif = ["Inter Medium"];
+          sansSerif = ["Inter"];
           monospace = ["0xProto"];
           emoji = ["Noto Color Emoji"];
         };
