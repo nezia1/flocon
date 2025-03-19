@@ -12,7 +12,7 @@ in {
         enable = true;
         package = pkgs.caddy.withPlugins {
           plugins = ["github.com/jasonlovesdoggo/caddy-defender@v0.7.0"];
-          hash = "sha256-eXqzMpwt7ZdMQtxkeGJkki6qeXcs51pRRKb9UUlwJRI=";
+          hash = "sha256-VP2APliPadFdKFCizSWoBEAA00M8DV+BBAiPf3XjgY0=";
         };
         globalConfig = ''
           debug
