@@ -830,11 +830,11 @@
         "tabi": "tabi"
       },
       "locked": {
-        "lastModified": 1736534553,
-        "narHash": "sha256-47iNUj5AgnWv+89X+sC3gBYAaPdOx4VGBkjRuVGOaBQ=",
+        "lastModified": 1742379982,
+        "narHash": "sha256-RLJeBcmOxnMD5JUkLRSy9Me9nTOaIdE9YrdnIHRymrY=",
         "owner": "nezia1",
         "repo": "nezia.dev",
-        "rev": "ace44bcc077f564bfeb969d6247d16a663fb3465",
+        "rev": "2897cea92f29b0a20e92c7e8e1ecb75b547ef24b",
         "type": "github"
       },
       "original": {
@@ -1134,11 +1134,11 @@
     "tabi": {
       "flake": false,
       "locked": {
-        "lastModified": 1735987152,
-        "narHash": "sha256-fVfwNGlSJkfg93YIkRion1HiYANcDBywr4g8x35e1+k=",
+        "lastModified": 1742029931,
+        "narHash": "sha256-r9314wReo8xMdaWpkcYFO7fz8kvegnC/VSiZH5wwCN8=",
         "owner": "welpo",
         "repo": "tabi",
-        "rev": "de6fa58fe3b276c12f16f9ddc1cf9f93269161f9",
+        "rev": "8678c477bf888b9e7ead332cb9b750bc63de496f",
         "type": "github"
       },
       "original": {
