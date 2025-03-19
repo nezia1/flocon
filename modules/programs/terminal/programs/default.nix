@@ -5,6 +5,7 @@
     ./git.nix
     ./lsd.nix
     ./misc.nix
+    ./uutils.nix
     # ./tmux.nix
   ];
 }
