@@ -830,11 +830,11 @@
         "tabi": "tabi"
       },
       "locked": {
-        "lastModified": 1742379982,
-        "narHash": "sha256-RLJeBcmOxnMD5JUkLRSy9Me9nTOaIdE9YrdnIHRymrY=",
+        "lastModified": 1742801805,
+        "narHash": "sha256-GGnLfDNG+Rk9JCzNEcc1abzNwycy+VRarClwBD1ocFY=",
         "owner": "nezia1",
         "repo": "nezia.dev",
-        "rev": "2897cea92f29b0a20e92c7e8e1ecb75b547ef24b",
+        "rev": "9530c6f181da898c81af769275d6b98f34dcc7e7",
         "type": "github"
       },
       "original": {
