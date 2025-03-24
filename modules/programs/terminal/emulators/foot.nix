@@ -13,7 +13,7 @@
   styleCfg = config.local.style;
 
   # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
-  palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.scheme.palette;
+  palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
   toINI = lib.generators.toINI {};
   mkColors = palette: {
     background = palette.base00;

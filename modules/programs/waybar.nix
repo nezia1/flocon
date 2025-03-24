@@ -185,7 +185,7 @@ in {
           };
         };
 
-        ".config/waybar/style.css".text = with styleCfg.scheme.palette;
+        ".config/waybar/style.css".text = with styleCfg.colors.scheme.palette;
           mkIf styleCfg.enable ''
             * {
               font-family: "0xProto Nerd Font";

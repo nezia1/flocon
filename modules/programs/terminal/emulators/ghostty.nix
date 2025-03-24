@@ -89,7 +89,7 @@ in {
             });
         }
         // (optionalAttrs styleCfg.enable {
-          themes.base16 = mkGhosttyTheme styleCfg.scheme.palette;
+          themes.base16 = mkGhosttyTheme styleCfg.colors.scheme.palette;
         });
 
       systemd.services.ghostty = {

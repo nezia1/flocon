@@ -7,32 +7,17 @@
   ...
 }: let
   inherit (builtins) pathExists toString;
-  inherit (lib.attrsets) attrNames;
   inherit (lib.lists) singleton;
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.types) listOf attrs bool enum package path str;
+  inherit (lib.types) listOf bool package path str;
 
   cfg = config.local.style;
 in {
+  imports = [./colors.nix];
+
   options.local.style = {
     enable = mkEnableOption "style";
-    schemeName = mkOption {
-      description = ''
-        Name of the tinted-theming color scheme to use.
-      '';
-      type = enum (attrNames inputs.basix.schemeData.base16);
-      example = "catppuccin-mocha";
-      default = "catppuccin-mocha";
-    };
-
-    scheme = mkOption {
-      description = ''
-        Computed scheme from `config.local.style.schemeName`.
-      '';
-      type = attrs;
-      readOnly = true;
-    };
     wallpapers = mkOption {
       description = ''
         Location of the wallpaper that will be used throughout the system.
@@ -71,7 +56,7 @@ in {
       description = ''
         Path to an avatar image (used for hyprlock).
       '';
-      default = ../../assets/avatar.png; # TODO silly, change this
+      default = ../../../assets/avatar.png; # TODO silly, change this
     };
 
     gtk = {
@@ -111,8 +96,8 @@ in {
 
               install -d $out/share/icons/MoreWaita
               cp -r . $out/share/icons/MoreWaita
-              cp ${../../assets/icons/my-caffeine-on-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-on-symbolic.svg
-              cp ${../../assets/icons/my-caffeine-off-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-off-symbolic.svg
+              cp ${../../../assets/icons/my-caffeine-on-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-on-symbolic.svg
+              cp ${../../../assets/icons/my-caffeine-off-symbolic.svg} $out/share/icons/MoreWaita/symbolic/status/my-caffeine-off-symbolic.svg
               gtk-update-icon-cache -f -t $out/share/icons/MoreWaita && xdg-desktop-menu forceupdate
 
               runHook postInstall
@@ -168,11 +153,10 @@ in {
       {
         assertion = cfg.enable -> options.local.systemVars.username.isDefined;
         message = ''
-          When enabling system-wide theming, a username needs to be set in `config.local.systemVars.username`.
+          When enabling system-wide theming, a username needs to be set in
+          `config.local.systemVars.username`.
         '';
       }
     ];
-
-    local.style.scheme = inputs.basix.schemeData.base16.${cfg.schemeName};
   };
 }

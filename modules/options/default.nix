@@ -2,9 +2,9 @@
   imports = [
     ./modules
     ./profiles
+    ./style
 
     ./homeVars.nix
-    ./style.nix
     ./systemVars.nix
   ];
 }

@@ -254,7 +254,9 @@
           theme = {
             enable = true;
             name = "base16";
-            base16-colors = styleCfg.scheme.palette;
+
+            # grab the base16 variant as `config.local.style.colors.scheme` might be base24
+            base16-colors = inputs.basix.schemeData.base16.${styleCfg.colors.schemeName}.palette;
           };
         });
     };

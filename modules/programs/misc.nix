@@ -19,11 +19,11 @@ in {
         hyfetch
         imhex
         logisim-evolution
-        mission-center
         obsidian
         playerctl
         proton-pass
         qalculate-gtk
+        resources
         simple-scan
         wl-clipboard
       ];

@@ -7,16 +7,13 @@
   inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
   styleCfg = config.local.style;
-  # TODO remove override when https://github.com/NixOS/nixpkgs/issues/380429 gets merged
-  discord = pkgs.vesktop.override {
-    electron = pkgs.electron_33;
-  };
+  discord = pkgs.vesktop;
 in {
   config = mkIf config.local.profiles.desktop.enable {
     hjem.users.${username} = {
       packages = [discord];
       autostart.programs = [discord];
-      files.".config/vesktop/themes/midnight-base16.css".text = with styleCfg.scheme.palette;
+      files.".config/vesktop/themes/midnight-base16.css".text = with styleCfg.colors.scheme.palette;
         mkIf styleCfg.enable ''
           /**
            * @name Midnight-base16
@@ -40,7 +37,7 @@ in {
            --font: 'gg sans';
 
            /* top left corner text */
-           --corner-text: '${styleCfg.scheme.name}';
+           --corner-text: '${styleCfg.colors.scheme.name}';
 
            /* color of status indicators and window controls */
               --online-indicator: ${base0B}; /* change to #23a55a for default green */

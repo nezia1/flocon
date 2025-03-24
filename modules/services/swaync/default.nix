@@ -6,11 +6,15 @@
   ...
 }: let
   inherit (builtins) readFile toJSON;
+  inherit (lib.strings) optionalString;
+
   inherit (lib.modules) mkIf;
 
   inherit (lib') generateGtkColors;
 
   inherit (config.local.systemVars) username;
+
+  styleCfg = config.local.style;
 in {
   config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
@@ -32,7 +36,13 @@ in {
           notification-body-image-height = 100;
           notification-body-image-width = 200;
         };
-        ".config/swaync/style.css".text = (generateGtkColors config.local.style.scheme.palette) + readFile ./style.css;
+        ".config/swaync/style.css".text =
+          # TODO: this is not great, make this use gtk colors instead :/
+          (
+            optionalString styleCfg.enable
+            (generateGtkColors styleCfg.colors.scheme.palette)
+          )
+          + readFile ./style.css;
       };
 
       packages = [pkgs.swaynotificationcenter];

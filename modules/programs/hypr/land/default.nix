@@ -5,10 +5,11 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkMerge optionalAttrs;
-  inherit (config.local.systemVars) username;
+  inherit (lib.attrsets) optionalAttrs;
+  inherit (lib.modules) mkIf;
+  inherit (lib.strings) removePrefix;
 
-  styleCfg = config.local.style;
+  inherit (config.local.systemVars) username;
 
   gnomeControlCenter = pkgs.gnome-control-center.overrideAttrs (old: {
     postInstall =
@@ -27,6 +28,8 @@
         done
       '';
   });
+
+  styleCfg = config.local.style;
 in {
   config = mkIf config.local.modules.hyprland.enable {
     programs.hyprland = {
@@ -168,10 +171,10 @@ in {
               };
             };
           }
-          // optionalAttrs styleCfg.enable {
+          // (optionalAttrs styleCfg.enable {
             general = {
               border_size = 4;
-              "col.active_border" = "rgb(${lib.removePrefix "#" styleCfg.scheme.palette.base0E})";
+              "col.active_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base0E})";
             };
             decoration = {
               rounding = 16;
@@ -199,26 +202,25 @@ in {
                 color_inactive = "rgba(00000028)";
               };
             };
-          }
+          })
           // import ./binds.nix lib;
       };
 
-      environment.sessionVariables = mkMerge [
+      environment.sessionVariables =
         {
           GDK_SCALE = 1;
         }
-        (mkIf styleCfg.enable {
+        // (optionalAttrs styleCfg.enable {
           HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
           HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
           XCURSOR_SIZE = styleCfg.cursorTheme.size;
         })
-        (mkIf config.local.modules.nvidia.enable {
+        // (optionalAttrs config.local.modules.nvidia.enable {
           LIBVA_DRIVER_NAME = "nvidia";
           __GLX_VENDOR_LIBRARY_NAME = "nvidia";
           XDG_SESSION_TYPE = "wayland";
           GBM_BACKEND = "nvidia-drm";
-        })
-      ];
+        });
     };
   };
 }

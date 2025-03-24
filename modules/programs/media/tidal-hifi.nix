@@ -15,7 +15,7 @@ in {
       packages = [pkgs.tidal-hifi];
       files = {
         # based on https://github.com/rose-pine/tidal. adapted to work with base16 colors.
-        "tidal-hifi/themes/base16.css".text = with styleCfg.scheme.palette;
+        "tidal-hifi/themes/base16.css".text = with styleCfg.colors.scheme.palette;
           mkIf styleCfg.enable ''
             :root {
               --glass-white-1: ${base05};
