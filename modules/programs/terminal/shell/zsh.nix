@@ -66,6 +66,25 @@ in {
               # use lsd for fzf preview
               zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd'
               zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd'
+              # disable sort when completing `git checkout`
+              zstyle ':completion:*:git-checkout:*' sort false
+              # set descriptions format to enable group support
+              # NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+              zstyle ':completion:*:descriptions' format '[%d]'
+              # set list-colors to enable filename colorizing
+              zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+              # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+              zstyle ':completion:*' menu no
+              # preview directory's content with eza when completing cd
+              zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+              # custom fzf flags
+              # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+              zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+              # To make fzf-tab follow FZF_DEFAULT_OPTS.
+              # NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
+              zstyle ':fzf-tab:*' use-fzf-default-opts yes
+              # switch group using `<` and `>`
+              zstyle ':fzf-tab:*' switch-group '<' '>'
             '';
           };
           zsh-autosuggestions = {
@@ -77,23 +96,10 @@ in {
           zsh-syntax-highlighting = {
             source = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
             config = ''
-              zstyle ':completion:*:*:*:*:*' menu select
-              zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-              zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-              zstyle ':completion:*' auto-description 'specify: %d'
-              zstyle ':completion:*' completer _expand _complete
-              zstyle ':completion:*' format 'Completing %d'
-              zstyle ':completion:*' group-name ' '
-              zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-              zstyle ':completion:*' rehash true
-              zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-              zstyle ':completion:*' use-compctl false
-              zstyle ':completion:*' verbose true
-              zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
               typeset -gA ZSH_HIGHLIGHT_STYLES
               ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
               ZSH_HIGHLIGHT_STYLES[default]=none
-              ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=gray,underline
+              ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
               ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=cyan,bold
               ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
               ZSH_HIGHLIGHT_STYLES[global-alias]=fg=green,bold
