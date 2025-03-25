@@ -167,7 +167,7 @@ in {
             };
             plugin = {
               hyprsplit = {
-                num_workspaces = 6;
+                num_workspaces = 4;
               };
             };
           }
