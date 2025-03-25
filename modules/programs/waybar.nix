@@ -8,7 +8,6 @@
   inherit (builtins) toJSON;
   inherit (config.local.systemVars) username;
   styleCfg = config.local.style;
-  betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in {
   config = mkIf config.local.modules.hyprland.enable {
     hjem.users.${username} = {
@@ -23,21 +22,19 @@ in {
           position = "top";
 
           modules-left = [
-            "hyprland/window"
+            "hyprland/workspaces"
             "pulseaudio"
-            "cpu"
-            "memory"
             "idle_inhibitor"
           ];
 
-          modules-center = ["hyprland/workspaces"];
+          modules-center = ["clock"];
+
           modules-right = [
+            "battery"
+            "network"
+            "tray"
             "custom/swaync"
             "custom/power"
-            "network"
-            "battery"
-            "tray"
-            "clock"
           ];
 
           tray = {
@@ -52,7 +49,7 @@ in {
               critical = 15;
             };
             format = "{icon} {capacity}%";
-            format-charging = " {capacity}% - {time}";
+            format-charging = " {capacity}%";
             format-full = " {capacity}% - Full";
             format-icons = [
               ""
@@ -129,7 +126,7 @@ in {
           "clock" = {
             format = " {:L%H:%M}";
             tooltip = true;
-            tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+            tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt>{calendar}</tt>";
           };
 
           "network" = {
@@ -153,11 +150,16 @@ in {
           };
 
           "hyprland/workspaces" = {
-            format = "{name}";
+            format = "{icon}";
             format-icons = {
-              default = " ";
-              active = " ";
-              urgent = " ";
+              "active" = "";
+              "empty" = "";
+              "default" = "";
+              "urgent" = "";
+              "special" = "󰠱";
+            };
+            persistent-workspaces = {
+              "*" = 3;
             };
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
@@ -184,89 +186,69 @@ in {
             on-click-middle = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-dnd --skip-wait";
           };
         };
-
-        ".config/waybar/style.css".text = with styleCfg.colors.scheme.palette;
-          mkIf styleCfg.enable ''
+        ".config/waybar/style.css".text =
+          mkIf styleCfg.enable
+          /*
+          css
+          */
+          ''
             * {
               font-family: "0xProto Nerd Font";
-              font-size: 16px;
-              border-radius: 0px;
+              border-radius: 0;
               border: none;
-              min-height: 0px;
+              min-height: 0;
             }
+
             window#waybar {
-              background: rgba(0,0,0,0);
+              background: @window_bg_color;
+              font-size: 16px;
             }
+
+            window#waybar.empty {
+              background: transparent;
+            }
+
             #workspaces {
-              color: ${base00};
-              background: ${base01};
-              margin: 4px 4px;
-              padding: 5px 5px;
-              border-radius: 16px;
+              background-color: @card_bg_color;
+              padding: 0 1em;
             }
+
             #workspaces button {
-              font-weight: bold;
-              padding: 0px 5px;
-              margin: 0px 3px;
-              border-radius: 16px;
-              color: ${base00};
-              background: linear-gradient(45deg, ${base08}, ${base0D});
-              opacity: 0.5;
-              transition: ${betterTransition};
+              color: @card_fg_color;
+              font-size: 1.3em;
+              padding: 0.2em 0.3em;
             }
-            #workspaces button.active {
-              font-weight: bold;
-              padding: 0px 5px;
-              margin: 0px 3px;
-              border-radius: 16px;
-              color: ${base00};
-              background: linear-gradient(45deg, ${base08}, ${base0D});
-              transition: ${betterTransition};
-              opacity: 1.0;
-              min-width: 40px;
-            }
-            #workspaces button:hover {
-              font-weight: bold;
-              border-radius: 16px;
-              color: ${base00};
-              background: linear-gradient(45deg, ${base08}, ${base0D});
-              opacity: 0.8;
-              transition: ${betterTransition};
-            }
+
             tooltip {
-              background: ${base00};
-              border: 1px solid ${base0E};
+              background: @popover_bg_color;
+              color: @popover_fg_color;
+              border: 2px solid @accent_color;
               border-radius: 12px;
             }
-            tooltip label {
-              color: ${base0E};
-            }
-            #window, #pulseaudio, #cpu, #memory, #idle_inhibitor {
+
+            #pulseaudio,
+            #idle_inhibitor,
+            #workspaces,
+            #clock,
+            #network,
+            #battery,
+            #custom-swaync,
+            #tray,
+            #custom-power {
               font-weight: bold;
-              margin: 4px 0px;
-              margin-left: 7px;
-              padding: 0px 18px;
-              background: ${base00};
-              color: ${base05};
-              border-radius: 24px 10px 24px 10px;
+              background: @popover_bg_color;
+              color: @popover_fg_color;
+              padding: 0.2em 1em;
+              margin: 0.5em 0.2em;
+              border-radius: 0.5em;
             }
-            #network, #battery,
-            #custom-swaync, #tray, #custom-power {
-              font-weight: bold;
-              background: ${base00};
-              color: ${base05};
-              margin: 4px 0px;
-              margin-right: 7px;
-              border-radius: 10px 24px 10px 24px;
-              padding: 0px 18px;
+
+            #workspaces {
+              margin-left: 1em;
             }
-            #clock {
-              font-weight: bold;
-              color: ${base00};
-              background: linear-gradient(90deg, ${base0E}, ${base0C});
-              margin: 0px;
-              padding: 0px 15px 0px 30px;
-              border-radius: 0px 0px 0px 40px;
+
+            #custom-power {
+              margin-right: 1em;
             }
           '';
       };
