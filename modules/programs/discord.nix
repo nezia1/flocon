@@ -29,7 +29,7 @@ in {
 
           /* IMPORTANT: make sure to enable dark mode in discord settings for the theme to apply properly!!! */
 
-          @import url('https://refact0r.github.io/midnight-discord/midnight.css');
+          @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 
           /* customize things here */
           :root {
