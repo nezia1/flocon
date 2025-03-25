@@ -7,6 +7,8 @@
   inherit (lib) mkIf;
   inherit (builtins) toJSON;
   inherit (config.local.systemVars) username;
+  inherit (config.hjem.users.${username}.rum.programs.hyprland.settings.plugin.hyprsplit) num_workspaces;
+
   styleCfg = config.local.style;
 in {
   config = mkIf config.local.modules.hyprland.enable {
@@ -150,6 +152,7 @@ in {
           };
 
           "hyprland/workspaces" = {
+            all-outputs = false;
             format = "{icon}";
             format-icons = {
               "active" = "";
@@ -158,9 +161,7 @@ in {
               "urgent" = "";
               "special" = "󰠱";
             };
-            persistent-workspaces = {
-              "*" = 3;
-            };
+            persistent-workspaces."*" = num_workspaces;
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
