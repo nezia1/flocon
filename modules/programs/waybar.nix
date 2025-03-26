@@ -83,7 +83,7 @@ in {
               ];
             };
             scroll-step = 1;
-            on-click = "pavucontrol";
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
             ignored-sinks = [
               "Easy Effects Sink"
             ];
@@ -101,7 +101,7 @@ in {
           "custom/power" = {
             format = "";
             tooltip = false;
-            on-click = lib.getExe pkgs.wlogout;
+            on-click = "${pkgs.wlogout}/bin/wlogout";
           };
 
           "memory" = {
@@ -143,6 +143,11 @@ in {
             format-wifi = "{icon} {signalStrength}%";
             format-disconnected = "󰤮";
             tooltip = false;
+            /*
+            TODO: this is overriden at module level to remove unneeded categories
+            will need an overlay (?) if we dont wanna make a module for it
+            (otherwise it will use the full one)
+            */
             on-click = "XDG_CURRENT_DESKTOP=gnome gnome-control-center";
           };
 
