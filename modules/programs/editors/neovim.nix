@@ -227,8 +227,14 @@
               enable = true;
               lsp.server = "nil";
             };
-            clang.enable = true;
-            python.enable = true;
+            clang = {
+              enable = true;
+              dap.enable = true;
+            };
+            python = {
+              enable = true;
+              dap.enable = true;
+            };
             ts.enable = true;
             css.enable = true;
             typst.enable = true;
@@ -243,6 +249,11 @@
               pkgs.vimPlugins.nvim-treesitter.builtGrammars.c
               pkgs.vimPlugins.nvim-treesitter.builtGrammars.python
             ];
+          };
+
+          debugger.nvim-dap = {
+            enable = true;
+            ui.enable = true;
           };
 
           binds.whichKey.enable = true;
