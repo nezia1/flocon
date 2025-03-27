@@ -238,6 +238,10 @@
             ts.enable = true;
             css.enable = true;
             typst.enable = true;
+            zig = {
+              enable = true;
+              dap.enable = true;
+            };
           };
 
           treesitter = {
