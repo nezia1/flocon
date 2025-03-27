@@ -36,6 +36,13 @@ in {
               SuggestURLTemplate = "https://search.nezia.dev/autocompleter?q={searchTerms}";
             }
             {
+              Name = "Perplexity";
+              Alias = "@ai";
+              URLTemplate = "https://www.perplexity.ai?q={searchTerms}";
+              Method = "GET";
+              SuggestURLTemplate = "https://www.perplexity.ai?q={searchTerms}";
+            }
+            {
               Name = "Nix Packages";
               Alias = "@np";
               URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
