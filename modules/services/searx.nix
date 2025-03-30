@@ -5,7 +5,10 @@
   config,
   ...
 }: let
+  inherit (builtins) toString;
   inherit (lib.modules) mkIf;
+
+  srv = config.services.searx.settings.server;
 in {
   imports = [
     inputs.agenix.nixosModules.default
@@ -51,13 +54,7 @@ in {
         enable = true;
         virtualHosts."search.nezia.dev" = {
           extraConfig = ''
-            encode gzip
-            reverse_proxy localhost:8888 {
-              header_up Host {host}
-              header_up X-Real-IP {remote_addr}
-              header_up X-Forwarded-For {remote_addr}
-              header_up X-Forwarded-Proto {scheme}
-            }
+            reverse_proxy localhost:${toString srv.port}
           '';
         };
       };
