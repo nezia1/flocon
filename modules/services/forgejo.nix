@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -7,28 +8,6 @@
   inherit (builtins) attrNames concatStringsSep map readDir toString;
   inherit (lib.modules) mkAfter mkIf;
   inherit (lib.strings) removePrefix removeSuffix;
-
-  alibabaSlop = [
-    "47.74.0.0/15"
-    "47.76.0.0/14"
-    "47.80.0.0/13"
-    "8.208.0.0/12"
-    "47.235.0.0/16"
-    "47.240.0.0/14"
-    "47.236.0.0/14"
-    "47.246.0.0/16"
-    "47.244.0.0/15"
-    "8.210.190.0/24"
-    "8.210.179.0/24"
-    "8.210.147.0/24"
-    "8.210.164.0/24"
-    "8.210.154.0/24"
-    "8.218.91.0/24"
-    "8.210.188.0/24"
-    "8.210.187.0/24"
-    "8.210.176.0/24"
-    "8.210.189.0/24"
-  ];
 
   # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L19-L23
   theme = pkgs.fetchzip {
@@ -53,7 +32,6 @@ in {
         settings = {
           server = {
             DOMAIN = "git.nezia.dev";
-            HTTP_PORT = 1849;
             ROOT_URL = "https://${srv.DOMAIN}/";
             HTTP_ADDR = "localhost";
           };
@@ -72,6 +50,10 @@ in {
               ))
             );
           };
+          security = {
+            PASSWORD_HASH_ALGO = "argon2";
+            REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,::1/128";
+          };
 
           actions = {
             ENABLED = true;
@@ -83,24 +65,30 @@ in {
       caddy = {
         enable = true;
         virtualHosts."git.nezia.dev".extraConfig = ''
-          @badbot2 header Referer https://{host}{uri}
-          @badbot3 header Referrer https://{host}{uri}
-          @badbot `header_regexp('User-Agent','(?i).*(censys|semrush|amazon|microsoft|chatgpt|claude|cohere|facebook|crawler|img2dataset|omgili|peer39|anthropic|bytespider|applebot|baiduspider|bing|msn|adidx|google|slurp|yandex|duckduck|twitter|tweet|copilot).*')
-                  || header_regexp('User-Agent','(?i).*(bot\b|-ai\b|bot;|-ai;).*')
-                  || header_regexp('Referer','(?i).*(google.com).*') || header_regexp('Referrer','(?i).*(google.com).*')`
-          respond @badbot "その目、誰の目？" 200
-          respond @badbot2 "その目、誰の目？" 200
-          respond @badbot3 "その目、誰の目？" 200
-
-          defender garbage {
-              ranges aws openai githubcopilot aws-us-east-1 aws-us-west-1 aws-eu-west-1 gcloud azurepubliccloud ${concatStringsSep " " alibabaSlop}
-              serve_ignore
+          reverse_proxy http://localhost${config.systemd.services.anubis-forgejo.environment.BIND} {
+            header_up X-Real-Ip {remote_host}
           }
-          reverse_proxy * localhost:${toString srv.HTTP_PORT}
         '';
       };
     };
 
+    # https://github.com/DarkKirb/nixos-config/blob/9259583284caf5c051aa521151c0ba1d520aa931/services/forgejo/default.nix#L8-L22
+    systemd.services.anubis-forgejo = {
+      description = "scrape protection for forgejo";
+      requires = ["network-online.target"];
+      after = ["network-online.target"];
+      wantedBy = ["multi-user.target"];
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        ExecStart = "${pkgs.anubis}/bin/anubis";
+      };
+      environment = {
+        BIND = ":60927";
+        METRICS_BIND = ":29397";
+        TARGET = "http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT}";
+      };
+    };
     # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L59-L71
     systemd.services = {
       forgejo = {
