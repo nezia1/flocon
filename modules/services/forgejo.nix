@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -87,6 +86,7 @@ in {
         BIND = ":60927";
         METRICS_BIND = ":29397";
         TARGET = "http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT}";
+        SERVE_ROBOTS_TXT = "true";
       };
     };
     # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L59-L71
