@@ -154,6 +154,13 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    swww = {
+      url = "github:LGFae/swww";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
