@@ -13,7 +13,7 @@ in {
       files = {
         ".config/mimeapps.list".text = ''
           [Default Applications]
-          application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+          application/pdf=org.gnome.Papers.desktop
           default-web-browser=firefox.desktop
           image/gif= org.gnome.gThumb.desktop
           image/jpeg=org.gnome.gThumb.desktop
