@@ -52,7 +52,7 @@ in {
           enable = true;
           settings =
             {
-              font-family = ["monospace" "Symbols Nerd Font"];
+              font-family = ["monospace" "Symbols Nerd Font Mono"];
               font-size = 14;
               gtk-single-instance = true;
               gtk-adwaita = false;
