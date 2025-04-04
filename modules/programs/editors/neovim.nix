@@ -231,6 +231,12 @@
               enable = true;
               dap.enable = true;
             };
+            markdown = {
+              enable = true;
+              extensions = {
+                render-markdown-nvim.enable = true;
+              };
+            };
             python = {
               enable = true;
               dap.enable = true;
@@ -248,6 +254,7 @@
             enable = true;
             fold = true;
             context.enable = true;
+            autotagHtml = true;
             grammars = [
               pkgs.vimPlugins.nvim-treesitter.builtGrammars.nix
               pkgs.vimPlugins.nvim-treesitter.builtGrammars.c
