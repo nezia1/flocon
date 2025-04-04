@@ -11,24 +11,6 @@
 
   inherit (config.local.systemVars) username;
 
-  gnomeControlCenter = pkgs.gnome-control-center.overrideAttrs (old: {
-    postInstall =
-      old.postInstall
-      + ''
-        dir=$out/share/applications
-        for panel in $dir/*
-        do
-          [ "$panel" = "$dir/gnome-network-panel.desktop" ] && continue
-          [ "$panel" = "$dir/gnome-bluetooth-panel.desktop" ] && continue
-          [ "$panel" = "$dir/gnome-wifi-panel.desktop" ] && continue
-          [ "$panel" = "$dir/gnome-wwan-panel.desktop" ] && continue
-          [ "$panel" = "$dir/gnome-sharing-panel.desktop" ] && continue
-          [ "$panel" = "$dir/gnome-wacom-panel.desktop" ] && continue
-          rm "$panel"
-        done
-      '';
-  });
-
   styleCfg = config.local.style;
 in {
   config = mkIf config.local.modules.hyprland.enable {
@@ -64,7 +46,7 @@ in {
     hjem.users.${username} = {
       packages = [
         inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
-        gnomeControlCenter
+        pkgs.gnome-control-center
       ];
 
       rum.programs.hyprland = {

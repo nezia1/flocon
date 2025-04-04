@@ -143,11 +143,6 @@ in {
             format-wifi = "{icon} {signalStrength}%";
             format-disconnected = "󰤮";
             tooltip = false;
-            /*
-            TODO: this is overriden at module level to remove unneeded categories
-            will need an overlay (?) if we dont wanna make a module for it
-            (otherwise it will use the full one)
-            */
             on-click = "XDG_CURRENT_DESKTOP=gnome gnome-control-center";
           };
 
