@@ -9,7 +9,7 @@
   inherit (config.local.systemVars) username;
 in {
   config = mkIf config.local.profiles.desktop.enable {
-    hjem.users.${username}.programs.starship = {
+    hjem.users.${username}.rum.programs.starship = {
       enable = true;
       settings = {
         add_newline = true;
