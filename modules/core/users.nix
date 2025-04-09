@@ -13,7 +13,6 @@ in {
   imports = [
     inputs.hjem.nixosModules.default
     inputs.hjem-rum.nixosModules.default
-    self.outputs.nixosModules.hjemModules
   ];
   users.users.${username} = {
     isNormalUser = true;
@@ -28,6 +27,9 @@ in {
   };
 
   hjem = mkIf desktop.enable {
+    extraModules = [
+      self.outputs.hjemModules.default
+    ];
     clobberByDefault = true;
     users.${username} = {
       enable = true;
