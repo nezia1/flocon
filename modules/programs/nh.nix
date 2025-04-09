@@ -14,8 +14,7 @@ in {
         enable = true;
         extraArgs = "--keep-since 30d --keep 3";
       };
+      flake = "${config.hjem.users.${username}.directory}/flocon";
     };
-
-    hjem.users.${username}.environment.sessionVariables.FLAKE = "/home/${username}/.dotfiles";
   };
 }
