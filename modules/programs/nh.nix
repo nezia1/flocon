@@ -12,7 +12,7 @@ in {
       enable = true;
       clean = {
         enable = true;
-        extraArgs = "--keep-since 30d --keep 3";
+        extraArgs = "--keep-since 7d --keep 3";
       };
       flake = "${config.hjem.users.${username}.directory}/flocon";
     };
