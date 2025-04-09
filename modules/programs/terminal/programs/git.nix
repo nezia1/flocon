@@ -27,6 +27,7 @@ in {
             gpg.format = "ssh";
             push.autoSetupRemote = true;
             pull.rebase = true;
+            diff.colorMoved = "default";
             merge.conflictstyle = "diff3";
           };
         };
