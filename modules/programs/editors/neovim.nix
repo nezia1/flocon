@@ -190,7 +190,6 @@
 
           lsp = {
             enable = true;
-            lspSignature.enable = true;
             lspconfig.enable = true;
             formatOnSave = true;
             mappings = {
@@ -211,8 +210,13 @@
             };
           };
 
-          autocomplete.nvim-cmp = {
+          autocomplete.blink-cmp = {
             enable = true;
+            friendly-snippets.enable = true;
+            setupOpts = {
+              fuzzy.implementation = "prefer_rust_with_warning";
+              signature.enabled = true;
+            };
           };
 
           autopairs.nvim-autopairs.enable = true;
