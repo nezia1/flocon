@@ -15,7 +15,7 @@ in {
   bind = [
     "$mod, Tab, overview:toggle"
     "$mod SHIFT, Tab, overview:toggle, all"
-    "$mod, Return, exec, ${run "ghostty"}"
+    "$mod, Return, exec, ${run "foot"}"
     "$mod, n, exec, ${run "neovide"}"
     "$mod, w, exec, ${run "librewolf"}"
     ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
