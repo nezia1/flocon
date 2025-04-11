@@ -52,6 +52,10 @@ in {
             term = "xterm-256color";
             font = "monospace:size=14";
           };
+          cursor = {
+            style = "beam";
+            blink = true;
+          };
           colors = optionalAttrs styleCfg.enable (mkColors palette);
         };
       };
