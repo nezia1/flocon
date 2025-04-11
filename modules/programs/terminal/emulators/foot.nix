@@ -16,6 +16,7 @@
   palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
   toINI = lib.generators.toINI {};
   mkColors = palette: {
+    alpha = ".85";
     background = palette.base00;
     foreground = palette.base05;
     regular0 = palette.base00;
@@ -44,13 +45,12 @@
 in {
   config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
-      packages = [pkgs.foot];
-      files = {
-        ".config/foot/foot.ini".text = toINI {
+      rum.programs.foot = {
+        enable = true;
+        settings = {
           main = {
             term = "xterm-256color";
             font = "monospace:size=14";
-            shell = "${pkgs.nushell}/bin/nu";
           };
           colors = optionalAttrs styleCfg.enable (mkColors palette);
         };
