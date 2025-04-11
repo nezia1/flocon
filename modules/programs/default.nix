@@ -9,7 +9,6 @@
 
     ./comma.nix
     ./discord.nix
-    ./fastfetch.nix
     ./firefox.nix
     ./games.nix
     ./gns3.nix
