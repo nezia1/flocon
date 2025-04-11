@@ -1,0 +1,23 @@
+{
+  "pins": {
+    "foot": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "https://codeberg.org/fazzi/foot"
+      },
+      "branch": "transparency_yipee",
+      "submodules": false,
+      "revision": "0d44e225b47184e5153d832b92ddcb8e04208a1a",
+      "url": null,
+      "hash": "0n40ip4p7ylsv1zq2ianap1x5kjn1cfqpnpwk62mil1y1hl7d4vk"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre781834.d19cf9dfc633/nixexprs.tar.xz",
+      "hash": "1nlhpzl8lz4h1fw418yf4l2kkmjvgll1pzw6diqh3h3s0hqj4p0v"
+    }
+  },
+  "version": 5
+}

@@ -4,9 +4,10 @@
   ...
 }: let
   lib' = import ../lib inputs.nixpkgs.lib;
+  npins = import ../npins;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit self inputs lib';};
+      specialArgs = {inherit self inputs lib' npins;};
       modules =
         (args.modules or [])
         ++ [../modules];

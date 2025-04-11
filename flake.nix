@@ -26,6 +26,7 @@
           pkgs.git
           deploy-rs.packages.${pkgs.system}.default
           agenix.packages.${pkgs.system}.default
+          pkgs.npins
         ];
       };
     });
