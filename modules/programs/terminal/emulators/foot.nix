@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
@@ -14,9 +13,7 @@
 
   # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
   palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
-  toINI = lib.generators.toINI {};
   mkColors = palette: {
-    alpha = ".85";
     background = palette.base00;
     foreground = palette.base05;
     regular0 = palette.base00;
