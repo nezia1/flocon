@@ -8,6 +8,7 @@
   inherit (builtins) mapAttrs;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) concatStringsSep;
 
   inherit (config.local.systemVars) username;
 
@@ -55,7 +56,7 @@ in {
         settings = {
           main = {
             term = "xterm-256color";
-            font = "monospace:size=14";
+            font = concatStringsSep "," ["monospace:size=14" "Symbols Nerd Font Mono:size=14"];
             # https://codeberg.org/fazzi/foot/src/branch/transparency_yipee goated
             alpha-mode = "matching";
             transparent-fullscreen = "yes";
