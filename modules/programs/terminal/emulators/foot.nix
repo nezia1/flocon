@@ -1,6 +1,8 @@
 {
   lib,
+  pkgs,
   config,
+  npins,
   ...
 }: let
   inherit (builtins) mapAttrs;
@@ -14,8 +16,9 @@
   # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
   palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
   mkColors = palette: {
-    background = palette.base00;
+    alpha = ".8";
     foreground = palette.base05;
+    background = palette.base00;
     regular0 = palette.base00;
     regular1 = palette.base08;
     regular2 = palette.base0B;
@@ -44,15 +47,24 @@ in {
     hjem.users.${username} = {
       rum.programs.foot = {
         enable = true;
+        package = pkgs.foot.overrideAttrs {
+          pname = "foot-transparency";
+          version = "0-unstable-${npins.foot.revision}";
+          src = npins.foot;
+        };
         settings = {
           main = {
             term = "xterm-256color";
             font = "monospace:size=14";
+            # https://codeberg.org/fazzi/foot/src/branch/transparency_yipee goated
+            alpha-mode = "matching";
+            transparent-fullscreen = "yes";
           };
           cursor = {
             style = "beam";
             blink = true;
           };
+
           colors = optionalAttrs styleCfg.enable (mkColors palette);
         };
       };
