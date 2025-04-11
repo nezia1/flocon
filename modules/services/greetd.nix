@@ -50,7 +50,7 @@ let
       };
   });
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     services.greetd = {
       enable = true;
       settings = {

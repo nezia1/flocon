@@ -42,7 +42,7 @@
     "21" = palette.base06;
   };
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [pkgs.foot];
       files = {

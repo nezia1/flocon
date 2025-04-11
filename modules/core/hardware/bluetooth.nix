@@ -5,9 +5,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.profiles) desktop;
 in {
-  config = mkIf desktop.enable {
+  config = mkIf (!config.local.profiles.server.enable) {
     hardware.bluetooth = {
       enable = true;
       package = pkgs.bluez5-experimental;

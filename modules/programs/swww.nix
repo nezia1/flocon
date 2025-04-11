@@ -15,7 +15,7 @@
     ${swww}/bin/swww img "$(${pkgs.uutils-coreutils-noprefix}/bin/shuf -e ${concatStringsSep " " config.local.style.wallpapers} -n 1)"
   '';
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     hjem.users.${username}.systemd.services = {
       swww-daemon = {
         script = "${swww}/bin/swww-daemon --format xrgb --no-cache";

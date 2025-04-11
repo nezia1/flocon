@@ -4,18 +4,22 @@
   config,
   ...
 }: let
+  inherit (lib.lists) optionals;
   inherit (lib.modules) mkIf;
 
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
-    hjem.users.${username}.packages = with pkgs; [
-      gthumb
-      papers
-      spotify
-      stremio
-      celluloid
-      tidal-hifi
-    ];
+  config = mkIf (config.local.homeVars.desktop != "none") {
+    hjem.users.${username}.packages = with pkgs;
+      [
+        spotify
+        stremio
+        tidal-hifi
+      ]
+      ++ (optionals (config.local.homeVars.desktop == "Hyprland") [
+        celluloid
+        gthumb
+        papers
+      ]);
   };
 }

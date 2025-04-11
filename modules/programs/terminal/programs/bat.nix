@@ -13,7 +13,7 @@
     concatStringsSep "\n"
     (lib.mapAttrsToList (option: value: "--${option}=\"${value}\"") attrs);
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (!config.local.profiles.server.enable) {
     hjem.users.${username} = {
       packages = [
         pkgs.bat

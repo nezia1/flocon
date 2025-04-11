@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption;
-  inherit (lib.types) str;
+  inherit (lib.types) enum str;
 in {
   options.local.homeVars = {
     fullName = mkOption {
@@ -21,6 +21,14 @@ in {
     signingKey = mkOption {
       type = str;
       description = "your ssh public key (used for signing git commits)";
+    };
+
+    desktop = mkOption {
+      type = enum ["none" "Hyprland"];
+      default = "none";
+      description = ''
+        The desktop environment to be used.
+      '';
     };
   };
 

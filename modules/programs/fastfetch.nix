@@ -15,7 +15,7 @@
     sha256 = "137k3i7z4va68v4rvrazy26szc7p2w59h7bc2h8japzjyj6xjs71";
   };
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (!config.local.profiles.server.enable) {
     hjem.users.${username} = {
       packages = [pkgs.fastfetch];
       files = {

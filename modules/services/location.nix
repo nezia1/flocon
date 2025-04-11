@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     location.provider = "geoclue2";
 
     services.geoclue2 = {

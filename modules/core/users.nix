@@ -8,7 +8,7 @@
   inherit (lib.modules) mkIf;
   inherit (config.local.systemVars) username;
   inherit (config.local.homeVars) fullName;
-  inherit (config.local.profiles) desktop;
+  inherit (config.local.profiles) server;
 in {
   imports = [
     inputs.hjem.nixosModules.default
@@ -17,7 +17,7 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     description = fullName;
-    extraGroups = mkIf desktop.enable [
+    extraGroups = mkIf (!server.enable) [
       "networkmanager"
       "audio"
       "video"
@@ -26,10 +26,7 @@ in {
     ];
   };
 
-  hjem = mkIf desktop.enable {
-    extraModules = [
-      self.outputs.hjemModules.default
-    ];
+  hjem = mkIf (!server.enable) {
     clobberByDefault = true;
     users.${username} = {
       enable = true;

@@ -6,7 +6,6 @@
     ./caddy.nix
     ./docker.nix
     ./documentation.nix
-    ./easyeffects.nix
     ./firefox-syncserver.nix
     ./flatpak.nix
     ./forgejo.nix

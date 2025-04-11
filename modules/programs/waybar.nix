@@ -11,7 +11,7 @@
 
   styleCfg = config.local.style;
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [
         pkgs.waybar

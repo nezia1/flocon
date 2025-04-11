@@ -9,7 +9,7 @@
   styleCfg = config.local.style;
   discord = pkgs.vesktop;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [discord];
       autostart.programs = [discord];

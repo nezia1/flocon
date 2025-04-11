@@ -10,7 +10,7 @@
 
   toINI = lib.generators.toINI {};
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [pkgs.gammastep];
       files = {

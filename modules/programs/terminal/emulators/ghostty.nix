@@ -45,7 +45,7 @@
       selection-foreground = base05;
     };
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       rum.programs.ghostty =
         {

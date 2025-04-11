@@ -8,7 +8,7 @@
   inherit (lib) mkIf;
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       packages = with pkgs; [
         devenv

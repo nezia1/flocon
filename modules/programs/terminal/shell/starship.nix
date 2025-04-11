@@ -8,7 +8,7 @@
 
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (!config.local.profiles.server.enable) {
     hjem.users.${username}.rum.programs.starship = {
       enable = true;
       settings = {

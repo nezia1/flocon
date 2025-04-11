@@ -10,7 +10,7 @@ in {
     ./neovim.nix
   ];
 
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     /*
     we don't want the default NixOS EDITOR value, which is nano and will override the `environment.d` setting.
      we have to unset it like this so that our systemd user variable will take precedence:

@@ -9,7 +9,7 @@
   inherit (config.local.homeVars) signingKey;
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (!config.local.profiles.server.enable) {
     hjem.users.${username} = {
       packages = with pkgs; [gh lazygit];
       rum = {

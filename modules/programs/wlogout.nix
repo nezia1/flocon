@@ -21,7 +21,7 @@
   in
     concatStringsSep "\n" (map formatItem items);
 in {
-  config = mkIf config.local.modules.hyprland.enable {
+  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [pkgs.wlogout];
       files = {

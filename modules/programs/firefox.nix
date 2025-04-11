@@ -7,7 +7,7 @@
 
   inherit (config.local.systemVars) username;
 in {
-  config = mkIf config.local.profiles.desktop.enable {
+  config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       programs.firefox = {
         inherit username;

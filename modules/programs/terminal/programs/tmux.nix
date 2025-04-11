@@ -1,12 +1,12 @@
 {
+  config,
   lib,
   pkgs,
-  osConfig,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf osConfig.local.profiles.desktop.enable {
+  config = (mkIf (!config.profiles.server.enable)) {
     programs.tmux = {
       enable = true;
       prefix = "C-space";
