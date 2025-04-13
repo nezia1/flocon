@@ -25,6 +25,19 @@
       "url": null,
       "hash": "0n40ip4p7ylsv1zq2ianap1x5kjn1cfqpnpwk62mil1y1hl7d4vk"
     },
+    "nixos-artwork": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixos-artwork"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "33856d7837cb8ba76c4fc9e26f91a659066ee31f",
+      "url": "https://github.com/nixos/nixos-artwork/archive/33856d7837cb8ba76c4fc9e26f91a659066ee31f.tar.gz",
+      "hash": "1iarl1fnl3zrsci8bg6ig1p5wm8b5mryslj7ff2swdl220wd52jl"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",

@@ -1,9 +1,10 @@
 {
+  inputs,
   lib,
   pkgs,
   config,
   options,
-  inputs,
+  npins,
   ...
 }: let
   inherit (builtins) pathExists toString;
@@ -24,7 +25,7 @@ in {
       '';
       type = listOf path;
       example = lib.literalExpression "./wallpaper.png";
-      default = singleton "${inputs.nixos-artwork}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
+      default = singleton "${npins.nixos-artwork.outPath}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
     };
 
     cursorTheme = {
