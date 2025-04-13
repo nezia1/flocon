@@ -15,6 +15,7 @@ in {
         inputs.self.packages.${pkgs.system}.app2unit
         devenv
         entr
+        fastfetch
         fractal
         fzf
         geary
