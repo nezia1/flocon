@@ -10,12 +10,12 @@
     ...
   } @ inputs: let
     supportedSystems = nixpkgs.lib.singleton "x86_64-linux";
-
     forAllSystems = function:
       nixpkgs.lib.genAttrs
       supportedSystems
       (system: function nixpkgs.legacyPackages.${system});
     treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+    npins = import ./npins;
   in {
     checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     deploy.nodes = import ./nodes.nix {inherit inputs;};
@@ -31,12 +31,12 @@
       };
     });
     formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    nixosConfigurations = import ./hosts {inherit self inputs;};
+    nixosConfigurations = import ./hosts {inherit self inputs npins;};
     hjemModules = {
       hjem = nixpkgs.lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
       hjem-rum = nixpkgs.lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
     };
-    packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
+    packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs npins;});
   };
   inputs = {
     # nix related

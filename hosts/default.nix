@@ -1,10 +1,10 @@
 {
   self,
   inputs,
+  npins,
   ...
 }: let
   lib' = import ../lib inputs.nixpkgs.lib;
-  npins = import ../npins;
   mkSystem = args:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit self inputs lib' npins;};
