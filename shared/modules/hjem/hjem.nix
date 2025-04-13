@@ -1,3 +1,3 @@
 {lib}: {
-  imports = lib.filesystem.listFilesRecursive ./collection;
+  imports = lib.filesystem.listFilesRecursive ./modules;
 }

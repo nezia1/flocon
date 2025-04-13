@@ -32,7 +32,10 @@
     });
     formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = import ./hosts {inherit self inputs;};
-    hjemModules.default = import ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
+    hjemModules = {
+      hjem = nixpkgs.lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
+      hjem-rum = nixpkgs.lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
+    };
     packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs;});
   };
   inputs = {
@@ -115,8 +118,7 @@
     };
 
     hjem = {
-      # TODO: switch to upstream once https://github.com/feel-co/hjem/pull/18 gets merged
-      url = "github:nezia1/hjem/add-systemd-services-config";
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

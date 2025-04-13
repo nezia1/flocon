@@ -9,7 +9,7 @@
 in {
   config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
-      programs.firefox = {
+      rum.programs.firefox = {
         inherit username;
         enable = true;
 

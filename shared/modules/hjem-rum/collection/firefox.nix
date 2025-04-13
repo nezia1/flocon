@@ -8,12 +8,12 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) attrs package str;
 
-  cfg = config.programs.firefox;
+  cfg = config.rum.programs.firefox;
   firefox = pkgs.wrapFirefox cfg.package {
     extraPolicies = cfg.policies;
   };
 in {
-  options.programs.firefox = {
+  options.rum.programs.firefox = {
     enable = mkEnableOption "firefox module.";
     package = mkOption {
       type = package;
