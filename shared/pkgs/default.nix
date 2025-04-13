@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  mcuxpresso = pkgs.callPackage ./mcuxpresso.nix {};
+  mcuxpresso-udev = pkgs.callPackage ./mcuxpresso-udev.nix {};
 }
