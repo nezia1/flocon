@@ -6,7 +6,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption;
   inherit (lib.types) listOf package;
-  cfg = config.autostart;
+  cfg = config.rum.misc.autostart;
 
   # stolen from https://github.com/nix-community/home-manager/issues/3447#issuecomment-1328294558
   mkAutostartEntries = builtins.listToAttrs (map
@@ -28,7 +28,7 @@
     })
     cfg.programs);
 in {
-  options.autostart = {
+  options.rum.misc.autostart = {
     programs = mkOption {
       type = listOf package;
       default = [];

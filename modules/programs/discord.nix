@@ -12,7 +12,7 @@ in {
   config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       packages = [discord];
-      autostart.programs = [discord];
+      rum.misc.autostart.programs = [discord];
       files.".config/vesktop/themes/base16.css".text = with styleCfg.colors.scheme.palette;
         mkIf styleCfg.enable
         /*
