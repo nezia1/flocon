@@ -6,12 +6,12 @@
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkOption;
   inherit (lib.types) listOf package;
-  cfg = config.rum.misc.autostart;
+  cfg = config.rum.xdg.autostart;
 
   # stolen from https://github.com/nix-community/home-manager/issues/3447#issuecomment-1328294558
   mkAutostartEntries = builtins.listToAttrs (map
     (pkg: {
-      name = ".config/autostart/" + pkg.pname + ".desktop";
+      name = ".config/autostart/${pkg.pname}.desktop";
       value =
         if pkg ? desktopItem
         then {
@@ -23,12 +23,12 @@
         else {
           # Application does *not* have a desktopItem entry. Try to find a
           # matching .desktop name in /share/apaplications
-          source = pkg + "/share/applications/" + pkg.pname + ".desktop";
+          source = "${pkg}/share/applications/${pkg.pname}.desktop";
         };
     })
     cfg.programs);
 in {
-  options.rum.misc.autostart = {
+  options.rum.xdg.autostart = {
     programs = mkOption {
       type = listOf package;
       default = [];
