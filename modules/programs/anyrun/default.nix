@@ -25,7 +25,7 @@ in {
               command: "ghostty -e",
               // What arguments should be passed to the terminal process to run the command correctly
               // {} is replaced with the command in the desktop entry
-              args: "uwsm app -- {}",
+              args: "app2unit -- {}",
             )),
           )
         '';
