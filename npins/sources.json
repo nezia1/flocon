@@ -1,5 +1,18 @@
 {
   "pins": {
+    "base16-discord": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "imbypass",
+        "repo": "base16-discord"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "775c5321441b1e21bc6159d4a7e5bf70c14d5e66",
+      "url": "https://github.com/imbypass/base16-discord/archive/775c5321441b1e21bc6159d4a7e5bf70c14d5e66.tar.gz",
+      "hash": "0prm27zyfiwhiyaghz66jz263x9k5qij8763l77cs7zd9hvga52p"
+    },
     "foot": {
       "type": "Git",
       "repository": {
