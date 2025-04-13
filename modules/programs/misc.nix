@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   config,
@@ -11,6 +12,7 @@ in {
   config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       packages = with pkgs; [
+        inputs.self.packages.${pkgs.system}.app2unit
         devenv
         entr
         fractal
