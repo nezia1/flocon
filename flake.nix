@@ -102,18 +102,6 @@
         systems.follows = "systems";
       };
     };
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "systems";
-      };
-    };
     hyprspace = {
       url = "github:KZDKM/Hyprspace";
 
