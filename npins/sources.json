@@ -1,5 +1,18 @@
 {
   "pins": {
+    "app2unit": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Vladimir-csp",
+        "repo": "app2unit"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "44b5da8a6f1e5449d3c2a8b63dc54875bb7e10af",
+      "url": "https://github.com/Vladimir-csp/app2unit/archive/44b5da8a6f1e5449d3c2a8b63dc54875bb7e10af.tar.gz",
+      "hash": "1wvk9qcgbmxh8772g0gbf15fv1008s5g1bhxhr06gdml8hq4d5a8"
+    },
     "base16-discord": {
       "type": "Git",
       "repository": {
