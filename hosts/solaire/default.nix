@@ -20,7 +20,6 @@ in {
     };
 
     modules = {
-      hyprland.enable = true;
       nvidia.enable = true;
     };
 
