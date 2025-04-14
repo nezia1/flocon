@@ -229,7 +229,6 @@
 
             nix = {
               enable = true;
-              lsp.server = "nil";
             };
             clang = {
               enable = true;
