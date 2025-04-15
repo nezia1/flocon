@@ -25,8 +25,8 @@ in {
         enable = true;
         defaultFonts = {
           serif = ["Noto Serif"];
-          sansSerif = ["Inter"];
-          monospace = ["0xProto"];
+          sansSerif = ["Inter Variable"];
+          monospace = ["0xProto" "Symbols Nerd Font Mono"];
           emoji = ["Noto Color Emoji"];
         };
       };

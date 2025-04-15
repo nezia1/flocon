@@ -194,7 +194,7 @@ in {
           */
           ''
             * {
-              font-family: "0xProto Nerd Font";
+              font-family: "monospace";
               border-radius: 0;
               border: none;
               min-height: 0;
