@@ -127,11 +127,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hjem.follows = "hjem";
     };
-
-    morewaita = {
-      url = "github:somepaulo/MoreWaita";
-      flake = false;
-    };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";

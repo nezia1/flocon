@@ -86,9 +86,9 @@ in {
 
         package = mkOption {
           type = package;
-          description = "The GTK icon theme to be used";
+          description = builtins.trace (npins.MoreWaita "The GTK icon theme to be used");
           default = pkgs.morewaita-icon-theme.overrideAttrs {
-            src = inputs.morewaita;
+            src = npins.MoreWaita;
             installPhase = ''
               runHook preInstall
 
