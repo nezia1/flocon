@@ -28,6 +28,7 @@ in {
         qalculate-gtk
         resources
         simple-scan
+        vscode-fhs
         wl-clipboard
       ];
 
