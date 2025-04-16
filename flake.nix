@@ -7,6 +7,7 @@
     agenix,
     deploy-rs,
     treefmt-nix,
+    pre-commit-hooks,
     ...
   } @ inputs: let
     supportedSystems = nixpkgs.lib.singleton "x86_64-linux";
@@ -17,10 +18,34 @@
     treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     npins = import ./npins;
   in {
-    checks = builtins.mapAttrs (_: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+    checks = forAllSystems (pkgs:
+      {
+        /*
+        some treefmt formatters are not supported in pre-commit-hooks,
+        we filter them out for now.
+        */
+        pre-commit-check = let
+          toFilter = [
+            "yamlfmt"
+            "nixfmt"
+            "ruff" # creates warning as the name is deprecated, not used anyway
+          ];
+          filterFn = n: _v: (!builtins.elem n toFilter);
+          treefmtFormatters = pkgs.lib.mapAttrs (_n: v: {inherit (v) enable;}) (
+            pkgs.lib.filterAttrs filterFn treefmtEval.${pkgs.system}.config.programs
+          );
+        in
+          pre-commit-hooks.lib.${pkgs.system}.run {
+            src = ./.;
+            hooks = treefmtFormatters;
+          };
+      }
+      // deploy-rs.lib.${pkgs.system}.deployChecks self.deploy);
     deploy.nodes = import ./nodes.nix {inherit inputs;};
     devShells = forAllSystems (pkgs: {
       default = pkgs.mkShell {
+        inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
         packages = [
           pkgs.alejandra
           pkgs.git
@@ -140,6 +165,10 @@
         flake-utils.follows = "flake-utils";
         flake-parts.follows = "flake-parts";
       };
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     swww = {
       url = "github:LGFae/swww";
