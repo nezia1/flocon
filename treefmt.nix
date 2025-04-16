@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  projectRootFile = "flake.nix";
+  projectRootFile = "flake.lock";
   programs = {
     alejandra.enable = true;
     prettier = {
@@ -9,6 +9,10 @@
     mdformat = {
       enable = true;
       package = pkgs.mdformat.withPlugins (p: [p.mdformat-gfm]);
+    };
+    deadnix = {
+      enable = true;
+      package = pkgs.deadnix;
     };
   };
 }
