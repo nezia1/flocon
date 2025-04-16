@@ -20,6 +20,7 @@
   in {
     checks = forAllSystems (pkgs:
       {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
         /*
         some treefmt formatters are not supported in pre-commit-hooks,
         we filter them out for now.
