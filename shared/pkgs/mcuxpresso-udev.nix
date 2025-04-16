@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  udevOnly ? true,
-  ...
-}: let
-  inherit (lib.strings) makeLibraryPath;
+{pkgs, ...}: let
   name = "mcuxpressoide";
   version = "24.12.148";
   description = "MCUXpresso IDE";
