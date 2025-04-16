@@ -19,7 +19,7 @@ The `modules/` directory contains host-specific declarations for custom modules 
 ## Adding a New Host
 
 1. Create a new directory for the host
-2. Add a `hardware-configuration.nix` generated with `nixos-generate-config`
-3. Add a `default.nix` that imports the desired configurations
-4. Create host-specific module declarations in the `modules/` subdirectory to customize the global modules as needed
-5. Reference the new host in `hosts/default.nix`
+1. Add a `hardware-configuration.nix` generated with `nixos-generate-config`
+1. Add a `default.nix` that imports the desired configurations
+1. Create host-specific module declarations in the `modules/` subdirectory to customize the global modules as needed
+1. Reference the new host in `hosts/default.nix`

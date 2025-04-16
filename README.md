@@ -18,8 +18,8 @@ My NixOS configurations, using flakes.
 My configuration is structured based on the following principles:
 
 1. Hosts should be the main entry points and outputs.
-2. Abstractions should be avoided as much as possible.
-3. Setting up theming should be as simple as changing one or two options.
+1. Abstractions should be avoided as much as possible.
+1. Setting up theming should be as simple as changing one or two options.
 
 The main configuration can be found in [modules](modules/), which declares most
 of my programs and services.
