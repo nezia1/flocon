@@ -12,7 +12,6 @@
 in {
   imports = [
     inputs.hjem.nixosModules.default
-    inputs.hjem-rum.nixosModules.default
   ];
   users.users.${username} = {
     isNormalUser = true;
@@ -29,6 +28,8 @@ in {
   hjem = mkIf (!server.enable) {
     clobberByDefault = true;
     extraModules = [
+      inputs.hjem-rum.hjemModules.default
+
       self.outputs.hjemModules.hjem
       self.outputs.hjemModules.hjem-rum
     ];
