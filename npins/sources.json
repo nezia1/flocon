@@ -38,9 +38,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "775c5321441b1e21bc6159d4a7e5bf70c14d5e66",
-      "url": "https://github.com/imbypass/base16-discord/archive/775c5321441b1e21bc6159d4a7e5bf70c14d5e66.tar.gz",
-      "hash": "0prm27zyfiwhiyaghz66jz263x9k5qij8763l77cs7zd9hvga52p"
+      "revision": "d6d40162d8a3ee19ab6bb6e65f871e65d7fb65bf",
+      "url": "https://github.com/imbypass/base16-discord/archive/d6d40162d8a3ee19ab6bb6e65f871e65d7fb65bf.tar.gz",
+      "hash": "1hnv639xb65332qxz2cafkl3bzwh5hklmgla7iaj2dmai8906zl9"
     },
     "foot": {
       "type": "Git",
