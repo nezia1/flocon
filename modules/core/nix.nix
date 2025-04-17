@@ -15,6 +15,9 @@
         "flakes"
       ];
     };
+    registry = {
+      self.flake = inputs.self;
+    };
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   };
 
