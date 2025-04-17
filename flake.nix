@@ -144,7 +144,6 @@
     hjem-rum = {
       url = "github:snugnug/hjem-rum";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hjem.follows = "hjem";
     };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
