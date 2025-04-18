@@ -43,16 +43,19 @@
       "hash": "1hnv639xb65332qxz2cafkl3bzwh5hklmgla7iaj2dmai8906zl9"
     },
     "foot": {
-      "type": "Git",
+      "type": "GitRelease",
       "repository": {
         "type": "Git",
-        "url": "https://codeberg.org/fazzi/foot"
+        "url": "https://codeberg.org/dnkl/foot"
       },
-      "branch": "transparency_yipee",
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
       "submodules": false,
-      "revision": "0d44e225b47184e5153d832b92ddcb8e04208a1a",
+      "version": "1.22.0",
+      "revision": "135731bac54653f3e163315bbb8f331867283d91",
       "url": null,
-      "hash": "0n40ip4p7ylsv1zq2ianap1x5kjn1cfqpnpwk62mil1y1hl7d4vk"
+      "hash": "1s9hyjryylbgnrrjvm4chqv6nzawrwkw2b1bhamw04rjw5yca81q"
     },
     "nixos-artwork": {
       "type": "Git",

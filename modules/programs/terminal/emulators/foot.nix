@@ -45,7 +45,7 @@
   };
 
   foot = pkgs.foot.overrideAttrs {
-    pname = "foot-transparency";
+    pname = "foot";
     version = "0-unstable-${npins.foot.revision}";
     src = npins.foot;
   };
@@ -60,7 +60,6 @@ in {
             term = "xterm-256color";
             font = concatStringsSep "," ["monospace:size=14"];
             bold-text-in-bright = "no";
-            # https://codeberg.org/fazzi/foot/src/branch/transparency_yipee goated
             alpha-mode = "matching";
             transparent-fullscreen = "yes";
           };
