@@ -1,7 +1,7 @@
-{lib, ...}: {
+_: {
   networking = {
-    dhcpcd.enable = false;
-    usePredictableInterfaceNames = lib.mkForce false;
+    useNetworkd = true;
+    useDHCP = false;
     nameservers = [
       "8.8.8.8"
       "8.8.4.4"
