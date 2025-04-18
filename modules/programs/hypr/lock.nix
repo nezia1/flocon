@@ -14,11 +14,11 @@
   inherit (lib'.generators) toHyprConf;
 
   inherit (inputs.hyprlock.packages.${pkgs.system}) hyprlock;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [hyprlock];
       files = {

@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     services = {
       # needed for GNOME services outside of GNOME Desktop
       dbus.packages = with pkgs; [

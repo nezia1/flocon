@@ -4,13 +4,13 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 in {
   imports = [
     ./neovim.nix
   ];
 
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     /*
     we don't want the default NixOS EDITOR value, which is nano and will override the `environment.d` setting.
      we have to unset it like this so that our systemd user variable will take precedence:

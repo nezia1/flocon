@@ -8,7 +8,7 @@
   inherit (lib.meta) getExe';
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   mkLayout = items: let
     formatItem = item: ''
@@ -21,7 +21,7 @@
   in
     concatStringsSep "\n" (map formatItem items);
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [pkgs.wlogout];
       files = {

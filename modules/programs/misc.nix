@@ -7,9 +7,9 @@
 }: let
   inherit (builtins) toJSON;
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 in {
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     hjem.users.${username} = {
       packages = with pkgs; [
         inputs.self.packages.${pkgs.system}.app2unit

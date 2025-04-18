@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
   inherit (lib.modules) mkIf;
 
   carapaceCache = "${config.hjem.users.${username}.directory}/.cache/carapace";

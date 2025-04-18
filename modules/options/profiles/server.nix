@@ -12,7 +12,7 @@ in {
 
   config.assertions = mkIf config.local.profiles.server.enable [
     {
-      assertion = config.local.homeVars.desktop == "none";
+      assertion = config.local.vars.home.desktop == "none";
       message = "The server profile cannot be enabled if any desktop is set.";
     }
 

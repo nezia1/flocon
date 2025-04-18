@@ -6,7 +6,7 @@
   inherit (lib) mkOption;
   inherit (lib.types) str;
 in {
-  options.local.systemVars = {
+  options.local.vars.system = {
     hostName = mkOption {
       type = str;
       description = "hostname for the current host";
@@ -21,10 +21,10 @@ in {
 
   config.assertions = [
     {
-      assertion = options.local.systemVars.hostName.isDefined;
+      assertion = options.local.vars.system.hostName.isDefined;
     }
     {
-      assertion = options.local.systemVars.username.isDefined;
+      assertion = options.local.vars.system.username.isDefined;
     }
   ];
 }

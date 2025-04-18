@@ -9,11 +9,11 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) removePrefix;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;

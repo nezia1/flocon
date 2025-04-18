@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     programs.zsh.enable = true;

@@ -7,7 +7,7 @@
   ];
 
   local = {
-    systemVars = {
+    vars.system = {
       hostName = "anastacia";
     };
 

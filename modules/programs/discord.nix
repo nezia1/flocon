@@ -6,11 +6,11 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
   styleCfg = config.local.style;
   discord = pkgs.vesktop;
 in {
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     hjem.users.${username} = {
       packages = [discord];
       rum.xdg.autostart.programs = [discord];

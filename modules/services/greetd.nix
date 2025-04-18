@@ -16,7 +16,7 @@ let
 
   inherit (config.hjem.users.${username}) rum;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   hyprland = config.programs.hyprland.package;
 
@@ -50,7 +50,7 @@ let
       };
   });
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     services.greetd = {
       enable = true;
       settings = {

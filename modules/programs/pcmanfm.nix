@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = with pkgs; [
         lxmenu-data

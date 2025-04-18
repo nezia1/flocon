@@ -6,11 +6,11 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   toINI = lib.generators.toINI {};
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [pkgs.gammastep];
       files = {

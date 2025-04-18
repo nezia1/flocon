@@ -6,12 +6,12 @@
 }: let
   inherit (lib) mkIf;
   inherit (builtins) toJSON;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
   inherit (config.hjem.users.${username}.rum.programs.hyprland.settings.plugin.hyprsplit) num_workspaces;
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [
         pkgs.waybar

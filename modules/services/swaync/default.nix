@@ -12,11 +12,11 @@
 
   inherit (lib') generateGtkColors;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       files = {
         ".config/swaync/config.json".text = toJSON {

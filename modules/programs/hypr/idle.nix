@@ -10,13 +10,13 @@
 
   inherit (lib'.generators) toHyprConf;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   inherit (inputs.hypridle.packages.${pkgs.system}) hypridle;
 
   hyprlock = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
       packages = [hypridle];
       files = {

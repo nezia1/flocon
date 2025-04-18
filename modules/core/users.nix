@@ -6,8 +6,8 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.systemVars) username;
-  inherit (config.local.homeVars) fullName;
+  inherit (config.local.vars.system) username;
+  inherit (config.local.vars.home) fullName;
   inherit (config.local.profiles) server;
 in {
   imports = [

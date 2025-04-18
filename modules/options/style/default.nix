@@ -148,10 +148,10 @@ in {
         '';
       })
       {
-        assertion = cfg.enable -> options.local.systemVars.username.isDefined;
+        assertion = cfg.enable -> options.local.vars.system.username.isDefined;
         message = ''
           When enabling system-wide theming, a username needs to be set in
-          `config.local.systemVars.username`.
+          `config.local.vars.systemVars.username`.
         '';
       }
     ];

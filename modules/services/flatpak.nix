@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     services.flatpak.enable = true;
   };
 }

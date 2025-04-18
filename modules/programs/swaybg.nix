@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStringsSep;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   inherit (pkgs) swaybg;
 
@@ -15,7 +15,7 @@
     ${swaybg}/bin/swaybg -i "$(${pkgs.uutils-coreutils-noprefix}/bin/shuf -e ${concatStringsSep " " config.local.style.wallpapers} -n 1)"
   '';
 in {
-  config = mkIf (config.local.homeVars.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username}.systemd.services = {
       swaybg = {
         script = "${swaybgStart}";

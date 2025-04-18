@@ -7,7 +7,7 @@
   inherit (lib) mkIf mkOption;
   inherit (lib.types) enum str;
 in {
-  options.local.homeVars = {
+  options.local.vars.home = {
     fullName = mkOption {
       type = str;
       description = "your full name (used for git commits and user description)";
@@ -34,13 +34,13 @@ in {
 
   config.assertions = mkIf (!config.local.profiles.server.enable) [
     {
-      assertion = options.local.homeVars.fullName.isDefined;
+      assertion = options.local.vars.home.fullName.isDefined;
     }
     {
-      assertion = options.local.homeVars.email.isDefined;
+      assertion = options.local.vars.home.email.isDefined;
     }
     {
-      assertion = options.local.homeVars.signingKey.isDefined;
+      assertion = options.local.vars.home.signingKey.isDefined;
     }
   ];
 }

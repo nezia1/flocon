@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (lib) mapAttrs mkIf optionalAttrs removePrefix;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
 
@@ -45,7 +45,7 @@
       selection-foreground = base05;
     };
 in {
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     hjem.users.${username} = {
       rum.programs.ghostty =
         {

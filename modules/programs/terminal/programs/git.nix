@@ -6,8 +6,8 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.homeVars) signingKey;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.home) signingKey;
+  inherit (config.local.vars.system) username;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     hjem.users.${username} = {

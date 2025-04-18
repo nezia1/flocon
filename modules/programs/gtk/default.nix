@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
   styleCfg = config.local.style;
 in {
   config = with styleCfg;

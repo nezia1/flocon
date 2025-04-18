@@ -10,7 +10,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStringsSep;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
 
@@ -50,7 +50,7 @@
     src = npins.foot;
   };
 in {
-  config = mkIf (config.local.homeVars.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != "none") {
     hjem.users.${username} = {
       rum.programs.foot = {
         enable = true;

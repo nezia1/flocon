@@ -3,8 +3,6 @@
     ./modules
     ./profiles
     ./style
-
-    ./homeVars.nix
-    ./systemVars.nix
+    ./vars
   ];
 }

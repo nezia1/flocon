@@ -7,7 +7,7 @@
   inherit (builtins) concatStringsSep;
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.systemVars) username;
+  inherit (config.local.vars.system) username;
 
   toConf = attrs:
     concatStringsSep "\n"
