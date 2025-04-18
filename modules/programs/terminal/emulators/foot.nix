@@ -43,16 +43,18 @@
     "20" = palette.base04;
     "21" = palette.base06;
   };
+
+  foot = pkgs.foot.overrideAttrs {
+    pname = "foot-transparency";
+    version = "0-unstable-${npins.foot.revision}";
+    src = npins.foot;
+  };
 in {
   config = mkIf (config.local.homeVars.desktop != "none") {
     hjem.users.${username} = {
       rum.programs.foot = {
         enable = true;
-        package = pkgs.foot.overrideAttrs {
-          pname = "foot-transparency";
-          version = "0-unstable-${npins.foot.revision}";
-          src = npins.foot;
-        };
+        package = foot;
         settings = {
           main = {
             term = "xterm-256color";
@@ -68,6 +70,22 @@ in {
           };
 
           colors = optionalAttrs styleCfg.enable (mkColors palette);
+        };
+      };
+
+      systemd.services.foot-server = {
+        name = "foot-server";
+        description = "foot terminal service";
+        partOf = ["graphical-session.target"];
+        after = ["graphical-session.target"];
+        wantedBy = ["graphical-session.target"];
+        path = lib.mkForce [];
+
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${foot}/bin/foot --server";
+          Restart = "on-failure";
+          Slice = "background-graphical.slice";
         };
       };
     };
