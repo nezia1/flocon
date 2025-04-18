@@ -14,7 +14,6 @@ in {
   ];
   bind = [
     "$mod, Return, exec, ${run "footclient"}"
-    "$mod, n, exec, ${run "neovide"}"
     "$mod, w, exec, ${run "librewolf"}"
     ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
     "$mod, q, killactive"
