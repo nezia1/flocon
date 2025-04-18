@@ -18,6 +18,7 @@
   palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
   mkColors = palette: {
     alpha = ".8";
+    alpha-mode = "matching";
     foreground = palette.base05;
     background = palette.base00;
     regular0 = palette.base00;
@@ -45,7 +46,7 @@
   };
 
   foot = pkgs.foot.overrideAttrs {
-    pname = "foot-transparency";
+    pname = "foot";
     version = "0-unstable-${npins.foot.revision}";
     src = npins.foot;
   };
@@ -60,9 +61,6 @@ in {
             term = "xterm-256color";
             font = concatStringsSep "," ["monospace:size=14"];
             bold-text-in-bright = "no";
-            # https://codeberg.org/fazzi/foot/src/branch/transparency_yipee goated
-            alpha-mode = "matching";
-            transparent-fullscreen = "yes";
           };
           cursor = {
             style = "beam";
