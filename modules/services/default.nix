@@ -2,6 +2,7 @@
   imports = [
     ./swaync
 
+    ./anubis.nix
     ./brightness.nix
     ./caddy.nix
     ./docker.nix
