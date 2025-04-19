@@ -18,7 +18,7 @@
   palette = mapAttrs (_: color: lib.removePrefix "#" color) styleCfg.colors.scheme.palette;
   mkColors = palette: {
     alpha = ".8";
-    alpha-mode = "matching";
+    alpha-mode = "all";
     foreground = palette.base05;
     background = palette.base00;
     regular0 = palette.base00;
