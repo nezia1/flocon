@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (builtins) attrNames concatStringsSep map readDir toString;
+  inherit (builtins) attrNames concatStringsSep map readDir;
   inherit (lib.modules) mkAfter mkIf;
   inherit (lib.strings) removePrefix removeSuffix;
 
@@ -61,10 +61,20 @@ in {
         };
       };
 
+      anubis.instances.forgejo = {
+        settings = {
+          TARGET = "http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT}";
+          BIND = ":60927";
+          BIND_NETWORK = "tcp";
+          METRICS_BIND = "127.0.0.1:29397";
+          METRICS_BIND_NETWORK = "tcp";
+        };
+      };
+
       caddy = {
         enable = true;
         virtualHosts."git.nezia.dev".extraConfig = ''
-          reverse_proxy http://localhost${config.systemd.services.anubis-forgejo.environment.BIND} {
+          reverse_proxy http://localhost${config.services.anubis.instances.forgejo.settings.BIND} {
             header_up X-Real-Ip {remote_host}
           }
         '';
@@ -72,38 +82,19 @@ in {
     };
 
     # https://github.com/DarkKirb/nixos-config/blob/9259583284caf5c051aa521151c0ba1d520aa931/services/forgejo/default.nix#L8-L22
-    systemd.services.anubis-forgejo = {
-      description = "scrape protection for forgejo";
-      requires = ["network-online.target"];
-      after = ["network-online.target"];
-      wantedBy = ["multi-user.target"];
-      serviceConfig = {
-        Type = "simple";
-        Restart = "always";
-        ExecStart = "${pkgs.anubis}/bin/anubis";
-      };
-      environment = {
-        BIND = ":60927";
-        METRICS_BIND = ":29397";
-        TARGET = "http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT}";
-        SERVE_ROBOTS_TXT = "true";
-      };
-    };
     # https://github.com/isabelroses/dotfiles/blob/06f8f70914c8e672541a52563ee624ce2e62adfb/modules/nixos/services/selfhosted/forgejo.nix#L59-L71
-    systemd.services = {
-      forgejo = {
-        preStart = let
-          inherit (config.services.forgejo) stateDir;
-        in
-          mkAfter ''
-            rm -rf ${stateDir}/custom/public/assets
-            mkdir -p ${stateDir}/custom/public/assets
-            ln -sf ${theme} ${stateDir}/custom/public/assets/css
-          '';
-        serviceConfig = {
-          MemoryHigh = "768M";
-          MemoryMax = "1G";
-        };
+    systemd.services.forgejo = {
+      preStart = let
+        inherit (config.services.forgejo) stateDir;
+      in
+        mkAfter ''
+          rm -rf ${stateDir}/custom/public/assets
+          mkdir -p ${stateDir}/custom/public/assets
+          ln -sf ${theme} ${stateDir}/custom/public/assets/css
+        '';
+      serviceConfig = {
+        MemoryHigh = "768M";
+        MemoryMax = "1G";
       };
     };
   };
