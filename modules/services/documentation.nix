@@ -5,9 +5,20 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+
+  nixpkgsManual = pkgs.makeDesktopItem {
+    name = "nixpkgs-manual";
+    desktopName = "Nixpkgs Manual";
+    exec = "${pkgs.xdg-utils}/bin/xdg-open ${pkgs.nixpkgs-manual}/share/doc/nixpkgs/manual.html";
+    icon = "nix-snowflake";
+  };
 in {
   config = mkIf (!config.local.profiles.server.enable) {
-    environment.systemPackages = [pkgs.man-pages pkgs.man-pages-posix];
+    environment.systemPackages = [
+      nixpkgsManual
+      pkgs.man-pages
+      pkgs.man-pages-posix
+    ];
     documentation = {
       enable = true;
       dev.enable = true;
