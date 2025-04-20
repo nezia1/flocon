@@ -43,19 +43,16 @@
       "hash": "1hnv639xb65332qxz2cafkl3bzwh5hklmgla7iaj2dmai8906zl9"
     },
     "foot": {
-      "type": "GitRelease",
+      "type": "Git",
       "repository": {
         "type": "Git",
         "url": "https://codeberg.org/dnkl/foot"
       },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
+      "branch": "master",
       "submodules": false,
-      "version": "1.22.0",
-      "revision": "135731bac54653f3e163315bbb8f331867283d91",
+      "revision": "8bded8ce8cf22db51dd42bb71a2a5d39624df402",
       "url": null,
-      "hash": "1s9hyjryylbgnrrjvm4chqv6nzawrwkw2b1bhamw04rjw5yca81q"
+      "hash": "1nvb9ms1zy9wriq30cysgrax8j6shkgr6rjarym3xqnxfckb17j9"
     },
     "nixos-artwork": {
       "type": "Git",
