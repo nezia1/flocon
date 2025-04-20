@@ -51,6 +51,7 @@ let
   });
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+    environment.systemPackages = [pkgs.adwaita-icon-theme]; # add as fallback
     services.greetd = {
       enable = true;
       settings = {
