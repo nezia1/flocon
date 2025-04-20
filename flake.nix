@@ -10,9 +10,10 @@
     pre-commit-hooks,
     ...
   } @ inputs: let
-    supportedSystems = nixpkgs.lib.singleton "x86_64-linux";
+    inherit (nixpkgs) lib;
+    supportedSystems = lib.singleton "x86_64-linux";
     forAllSystems = function:
-      nixpkgs.lib.genAttrs
+      lib.genAttrs
       supportedSystems
       (system: function nixpkgs.legacyPackages.${system});
     treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
@@ -59,8 +60,8 @@
     formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
     nixosConfigurations = import ./hosts {inherit self inputs npins;};
     hjemModules = {
-      hjem = nixpkgs.lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
-      hjem-rum = nixpkgs.lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
+      hjem = lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
+      hjem-rum = lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
     };
     packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs npins;});
   };
