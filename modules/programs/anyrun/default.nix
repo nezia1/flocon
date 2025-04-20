@@ -1,8 +1,7 @@
 {
   lib,
-  inputs,
+  flakePkgs,
   config,
-  pkgs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -10,7 +9,7 @@
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
-      packages = [inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins];
+      packages = [flakePkgs.anyrun.anyrun-with-all-plugins];
       files = {
         ".config/anyrun/config.ron".source = ./config.ron;
         ".config/anyrun/applications.ron".text = ''

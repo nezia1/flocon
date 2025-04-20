@@ -1,7 +1,6 @@
 {
   lib,
-  inputs,
-  pkgs,
+  flakePkgs,
   config,
   ...
 }: let
@@ -17,7 +16,7 @@ in {
       };
       "nezia.dev" = {
         extraConfig = ''
-          root * ${inputs."nezia_dev".packages.${pkgs.system}.default}
+          root * ${flakePkgs.inputs."nezia_dev".default}
           file_server
           encode gzip
         '';

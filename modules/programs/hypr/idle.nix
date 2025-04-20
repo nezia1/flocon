@@ -1,20 +1,17 @@
 {
   lib,
   lib',
-  inputs,
-  pkgs,
+  flakePkgs,
   config,
   ...
 }: let
   inherit (lib.modules) mkIf;
-
+  inherit (lib.meta) getExe;
   inherit (lib'.generators) toHyprConf;
-
   inherit (config.local.vars.system) username;
+  inherit (flakePkgs.hypridle) hypridle;
 
-  inherit (inputs.hypridle.packages.${pkgs.system}) hypridle;
-
-  hyprlock = "${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
+  hyprlock = getExe config.hjem.users.${username}.rum.programs.hyprlock.package;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {

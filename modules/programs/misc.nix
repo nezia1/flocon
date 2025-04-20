@@ -1,8 +1,8 @@
 {
-  inputs,
   lib,
   pkgs,
   config,
+  flakePkgs,
   ...
 }: let
   inherit (builtins) toJSON;
@@ -12,7 +12,7 @@ in {
   config = mkIf (config.local.vars.home.desktop != "none") {
     hjem.users.${username} = {
       packages = with pkgs; [
-        inputs.self.packages.${pkgs.system}.app2unit
+        flakePkgs.self.app2unit
         devenv
         entr
         fastfetch
