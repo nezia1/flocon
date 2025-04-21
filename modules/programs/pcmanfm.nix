@@ -13,6 +13,7 @@ in {
         lxmenu-data
         pcmanfm # builds with gtk3 by default, no need to override
         shared-mime-info
+        file-roller
       ];
     };
 
