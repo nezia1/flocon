@@ -111,13 +111,10 @@ in {
               enabled = true;
               animation = [
                 "windows, 1, 5, overshot"
-                "windowsOut, 1, 5, default, popin 80%"
-                "windowsMove, 1, 5, default, popin 80%"
-                "fade, 1, 5, default"
-                "border, 1, 5, default"
-                "borderangle, 0, 8, default"
-                "workspaces, 0"
-                "specialWorkspace, 0"
+                "windowsOut, 1, 7, default, popin 80%"
+                "border, 1, 10, default"
+                "fade, 1, 7, default"
+                "workspaces, 1, 6, default"
               ];
             };
 
