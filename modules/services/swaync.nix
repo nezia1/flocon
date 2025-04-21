@@ -2,19 +2,13 @@
   lib,
   pkgs,
   config,
-  lib',
   ...
 }: let
-  inherit (builtins) readFile toJSON;
-  inherit (lib.strings) optionalString;
-
+  inherit (builtins) toFile toJSON;
   inherit (lib.modules) mkIf;
-
-  inherit (lib') generateGtkColors;
-
   inherit (config.local.vars.system) username;
 
-  styleCfg = config.local.style;
+  swaync = pkgs.swaynotificationcenter;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hjem.users.${username} = {
@@ -36,13 +30,32 @@ in {
           notification-body-image-height = 100;
           notification-body-image-width = 200;
         };
-        ".config/swaync/style.css".text =
-          # TODO: this is not great, make this use gtk colors instead :/
-          (
-            optionalString styleCfg.enable
-            (generateGtkColors styleCfg.colors.scheme.palette)
-          )
-          + readFile ./style.css;
+        ".config/swaync/style.css".source = pkgs.concatText "swaync-style.css" [
+          "${swaync}/etc/xdg/swaync/style.css"
+          (toFile
+            "swaync-override.css"
+            /*
+            css
+            */
+            ''
+              @define-color cc-bg alpha(@window_bg_color, 0.9);
+
+              @define-color noti-border-color alpha(@window_bg_color, 1);
+              @define-color noti-bg @popover_bg_color;
+
+              .widget-dnd > switch {
+                background: @noti-bg;
+                font-size: initial;
+                border-radius: 12px;
+                border: 1px solid @noti-border-color;
+                box-shadow: none;
+              }
+
+              .widget-dnd > switch:checked {
+                background: @accent_color;
+              }
+            '')
+        ];
       };
 
       packages = [pkgs.swaynotificationcenter];
@@ -56,7 +69,8 @@ in {
         serviceConfig = {
           Type = "dbus";
           BusName = "org.freedesktop.Notifications";
-          ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
+          ExecStart = "${swaync}/bin/swaync";
+          ExecReload = "${swaync}/bin/swaync-client --reload-config --reload-css";
           Restart = "on-failure";
           Slice = "background-graphical.slice";
         };

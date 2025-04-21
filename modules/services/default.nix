@@ -1,7 +1,5 @@
 {
   imports = [
-    ./swaync
-
     ./anubis.nix
     ./brightness.nix
     ./caddy.nix
@@ -21,6 +19,7 @@
     ./power.nix
     ./searx.nix
     ./ssh.nix
+    ./swaync.nix
     ./website.nix
   ];
 }
