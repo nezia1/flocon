@@ -25,9 +25,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "44b5da8a6f1e5449d3c2a8b63dc54875bb7e10af",
-      "url": "https://github.com/Vladimir-csp/app2unit/archive/44b5da8a6f1e5449d3c2a8b63dc54875bb7e10af.tar.gz",
-      "hash": "1wvk9qcgbmxh8772g0gbf15fv1008s5g1bhxhr06gdml8hq4d5a8"
+      "revision": "42613bd4c69cd5720114679a52b73b8b5d947678",
+      "url": "https://github.com/Vladimir-csp/app2unit/archive/42613bd4c69cd5720114679a52b73b8b5d947678.tar.gz",
+      "hash": "1xk68x80n6h533dxranvjsnzsmjncs89476252hcg03slv1vcj7d"
     },
     "base16-discord": {
       "type": "Git",
