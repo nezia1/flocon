@@ -13,7 +13,7 @@ in {
         enable = true;
         extraArgs = "--keep-since 7d --keep 3";
       };
-      flake = "${config.hjem.users.${username}.directory}/flocon";
+      flake = "${config.hjem.users.${username}.directory}/.config/flocon";
     };
   };
 }
