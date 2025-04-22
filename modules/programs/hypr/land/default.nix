@@ -149,7 +149,8 @@ in {
           // (optionalAttrs styleCfg.enable {
             general = {
               border_size = 4;
-              "col.active_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base0E})";
+              "col.active_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base0A})";
+              "col.inactive_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base03})";
             };
             decoration = {
               rounding = 16;
