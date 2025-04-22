@@ -21,14 +21,14 @@
     alpha-mode = "matching";
     foreground = palette.base05;
     background = palette.base00;
-    regular0 = palette.base00;
+    regular0 = palette.base01;
     regular1 = palette.base08;
     regular2 = palette.base0B;
     regular3 = palette.base0A;
     regular4 = palette.base0D;
     regular5 = palette.base0E;
     regular6 = palette.base0C;
-    regular7 = palette.base05;
+    regular7 = palette.base06;
     bright0 = palette.base02;
     bright1 = palette.base08;
     bright2 = palette.base0B;
