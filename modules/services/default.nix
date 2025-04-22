@@ -20,6 +20,7 @@
     ./searx.nix
     ./ssh.nix
     ./swaync.nix
+    ./uptime-kuma.nix
     ./website.nix
   ];
 }
