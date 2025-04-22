@@ -21,12 +21,12 @@ in {
       description = ''
         Name of the tinted-theming color scheme to use.
       '';
-      default = "catppuccin-mocha";
+      default = "rose-pine";
       example = "";
     };
     system = mkOption {
       type = enum ["base16" "base24"];
-      default = "base24";
+      default = "base16";
       description = ''
         The color system to use.
       '';
