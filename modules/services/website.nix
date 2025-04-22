@@ -16,7 +16,7 @@ in {
       };
       "nezia.dev" = {
         extraConfig = ''
-          root * ${flakePkgs.inputs."nezia_dev".default}
+          root * ${flakePkgs."nezia_dev".default}
           file_server
           encode gzip
         '';
