@@ -11,6 +11,17 @@
 
   inherit (config.local.vars.system) username;
 
+  gnome-control-center = pkgs.symlinkJoin {
+    name = "${pkgs.gnome-control-center}-wrapped";
+    paths = [pkgs.gnome-control-center];
+    nativeBuildInputs = [
+      pkgs.makeWrapper
+    ];
+    postBuild = ''
+      wrapProgram $out/bin/gnome-control-center \
+        --set XDG_CURRENT_DESKTOP gnome
+    '';
+  };
   styleCfg = config.local.style;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
@@ -46,7 +57,7 @@ in {
     hjem.users.${username} = {
       packages = [
         flakePkgs.hyprwm-contrib.grimblast
-        pkgs.gnome-control-center
+        gnome-control-center
       ];
 
       rum.programs.hyprland = {
