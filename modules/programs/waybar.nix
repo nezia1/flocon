@@ -143,7 +143,7 @@ in {
             format-wifi = "{icon} {signalStrength}%";
             format-disconnected = "󰤮";
             tooltip = false;
-            on-click = "XDG_CURRENT_DESKTOP=gnome gnome-control-center";
+            on-click = "${config.programs.hyprland.package}/bin/hyprctl dispatch exec '[float] gnome-control-center wifi'";
           };
 
           "hyprland/window" = {
