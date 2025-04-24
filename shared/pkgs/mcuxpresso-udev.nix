@@ -1,18 +1,23 @@
-{pkgs, ...}: let
+{
+  makeWrapper,
+  requireFile,
+  stdenv,
+  ...
+}: let
   name = "mcuxpressoide";
   version = "24.12.148";
   description = "MCUXpresso IDE";
   filename = "${name}-${version}.x86_64.deb";
 
-  mcuxpressoUdevRules = pkgs.stdenv.mkDerivation {
+  mcuxpressoUdevRules = stdenv.mkDerivation {
     inherit version description;
     name = "${name}-udev";
-    src = pkgs.requireFile {
+    src = requireFile {
       url = "https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE";
       name = "${filename}.bin";
       sha256 = "34b9163869d9d274ddcc2b2482d51d9aa2bf5f1cf0581b885172d4c107c58ed5";
     };
-    nativeBuildInputs = [pkgs.makeWrapper];
+    nativeBuildInputs = [makeWrapper];
 
     buildCommand = ''
       # Unpack tarball.
