@@ -1,10 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   nix = {
-    package = pkgs.lix;
     settings = {
       accept-flake-config = true;
       warn-dirty = false;
