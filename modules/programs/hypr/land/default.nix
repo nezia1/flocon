@@ -44,6 +44,11 @@ in {
     '';
 
     hjem.users.${username} = {
+      files = {
+        ".local/share/icons/phinger-cursors-dark-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-dark";
+        ".local/share/icons/phinger-cursors-light-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-light";
+      };
+
       packages = [
         flakePkgs.hyprwm-contrib.grimblast
         flakePkgs.self.universal-gnome-control-center
