@@ -12,6 +12,7 @@
 in {
   imports = [
     inputs.hjem.nixosModules.default
+    inputs.home-manager.nixosModules.default
   ];
   users.users.${username} = {
     isNormalUser = true;
@@ -29,14 +30,20 @@ in {
     clobberByDefault = true;
     extraModules = [
       inputs.hjem-rum.hjemModules.default
-
-      self.outputs.hjemModules.hjem
       self.outputs.hjemModules.hjem-rum
     ];
     users.${username} = {
       enable = true;
       directory = "/home/${username}";
       user = "${username}";
+    };
+  };
+
+  home-manager = mkIf (!server.enable) {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    users.${username} = {
+      home.stateVersion = "25.05";
     };
   };
 }
