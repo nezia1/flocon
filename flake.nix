@@ -100,6 +100,8 @@
       inputs.utils.follows = "flake-utils"; # Yes, it's actually called `utils`, not a typo
     };
 
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.systems.follows = "systems";
