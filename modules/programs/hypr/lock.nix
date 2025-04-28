@@ -11,12 +11,10 @@
 
   inherit (lib') rgba;
 
-  inherit (config.local.vars.system) username;
-
   styleCfg = config.local.style;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username}.rum.programs.hyprlock = {
+    hj.rum.programs.hyprlock = {
       enable = true;
       package = flakePkgs.hyprlock.hyprlock;
       settings =

@@ -6,12 +6,11 @@
 }: let
   inherit (builtins) toFile toJSON;
   inherit (lib.modules) mkIf;
-  inherit (config.local.vars.system) username;
 
   swaync = pkgs.swaynotificationcenter;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       files = {
         ".config/swaync/config.json".text = toJSON {
           positionX = "right";
@@ -61,7 +60,7 @@ in {
       packages = [pkgs.swaynotificationcenter];
     };
 
-    home-manager.users.${username}.systemd.user.services.swaync = {
+    hm.systemd.user.services.swaync = {
       Unit = {
         Description = "Swaync notification daemon";
         Documentation = ["https://github.com/ErikReider/SwayNotificationCenter"];

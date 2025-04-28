@@ -5,15 +5,14 @@
   pkgs,
   ...
 }: let
-  inherit (config.local.vars.system) username;
   inherit (lib.modules) mkIf;
 
-  carapaceCache = "${config.hjem.users.${username}.directory}/.cache/carapace";
-  starshipCache = "${config.hjem.users.${username}.directory}/.cache/starship";
-  zoxideCache = "${config.hjem.users.${username}.directory}/.cache/zoxide";
+  carapaceCache = "${config.hj.directory}/.cache/carapace";
+  starshipCache = "${config.hj.directory}/.cache/starship";
+  zoxideCache = "${config.hj.directory}/.cache/zoxide";
 in {
   config = mkIf (!config.local.profiles.server.enable) {
-    hjem.users.${username} = {
+    hj = {
       packages = with pkgs; [carapace nushell];
       files = {
         ".config/nushell/config.nu".text = ''

@@ -7,10 +7,9 @@
 }: let
   inherit (builtins) toJSON;
   inherit (lib) mkIf;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop != "none") {
-    hjem.users.${username} = {
+    hj = {
       packages = with pkgs; [
         flakePkgs.self.app2unit
         devenv

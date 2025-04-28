@@ -5,10 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf config.local.profiles.gaming.enable {
-    hjem.users.${username} = {
+    hj = {
       packages = [
         pkgs.mangohud
         pkgs.bolt-launcher

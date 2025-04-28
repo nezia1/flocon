@@ -6,13 +6,13 @@
 }: let
   inherit (lib) mkIf;
   inherit (builtins) toJSON;
-  inherit (config.local.vars.system) username;
-  inherit (config.hjem.users.${username}.rum.programs.hyprland.settings.plugin.hyprsplit) num_workspaces;
+
+  inherit (config.hj.rum.programs.hyprland.settings.plugin.hyprsplit) num_workspaces;
 
   styleCfg = config.local.style;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       packages = [
         pkgs.waybar
         pkgs.pavucontrol
@@ -254,7 +254,7 @@ in {
           '';
       };
     };
-    home-manager.users.${username} = {
+    hm = {
       systemd.user.services.waybar = {
         Unit = {
           Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors.";

@@ -9,8 +9,6 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) removePrefix;
 
-  inherit (config.local.vars.system) username;
-
   styleCfg = config.local.style;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
@@ -43,7 +41,7 @@ in {
       session required pam_unix.so
     '';
 
-    hjem.users.${username} = {
+    hj = {
       files = {
         ".local/share/icons/phinger-cursors-dark-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-dark";
         ".local/share/icons/phinger-cursors-light-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-light";

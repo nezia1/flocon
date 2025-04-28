@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     programs.nh = {
@@ -13,7 +12,7 @@ in {
         enable = true;
         extraArgs = "--keep-since 7d --keep 3";
       };
-      flake = "${config.hjem.users.${username}.directory}/.config/flocon";
+      flake = "${config.hj.directory}/.config/flocon";
     };
   };
 }

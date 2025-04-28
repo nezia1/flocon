@@ -7,8 +7,6 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStringsSep;
 
-  inherit (config.local.vars.system) username;
-
   inherit (pkgs) swaybg;
 
   swaybgStart = pkgs.writeShellScript "swaybg-start" ''
@@ -16,7 +14,7 @@
   '';
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    home-manager.users.${username}.systemd.user.services = {
+    hm.systemd.user.services = {
       swaybg = {
         Unit = {
           Description = "swaybg service";

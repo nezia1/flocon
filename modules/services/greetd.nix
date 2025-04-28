@@ -14,9 +14,7 @@ let
 
   inherit (lib'.generators) toHyprConf;
 
-  inherit (config.hjem.users.${username}) rum;
-
-  inherit (config.local.vars.system) username;
+  inherit (config.hj) rum;
 
   hyprland = config.programs.hyprland.package;
 

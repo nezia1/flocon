@@ -11,8 +11,6 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStringsSep;
 
-  inherit (config.local.vars.system) username;
-
   styleCfg = config.local.style;
 
   # because someone thought this was a great idea: https://github.com/tinted-theming/schemes/commit/61058a8d2e2bd4482b53d57a68feb56cdb991f0b
@@ -53,7 +51,7 @@
   };
 in {
   config = mkIf (config.local.vars.home.desktop != "none") {
-    hjem.users.${username} = {
+    hj = {
       rum.programs.foot = {
         enable = true;
         package = foot;
@@ -84,7 +82,7 @@ in {
       };
     };
 
-    home-manager.users.${username}.systemd.user.services.foot-server = {
+    hm.systemd.user.services.foot-server = {
       Unit = {
         Name = "foot-server";
         Description = "foot terminal service";

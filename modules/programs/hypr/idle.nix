@@ -8,13 +8,13 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe;
   inherit (lib'.generators) toHyprConf;
-  inherit (config.local.vars.system) username;
+
   inherit (flakePkgs.hypridle) hypridle;
 
-  hyprlock = getExe config.hjem.users.${username}.rum.programs.hyprlock.package;
+  hyprlock = getExe config.hj.rum.programs.hyprlock.package;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       packages = [hypridle];
       files = {
         ".config/hypr/hypridle.conf".text = toHyprConf {
@@ -46,7 +46,7 @@ in {
       };
     };
 
-    home-manager.users.${username}.systemd.user.services.hypridle = {
+    hm.systemd.user.services.hypridle = {
       Unit = {
         Name = "hypridle";
         After = ["graphical-session.target"];

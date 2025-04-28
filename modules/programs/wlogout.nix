@@ -8,7 +8,6 @@
   inherit (lib.meta) getExe';
   inherit (lib.modules) mkIf;
   inherit (lib.strings) concatMapStringsSep;
-
   inherit (config.local.vars.system) username;
 
   styleCfg = config.local.style;
@@ -24,7 +23,7 @@
   '';
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       packages = [pkgs.wlogout];
       files = {
         ".config/wlogout/layout".text = let

@@ -5,11 +5,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-
   inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       files = {
         ".config/mimeapps.list".text = ''
           [Default Applications]

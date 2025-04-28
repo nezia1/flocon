@@ -6,12 +6,10 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.vars.system) username;
-
   toINI = lib.generators.toINI {};
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       packages = [pkgs.gammastep];
       files = {
         ".config/gammastep/config.ini".text = toINI {
@@ -24,7 +22,7 @@ in {
       };
     };
 
-    home-manager.users.${username}.systemd.user.services.gammastep = {
+    hm.systemd.user.services.gammastep = {
       Unit = {
         Description = "Gammastep colour temperature adjuster";
         After = ["graphical-session.target"];

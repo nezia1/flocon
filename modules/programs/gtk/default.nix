@@ -5,12 +5,12 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.local.vars.system) username;
+
   styleCfg = config.local.style;
 in {
   config = with styleCfg;
     mkIf styleCfg.enable {
-      hjem.users.${username}.rum.gtk = with styleCfg; {
+      hj.rum.gtk = with styleCfg; {
         enable = true;
         packages = [
           gtk.theme.package

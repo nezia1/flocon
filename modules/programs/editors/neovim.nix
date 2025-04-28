@@ -9,8 +9,6 @@
   inherit (lib.lists) singleton;
   inherit (lib.modules) mkIf;
 
-  inherit (config.local.vars.system) username;
-
   styleCfg = config.local.style;
 
   customNeovim = inputs.nvf.lib.neovimConfiguration {
@@ -191,7 +189,7 @@
   };
 in {
   config = mkIf (!config.local.profiles.server.enable) {
-    hjem.users.${username} = {
+    hj = {
       packages = [customNeovim.neovim];
     };
   };

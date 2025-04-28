@@ -7,10 +7,9 @@
   inherit (lib.modules) mkIf;
 
   inherit (config.local.vars.home) signingKey;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
-    hjem.users.${username} = {
+    hj = {
       packages = with pkgs; [gh lazygit];
       rum = {
         programs.git = {

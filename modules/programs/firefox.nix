@@ -4,11 +4,10 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-
   inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop != "none") {
-    hjem.users.${username} = {
+    hj = {
       rum.programs.firefox = {
         inherit username;
         enable = true;

@@ -5,11 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     programs.zsh.enable = true;
-    hjem.users.${username} = {
+    hj = {
       rum.programs.zsh = {
         enable = true;
         initConfig = ''

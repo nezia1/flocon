@@ -5,10 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username} = {
+    hj = {
       packages = [flakePkgs.anyrun.anyrun-with-all-plugins];
       files = {
         ".config/anyrun/config.ron".source = ./config.ron;

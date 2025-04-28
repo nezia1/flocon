@@ -6,11 +6,9 @@
 }: let
   inherit (lib.lists) optionals;
   inherit (lib.modules) mkIf;
-
-  inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop != "none") {
-    hjem.users.${username}.packages = with pkgs;
+    hj.packages = with pkgs;
       [
         spotify
         stremio
