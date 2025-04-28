@@ -85,6 +85,9 @@
             motion.leap = {
               enable = true;
             };
+            preview = {
+              markdownPreview.enable = true;
+            };
           };
 
           lsp = {
