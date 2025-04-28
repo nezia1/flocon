@@ -20,6 +20,7 @@ _: {
 
     style = {
       enable = true;
+      cursorTheme.size = 32;
     };
   };
 }
