@@ -6,7 +6,7 @@
   inherit (lib.modules) mkIf;
   inherit (config.local.vars.system) username;
 in {
-  config = mkIf (config.local.vars.home.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != null) {
     hj = {
       rum.programs.firefox = {
         inherit username;

@@ -8,7 +8,7 @@
   inherit (builtins) toJSON;
   inherit (lib) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != null) {
     hj = {
       packages = with pkgs; [
         flakePkgs.self.app2unit

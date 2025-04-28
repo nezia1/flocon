@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption;
-  inherit (lib.types) enum str;
+  inherit (lib.types) enum nullOr str;
 in {
   options.local.vars.home = {
     fullName = mkOption {
@@ -24,8 +24,8 @@ in {
     };
 
     desktop = mkOption {
-      type = enum ["none" "Hyprland"];
-      default = "none";
+      type = nullOr (enum ["Hyprland"]);
+      default = null;
       description = ''
         The desktop environment to be used.
       '';

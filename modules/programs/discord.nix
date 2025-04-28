@@ -38,7 +38,7 @@
     ];
   };
 in {
-  config = mkIf (config.local.vars.home.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != null) {
     hj = {
       packages = [discord];
       rum.xdg.autostart.programs = [discord];

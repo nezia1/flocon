@@ -50,7 +50,7 @@
     src = npins.foot;
   };
 in {
-  config = mkIf (config.local.vars.home.desktop != "none") {
+  config = mkIf (config.local.vars.home.desktop != null) {
     hj = {
       rum.programs.foot = {
         enable = true;
