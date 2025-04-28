@@ -5,14 +5,18 @@
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-  inherit (config.local.vars.system) username;
+  inherit (lib.modules) mkAliasOptionModule mkIf;
+
   inherit (config.local.vars.home) fullName;
+  inherit (config.local.vars.system) username;
   inherit (config.local.profiles) server;
 in {
   imports = [
     inputs.hjem.nixosModules.default
     inputs.home-manager.nixosModules.default
+    # avoid boilerplate in the configuration
+    (mkAliasOptionModule ["hj"] ["hjem" "users" username])
+    (mkAliasOptionModule ["hm"] ["home-manager" "users" username])
   ];
   users.users.${username} = {
     isNormalUser = true;
