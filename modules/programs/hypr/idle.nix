@@ -44,21 +44,23 @@ in {
           };
         };
       };
-
-      systemd.services.hypridle = {
-        name = "hypridle";
-        after = ["graphical-session.target"];
-        description = "Hyprland's Idle Daemon";
-        wantedBy = ["graphical-session.target"];
-        restartTriggers = ["${config.hjem.users.${username}.files.".config/hypr/hypridle.conf".text}"];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${hypridle}/bin/hypridle";
-          Restart = "on-failure";
-          Slice = "background-graphical.slice";
-        };
-      };
     };
-    # needed when using uwsm as the session manager
+
+    home-manager.users.${username}.systemd.user.services.hypridle = {
+      Unit = {
+        Name = "hypridle";
+        After = ["graphical-session.target"];
+        Description = "Hyprland's Idle Daemon";
+      };
+
+      Service = {
+        Type = "simple";
+        ExecStart = "${hypridle}/bin/hypridle";
+        Restart = "on-failure";
+        Slice = "background-graphical.slice";
+      };
+
+      Install.WantedBy = ["graphical-session.target"];
+    };
   };
 }

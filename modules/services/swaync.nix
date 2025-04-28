@@ -59,22 +59,26 @@ in {
       };
 
       packages = [pkgs.swaynotificationcenter];
+    };
 
-      systemd.services.swaync = {
-        description = "Swaync notification daemon";
-        documentation = ["https://github.com/ErikReider/SwayNotificationCenter"];
-        after = ["graphical-session.target"];
-        partOf = ["graphical-session.target"];
-        wantedBy = ["graphical-session.target"];
-        serviceConfig = {
-          Type = "dbus";
-          BusName = "org.freedesktop.Notifications";
-          ExecStart = "${swaync}/bin/swaync";
-          ExecReload = "${swaync}/bin/swaync-client --reload-config --reload-css";
-          Restart = "on-failure";
-          Slice = "background-graphical.slice";
-        };
+    home-manager.users.${username}.systemd.user.services.swaync = {
+      Unit = {
+        Description = "Swaync notification daemon";
+        Documentation = ["https://github.com/ErikReider/SwayNotificationCenter"];
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
       };
+
+      Service = {
+        Type = "dbus";
+        BusName = "org.freedesktop.Notifications";
+        ExecStart = "${swaync}/bin/swaync";
+        ExecReload = "${swaync}/bin/swaync-client --reload-config --reload-css";
+        Restart = "on-failure";
+        Slice = "background-graphical.slice";
+      };
+
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }

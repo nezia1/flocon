@@ -50,6 +50,8 @@ in {
           # TODO: switch to the hjr module once integrations get upstreamed
           # zoxide integration
           eval "$(zoxide init zsh)"
+
+          . "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
         '';
 
         plugins = {

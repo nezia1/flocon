@@ -90,6 +90,7 @@
             };
           };
 
+          diagnostics.enable = true;
           lsp = {
             enable = true;
             lspconfig.enable = true;

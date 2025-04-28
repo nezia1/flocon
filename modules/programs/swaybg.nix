@@ -16,14 +16,18 @@
   '';
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
-    hjem.users.${username}.systemd.services = {
+    home-manager.users.${username}.systemd.user.services = {
       swaybg = {
-        script = "${swaybgStart}";
-        description = "swaybg service";
-        partOf = ["graphical-session.target"];
-        after = ["graphical-session.target"];
-        requires = ["graphical-session.target"];
-        wantedBy = ["graphical-session.target"];
+        Unit = {
+          Description = "swaybg service";
+          PartOf = ["graphical-session.target"];
+          After = ["graphical-session.target"];
+          Requires = ["graphical-session.target"];
+        };
+        Service = {
+          ExecStart = "${swaybgStart}";
+        };
+        Install.WantedBy = ["graphical-session.target"];
       };
     };
   };
