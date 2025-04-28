@@ -194,6 +194,7 @@ in {
         // (optionalAttrs styleCfg.enable {
           HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
           HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
+          XCURSOR_THEME = styleCfg.cursorTheme.name;
           XCURSOR_SIZE = styleCfg.cursorTheme.size;
         })
         // (optionalAttrs config.local.modules.nvidia.enable {
