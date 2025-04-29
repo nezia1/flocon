@@ -194,6 +194,7 @@ in {
           HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
           XCURSOR_THEME = styleCfg.cursorTheme.name;
           XCURSOR_SIZE = styleCfg.cursorTheme.size;
+          XCURSOR_PATH = "${styleCfg.cursorTheme.package}/share/icons";
         })
         // (optionalAttrs config.local.modules.nvidia.enable {
           LIBVA_DRIVER_NAME = "nvidia";
