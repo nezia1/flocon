@@ -4,5 +4,6 @@
     ./options
     ./programs
     ./services
+    ./theming
   ];
 }

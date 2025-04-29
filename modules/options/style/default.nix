@@ -4,6 +4,7 @@
   config,
   options,
   npins,
+  flakePkgs,
   ...
 }: let
   inherit (builtins) pathExists toString;
@@ -24,36 +25,45 @@ in {
       '';
       type = listOf path;
       example = lib.literalExpression "./wallpaper.png";
-      default = singleton "${npins.nixos-artwork.outPath}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
+      default = singleton "${npins.nixos-artwork}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
     };
 
-    cursorTheme = {
-      name = mkOption {
-        description = ''
-          Name of the cursor theme.
-        '';
-        default = "phinger-cursors-dark";
-      };
-      package = mkOption {
-        type = package;
-        description = ''
-          Package providing the cursor theme.
-        '';
-        default = pkgs.phinger-cursors;
-      };
+    cursors = {
       size = mkOption {
         description = ''
           Size of the cursor.
         '';
         default = 32;
       };
-    };
+      xcursor = {
+        name = mkOption {
+          description = ''
+            Name of the Xcursor theme.
+          '';
+          default = "phinger-cursors-dark";
+        };
+        package = mkOption {
+          default = pkgs.phinger-cursors;
+          description = ''
+            Package providing the Xcursor theme.
+          '';
+        };
+      };
 
-    avatar = mkOption {
-      description = ''
-        Path to an avatar image (used for hyprlock).
-      '';
-      default = ../../../assets/avatar.png; # TODO silly, change this
+      hyprcursor = {
+        name = mkOption {
+          description = ''
+            Name of the hyprcursor theme.
+          '';
+          default = "phinger-cursors-dark-hyprcursor";
+        };
+        package = mkOption {
+          default = flakePkgs.hyprcursor-phinger.default;
+          description = ''
+            Package providing the hyprcursor theme.
+          '';
+        };
+      };
     };
 
     gtk = {

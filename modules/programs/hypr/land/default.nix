@@ -42,11 +42,6 @@ in {
     '';
 
     hj = {
-      files = {
-        ".local/share/icons/phinger-cursors-dark-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-dark";
-        ".local/share/icons/phinger-cursors-light-hyprcursor".source = "${flakePkgs.hyprcursor-phinger.default}/share/icons/theme_phinger-cursors-light";
-      };
-
       packages = [
         flakePkgs.hyprwm-contrib.grimblast
         flakePkgs.self.universal-gnome-control-center
@@ -189,13 +184,6 @@ in {
         {
           GDK_SCALE = 1;
         }
-        // (optionalAttrs styleCfg.enable {
-          HYPRCURSOR_THEME = styleCfg.cursorTheme.name;
-          HYPRCURSOR_SIZE = styleCfg.cursorTheme.size;
-          XCURSOR_THEME = styleCfg.cursorTheme.name;
-          XCURSOR_SIZE = styleCfg.cursorTheme.size;
-          XCURSOR_PATH = "${styleCfg.cursorTheme.package}/share/icons";
-        })
         // (optionalAttrs config.local.modules.nvidia.enable {
           LIBVA_DRIVER_NAME = "nvidia";
           __GLX_VENDOR_LIBRARY_NAME = "nvidia";

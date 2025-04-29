@@ -14,7 +14,6 @@ in {
         enable = true;
         packages = [
           gtk.theme.package
-          cursorTheme.package
           gtk.iconTheme.package
           pkgs.adwaita-icon-theme # add as fallback
         ];
@@ -22,7 +21,6 @@ in {
         settings = {
           icon-theme-name = gtk.iconTheme.name;
           theme-name = gtk.theme.name;
-          cursor-theme-name = cursorTheme.name;
           application-prefer-dark-theme = colors.scheme.variant == "dark";
         };
 

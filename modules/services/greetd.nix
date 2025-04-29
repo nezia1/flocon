@@ -7,8 +7,6 @@
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
 let
-  inherit (builtins) toString;
-  inherit (lib.attrsets) optionalAttrs;
   inherit (lib.meta) getExe getExe';
   inherit (lib.modules) mkIf;
 
@@ -26,26 +24,19 @@ let
   greeter = getExe pkgs.greetd.regreet;
 
   hyprlandConfig = pkgs.writeText "greetd-hyprland-config" (toHyprConf {
-    attrs =
-      {
-        misc = {
-          disable_hyprland_logo = true;
-          disable_splash_rendering = true;
-        };
-        animations = {
-          enabled = false;
-          first_launch_animation = false;
-        };
-        workspace = "1,default:true,gapsout:0,gapsin:0,border:false,decorate:false";
-        monitor = "HDMI-A-1, disable";
-        exec-once = "[workspace 1;fullscreen;noanim] ${greeter}; ${hyprctl} dispatch exit";
-      }
-      // optionalAttrs styleCfg.enable {
-        env = [
-          "HYPRCURSOR_THEME,${styleCfg.cursorTheme.name}"
-          "HYPRCURSOR_SIZE,${toString styleCfg.cursorTheme.size}"
-        ];
+    attrs = {
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
+      animations = {
+        enabled = false;
+        first_launch_animation = false;
+      };
+      workspace = "1,default:true,gapsout:0,gapsin:0,border:false,decorate:false";
+      monitor = "HDMI-A-1, disable";
+      exec-once = "[workspace 1;fullscreen;noanim] ${greeter}; ${hyprctl} dispatch exit";
+    };
   });
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
@@ -60,7 +51,7 @@ in {
     programs.regreet = {
       enable = true;
       cursorTheme = {
-        inherit (styleCfg.cursorTheme) name package;
+        inherit (styleCfg.cursors.xcursor) name package;
       };
       font = {
         name = "Inter";
@@ -73,7 +64,7 @@ in {
         inherit (styleCfg.gtk.iconTheme) name package;
       };
 
-      extraCss = rum.gtk.css.gtk4;
+      extraCss = config.hj.rum.gtk.css.gtk4;
     };
 
     security.pam.services = {
