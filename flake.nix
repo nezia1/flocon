@@ -67,7 +67,7 @@
   };
   inputs = {
     # nix related
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
