@@ -50,9 +50,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "8bded8ce8cf22db51dd42bb71a2a5d39624df402",
+      "revision": "d7b48d3924eac9013fbd6b1f2220f44d2f392b9a",
       "url": null,
-      "hash": "1nvb9ms1zy9wriq30cysgrax8j6shkgr6rjarym3xqnxfckb17j9"
+      "hash": "1f0v2k4w3g6fihbqnajr6ll2dafq19ri8b4dlk3cvgp4l584figb"
     },
     "nixos-artwork": {
       "type": "Git",
@@ -63,9 +63,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "33856d7837cb8ba76c4fc9e26f91a659066ee31f",
-      "url": "https://github.com/nixos/nixos-artwork/archive/33856d7837cb8ba76c4fc9e26f91a659066ee31f.tar.gz",
-      "hash": "1iarl1fnl3zrsci8bg6ig1p5wm8b5mryslj7ff2swdl220wd52jl"
+      "revision": "4ad062cee62116f6055e2876e9638e7bb399d219",
+      "url": "https://github.com/nixos/nixos-artwork/archive/4ad062cee62116f6055e2876e9638e7bb399d219.tar.gz",
+      "hash": "171i1s6zq0n19x2l5c2yqpr0pvlpcf7k06xsjczzxxk7lk3s9w7l"
     }
   },
   "version": 5
