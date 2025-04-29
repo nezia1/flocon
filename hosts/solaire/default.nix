@@ -29,7 +29,7 @@ in {
     style = {
       enable = true;
       wallpapers = singleton ../../assets/wallpapers/lucy-edgerunners-wallpaper.jpg;
-      cursorTheme.size = 24;
+      cursors.size = 24;
     };
   };
 }
