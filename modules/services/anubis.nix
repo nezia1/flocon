@@ -10,7 +10,7 @@ in {
       defaultOptions = {
         botPolicy = {dnsbl = false;};
         settings = {
-          DIFFICULTY = 3;
+          DIFFICULTY = 4;
           SERVE_ROBOTS_TXT = true;
         };
       };
