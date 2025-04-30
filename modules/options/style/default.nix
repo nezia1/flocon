@@ -25,7 +25,6 @@ in {
       '';
       type = listOf path;
       example = lib.literalExpression "./wallpaper.png";
-      default = singleton "${pins.nixos-artwork}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
     };
 
     cursors = {
