@@ -27,7 +27,10 @@ in {
             push.autoSetupRemote = true;
             pull.rebase = true;
             diff.colorMoved = "default";
-            merge.conflictstyle = "diff3";
+            merge = {
+              ff = false;
+              conflictstyle = "diff3";
+            };
           };
         };
       };
