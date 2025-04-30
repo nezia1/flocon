@@ -1,13 +1,13 @@
 {
   lib,
   stdenvNoCC,
-  npins,
+  pins,
 }:
 stdenvNoCC.mkDerivation {
   pname = "app2unit";
-  version = "0-unstable-${npins.app2unit.revision}";
+  version = "0-unstable-${pins.app2unit.revision}";
 
-  src = npins.app2unit;
+  src = pins.app2unit;
 
   installPhase = ''
     install -Dt $out/bin app2unit

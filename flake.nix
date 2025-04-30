@@ -8,6 +8,7 @@
     deploy-rs,
     treefmt-nix,
     pre-commit-hooks,
+    flake-parts,
     ...
   } @ inputs: let
     inherit (nixpkgs) lib;
@@ -18,53 +19,67 @@
       (system: function nixpkgs.legacyPackages.${system});
     treefmtEval = forAllSystems (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     npins = import ./npins;
-  in {
-    checks = forAllSystems (pkgs:
-      {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-        /*
-        some treefmt formatters are not supported in pre-commit-hooks,
-        we filter them out for now.
-        */
-        pre-commit-check = let
-          toFilter = [
-            "yamlfmt"
-            "nixfmt"
-            "ruff" # creates warning as the name is deprecated, not used anyway
-          ];
-          filterFn = n: _v: (!builtins.elem n toFilter);
-          treefmtFormatters = pkgs.lib.mapAttrs (_n: v: {inherit (v) enable;}) (
-            pkgs.lib.filterAttrs filterFn treefmtEval.${pkgs.system}.config.programs
-          );
-        in
-          pre-commit-hooks.lib.${pkgs.system}.run {
-            src = ./.;
-            hooks = treefmtFormatters;
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [./parts];
+      systems = ["x86_64-linux"];
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {
+        checks =
+          {
+            formatting = treefmtEval.${system}.config.build.check self;
+            /*
+            some treefmt formatters are not supported in pre-commit-hooks,
+            we filter them out for now.
+            */
+            pre-commit-check = let
+              toFilter = [
+                "yamlfmt"
+                "nixfmt"
+                "ruff" # creates warning as the name is deprecated, not used anyway
+              ];
+              filterFn = n: _v: (!builtins.elem n toFilter);
+              treefmtFormatters = pkgs.lib.mapAttrs (_n: v: {inherit (v) enable;}) (
+                pkgs.lib.filterAttrs filterFn treefmtEval.${system}.config.programs
+              );
+            in
+              pre-commit-hooks.lib.${pkgs.system}.run {
+                src = ./.;
+                hooks = treefmtFormatters;
+              };
+          }
+          // deploy-rs.lib.${system}.deployChecks self.deploy;
+
+        devShells = {
+          default = pkgs.mkShell {
+            inherit (self.checks.${system}.pre-commit-check) shellHook;
+            buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+            packages = [
+              pkgs.git
+              deploy-rs.packages.${system}.default
+              agenix.packages.${system}.default
+              pkgs.npins
+              self.formatter.${system}
+            ];
           };
-      }
-      // deploy-rs.lib.${pkgs.system}.deployChecks self.deploy);
-    deploy.nodes = import ./nodes.nix {inherit inputs;};
-    devShells = forAllSystems (pkgs: {
-      default = pkgs.mkShell {
-        inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${pkgs.system}.pre-commit-check.enabledPackages;
-        packages = [
-          pkgs.git
-          deploy-rs.packages.${pkgs.system}.default
-          agenix.packages.${pkgs.system}.default
-          pkgs.npins
-          self.formatter.${pkgs.system}
-        ];
+        };
+
+        formatter = treefmtEval.${system}.config.build.wrapper;
       };
-    });
-    formatter = forAllSystems (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-    nixosConfigurations = import ./hosts {inherit self inputs npins;};
-    hjemModules = {
-      hjem = lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
-      hjem-rum = lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
+
+      flake = {
+        deploy.nodes = import ./nodes.nix {inherit inputs;};
+        nixosConfigurations = import ./hosts {inherit self inputs npins;};
+
+        hjemModules = {
+          hjem = lib.modules.importApply ./shared/modules/hjem/hjem.nix {inherit (nixpkgs) lib;};
+          hjem-rum = lib.modules.importApply ./shared/modules/hjem-rum/hjem.nix {inherit (nixpkgs) lib;};
+        };
+      };
     };
-    packages = forAllSystems (pkgs: import ./shared/pkgs {inherit inputs pkgs npins;});
-  };
   inputs = {
     # nix related
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
