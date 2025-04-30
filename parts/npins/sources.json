@@ -40,19 +40,6 @@
       "revision": "d7b48d3924eac9013fbd6b1f2220f44d2f392b9a",
       "url": null,
       "hash": "1f0v2k4w3g6fihbqnajr6ll2dafq19ri8b4dlk3cvgp4l584figb"
-    },
-    "nixos-artwork": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nixos",
-        "repo": "nixos-artwork"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "4ad062cee62116f6055e2876e9638e7bb399d219",
-      "url": "https://github.com/nixos/nixos-artwork/archive/4ad062cee62116f6055e2876e9638e7bb399d219.tar.gz",
-      "hash": "171i1s6zq0n19x2l5c2yqpr0pvlpcf7k06xsjczzxxk7lk3s9w7l"
     }
   },
   "version": 5
