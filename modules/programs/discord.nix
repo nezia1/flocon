@@ -2,7 +2,7 @@
   lib,
   pkgs,
   config,
-  npins,
+  pins,
   ...
 }: let
   inherit (lib) mkIf;
@@ -13,7 +13,7 @@
   base16-discord = pkgs.concatTextFile {
     name = "base16-discord.css";
     files = with styleCfg.colors.scheme.palette; [
-      "${npins.base16-discord}/base16.css"
+      "${pins.base16-discord}/base16.css"
       (builtins.toFile "base16.css"
         ''
           :root {

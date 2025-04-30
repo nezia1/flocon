@@ -1,7 +1,7 @@
 {
   lib,
   lib',
-  flakePkgs,
+  inputs',
   config,
   ...
 }: let
@@ -16,7 +16,7 @@ in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hj.rum.programs.hyprlock = {
       enable = true;
-      package = flakePkgs.hyprlock.hyprlock;
+      package = inputs'.hyprlock.packages.hyprlock;
       settings =
         {
           general = {

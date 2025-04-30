@@ -1,6 +1,4 @@
-{inputs, ...}: let
-  pinnedSources = import ./npins;
-in {
+{inputs, ...}: {
   perSystem = {
     config,
     system,
@@ -15,12 +13,13 @@ in {
       overlays = [inputs.self.overlays.default];
     };
 
-    _module.args = {
+    _module.args = let
+      inherit (inputs.nixpkgs) lib;
+      pinnedSources = import ./npins;
+    in {
+      inherit lib;
+      lib' = import ../lib lib;
       pins = pinnedSources;
     };
-  };
-
-  flake = {
-    pins = pinnedSources;
   };
 }

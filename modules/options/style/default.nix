@@ -3,8 +3,8 @@
   pkgs,
   config,
   options,
-  npins,
-  flakePkgs,
+  pins,
+  inputs',
   ...
 }: let
   inherit (builtins) pathExists toString;
@@ -25,7 +25,7 @@ in {
       '';
       type = listOf path;
       example = lib.literalExpression "./wallpaper.png";
-      default = singleton "${npins.nixos-artwork}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
+      default = singleton "${pins.nixos-artwork}/wallpapers/nix-wallpaper-nineish-catppuccin-frappe.png";
     };
 
     cursors = {
@@ -58,7 +58,7 @@ in {
           default = "phinger-cursors-dark-hyprcursor";
         };
         package = mkOption {
-          default = flakePkgs.hyprcursor-phinger.default;
+          inherit (inputs'.hyprcursor-phinger.packages) default;
           description = ''
             Package providing the hyprcursor theme.
           '';
@@ -95,9 +95,9 @@ in {
 
         package = mkOption {
           type = package;
-          description = builtins.trace (npins.MoreWaita "The GTK icon theme to be used");
+          description = builtins.trace (pins.MoreWaita "The GTK icon theme to be used");
           default = pkgs.morewaita-icon-theme.overrideAttrs {
-            src = npins.MoreWaita;
+            src = pins.MoreWaita;
             installPhase = ''
               runHook preInstall
 

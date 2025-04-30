@@ -1,7 +1,7 @@
 {
   lib,
-  flakePkgs,
   config,
+  inputs',
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -16,7 +16,7 @@ in {
       };
       "nezia.dev" = {
         extraConfig = ''
-          root * ${flakePkgs."nezia_dev".default}
+          root * ${inputs'."nezia_dev".packages.default}
           file_server
           encode gzip
         '';

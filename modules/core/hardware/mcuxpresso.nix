@@ -1,5 +1,5 @@
 {
-  flakePkgs,
+  self',
   lib,
   config,
   ...
@@ -7,6 +7,6 @@
   inherit (lib) mkIf;
 in {
   config = mkIf (!config.local.profiles.server.enable) {
-    services.udev.packages = [flakePkgs.self.mcuxpresso-udev];
+    services.udev.packages = [self'.packages.mcuxpresso-udev];
   };
 }

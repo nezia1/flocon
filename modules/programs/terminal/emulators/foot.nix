@@ -2,7 +2,7 @@
   lib,
   pkgs,
   config,
-  npins,
+  pins,
   ...
 }: let
   inherit (builtins) mapAttrs;
@@ -46,8 +46,8 @@
 
   foot = pkgs.foot.overrideAttrs {
     pname = "foot";
-    version = "0-unstable-${npins.foot.revision}";
-    src = npins.foot;
+    version = "0-unstable-${pins.foot.revision}";
+    src = pins.foot;
   };
 in {
   config = mkIf (config.local.vars.home.desktop != null) {

@@ -272,11 +272,32 @@
         "type": "github"
       }
     },
+    "git-hooks-nix": {
+      "inputs": {
+        "flake-compat": "flake-compat_3",
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742649964,
+        "narHash": "sha256-DwOTp7nvfi8mRfuL1escHDXabVXFGT1VlPD1JHrtrco=",
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "rev": "dcf5072734cb576d2b0c59b2ac44f5050b5eac82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "hyprland",
-          "pre-commit-hooks",
+          "git-hooks-nix",
           "nixpkgs"
         ]
       },
@@ -297,6 +318,7 @@
     "gitignore_2": {
       "inputs": {
         "nixpkgs": [
+          "hyprland",
           "pre-commit-hooks",
           "nixpkgs"
         ]
@@ -342,11 +364,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1745861051,
-        "narHash": "sha256-L1B2KkvbNHCtNbmYNli/DqCwEhshcwrt/p904iIYPNs=",
+        "lastModified": 1745973953,
+        "narHash": "sha256-s1ZHPUq9mi0VHVLI927tFdsMQqB5ClEBrYCwI8C7BMA=",
         "owner": "snugnug",
         "repo": "hjem-rum",
-        "rev": "1ad4898417031a6b280894f80f041118b6964432",
+        "rev": "d152f54bcd38dff8badc9449f6aa8f44944e1b17",
         "type": "github"
       },
       "original": {
@@ -1013,32 +1035,10 @@
     },
     "pre-commit-hooks": {
       "inputs": {
-        "flake-compat": "flake-compat_3",
-        "gitignore": "gitignore",
-        "nixpkgs": [
-          "hyprland",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1742649964,
-        "narHash": "sha256-DwOTp7nvfi8mRfuL1escHDXabVXFGT1VlPD1JHrtrco=",
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "rev": "dcf5072734cb576d2b0c59b2ac44f5050b5eac82",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
-    "pre-commit-hooks_2": {
-      "inputs": {
         "flake-compat": "flake-compat_4",
         "gitignore": "gitignore_2",
         "nixpkgs": [
+          "hyprland",
           "nixpkgs"
         ]
       },
@@ -1085,6 +1085,7 @@
         "deploy-rs": "deploy-rs",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
+        "git-hooks-nix": "git-hooks-nix",
         "hjem": "hjem",
         "hjem-rum": "hjem-rum",
         "home-manager": "home-manager_2",
@@ -1100,7 +1101,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
-        "pre-commit-hooks": "pre-commit-hooks_2",
         "swww": "swww",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"

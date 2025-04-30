@@ -1,6 +1,7 @@
 {
   lib,
-  flakePkgs,
+  inputs',
+  self',
   pkgs,
   config,
   ...
@@ -14,8 +15,8 @@ in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     programs.hyprland = {
       enable = true;
-      package = flakePkgs.hyprland.hyprland;
-      portalPackage = flakePkgs.hyprland.xdg-desktop-portal-hyprland;
+      package = inputs'.hyprland.packages.hyprland;
+      portalPackage = inputs'.hyprland.packages.xdg-desktop-portal-hyprland;
       withUWSM = true;
       systemd.setPath.enable = true;
     };
@@ -43,14 +44,14 @@ in {
 
     hj = {
       packages = [
-        flakePkgs.hyprwm-contrib.grimblast
-        flakePkgs.self.universal-gnome-control-center
+        inputs'.hyprwm-contrib.packages.grimblast
+        self'.packages.universal-gnome-control-center
       ];
 
       rum.programs.hyprland = {
         enable = true;
         plugins = [
-          flakePkgs.hyprsplit.hyprsplit
+          inputs'.hyprsplit.packages.hyprsplit
         ];
         settings =
           {
