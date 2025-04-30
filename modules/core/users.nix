@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   lib,
   config,
@@ -34,7 +33,7 @@ in {
     clobberByDefault = true;
     extraModules = [
       inputs.hjem-rum.hjemModules.default
-      self.outputs.hjemModules.hjem-rum
+      inputs.self.outputs.hjemModules.rum
     ];
     users.${username} = {
       enable = true;

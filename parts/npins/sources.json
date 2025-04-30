@@ -16,19 +16,6 @@
       "url": "https://api.github.com/repos/somepaulo/MoreWaita/tarball/v48.1",
       "hash": "119nw9hc3ipdjkz14js66gb9j6sl7r84x319b2zp0m0323icij6p"
     },
-    "app2unit": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "Vladimir-csp",
-        "repo": "app2unit"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "42613bd4c69cd5720114679a52b73b8b5d947678",
-      "url": "https://github.com/Vladimir-csp/app2unit/archive/42613bd4c69cd5720114679a52b73b8b5d947678.tar.gz",
-      "hash": "1xk68x80n6h533dxranvjsnzsmjncs89476252hcg03slv1vcj7d"
-    },
     "base16-discord": {
       "type": "Git",
       "repository": {

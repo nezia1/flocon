@@ -1,6 +1,6 @@
 {
   lib,
-  flakePkgs,
+  inputs',
   config,
   ...
 }: let
@@ -8,7 +8,7 @@
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
     hj = {
-      packages = [flakePkgs.anyrun.anyrun-with-all-plugins];
+      packages = [inputs'.anyrun.packages.anyrun-with-all-plugins];
       files = {
         ".config/anyrun/config.ron".source = ./config.ron;
         ".config/anyrun/applications.ron".text = ''

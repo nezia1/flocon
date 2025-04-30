@@ -43,6 +43,9 @@ People / repositories I have copied / learned from:
 - [Lunarnovaa](https://github.com/Lunarnovaa) for her
   [hjem](https://github.com/feel-co/hjem) configuration and functions, that I
   used when switching away from home-manager, and for being a great person.
+- [NotAShelf](https://github.com/NotAShelf) for providing a comprehensive
+  archive repo, [nyx](https://github.com/NotAShelf/nyx) who helped me transition
+  to flake-parts.
 
 Some bits have also been borrowed from within the configuration, and credit has
 been given where its due.

@@ -1,7 +1,7 @@
 {
   lib,
   lib',
-  flakePkgs,
+  inputs',
   config,
   ...
 }: let
@@ -9,7 +9,7 @@
   inherit (lib.meta) getExe;
   inherit (lib'.generators) toHyprConf;
 
-  inherit (flakePkgs.hypridle) hypridle;
+  inherit (inputs'.hypridle.packages) hypridle;
 
   hyprlock = getExe config.hj.rum.programs.hyprlock.package;
 in {

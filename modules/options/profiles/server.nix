@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  inherit (builtins) isNull;
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption;
 in {
@@ -13,7 +12,7 @@ in {
 
   config.assertions = mkIf config.local.profiles.server.enable [
     {
-      assertion = isNull config.local.vars.home.desktop;
+      assertion = config.local.vars.home.desktop == null;
       message = "The server profile cannot be enabled if any desktop is set.";
     }
 
