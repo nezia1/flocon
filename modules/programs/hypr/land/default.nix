@@ -1,7 +1,6 @@
 {
   lib,
   inputs',
-  self',
   pkgs,
   config,
   ...
@@ -9,6 +8,36 @@
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
   inherit (lib.strings) removePrefix;
+
+  universal-gnome-control-center = let
+    gnome-control-center = pkgs.gnome-control-center.overrideAttrs (old: {
+      postInstall =
+        old.postInstall
+        + ''
+          dir=$out/share/applications
+          for panel in $dir/*
+          do
+            [ "$panel" = "$dir/gnome-network-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wifi-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wwan-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-sharing-panel.desktop" ] && continue
+            [ "$panel" = "$dir/gnome-wacom-panel.desktop" ] && continue
+            rm "$panel"
+          done
+        '';
+    });
+  in
+    pkgs.symlinkJoin {
+      name = "${gnome-control-center.name}-universal";
+      paths = [gnome-control-center];
+      nativeBuildInputs = [
+        pkgs.makeWrapper
+      ];
+      postBuild = ''
+        wrapProgram $out/bin/gnome-control-center \
+          --set XDG_CURRENT_DESKTOP gnome
+      '';
+    };
 
   styleCfg = config.local.style;
 in {
@@ -45,7 +74,7 @@ in {
     hj = {
       packages = [
         inputs'.hyprwm-contrib.packages.grimblast
-        self'.packages.universal-gnome-control-center
+        universal-gnome-control-center
       ];
 
       rum.programs.hyprland = {
