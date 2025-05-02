@@ -88,7 +88,13 @@
             };
           };
 
-          diagnostics.enable = true;
+          diagnostics = {
+            enable = true;
+            config = {
+              virtual_lines.enable = true;
+              underline = false;
+            };
+          };
           lsp = {
             enable = true;
             lspconfig.enable = true;
