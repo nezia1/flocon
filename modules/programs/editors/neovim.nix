@@ -181,6 +181,12 @@
           filetree.neo-tree.enable = true;
 
           telescope.enable = true;
+
+          spellcheck = {
+            enable = true;
+            languages = ["en" "fr"];
+            programmingWordlist.enable = true;
+          };
         }
         // (optionalAttrs styleCfg.enable {
           theme = {
