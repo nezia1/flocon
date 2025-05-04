@@ -3,15 +3,10 @@
     inputs.git-hooks-nix.flakeModule
   ];
   perSystem = _: {
-    pre-commit.settings.hooks = {
-      treefmt.enable = true;
-      deadnix.enable = true;
-      nil.enable = true;
-      statix = {
-        enable = true;
-        settings = {
-          ignore = ["**/npins/**/default.nix"];
-        };
+    pre-commit = {
+      check.enable = true;
+      settings.hooks = {
+        treefmt.enable = true;
       };
     };
   };
