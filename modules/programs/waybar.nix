@@ -27,6 +27,7 @@ in {
             "hyprland/workspaces"
             "pulseaudio"
             "idle_inhibitor"
+            "power-profiles-daemon"
           ];
 
           modules-center = ["clock"];
@@ -229,6 +230,7 @@ in {
 
             #pulseaudio,
             #idle_inhibitor,
+            #power-profiles-daemon,
             #workspaces,
             #clock,
             #network,
