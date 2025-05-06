@@ -8,7 +8,10 @@
   inherit (lib) mkIf;
 
   styleCfg = config.local.style;
-  discord = pkgs.vesktop;
+  discord = pkgs.vesktop.override {
+    withTTS = false;
+    withSystemVencord = true;
+  };
 
   base16-discord = pkgs.concatTextFile {
     name = "base16-discord.css";
