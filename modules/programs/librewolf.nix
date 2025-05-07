@@ -13,6 +13,7 @@ in {
         package = inputs'.pin-librewolf.legacyPackages.librewolf;
 
         policies = {
+          DisableFirefoxAccounts = false;
           DisableTelemetry = true;
           DisablePocket = true;
           DisableFeedbackCommands = true;
