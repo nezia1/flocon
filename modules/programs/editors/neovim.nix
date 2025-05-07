@@ -3,11 +3,13 @@
   inputs,
   pkgs,
   config,
+  self,
   ...
 }: let
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.lists) singleton;
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) escapeShellArg;
 
   styleCfg = config.local.style;
 
@@ -135,6 +137,15 @@
 
             nix = {
               enable = true;
+              lsp = {
+                server = "nixd";
+                options = let
+                  flake = "(builtins.getFlake ${escapeShellArg inputs.self})";
+                in {
+                  # https://github.com/Nowaaru/nix-diary/blob/23a10f33c447432f2c2e177a5fa74e019c5626e4/users/noire/cfg/nvf/languages.nix#L43
+                  nixos.expr = "${flake}.nixosConfigurations.options";
+                };
+              };
             };
             clang = {
               enable = true;
