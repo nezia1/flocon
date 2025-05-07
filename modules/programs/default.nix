@@ -8,7 +8,7 @@
 
     ./comma.nix
     ./discord.nix
-    ./firefox.nix
+    ./librewolf.nix
     ./games.nix
     ./gns3.nix
     ./misc.nix
