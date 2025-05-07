@@ -10,20 +10,34 @@
       systems = ["x86_64-linux"];
     };
   inputs = {
+    # so we can .follow it
+    systems.url = "github:nix-systems/default-linux";
+
     # nix related
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # other
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    # sorted alphabetically
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
     };
+
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs = {
@@ -32,55 +46,20 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
     basix = {
       url = "github:notashelf/basix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-
-      inputs.utils.follows = "flake-utils"; # Yes, it's actually called `utils`, not a typo
-    };
-
-    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.systems.follows = "systems";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
       inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-        hyprland-protocols.follows = "hyprland/hyprland-protocols";
-
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "systems";
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils"; # yes, it's actually called `utils`, not a typo
       };
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-    hyprwm-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hjem = {
@@ -92,15 +71,61 @@
       url = "github:snugnug/hjem-rum";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+        hyprland-protocols.follows = "hyprland/hyprland-protocols";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs = {
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nezia_dev = {
+      url = "github:nezia1/nezia.dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs = {
@@ -110,33 +135,27 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    git-hooks-nix = {
+
+    pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    swww = {
-      url = "github:LGFae/swww";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
+        flake-compat.follows = "flake-compat";
       };
     };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nezia_dev = {
-      url = "github:nezia1/nezia.dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # dependency pinning to prevent duplicate versions
-    systems.url = "github:nix-systems/default";
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    flake-compat.url = "github:edolstra/flake-compat";
   };
   nixConfig = {
     extra-substituters = [
