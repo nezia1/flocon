@@ -131,7 +131,6 @@
           languages = {
             enableExtraDiagnostics = true;
             enableFormat = true;
-            enableLSP = true;
             enableTreesitter = true;
 
             nix = {
