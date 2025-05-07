@@ -947,6 +947,23 @@
         "type": "github"
       }
     },
+    "pin-librewolf": {
+      "locked": {
+        "lastModified": 1745794561,
+        "narHash": "sha256-T36rUZHUART00h3dW4sV5tv4MrXKT7aWjNfHiZz7OHg=",
+        "ref": "refs/heads/master",
+        "rev": "5461b7fa65f3ca74cef60be837fd559a8918eaa0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/NixOS/nixpkgs"
+      },
+      "original": {
+        "rev": "5461b7fa65f3ca74cef60be837fd559a8918eaa0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/NixOS/nixpkgs"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1039,6 +1056,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
+        "pin-librewolf": "pin-librewolf",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix_2"

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs',
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -11,6 +12,7 @@ in {
       rum.programs.firefox = {
         inherit username;
         enable = true;
+        package = inputs'.pin-librewolf.legacyPackages.librewolf-unwrapped;
 
         policies = {
           DisableTelemetry = true;
