@@ -181,8 +181,8 @@ in {
               "col.inactive_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base03})";
             };
             decoration = {
-              rounding = 16;
-
+              rounding = 10;
+              rounding_power = 3;
               blur = {
                 enabled = true;
                 size = 5;
