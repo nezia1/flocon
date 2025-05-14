@@ -1,8 +1,21 @@
 {
-  pkgs,
   inputs,
+  lib,
+  pkgs,
+  config,
   ...
-}: {
+}: let
+  inherit (lib.modules) mkIf;
+  inherit (config.local.profiles) server;
+  inherit (config.local.vars.system) username;
+in {
+  age.secrets.nix-access-tokens-github = mkIf (!server.enable) {
+    file = ../../secrets/nix-access-tokens-github.age;
+    # needs to be user readable
+    mode = "0500";
+    owner = username;
+  };
+
   nix = {
     package = pkgs.lix;
     settings = {
@@ -19,6 +32,9 @@
       self.flake = inputs.self;
     };
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    extraOptions = ''
+      !include ${config.age.secrets.nix-access-tokens-github.path}
+    '';
   };
 
   nixpkgs = {
