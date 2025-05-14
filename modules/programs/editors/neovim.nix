@@ -22,10 +22,18 @@
           vimAlias = true;
           enableLuaLoader = true;
           preventJunkFiles = true;
-          useSystemClipboard = true;
           options = {
             tabstop = 4;
             autoindent = false;
+          };
+
+          clipboard = {
+            enable = true;
+            registers = "unnamedplus";
+            providers = {
+              wl-copy.enable = true;
+              xsel.enable = true;
+            };
           };
 
           luaConfigPost = ''
