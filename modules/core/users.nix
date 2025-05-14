@@ -29,6 +29,8 @@ in {
     ];
   };
 
+  age.identityPaths = mkIf (!server.enable) ["${config.hj.directory}/.ssh/id_ed25519"];
+
   hjem = mkIf (!server.enable) {
     clobberByDefault = true;
     extraModules = [
