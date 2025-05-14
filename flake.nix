@@ -11,13 +11,13 @@
     };
   inputs = {
     # rollback librewolf - track https://github.com/NixOS/nixpkgs/issues/404763
-    pin-librewolf.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&rev=5461b7fa65f3ca74cef60be837fd559a8918eaa0";
+    pin-librewolf.url = "github:NixOS/nixpkgs/5461b7fa65f3ca74cef60be837fd559a8918eaa0";
 
     # so we can .follow it
     systems.url = "github:nix-systems/default-linux";
 
     # nix related
-    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
