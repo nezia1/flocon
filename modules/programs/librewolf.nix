@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  inputs',
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -10,7 +9,6 @@ in {
     hj = {
       rum.programs.librewolf = {
         enable = true;
-        package = inputs'.pin-librewolf.legacyPackages.librewolf;
 
         policies = {
           DisableFirefoxAccounts = false;

@@ -10,9 +10,6 @@
       systems = ["x86_64-linux"];
     };
   inputs = {
-    # rollback librewolf - track https://github.com/NixOS/nixpkgs/issues/404763
-    pin-librewolf.url = "github:NixOS/nixpkgs/5461b7fa65f3ca74cef60be837fd559a8918eaa0";
-
     # so we can .follow it
     systems.url = "github:nix-systems/default-linux";
 
