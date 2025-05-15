@@ -1,5 +1,10 @@
 {inputs, ...}: {
-  perSystem = {system, ...}: {
+  perSystem = {
+    system,
+    pkgs,
+    lib,
+    ...
+  }: {
     legacyPackages = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -10,8 +15,10 @@
     };
 
     _module.args = let
-      inherit (inputs.nixpkgs) lib;
-      lib' = import ../lib {inherit lib lib';};
+      lib' = lib.filesystem.packagesFromDirectoryRecursive {
+        inherit (pkgs) callPackage newScope;
+        directory = ../lib;
+      };
       pinnedSources = import ./npins;
     in {
       inherit lib lib';
