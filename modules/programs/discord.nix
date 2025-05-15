@@ -10,7 +10,6 @@
   styleCfg = config.local.style;
   discord = pkgs.vesktop.override {
     withTTS = false;
-    withSystemVencord = true;
   };
 
   base16-discord = pkgs.concatTextFile {
