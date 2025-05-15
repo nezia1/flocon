@@ -64,7 +64,7 @@ in {
         inherit (styleCfg.gtk.iconTheme) name package;
       };
 
-      extraCss = config.hj.rum.gtk.css.gtk4;
+      extraCss = config.hj.rum.misc.gtk.css.gtk4;
     };
 
     security.pam.services = {

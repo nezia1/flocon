@@ -13,7 +13,7 @@ in {
         styleCfg.cursors.hyprcursor.package
       ];
 
-      rum.gtk.settings.cursor-theme-name = styleCfg.cursors.xcursor.name;
+      rum.misc.gtk.settings.cursor-theme-name = styleCfg.cursors.xcursor.name;
 
       environment.sessionVariables = {
         HYPRCURSOR_THEME = styleCfg.cursors.hyprcursor.name;

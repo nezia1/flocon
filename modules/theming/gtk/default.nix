@@ -10,7 +10,7 @@
 in {
   config = with styleCfg;
     mkIf styleCfg.enable {
-      hj.rum.gtk = with styleCfg; {
+      hj.rum.misc.gtk = with styleCfg; {
         enable = true;
         packages = [
           gtk.theme.package
