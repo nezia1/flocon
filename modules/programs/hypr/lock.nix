@@ -9,7 +9,7 @@
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
 
-  inherit (lib') rgba;
+  inherit (lib'.colors) rgba;
 
   styleCfg = config.local.style;
 in {

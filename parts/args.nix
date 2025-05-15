@@ -1,9 +1,5 @@
 {inputs, ...}: {
-  perSystem = {
-    config,
-    system,
-    ...
-  }: {
+  perSystem = {system, ...}: {
     legacyPackages = import inputs.nixpkgs {
       inherit system;
       config = {
@@ -15,10 +11,10 @@
 
     _module.args = let
       inherit (inputs.nixpkgs) lib;
+      lib' = import ../lib {inherit lib lib';};
       pinnedSources = import ./npins;
     in {
-      inherit lib;
-      lib' = import ../lib lib;
+      inherit lib lib';
       pins = pinnedSources;
     };
   };

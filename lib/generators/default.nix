@@ -1,4 +1,8 @@
-lib: {
-  toHyprConf = import ./tohyprconf.nix lib;
-  gtk = import ./gtk.nix lib;
+{
+  lib,
+  lib',
+  ...
+}: {
+  toHyprConf = import ./tohyprconf.nix {inherit lib lib';};
+  gtk = import ./gtk.nix {inherit lib lib';};
 }

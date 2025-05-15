@@ -1,4 +1,4 @@
-lib: let
+{lib, ...}: let
   # toGtk3Ini , formatGtk2Option , and finalGtk2Text are all taken from https://github.com/nix-community/home-manager, with some minor modifications to their function.
   # All of the gtk generator functions are available under the MIT License.
   inherit (builtins) isBool;
