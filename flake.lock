@@ -712,26 +712,6 @@
         "type": "github"
       }
     },
-    "hyprsplit": {
-      "inputs": {
-        "hyprland": [
-          "hyprland"
-        ]
-      },
-      "locked": {
-        "lastModified": 1746992858,
-        "narHash": "sha256-0jrsiUoQi/VXM2Ji7YTOEYDYYlBI2C3ZbgQpYoAEVKI=",
-        "owner": "shezdy",
-        "repo": "hyprsplit",
-        "rev": "bfe9bd397ca4f7d85aa70e13eaf1d82c26f2ffb4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "shezdy",
-        "repo": "hyprsplit",
-        "type": "github"
-      }
-    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -886,6 +866,21 @@
       "original": {
         "owner": "oxalica",
         "repo": "nil",
+        "type": "github"
+      }
+    },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1693833173,
+        "narHash": "sha256-hlMABKrGbEiJD5dwUSfnw1CQ3bG7KKwDV+Nx3bEZd7U=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "ac030bd9ba98e318e1f4c4328d60766ade8ebe8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
         "type": "github"
       }
     },
@@ -1125,7 +1120,6 @@
         "hypridle": "hypridle",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
-        "hyprsplit": "hyprsplit",
         "hyprwm-contrib": "hyprwm-contrib",
         "nezia_dev": "nezia_dev",
         "nix-gaming": "nix-gaming",
@@ -1134,6 +1128,7 @@
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
+        "split-monitor-workspaces": "split-monitor-workspaces",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix_2"
       }
@@ -1157,6 +1152,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "split-monitor-workspaces": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nix-filter": "nix-filter"
+      },
+      "locked": {
+        "lastModified": 1746983882,
+        "narHash": "sha256-YKq+9cxftgWRwkBH9+GgRi1IGBqv+/sW+4qjFLsx0Ew=",
+        "owner": "Duckonaut",
+        "repo": "split-monitor-workspaces",
+        "rev": "39b19ba05ffb6a36b921a7d0b8cc05012316296d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Duckonaut",
+        "repo": "split-monitor-workspaces",
         "type": "github"
       }
     },

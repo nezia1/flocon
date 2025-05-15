@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   inherit (builtins) toJSON;
 
-  inherit (config.hj.rum.programs.hyprland.settings.plugin.hyprsplit) num_workspaces;
+  inherit (config.hj.rum.programs.hyprland.settings.plugin.split-monitor-workspaces) count;
 
   styleCfg = config.local.style;
 in {
@@ -162,7 +162,7 @@ in {
               "urgent" = "";
               "special" = "󰠱";
             };
-            persistent-workspaces."*" = num_workspaces;
+            persistent-workspaces."*" = count;
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };

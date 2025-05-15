@@ -80,7 +80,7 @@ in {
       rum.programs.hyprland = {
         enable = true;
         plugins = [
-          inputs'.hyprsplit.packages.hyprsplit
+          inputs'.split-monitor-workspaces.packages.default
         ];
         settings =
           {
@@ -169,8 +169,8 @@ in {
               disable_autoreload = true; # to be removed once hjem gets a linker
             };
             plugin = {
-              hyprsplit = {
-                num_workspaces = 4;
+              split-monitor-workspaces = {
+                count = 4;
               };
             };
           }

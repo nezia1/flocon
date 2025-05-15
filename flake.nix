@@ -81,8 +81,8 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
 
