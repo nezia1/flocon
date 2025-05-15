@@ -11,7 +11,6 @@
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
-      overlays = [inputs.self.overlays.default];
     };
 
     _module.args = let
