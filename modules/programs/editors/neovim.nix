@@ -126,29 +126,12 @@
             };
           };
 
-          autocomplete.blink-cmp = {
-            enable = true;
-            friendly-snippets.enable = true;
-            setupOpts = {
-              fuzzy.implementation = "prefer_rust_with_warning";
-              signature.enabled = true;
-            };
-          };
-
           autopairs.nvim-autopairs.enable = true;
+          autocomplete.nvim-cmp.enable = true;
 
           lsp.servers.nixd = {
             enable = true;
             cmd = singleton (getExe pkgs.nixd);
-
-            settings = {
-              options = let
-                flake = "(builtins.getFlake ${escapeShellArg inputs.self})";
-              in {
-                # https://github.com/Nowaaru/nix-diary/blob/23a10f33c447432f2c2e177a5fa74e019c5626e4/users/noire/cfg/nvf/languages.nix#L43
-                nixos.expr = "${flake}.nixosConfigurations.options";
-              };
-            };
           };
 
           languages = {
