@@ -5,5 +5,5 @@ let
 in {
   "searx-env-file.age".publicKeys = [anastacia];
   "firefox-sync.age".publicKeys = [anastacia];
-  "nix-access-tokens-github.age".publicKeys = [vamos solaire];
+  "nix-access-tokens-github.age".publicKeys = [anastacia vamos solaire];
 }

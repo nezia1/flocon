@@ -1,15 +1,12 @@
 {
   inputs,
-  lib,
   pkgs,
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-  inherit (config.local.profiles) server;
   inherit (config.local.vars.system) username;
 in {
-  age.secrets.nix-access-tokens-github = mkIf (!server.enable) {
+  age.secrets.nix-access-tokens-github = {
     file = ../../secrets/nix-access-tokens-github.age;
     # needs to be user readable
     mode = "0500";
