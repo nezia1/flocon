@@ -13,7 +13,7 @@ in {
       modesetting.enable = true;
       powerManagement.enable = true;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
     };
 
     # https://wiki.hyprland.org/Nvidia/#suspendwakeup-issues
