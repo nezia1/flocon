@@ -40,6 +40,19 @@
       "revision": "d7b48d3924eac9013fbd6b1f2220f44d2f392b9a",
       "url": null,
       "hash": "1f0v2k4w3g6fihbqnajr6ll2dafq19ri8b4dlk3cvgp4l584figb"
+    },
+    "matugen-themes": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nezia1",
+        "repo": "matugen-themes"
+      },
+      "branch": "extra-themes",
+      "submodules": false,
+      "revision": "21411499a7258481772d186daefc8b017f1a0bb5",
+      "url": "https://github.com/nezia1/matugen-themes/archive/21411499a7258481772d186daefc8b017f1a0bb5.tar.gz",
+      "hash": "1vn80nb5h4a5y2ak623klhhv1n6h3kgxpr21w0qr5hrscyh94g2y"
     }
   },
   "version": 5
