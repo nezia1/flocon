@@ -1,6 +1,6 @@
 {
   lib,
-  lib',
+  myLib,
   inputs',
   config,
   ...
@@ -9,7 +9,7 @@
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
 
-  inherit (lib'.colors) rgba;
+  inherit (myLib.colors) rgba;
 
   styleCfg = config.local.style;
 in {

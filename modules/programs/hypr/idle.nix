@@ -1,13 +1,13 @@
 {
   lib,
-  lib',
+  myLib,
   inputs',
   config,
   ...
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe;
-  inherit (lib'.generators) toHyprConf;
+  inherit (myLib.generators) toHyprConf;
 
   inherit (inputs'.hypridle.packages) hypridle;
 

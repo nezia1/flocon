@@ -2,7 +2,7 @@
   lib,
   pkgs,
   config,
-  lib',
+  myLib,
   ...
 }:
 # thanks https://git.jacekpoz.pl/poz/niksos/src/commit/f8d5e7ccd9c769f7c0b564f10dff419285e75248/modules/services/greetd.nix
@@ -10,9 +10,7 @@ let
   inherit (lib.meta) getExe getExe';
   inherit (lib.modules) mkIf;
 
-  inherit (lib'.generators) toHyprConf;
-
-  inherit (config.hj) rum;
+  inherit (myLib.generators) toHyprConf;
 
   hyprland = config.programs.hyprland.package;
 

@@ -14,13 +14,13 @@
     };
 
     _module.args = let
-      lib' = lib.filesystem.packagesFromDirectoryRecursive {
+      myLib = lib.filesystem.packagesFromDirectoryRecursive {
         inherit (pkgs) callPackage newScope;
         directory = ../lib;
       };
       pinnedSources = import ./npins;
     in {
-      inherit lib lib';
+      inherit lib myLib;
       pins = pinnedSources;
     };
   };

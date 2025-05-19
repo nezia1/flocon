@@ -11,11 +11,11 @@
         self',
         pins,
         lib,
-        lib',
+        myLib,
         ...
       }:
         lib.nixosSystem {
-          specialArgs = {inherit inputs inputs' self self' lib' pins;};
+          specialArgs = {inherit inputs inputs' self self' myLib pins;};
           modules =
             (args.modules or [])
             ++ [../modules];
