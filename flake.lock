@@ -782,6 +782,29 @@
         "type": "github"
       }
     },
+    "matugen": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745334376,
+        "narHash": "sha256-GZAesQW51EwCEB9w5caxgi87LiAMhVfP6GqZmet9VZc=",
+        "owner": "InioX",
+        "repo": "matugen",
+        "rev": "4619cca93513470dc2a1833d9a138297cbccaf2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "InioX",
+        "repo": "matugen",
+        "type": "github"
+      }
+    },
     "mnw": {
       "locked": {
         "lastModified": 1746338991,
@@ -1121,6 +1144,7 @@
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
         "hyprwm-contrib": "hyprwm-contrib",
+        "matugen": "matugen",
         "nezia_dev": "nezia_dev",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",

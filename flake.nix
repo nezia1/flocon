@@ -115,6 +115,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    matugen = {
+      url = "github:InioX/matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+
     nezia_dev = {
       url = "github:nezia1/nezia.dev";
       inputs.nixpkgs.follows = "nixpkgs";
