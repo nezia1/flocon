@@ -40,6 +40,32 @@
       "revision": "d7b48d3924eac9013fbd6b1f2220f44d2f392b9a",
       "url": null,
       "hash": "1f0v2k4w3g6fihbqnajr6ll2dafq19ri8b4dlk3cvgp4l584figb"
+    },
+    "tinted-terminal": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "tinted-theming",
+        "repo": "tinted-terminal"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "bf2479b4e16dccad4b345fb692dfcee40e724964",
+      "url": "https://github.com/tinted-theming/tinted-terminal/archive/bf2479b4e16dccad4b345fb692dfcee40e724964.tar.gz",
+      "hash": "1x6n7q6wvz8qf4910cj9gbfsps6xld8f1jcv79l5cpkm26d4j3ix"
+    },
+    "tt-schemes": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "tinted-theming",
+        "repo": "schemes"
+      },
+      "branch": "spec-0.11",
+      "submodules": false,
+      "revision": "8c00a361a99b6d356db9572240053a3f8716ea68",
+      "url": "https://github.com/tinted-theming/schemes/archive/8c00a361a99b6d356db9572240053a3f8716ea68.tar.gz",
+      "hash": "19n926jprl8vxjabgnl9z7x6vcpvh04ii77cdmsn3nl5p4rxnxx4"
     }
   },
   "version": 5
