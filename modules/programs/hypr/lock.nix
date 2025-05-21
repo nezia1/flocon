@@ -26,7 +26,7 @@ in {
         }
         // (optionalAttrs styleCfg.enable
           (let
-            rgbaPalette = mapAttrs (_: c: (rgba c 1)) styleCfg.colors.scheme.palette;
+            rgbaPalette = mapAttrs (_: c: (rgba c 1)) styleCfg.colors.scheme.withHashtag;
           in
             with rgbaPalette; {
               background = [

@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (builtins) elem;
@@ -9,6 +10,8 @@
   inherit (lib.options) mkOption;
   inherit (lib.types) attrs enum;
   inherit (lib.modules) mkIf;
+
+  base16Lib = pkgs.callPackage inputs.base16.lib {};
 
   allSchemes = (attrNames inputs.basix.schemeData.base16) ++ (attrNames inputs.basix.schemeData.base24);
 
@@ -48,6 +51,6 @@ in {
       }
     ];
 
-    local.style.colors.scheme = inputs.basix.schemeData.${cfg.colors.system}.${cfg.colors.schemeName};
+    local.style.colors.scheme = base16Lib.mkSchemeAttrs inputs.basix.schemeData.${cfg.colors.system}.${cfg.colors.schemeName};
   };
 }

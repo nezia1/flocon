@@ -7,7 +7,6 @@
 }: let
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
-  inherit (lib.strings) removePrefix;
 
   universal-gnome-control-center = let
     gnome-control-center = pkgs.gnome-control-center.overrideAttrs (old: {
@@ -177,8 +176,8 @@ in {
           // (optionalAttrs styleCfg.enable {
             general = {
               border_size = 4;
-              "col.active_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base0E})";
-              "col.inactive_border" = "rgb(${removePrefix "#" styleCfg.colors.scheme.palette.base03})";
+              "col.active_border" = "rgb(${styleCfg.colors.scheme.base0E})";
+              "col.inactive_border" = "rgb(${styleCfg.colors.scheme.base03})";
             };
             decoration = {
               rounding = 10;

@@ -75,7 +75,7 @@ in {
             }
           ];
 
-        ".config/wlogout/style.css".text = with styleCfg.colors.scheme.palette;
+        ".config/wlogout/style.css".text = with styleCfg.colors.scheme.withHashtag;
           mkIf styleCfg.enable
           /*
           css
