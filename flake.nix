@@ -47,6 +47,8 @@
       };
     };
 
+    base16.url = "github:SenchoPens/base16.nix";
+
     basix = {
       url = "github:notashelf/basix";
       inputs.nixpkgs.follows = "nixpkgs";
