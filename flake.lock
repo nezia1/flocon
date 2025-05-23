@@ -86,6 +86,24 @@
         "type": "github"
       }
     },
+    "base16": {
+      "inputs": {
+        "fromYaml": "fromYaml"
+      },
+      "locked": {
+        "lastModified": 1746562888,
+        "narHash": "sha256-YgNJQyB5dQiwavdDFBMNKk1wyS77AtdgDk/VtU6wEaI=",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "rev": "806a1777a5db2a1ef9d5d6f493ef2381047f2b89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "type": "github"
+      }
+    },
     "basix": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -275,6 +293,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "fromYaml": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731966426,
+        "narHash": "sha256-lq95WydhbUTWig/JpqiB7oViTcHFP8Lv41IGtayokA8=",
+        "owner": "SenchoPens",
+        "repo": "fromYaml",
+        "rev": "106af9e2f715e2d828df706c386a685698f3223b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SenchoPens",
+        "repo": "fromYaml",
         "type": "github"
       }
     },
@@ -1108,6 +1142,7 @@
       "inputs": {
         "agenix": "agenix",
         "anyrun": "anyrun",
+        "base16": "base16",
         "basix": "basix",
         "deploy-rs": "deploy-rs",
         "flake-compat": "flake-compat_2",

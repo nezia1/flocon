@@ -14,7 +14,7 @@
 
   base16-discord = pkgs.concatTextFile {
     name = "base16-discord.css";
-    files = with styleCfg.colors.scheme.palette; [
+    files = with styleCfg.colors.scheme.withHashtag; [
       "${pins.base16-discord}/base16.css"
       (builtins.toFile "base16.css"
         ''

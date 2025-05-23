@@ -25,7 +25,7 @@ in {
         };
 
         css = rec {
-          gtk3 = import ./style.nix colors.scheme.palette;
+          gtk3 = import ./style.nix colors.scheme.withHashtag;
           gtk4 = gtk3;
         };
       };

@@ -5,7 +5,8 @@
   config,
   ...
 }: let
-  inherit (lib.attrsets) optionalAttrs;
+  inherit (builtins) match;
+  inherit (lib.attrsets) filterAttrs optionalAttrs;
   inherit (lib.lists) singleton;
   inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf;
@@ -199,8 +200,7 @@
             enable = true;
             name = "base16";
 
-            # grab the base16 variant as `config.local.style.colors.scheme` might be base24
-            base16-colors = inputs.basix.schemeData.base16.${styleCfg.colors.schemeName}.palette;
+            base16-colors = filterAttrs (n: _: match "^base0.$" n != null) config.local.style.colors.scheme.withHashtag;
           };
         });
     };
