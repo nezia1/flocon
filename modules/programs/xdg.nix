@@ -8,6 +8,18 @@
   inherit (config.local.vars.system) username;
 in {
   config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+    # TODO: switch to hjem when implemented
+    hm.xdg = {
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+        desktop = "${config.hj.directory}/Desktop";
+        documents = "${config.hj.directory}/Documents";
+        music = "${config.hj.directory}/Music";
+        pictures = "${config.hj.directory}/Pictures";
+        videos = "${config.hj.directory}/Videos";
+      };
+    };
     hj = {
       files = {
         ".config/mimeapps.list".text = ''
