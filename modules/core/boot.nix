@@ -35,5 +35,6 @@ in {
         "rd.udev.log_level=3"
       ];
     };
+    systemd.tpm2.enable = false;
   };
 }
