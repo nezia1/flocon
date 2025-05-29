@@ -12,6 +12,7 @@ in {
     hj = {
       packages = with pkgs; [
         self'.packages.app2unit
+        self'.packages.mcuxpressoide
         devenv
         entr
         fastfetch
