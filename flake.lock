@@ -992,6 +992,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-gcr": {
+      "locked": {
+        "lastModified": 1748893072,
+        "narHash": "sha256-EqCCuFn3VohgxEqTVF0gMXx9+XQHXmD/+kCC2DVga98=",
+        "owner": "nezia1",
+        "repo": "nixpkgs",
+        "rev": "d954596e8792e7a28b78a41e16e39ad57d4b3d2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nezia1",
+        "ref": "replace-gnome-keyring-with-gcr",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1743296961,
@@ -1161,6 +1177,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-gcr": "nixpkgs-gcr",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "split-monitor-workspaces": "split-monitor-workspaces",
