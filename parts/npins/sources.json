@@ -14,7 +14,8 @@
       "version": "v48.1",
       "revision": "3a40e0dedd3e363d1cdcab506137949177907c16",
       "url": "https://api.github.com/repos/somepaulo/MoreWaita/tarball/v48.1",
-      "hash": "119nw9hc3ipdjkz14js66gb9j6sl7r84x319b2zp0m0323icij6p"
+      "hash": "119nw9hc3ipdjkz14js66gb9j6sl7r84x319b2zp0m0323icij6p",
+      "frozen": true
     },
     "base16-discord": {
       "type": "Git",
@@ -25,9 +26,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "5ced33ad4bfbe888e2f486700df8c0e2862d5b9d",
-      "url": "https://github.com/imbypass/base16-discord/archive/5ced33ad4bfbe888e2f486700df8c0e2862d5b9d.tar.gz",
-      "hash": "17ndp3krxjc2gk3k00mzibx0b3qk8q18wbdq1l0xyxnal7r3ijs7"
+      "revision": "22612ebbdf9748ad303eddbee1c036f75136ff31",
+      "url": "https://github.com/imbypass/base16-discord/archive/22612ebbdf9748ad303eddbee1c036f75136ff31.tar.gz",
+      "hash": "0lzni90bsw2gb92m1z69x3znwq4x6lk43q52z3hyqncidhwm8ii0"
     },
     "foot": {
       "type": "Git",
@@ -37,9 +38,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "5621829bb00deea6c187c0c328e2560b84f809d3",
+      "revision": "eeaecba7238fb3a501cb25b55b7d2ada2bc4d023",
       "url": null,
-      "hash": "18mrkbbmnlazfh6id4ln464h5sa3vxl8ghcxhr3zqf5yglqh0jfx"
+      "hash": "0wr6q1g8xzmyzg5gnir4h8p9g7q3xv145nifrblpzj78sjjf4083"
     },
     "tinted-terminal": {
       "type": "Git",
@@ -50,9 +51,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "bf2479b4e16dccad4b345fb692dfcee40e724964",
-      "url": "https://github.com/tinted-theming/tinted-terminal/archive/bf2479b4e16dccad4b345fb692dfcee40e724964.tar.gz",
-      "hash": "1x6n7q6wvz8qf4910cj9gbfsps6xld8f1jcv79l5cpkm26d4j3ix"
+      "revision": "ca8ba7c7e8f045fa072081dfddec4606daeaa136",
+      "url": "https://github.com/tinted-theming/tinted-terminal/archive/ca8ba7c7e8f045fa072081dfddec4606daeaa136.tar.gz",
+      "hash": "17ndbk2mqsbfvsfqjkm4b44j7fcw7bf0hhxdylv2zhia17la5af1"
     },
     "tt-schemes": {
       "type": "Git",
@@ -63,9 +64,9 @@
       },
       "branch": "spec-0.11",
       "submodules": false,
-      "revision": "8c00a361a99b6d356db9572240053a3f8716ea68",
-      "url": "https://github.com/tinted-theming/schemes/archive/8c00a361a99b6d356db9572240053a3f8716ea68.tar.gz",
-      "hash": "19n926jprl8vxjabgnl9z7x6vcpvh04ii77cdmsn3nl5p4rxnxx4"
+      "revision": "868192c34b56634130bef42020c5d2e5e6e3f39c",
+      "url": "https://github.com/tinted-theming/schemes/archive/868192c34b56634130bef42020c5d2e5e6e3f39c.tar.gz",
+      "hash": "1vmnws9s0wmgls274xw6b0a8z7m7j597jwrlzzipqijwlsh950da"
     }
   },
   "version": 5
