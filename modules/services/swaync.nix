@@ -9,7 +9,7 @@
 
   swaync = pkgs.swaynotificationcenter;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     hj = {
       files = {
         ".config/swaync/config.json".text = toJSON {

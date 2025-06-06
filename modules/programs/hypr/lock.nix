@@ -13,7 +13,7 @@
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     hj.rum.programs.hyprlock = {
       enable = true;
       package = inputs'.hyprlock.packages.hyprlock;

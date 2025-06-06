@@ -37,7 +37,7 @@ let
     };
   });
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     environment.systemPackages = [pkgs.adwaita-icon-theme]; # add as fallback
     services.greetd = {
       enable = true;

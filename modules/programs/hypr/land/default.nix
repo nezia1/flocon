@@ -40,7 +40,7 @@
 
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.name == "Hyprland") {
     programs.hyprland = {
       enable = true;
       package = inputs'.hyprland.packages.hyprland;

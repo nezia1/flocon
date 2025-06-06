@@ -9,7 +9,7 @@
 in {
   # TODO: remove when https://github.com/NixOS/nixpkgs/pull/379731 gets merged
   imports = ["${inputs.nixpkgs-gcr}/nixos/modules/services/desktops/gnome/gcr-ssh-agent.nix"];
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     services = {
       # needed for GNOME services outside of GNOME Desktop
       dbus.packages = with pkgs; [

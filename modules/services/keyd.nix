@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     services.keyd = {
       enable = true;
       keyboards.default = {

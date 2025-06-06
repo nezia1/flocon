@@ -13,7 +13,7 @@
 
   hyprlock = getExe config.hj.rum.programs.hyprlock.package;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     hj = {
       packages = [hypridle];
       files = {

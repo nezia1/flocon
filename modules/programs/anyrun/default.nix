@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     hj = {
       packages = [inputs'.anyrun.packages.anyrun-with-all-plugins];
       files = {

@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop == "Hyprland") {
+  config = mkIf (config.local.vars.home.desktop.type == "wm") {
     security = {
       polkit.enable = true;
       polkit = {

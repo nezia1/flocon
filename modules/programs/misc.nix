@@ -8,7 +8,7 @@
   inherit (builtins) toJSON;
   inherit (lib) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop != null) {
+  config = mkIf (config.local.vars.home.desktop.name != null) {
     hj = {
       packages = with pkgs; [
         self'.packages.app2unit
