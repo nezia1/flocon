@@ -18,7 +18,7 @@ in {
             user = {
               name = "Anthony Rodriguez";
               email = "anthony@nezia.dev";
-              signingkey = signingKey;
+              inherit signingKey;
             };
             init.defaultBranch = "main";
             commit.gpgsign = true;
@@ -27,10 +27,16 @@ in {
             push.autoSetupRemote = true;
             pull.rebase = true;
             diff.colorMoved = "default";
+            rerere.enabled = true;
             merge = {
               ff = false;
               conflictstyle = "diff3";
             };
+
+            # performance tweaks
+            core.untrackedCache = true;
+            core.fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+            index.threads = true;
           };
         };
       };
