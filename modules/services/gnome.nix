@@ -3,6 +3,7 @@
   lib,
   pkgs,
   config,
+  inputs',
   ...
 }: let
   inherit (lib.modules) mkIf;
@@ -21,7 +22,7 @@ in {
         gcr-ssh-agent = {
           enable = true;
           # TODO: remove when https://github.com/NixOS/nixpkgs/pull/379731 gets merged
-          package = pkgs.gcr_4; # use nixos-unstable gcr_4 to avoid building
+          package = inputs'.nixpkgs-gcr.legacyPackages.gcr_4;
         };
       };
     };
