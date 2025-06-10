@@ -2,6 +2,7 @@
   inputs,
   lib,
   config,
+  inputs',
   ...
 }: let
   inherit (lib.modules) mkAliasOptionModule mkIf;
@@ -42,6 +43,8 @@ in {
       directory = "/home/${username}";
       user = "${username}";
     };
+
+    linker = inputs'.smfh.packages.default;
   };
 
   home-manager = mkIf (!server.enable) {

@@ -66,8 +66,9 @@
       };
     };
 
+    # TODO: switch to upstream when manifest PR gets merged
     hjem = {
-      url = "github:feel-co/hjem";
+      url = "github:nezia1/hjem/manifest-switching";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -146,6 +147,11 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
       };
+    };
+
+    smfh = {
+      url = "github:Gerg-L/smfh";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     treefmt-nix = {
