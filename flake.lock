@@ -996,11 +996,11 @@
     },
     "nixpkgs-gcr": {
       "locked": {
-        "lastModified": 1748893072,
-        "narHash": "sha256-EqCCuFn3VohgxEqTVF0gMXx9+XQHXmD/+kCC2DVga98=",
+        "lastModified": 1749144327,
+        "narHash": "sha256-/2U24DIla2UwwZrp2FxbOyuZBiucpm3VpTzIvi5XMl8=",
         "owner": "nezia1",
         "repo": "nixpkgs",
-        "rev": "d954596e8792e7a28b78a41e16e39ad57d4b3d2c",
+        "rev": "a3120949d293b52614dd45a20fd49dfbf4442b97",
         "type": "github"
       },
       "original": {
