@@ -1,6 +1,5 @@
 {
   imports = [
-    ./anyrun
     ./editors
     ./hypr
     ./media
@@ -15,6 +14,7 @@
     ./nh.nix
     ./pcmanfm.nix
     ./swaybg.nix
+    ./walker.nix
     ./waybar.nix
     ./wlogout.nix
     ./xdg.nix
