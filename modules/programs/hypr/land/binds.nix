@@ -10,7 +10,7 @@ lib: let
 in {
   "$mod" = "SUPER";
   bindr = [
-    "$mod, SUPER_L, exec, ${toggle "anyrun" true}"
+    "$mod, SUPER_L, exec, ${toggle "walker" false}"
   ];
   bind = [
     "$mod, Return, exec, ${run "footclient"}"
