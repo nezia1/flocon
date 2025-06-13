@@ -363,11 +363,11 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1749549764,
-        "narHash": "sha256-un17HdHvnjWaKi8nXO2fEY7RqxMGMEI5WJm5UmcRI6Q=",
+        "lastModified": 1749648211,
+        "narHash": "sha256-P/wUq54eR1bZrlghGTokM7ZPaA3vR+NgTWon9mmUR+U=",
         "owner": "nezia1",
         "repo": "hjem",
-        "rev": "f4018e047fa226db69dceffd7eb294d14e440609",
+        "rev": "4ad7e62767671d3829f7fd24d7ffdf78aa3318dc",
         "type": "github"
       },
       "original": {
@@ -387,11 +387,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1748560478,
-        "narHash": "sha256-QAJpQ9dM7bVTgual18gcrbbmLeWq923/i4AXI36oaVs=",
+        "lastModified": 1749707092,
+        "narHash": "sha256-rvL142IZM/j+bm8HjuPas5dh6UHw74d2zQxi0F0nNLc=",
         "owner": "snugnug",
         "repo": "hjem-rum",
-        "rev": "53e18bd453b93415f92d69c19756dae4080f1c36",
+        "rev": "bc13b9cf974d2fe1e5dc54c54b4ae3dfaae58c95",
         "type": "github"
       },
       "original": {
@@ -843,16 +843,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1746459301,
-        "narHash": "sha256-QcAaxXdcPMqY5IppLa9fHCq3Rzq597DQqq8s2fKuE0k=",
+        "lastModified": 1748103964,
+        "narHash": "sha256-aRFl6I3x1aKzeOBaD/OJHYv+OQ+qE+3FR9uKhIvfW+A=",
         "owner": "feel-co",
         "repo": "ndg",
-        "rev": "2864a9901102a86db82157f72998809c570c36bb",
+        "rev": "c556c4cbcba61474bf8a342a31a2d94cbefd8986",
         "type": "github"
       },
       "original": {
         "owner": "feel-co",
-        "ref": "v2",
         "repo": "ndg",
         "type": "github"
       }
@@ -1263,11 +1262,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1749547788,
-        "narHash": "sha256-n6fd0pb7zd6fVstSzNUEm7qc3NJdPkmDLulGtARQkCI=",
+        "lastModified": 1749254273,
+        "narHash": "sha256-Ewx6sYowvYBGH2V2Sw8eMkxfOIdWg9JDpvW65lTSe/A=",
         "owner": "Gerg-L",
         "repo": "smfh",
-        "rev": "c2dfd2c142a80d9f4ef3b22b65ba1cc6b6d5d40c",
+        "rev": "376ca9aca8f6caa2c42fe068ad34ab0034546bb7",
         "type": "github"
       },
       "original": {
