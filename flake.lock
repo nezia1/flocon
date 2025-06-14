@@ -363,16 +363,15 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1749648211,
-        "narHash": "sha256-P/wUq54eR1bZrlghGTokM7ZPaA3vR+NgTWon9mmUR+U=",
-        "owner": "nezia1",
+        "lastModified": 1749894852,
+        "narHash": "sha256-TinUloMdSkSXuIcMD/YEAcCJmYgyBghfrcasVjPNGu8=",
+        "owner": "feel-co",
         "repo": "hjem",
-        "rev": "4ad7e62767671d3829f7fd24d7ffdf78aa3318dc",
+        "rev": "d1a9deb6769b0a3fc21335847060cb6a2644bebc",
         "type": "github"
       },
       "original": {
-        "owner": "nezia1",
-        "ref": "manifest-switching",
+        "owner": "feel-co",
         "repo": "hjem",
         "type": "github"
       }
@@ -1176,9 +1175,8 @@
         "nixpkgs-gcr": "nixpkgs-gcr",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
-        "smfh": "smfh_2",
         "split-monitor-workspaces": "split-monitor-workspaces",
-        "systems": "systems_4",
+        "systems": "systems_3",
         "treefmt-nix": "treefmt-nix_2"
       }
     },
@@ -1186,27 +1184,6 @@
       "inputs": {
         "nixpkgs": [
           "hjem",
-          "smfh",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1747622321,
-        "narHash": "sha256-W0dYIWgsUu6rvOJRtKLhKskkv0VhQhJYGNIq+gGUc8g=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "bd030fd9983f7fddf87be1c64aa3064c8afa24c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
-      "inputs": {
-        "nixpkgs": [
           "smfh",
           "nixpkgs"
         ]
@@ -1233,28 +1210,6 @@
         ],
         "rust-overlay": "rust-overlay",
         "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1749254273,
-        "narHash": "sha256-Ewx6sYowvYBGH2V2Sw8eMkxfOIdWg9JDpvW65lTSe/A=",
-        "owner": "Gerg-L",
-        "repo": "smfh",
-        "rev": "376ca9aca8f6caa2c42fe068ad34ab0034546bb7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gerg-L",
-        "repo": "smfh",
-        "type": "github"
-      }
-    },
-    "smfh_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay_2",
-        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1749547788,
@@ -1322,21 +1277,6 @@
       }
     },
     "systems_3": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_4": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",

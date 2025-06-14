@@ -44,7 +44,7 @@ in {
       user = "${username}";
     };
 
-    linker = inputs'.smfh.packages.default;
+    linker = inputs'.hjem.packages.smfh;
   };
 
   home-manager = mkIf (!server.enable) {
