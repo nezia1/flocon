@@ -13,10 +13,10 @@ in {
       packages = with pkgs; [
         self'.packages.app2unit
         self'.packages.mcuxpressoide
+        cinny-desktop
         devenv
         entr
         fastfetch
-        fractal
         fzf
         geary
         hyfetch
