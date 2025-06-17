@@ -29,6 +29,12 @@ in {
             --keep-going \
             --flake $XDG_CONFIG_HOME/flocon |& nom --json || exit 1'
 
+          alias rebuild-test='nixos-rebuild test \
+            --ask-sudo-password --no-reexec \
+            --log-format internal-json \
+            --keep-going \
+            --flake $XDG_CONFIG_HOME/flocon |& nom --json || exit 1'
+
           ## git
           alias lg='lazygit'
           alias g='git'
