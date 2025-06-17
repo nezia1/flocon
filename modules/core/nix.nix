@@ -13,6 +13,10 @@ in {
     owner = username;
   };
 
+  environment.systemPackages = [
+    pkgs.nix-output-monitor
+  ];
+
   nix = {
     package = pkgs.lix;
     settings = {

@@ -23,7 +23,12 @@ in {
           # aliases
           alias ls=lsd
 
-          alias rebuild='sudo nixos-rebuild switch --flake $XDG_CONFIG_HOME/flocon'
+          alias rebuild='nixos-rebuild switch \
+            --ask-sudo-password --no-reexec \
+            --log-format internal-json \
+            --keep-going \
+            --flake $XDG_CONFIG_HOME/flocon |& nom --json || exit 1'
+
           ## git
           alias lg='lazygit'
           alias g='git'
