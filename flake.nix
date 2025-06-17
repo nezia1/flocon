@@ -10,8 +10,6 @@
       systems = ["x86_64-linux"];
     };
   inputs = {
-    # TODO: remove when https://github.com/NixOS/nixpkgs/pull/379731 gets merged
-    nixpkgs-gcr.url = "github:nezia1/nixpkgs/replace-gnome-keyring-with-gcr";
     # so we can .follow it
     systems.url = "github:nix-systems/default-linux";
 

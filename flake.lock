@@ -363,11 +363,11 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1749894852,
-        "narHash": "sha256-TinUloMdSkSXuIcMD/YEAcCJmYgyBghfrcasVjPNGu8=",
+        "lastModified": 1749902635,
+        "narHash": "sha256-jmUw+sJW0+VQbOtCxy1vJvB95wto2/wFuyW49PxKW0o=",
         "owner": "feel-co",
         "repo": "hjem",
-        "rev": "d1a9deb6769b0a3fc21335847060cb6a2644bebc",
+        "rev": "f324c104f3572013df57735bc6053abe6633851a",
         "type": "github"
       },
       "original": {
@@ -987,22 +987,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-gcr": {
-      "locked": {
-        "lastModified": 1749847032,
-        "narHash": "sha256-ZxOCaMgrKorIh9NFbedYX4BC3U+DBO/owuao5CqyMHQ=",
-        "owner": "nezia1",
-        "repo": "nixpkgs",
-        "rev": "c5797e85561a7f713fd0aaf984e359778e56a9d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nezia1",
-        "ref": "replace-gnome-keyring-with-gcr",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1743296961,
@@ -1036,11 +1020,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1749285348,
-        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
+        "lastModified": 1750134718,
+        "narHash": "sha256-v263g4GbxXv87hMXMCpjkIxd/viIF7p3JpJrwgKdNiI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "rev": "9e83b64f727c88a7711a2c463a7b16eedb69a84c",
         "type": "github"
       },
       "original": {
@@ -1172,7 +1156,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-gcr": "nixpkgs-gcr",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "split-monitor-workspaces": "split-monitor-workspaces",
