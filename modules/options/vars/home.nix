@@ -14,12 +14,10 @@ in {
     fullName = mkOption {
       type = str;
       description = "your full name (used for git commits and user description)";
-      default = null;
     };
     email = mkOption {
       type = str;
       description = "your email (used for git commits)";
-      default = null;
     };
     signingKey = mkOption {
       type = str;
