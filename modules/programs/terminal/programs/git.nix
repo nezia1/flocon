@@ -10,7 +10,15 @@
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     hj = {
-      packages = with pkgs; [gh lazygit];
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          gh
+          lazygit
+          mergiraf
+          difftastic
+          ;
+      };
       rum = {
         programs.git = {
           enable = true;
@@ -29,17 +37,27 @@ in {
             diff.colorMoved = "default";
             rerere.enabled = true;
             merge = {
+              mergiraf = {
+                name = "mergiraf";
+                driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
+              };
               ff = false;
               conflictstyle = "diff3";
             };
+            diff.external = "difft diff";
 
-            # performance tweaks
-            core.untrackedCache = true;
-            core.fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+            core = {
+              attributesfile = "~/.gitattributes";
+              untrackedCache = true;
+              fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
+            };
             index.threads = true;
           };
         };
       };
+      files.".gitattributes".text = ''
+        * merge=mergiraf
+      '';
     };
   };
 }
