@@ -8,18 +8,15 @@
   inherit (lib.options) mkEnableOption mkOption mkPackageOption;
   inherit (lib.types) attrs;
 
-  json = pkgs.formats.json {};
   cfg = config.rum.programs.librewolf;
 
-  policiesFile = json.generate "policies.json" {inherit (cfg) policies;};
-
-  librewolf = cfg.package.override {
-    extraPoliciesFiles = cfg.package.unwrapped.extraPoliciesFiles ++ [policiesFile];
+  librewolf = pkgs.wrapFirefox cfg.package {
+    extraPolicies = cfg.policies;
   };
 in {
   options.rum.programs.librewolf = {
     enable = mkEnableOption "librewolf module";
-    package = mkPackageOption pkgs "librewolf" {};
+    package = mkPackageOption pkgs "librewolf-unwrapped" {};
     policies = mkOption {
       type = attrs;
       default = {};
