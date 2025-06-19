@@ -13,6 +13,7 @@ in {
   options.local.vars.home = {
     fullName = mkOption {
       type = str;
+      default = "User";
       description = "your full name (used for git commits and user description)";
     };
     email = mkOption {

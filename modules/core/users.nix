@@ -18,7 +18,7 @@ in {
     (mkAliasOptionModule ["hj"] ["hjem" "users" username])
     (mkAliasOptionModule ["hm"] ["home-manager" "users" username])
   ];
-  users.users.${username} = mkIf (!server.enable) {
+  users.users.${username} = {
     isNormalUser = true;
     description = fullName;
     extraGroups = mkIf (!server.enable) [
