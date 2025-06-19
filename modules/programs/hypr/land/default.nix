@@ -76,7 +76,7 @@ in {
         universal-gnome-control-center
       ];
 
-      rum.programs.hyprland = {
+      rum.desktops.hyprland = {
         enable = true;
         plugins = [
           inputs'.split-monitor-workspaces.packages.default

@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   inherit (builtins) toJSON;
 
-  inherit (config.hj.rum.programs.hyprland.settings.plugin.split-monitor-workspaces) count;
+  inherit (config.hj.rum.desktops.hyprland.settings.plugin.split-monitor-workspaces) count;
 
   styleCfg = config.local.style;
 in {
