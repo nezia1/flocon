@@ -386,11 +386,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1749846595,
-        "narHash": "sha256-MRbUORkcaeS3KgoOtAq2b8gS1gXxpxGPfvyOSVoSG8E=",
+        "lastModified": 1750298944,
+        "narHash": "sha256-+Rrn/b+qDDe7ANtZ21IagItYJapzc8A5xT1ritUk3k0=",
         "owner": "snugnug",
         "repo": "hjem-rum",
-        "rev": "5dcd3ecfbf85afa4196bea58789026798b659d9a",
+        "rev": "41704c982abc9a02fa63ae78996b0f82039ca7ad",
         "type": "github"
       },
       "original": {
