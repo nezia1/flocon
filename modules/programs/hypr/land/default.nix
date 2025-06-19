@@ -165,7 +165,6 @@ in {
               force_default_wallpaper = 0;
               disable_hyprland_logo = true;
               middle_click_paste = false;
-              disable_autoreload = true; # to be removed once hjem gets a linker
             };
             plugin = {
               split-monitor-workspaces = {
