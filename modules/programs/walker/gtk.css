@@ -1,0 +1,120 @@
+/* Stolen from https://github.com/jonvemo/nixos-config/blob/d519568858066387bae5afd75b5ee4a3c6b52213/common/modules/home-manager/programs/walker/gtk.css */
+#window,
+#box,
+#aiScroll,
+#aiList,
+#search,
+#password,
+#input,
+#prompt,
+#clear,
+#typeahead,
+#list,
+child,
+scrollbar,
+slider,
+#item,
+#text,
+#label,
+#bar,
+#sub,
+#activationlabel {
+  all: unset;
+}
+
+#box {
+  background: @window_bg_color;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+scrollbar {
+  padding-left: 8px;
+}
+
+slider {
+  min-width: 2px;
+  background: @scrollbar_outline_color;
+}
+
+#search {
+  padding: 4px 16px;
+  background: @headerbar_bg_color;
+  border-radius: 32px;
+}
+
+#typeahead > *,
+#input > * {
+  color: @headerbar_fg_color;
+  margin-left: 8px;
+}
+
+#prompt,
+#spinner,
+#clear {
+  color: @headerbar_fg_color;
+}
+
+#list {
+  margin-top: 16px;
+}
+
+child {
+  border-radius: 8px;
+  color: @card_fg_color;
+  padding: 4px 8px;
+}
+
+child:selected,
+child:hover {
+  background: @shade_color;
+}
+
+#item {
+}
+
+#icon {
+  margin-right: 8px;
+}
+
+#text {
+}
+
+#label {
+  font-weight: bold;
+  color: @card_fg_color;
+}
+
+#sub {
+  opacity: 0.5;
+  color: @card_fg_color;
+}
+
+#activationlabel {
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.5;
+}
+.activation #activationlabel {
+  color: @accent_bg_color;
+  opacity: 1;
+}
+
+.activation #text,
+.activation #icon,
+.activation #search {
+}
+
+.aiItem {
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: @card_fg_color;
+}
+
+.aiItem.user {
+  padding: auto 0 auto 0;
+}
+
+.aiItem.assistant {
+  background: @headerbar_bg_color;
+}

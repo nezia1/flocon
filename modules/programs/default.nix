@@ -4,6 +4,7 @@
     ./hypr
     ./media
     ./terminal
+    ./walker
 
     ./comma.nix
     ./discord.nix
@@ -13,7 +14,6 @@
     ./misc.nix
     ./pcmanfm.nix
     ./swaybg.nix
-    ./walker.nix
     ./waybar.nix
     ./wlogout.nix
     ./xdg.nix

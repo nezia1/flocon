@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
+  inherit (pkgs.writers) writeTOML;
 in {
   config = mkIf (config.local.vars.home.desktop.type == "wm") {
     hm.systemd.user.services.walker = {
@@ -29,8 +30,12 @@ in {
     hj = {
       # TODO: configure when not lazy
       packages = [pkgs.walker];
-      files.".config/walker/walker.toml".source = pkgs.writers.writeTOML "walker.toml" {
-        app_launch_prefix = "uwsm app -- ";
+      files = {
+        ".config/walker/config.toml".source = writeTOML "walker-config.toml" {
+          app_launch_prefix = "uwsm app -- ";
+          theme = "gtk";
+        };
+        ".config/walker/themes/gtk.css".source = ./gtk.css;
       };
     };
   };
