@@ -24,13 +24,15 @@ in {
           alias ls=lsd
 
           alias rebuild='nixos-rebuild switch \
-            --ask-sudo-password --no-reexec \
+            --ask-sudo-password \
+            --no-reexec \
             --log-format internal-json \
             --keep-going \
             --flake $XDG_CONFIG_HOME/flocon |& nom --json'
 
           alias rebuild-test='nixos-rebuild test \
-            --ask-sudo-password --no-reexec \
+            --ask-sudo-password \
+            --no-reexec \
             --log-format internal-json \
             --keep-going \
             --flake $XDG_CONFIG_HOME/flocon |& nom --json'
