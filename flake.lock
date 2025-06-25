@@ -363,15 +363,16 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1749902635,
-        "narHash": "sha256-jmUw+sJW0+VQbOtCxy1vJvB95wto2/wFuyW49PxKW0o=",
-        "owner": "feel-co",
+        "lastModified": 1750896632,
+        "narHash": "sha256-DTpYBp/hyCVQx6cSC/O6RJxjvfygKe1JdkBWaBPk5SA=",
+        "owner": "nezia1",
         "repo": "hjem",
-        "rev": "f324c104f3572013df57735bc6053abe6633851a",
+        "rev": "cf27a7cf2f587659268375de1a31e7fdafa339b3",
         "type": "github"
       },
       "original": {
-        "owner": "feel-co",
+        "owner": "nezia1",
+        "ref": "per-user-services",
         "repo": "hjem",
         "type": "github"
       }
