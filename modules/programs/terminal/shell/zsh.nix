@@ -4,7 +4,29 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
+  inherit (pkgs) writeShellScript;
+  rebuild = writeShellScript "rebuild" ''
+    sudo -v || exit
+
+    nixos-rebuild switch \
+      --no-reexec \
+      --ask-sudo-password \
+      --log-format internal-json \
+      --keep-going \
+      --flake $XDG_CONFIG_HOME/flocon |& nom --json
+  '';
+
+  rebuildTest = writeShellScript "rebuild-test" ''
+    sudo -v || exit
+
+    nixos-rebuild test \
+      --no-reexec \
+      --ask-sudo-password \
+      --log-format internal-json \
+      --keep-going \
+      --flake $XDG_CONFIG_HOME/flocon |& nom --json
+  '';
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     programs.zsh.enable = true;
@@ -23,19 +45,8 @@ in {
           # aliases
           alias ls=lsd
 
-          alias rebuild='nixos-rebuild switch \
-            --ask-sudo-password \
-            --no-reexec \
-            --log-format internal-json \
-            --keep-going \
-            --flake $XDG_CONFIG_HOME/flocon |& nom --json'
-
-          alias rebuild-test='nixos-rebuild test \
-            --ask-sudo-password \
-            --no-reexec \
-            --log-format internal-json \
-            --keep-going \
-            --flake $XDG_CONFIG_HOME/flocon |& nom --json'
+          alias rebuild=${rebuild}
+          alias rebuild-test=${rebuildTest}
 
           ## git
           alias lg='lazygit'
