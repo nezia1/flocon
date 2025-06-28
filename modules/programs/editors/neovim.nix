@@ -8,7 +8,6 @@
   inherit (builtins) match;
   inherit (lib.attrsets) filterAttrs optionalAttrs;
   inherit (lib.lists) singleton;
-  inherit (lib.meta) getExe;
   inherit (lib.modules) mkIf;
 
   styleCfg = config.local.style;
@@ -130,11 +129,6 @@
           autopairs.nvim-autopairs.enable = true;
           autocomplete.nvim-cmp.enable = true;
 
-          lsp.servers.nixd = {
-            enable = true;
-            cmd = singleton (getExe pkgs.nixd);
-          };
-
           languages = {
             enableExtraDiagnostics = true;
             enableFormat = true;
@@ -142,7 +136,10 @@
 
             nix = {
               enable = true;
-              lsp.enable = false; # managed with native nvim lsp
+              lsp = {
+                enable = true;
+                server = "nil";
+              };
             };
             clang = {
               enable = true;
