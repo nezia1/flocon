@@ -1,4 +1,6 @@
-{lib, ...}: {
+{lib, ...}: let
+  inherit (lib.modules) mkDefault;
+in {
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -14,5 +16,6 @@
     };
   };
 
-  time.timeZone = lib.mkDefault "Europe/Paris";
+  time.timeZone = mkDefault "Europe/Paris";
+  services.localtimed.enable = true;
 }
