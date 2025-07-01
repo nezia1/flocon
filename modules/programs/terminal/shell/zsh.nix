@@ -5,22 +5,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (pkgs) writeShellScript;
-  rebuild = writeShellScript "rebuild" ''
+  inherit (pkgs) writeShellScriptBin;
+  rbld = writeShellScriptBin "rbld" ''
     sudo -v || exit
 
-    nixos-rebuild switch \
-      --no-reexec \
-      --ask-sudo-password \
-      --log-format internal-json \
-      --keep-going \
-      --flake $XDG_CONFIG_HOME/flocon |& nom --json
-  '';
-
-  rebuildTest = writeShellScript "rebuild-test" ''
-    sudo -v || exit
-
-    nixos-rebuild test \
+    nixos-rebuild "$@" \
       --no-reexec \
       --ask-sudo-password \
       --log-format internal-json \
@@ -31,6 +20,7 @@ in {
   config = mkIf (!config.local.profiles.server.enable) {
     programs.zsh.enable = true;
     hj = {
+      packages = [rbld];
       rum.programs.zsh = {
         enable = true;
         initConfig = ''
@@ -44,9 +34,6 @@ in {
 
           # aliases
           alias ls=lsd
-
-          alias rebuild=${rebuild}
-          alias rebuild-test=${rebuildTest}
 
           ## git
           alias lg='lazygit'
