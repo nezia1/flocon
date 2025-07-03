@@ -10,27 +10,34 @@
 in {
   config = mkIf (config.local.vars.home.desktop.name != null) {
     hj = {
-      packages = with pkgs; [
-        self'.packages.app2unit
-        self'.packages.mcuxpressoide
-        cinny-desktop
-        devenv
-        entr
-        fastfetch
-        fzf
-        geary
-        hyfetch
-        imhex
-        logisim-evolution
-        obsidian
-        playerctl
-        proton-pass
-        qalculate-gtk
-        resources
-        simple-scan
-        vscode-fhs
-        wl-clipboard
-      ];
+      packages = builtins.attrValues {
+        inherit
+          (self'.packages)
+          app2unit
+          mcuxpressoide
+          ;
+
+        inherit
+          (pkgs)
+          cinny-desktop
+          devenv
+          entr
+          fastfetch
+          fzf
+          geary
+          hyfetch
+          imhex
+          logisim-evolution
+          obsidian
+          playerctl
+          proton-pass
+          qalculate-gtk
+          resources
+          simple-scan
+          vscode-fhs
+          wl-clipboard
+          ;
+      };
 
       files = {
         ".config/hyfetch.json".text = toJSON {

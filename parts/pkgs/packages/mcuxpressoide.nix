@@ -47,30 +47,35 @@
   mcuxpressoFhs = buildFHSEnv {
     name = "mcuxpresso";
     targetPkgs = pkgs:
-      with pkgs; [
-        gtk3
-        glib
-        xorg.libX11
-        xorg.libXtst
-        xorg.libXrender
-        xorg.libXcomposite
-        xorg.libXi
-        xorg.libXrandr
-        xorg.libXcursor
-        freetype
-        fontconfig
-        # alsa-lib
-        zlib
-        ncurses5
+      (builtins.attrValues {
+        inherit
+          (pkgs)
+          gtk3
+          glib
+          freetype
+          fontconfig
+          zlib
+          ncurses5
+          dfu-util
+          ;
 
-        # jdk17_headless
-        xorg.libxcb
-        dfu-util
-
-        (python3.withPackages (p: [
+        inherit
+          (pkgs.xorg)
+          libX11
+          libXtst
+          libXrender
+          libXcomposite
+          libXi
+          libXrandr
+          libXcursor
+          ;
+      })
+      ++ [
+        (pkgs.python3.withPackages (p: [
           p.tkinter
         ]))
       ];
+
     extraInstallCommands = ''
       ln -s ${mcuxpresso}/lib $out/lib
     '';

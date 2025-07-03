@@ -22,10 +22,13 @@ in {
         bind '%' split-window -h -c "#{pane_current_path}"
         bind C-k clear-history
       '';
-      plugins = with pkgs; [
-        tmuxPlugins.vim-tmux-navigator
-        tmuxPlugins.yank
-      ];
+      plugins = builtins.attrValues {
+        inherit
+          (pkgs.tmuxPlugins)
+          vim-tmux-navigator
+          yank
+          ;
+      };
     };
     programs.fzf.tmux.enableShellIntegration = true;
   };

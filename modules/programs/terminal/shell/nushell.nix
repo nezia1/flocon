@@ -13,7 +13,13 @@
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     hj = {
-      packages = with pkgs; [carapace nushell];
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          carapace
+          nushell
+          ;
+      };
       files = {
         ".config/nushell/config.nu".text = ''
           # disabling the basic banner on startup

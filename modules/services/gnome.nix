@@ -13,8 +13,8 @@ in {
   config = mkIf (config.local.vars.home.desktop.type == "wm") {
     services = {
       # needed for GNOME services outside of GNOME Desktop
-      dbus.packages = with pkgs; [
-        gnome-settings-daemon
+      dbus.packages = [
+        pkgs.gnome-settings-daemon
       ];
 
       gnome = {

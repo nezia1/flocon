@@ -8,18 +8,20 @@
 in {
   config = mkIf (!config.local.profiles.server.enable) {
     hj = {
-      packages = with pkgs; [
+      packages = builtins.attrValues {
         # archives
-        zip
-        unzip
-        unrar
-
-        # utils
-        fd
-        file
-        ripgrep
-        yazi
-      ];
+        inherit
+          (pkgs)
+          zip
+          unzip
+          unrar
+          # utils
+          fd
+          file
+          ripgrep
+          yazi
+          ;
+      };
     };
   };
 }

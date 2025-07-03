@@ -5,12 +5,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
+  inherit (pkgs) via;
 in {
   config = mkIf config.local.profiles.gaming.enable {
     hardware.keyboard.qmk.enable = true;
-    environment.systemPackages = with pkgs; [
-      via
-    ];
-    services.udev.packages = [pkgs.via];
+    environment.systemPackages = [via];
+    services.udev.packages = [via];
   };
 }
