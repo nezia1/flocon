@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  self,
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
@@ -27,7 +26,6 @@ in {
       };
     })
     (mkIf (config.local.vars.home.desktop.type == "wm") {
-      hjem.extraModules = [self.hjemModules.xdg-autostart];
       hj = {
         files = {
           ".config/mimeapps.list".text = mkIf (config.local.vars.home.desktop.type == "wm") ''

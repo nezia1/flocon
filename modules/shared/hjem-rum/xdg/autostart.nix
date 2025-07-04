@@ -22,7 +22,7 @@
         }
         else {
           # Application does *not* have a desktopItem entry. Try to find a
-          # matching .desktop name in /share/apaplications
+          # matching .desktop name in /share/applications
           source = "${pkg}/share/applications/${pkg.pname}.desktop";
         };
     })

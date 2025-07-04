@@ -4,6 +4,12 @@
   withSystem,
   ...
 }: let
+  base = [
+    # TODO: replace with base when the module-based state has been removed
+    ../config
+    ../modules/internal
+    inputs.agenix.nixosModules.default
+  ];
   mkNixosSystem = {system, ...} @ args:
     withSystem system (
       {
@@ -16,7 +22,7 @@
       }:
         lib.nixosSystem {
           specialArgs = {inherit inputs inputs' self self' myLib pins;};
-          modules = myLib.resolveAndFilter ((args.modules or []) ++ [../modules]);
+          modules = myLib.resolveAndFilter ((args.modules or []) ++ base);
         }
     );
 in {

@@ -3,6 +3,7 @@
   lib,
   config,
   inputs',
+  self,
   ...
 }: let
   inherit (lib.modules) mkAliasOptionModule mkIf;
@@ -34,7 +35,10 @@ in {
 
   hjem = mkIf (!server.enable) {
     clobberByDefault = true;
-    extraModules = [inputs.hjem-rum.hjemModules.default];
+    extraModules = [
+      inputs.hjem-rum.hjemModules.default
+      self.hjemModules.xdg-autostart
+    ];
     users.${username} = {
       enable = true;
       directory = "/home/${username}";

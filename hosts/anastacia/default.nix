@@ -1,9 +1,7 @@
-{inputs, ...}: {
+_: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
-
-    inputs.agenix.nixosModules.default
   ];
 
   local = {
