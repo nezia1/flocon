@@ -9,12 +9,10 @@
   inherit (builtins) pathExists toString;
   inherit (lib.modules) mkIf;
   inherit (lib.options) mkEnableOption mkOption mkPackageOption;
-  inherit (lib.types) listOf bool package path str;
+  inherit (lib.types) listOf bool path str;
 
   cfg = config.local.style;
 in {
-  imports = [./colors.nix];
-
   options.local.style = {
     enable = mkEnableOption "style";
     wallpapers = mkOption {

@@ -16,9 +16,7 @@
       }:
         lib.nixosSystem {
           specialArgs = {inherit inputs inputs' self self' myLib pins;};
-          modules =
-            (args.modules or [])
-            ++ [../modules];
+          modules = myLib.resolveAndFilter ((args.modules or []) ++ [../modules]);
         }
     );
 in {

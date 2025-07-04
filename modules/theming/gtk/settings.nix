@@ -23,11 +23,6 @@ in {
           theme-name = gtk.theme.name;
           application-prefer-dark-theme = colors.scheme.variant == "dark";
         };
-
-        css = rec {
-          gtk3 = import ./style.nix colors.scheme.withHashtag;
-          gtk4 = gtk3;
-        };
       };
     };
 }

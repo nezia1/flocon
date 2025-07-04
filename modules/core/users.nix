@@ -34,10 +34,7 @@ in {
 
   hjem = mkIf (!server.enable) {
     clobberByDefault = true;
-    extraModules = [
-      inputs.hjem-rum.hjemModules.default
-      inputs.self.outputs.hjemModules.rum
-    ];
+    extraModules = [inputs.hjem-rum.hjemModules.default];
     users.${username} = {
       enable = true;
       directory = "/home/${username}";

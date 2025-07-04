@@ -1,11 +1,13 @@
 {
   lib,
   config,
+  self,
   ...
 }: let
   inherit (lib.modules) mkIf;
 in {
   config = mkIf (config.local.vars.home.desktop.name != null) {
+    hjem.extraModules = [self.hjemModules.librewolf];
     hj = {
       rum.programs.librewolf = {
         enable = true;

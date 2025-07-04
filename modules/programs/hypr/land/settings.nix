@@ -204,8 +204,7 @@ in {
                 color_inactive = "rgba(00000028)";
               };
             };
-          })
-          // import ./binds.nix lib;
+          });
       };
 
       environment.sessionVariables =
