@@ -8,12 +8,14 @@ My NixOS configurations, using flakes.
 
 # 🛠️ Structure
 
-| Name                | Description                                                      |
-| ------------------- | ---------------------------------------------------------------- |
-| [assets](assets/)   | Resources used throughout the system (images etc.)               |
-| [hosts](hosts/)     | Host-specific                                                    |
-| [modules](modules/) | Local module system (where the bulk of the configurations lives) |
-| [shared](shared/)   | Exported components (packages and NixOS modules)                 |
+| Name                | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| [assets](assets/)   | Resources used throughout the system (images etc.)             |
+| [config](config/)   | NixOS configuration                                            |
+| [hosts](hosts/)     | Host-specific                                                  |
+| [lib](lib/)         | Internal library functions / helpers                           |
+| [modules](modules/) | Internal and shared modules, used throughout [config](config/) |
+| [parts](parts/)     | Modularized flake outputs, powered by flake-parts              |
 
 My configuration is structured based on the following principles:
 

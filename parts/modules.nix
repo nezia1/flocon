@@ -1,7 +1,8 @@
 _: {
   flake = {
     hjemModules = {
-      rum.imports = [../modules/shared/hjem/hjem.nix];
+      librewolf = ../modules/shared/hjem-rum/librewolf.nix;
+      xdg-autostart = ../modules/shared/hjem-rum/xdg/autostart.nix;
     };
   };
 }
