@@ -1,12 +1,5 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-in {
-  config = (mkIf (!config.local.profiles.server.enable)) {
+{pkgs, ...}: {
+  config = {
     services.kmscon = {
       enable = true;
       fonts = [

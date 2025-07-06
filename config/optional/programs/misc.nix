@@ -1,14 +1,11 @@
 {
-  lib,
   pkgs,
-  config,
   self',
   ...
 }: let
   inherit (builtins) toJSON;
-  inherit (lib) mkIf;
 in {
-  config = mkIf (config.local.vars.home.desktop.name != null) {
+  config = {
     hj = {
       packages = builtins.attrValues {
         inherit

@@ -8,7 +8,6 @@
   inherit (builtins) match;
   inherit (lib.attrsets) filterAttrs optionalAttrs;
   inherit (lib.lists) singleton;
-  inherit (lib.modules) mkIf;
 
   styleCfg = config.local.style;
 
@@ -203,9 +202,7 @@
     };
   };
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
-    hj = {
-      packages = [customNeovim.neovim];
-    };
+  config.hj = {
+    packages = [customNeovim.neovim];
   };
 }

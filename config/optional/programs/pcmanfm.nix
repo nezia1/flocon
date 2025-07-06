@@ -1,12 +1,5 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
-  inherit (lib) mkIf;
-in {
-  config = mkIf (config.local.vars.home.desktop.type == "wm") {
+{pkgs, ...}: {
+  config = {
     hj = {
       packages = builtins.attrValues {
         inherit

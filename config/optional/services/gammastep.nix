@@ -1,14 +1,11 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-
   toINI = lib.generators.toINI {};
 in {
-  config = mkIf (config.local.vars.home.desktop.type == "wm") {
+  config = {
     hj = {
       packages = [pkgs.gammastep];
       files = {

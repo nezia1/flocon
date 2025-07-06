@@ -1,17 +1,14 @@
 # simplified version of https://raw.githubusercontent.com/Lunarnovaa/nixconf/3d13d69e9fcf072365935ee9dda719d6b0aa9bc1/modules/programs/terminal/nushell.nix
 {
-  lib,
   config,
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-
   carapaceCache = "${config.hj.directory}/.cache/carapace";
   starshipCache = "${config.hj.directory}/.cache/starship";
   zoxideCache = "${config.hj.directory}/.cache/zoxide";
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
+  config = {
     hj = {
       packages = builtins.attrValues {
         inherit

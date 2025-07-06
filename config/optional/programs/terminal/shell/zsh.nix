@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
+{pkgs, ...}: let
   inherit (pkgs) writeShellScriptBin;
   rbld = writeShellScriptBin "rbld" ''
     sudo -v || exit
@@ -17,7 +11,7 @@
       --flake $XDG_CONFIG_HOME/flocon |& nom --json
   '';
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
+  config = {
     programs.zsh.enable = true;
     hj = {
       packages = [rbld];

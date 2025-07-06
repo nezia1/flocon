@@ -40,7 +40,7 @@
     ];
   };
 in {
-  config = mkIf (config.local.vars.home.desktop.name != null) {
+  config = {
     hj = {
       packages = [discord];
       rum.xdg.autostart.programs = [discord];

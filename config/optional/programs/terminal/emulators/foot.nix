@@ -23,7 +23,7 @@
     src = pins.foot;
   };
 in {
-  config = mkIf (config.local.vars.home.desktop.name != null) {
+  config = {
     hj = {
       rum.programs.foot = {
         enable = true;

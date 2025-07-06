@@ -6,11 +6,10 @@
   self,
   ...
 }: let
-  inherit (lib.modules) mkAliasOptionModule mkIf;
+  inherit (lib.modules) mkAliasOptionModule;
 
   inherit (config.local.vars.home) fullName;
   inherit (config.local.vars.system) username;
-  inherit (config.local.profiles) server;
 in {
   imports = [
     inputs.hjem.nixosModules.default
@@ -19,10 +18,11 @@ in {
     (mkAliasOptionModule ["hj"] ["hjem" "users" username])
     (mkAliasOptionModule ["hm"] ["home-manager" "users" username])
   ];
+
   users.users.${username} = {
     isNormalUser = true;
     description = fullName;
-    extraGroups = mkIf (!server.enable) [
+    extraGroups = [
       "networkmanager"
       "audio"
       "video"
@@ -31,9 +31,8 @@ in {
     ];
   };
 
-  age.identityPaths = mkIf (!server.enable) ["${config.hj.directory}/.ssh/id_ed25519"];
-
-  hjem = mkIf (!server.enable) {
+  age.identityPaths = ["${config.hj.directory}/.ssh/id_ed25519"];
+  hjem = {
     clobberByDefault = true;
     extraModules = [
       inputs.hjem-rum.hjemModules.default
@@ -48,7 +47,7 @@ in {
     linker = inputs'.hjem.packages.smfh;
   };
 
-  home-manager = mkIf (!server.enable) {
+  home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     users.${username} = {

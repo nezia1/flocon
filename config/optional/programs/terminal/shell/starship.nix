@@ -1,12 +1,7 @@
-{
-  lib,
-  config,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
+{lib, ...}: let
   inherit (lib.strings) concatStrings;
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
+  config = {
     # almost entirely stolen from https://github.com/isabelroses/dotfiles/blob/60ce36ad71798db25ebd3582f2e1c1a16848d66f/home/isabel/packages/cli/starship.nix
     hj.rum.programs.starship = {
       enable = true;

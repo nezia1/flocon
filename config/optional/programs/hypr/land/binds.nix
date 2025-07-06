@@ -1,10 +1,5 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   inherit (builtins) substring;
-  inherit (lib.modules) mkIf;
 
   # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
   toggle = program: app2unit: let
@@ -13,7 +8,7 @@
   runOnce = program: "pgrep ${program} || app2unit -- ${program}";
   run = program: "app2unit -- ${program}";
 in {
-  hj.rum.desktops.hyprland.settings = mkIf (config.local.vars.home.desktop.name == "Hyprland") {
+  hj.rum.desktops.hyprland.settings = {
     "$mod" = "SUPER";
     bindr = [
       "$mod, SUPER_L, exec, ${toggle "walker" false}"

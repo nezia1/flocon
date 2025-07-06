@@ -1,11 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-
+{pkgs, ...}: let
   nixpkgsManual = pkgs.makeDesktopItem {
     name = "nixpkgs-manual";
     desktopName = "Nixpkgs Manual";
@@ -13,7 +6,7 @@
     icon = "nix-snowflake";
   };
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
+  config = {
     environment.systemPackages = [
       nixpkgsManual
       pkgs.man-pages

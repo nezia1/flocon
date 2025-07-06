@@ -1,14 +1,11 @@
 {
-  lib,
   pkgs,
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-
   inherit (config.local.vars.home) signingKey;
 in {
-  config = mkIf (!config.local.profiles.server.enable) {
+  config = {
     hj = {
       packages = builtins.attrValues {
         inherit

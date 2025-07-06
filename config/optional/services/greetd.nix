@@ -1,14 +1,11 @@
 {
-  lib,
   pkgs,
   config,
   ...
 }: let
-  inherit (lib.modules) mkIf;
-
   styleCfg = config.local.style;
 in {
-  config = mkIf (config.local.vars.home.desktop.type == "wm") {
+  config = {
     services.greetd = {
       enable = true;
       settings.terminal.vt = 1;
