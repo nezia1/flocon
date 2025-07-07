@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs',
   ...
 }: let
   inherit (builtins) toJSON;
@@ -143,7 +144,7 @@ in {
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
-          on-click = "${config.programs.hyprland.package}/bin/hyprctl dispatch exec '[float] gnome-control-center wifi'";
+          on-click = "${inputs'.iwmenu.packages.default}/bin/iwmenu -i xdg -l walker";
         };
 
         "hyprland/window" = {
