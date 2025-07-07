@@ -4,7 +4,12 @@
     nameservers = ["1.1.1.1" "1.0.0.1"];
     networkmanager = {
       enable = true;
+      wifi.backend = "iwd";
       dns = "systemd-resolved";
+    };
+    wireless.iwd.settings = {
+      Network.EnableIPv6 = true;
+      Settings.AutoConnect = true;
     };
   };
   services.resolved = {
