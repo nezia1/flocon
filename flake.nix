@@ -118,6 +118,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # manage wi-fi through launcher
+    iwmenu = {
+      url = "github:e-tho/iwmenu";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
     nezia_dev = {
       url = "github:nezia1/nezia.dev";
       inputs.nixpkgs.follows = "nixpkgs";
