@@ -4,14 +4,17 @@
   config,
   ...
 }: let
+  inherit (builtins) toString;
+  inherit (lib.lists) findFirst;
   inherit (lib.meta) getExe getExe';
   inherit (lib.strings) escapeShellArgs;
+  primaryMonitor = findFirst (m: m.primary) null config.local.monitors;
 
   # TODO: setup monitors with NixOS options, so that this may be setup for the main monitor of both desktop and laptop
   run-regreet = pkgs.writeShellScript "run-regreet" ''
     ${getExe pkgs.wlr-randr} \
-      --output eDP-1 \
-      --scale 1.33
+      --output ${primaryMonitor.name} \
+      --scale ${toString primaryMonitor.scale}
     exec ${getExe config.programs.regreet.package}
   '';
 
