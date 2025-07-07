@@ -10,6 +10,7 @@
     wireless.iwd.settings = {
       Network.EnableIPv6 = true;
       Settings.AutoConnect = true;
+      General.AddressRandomization = "network";
     };
   };
   services.resolved = {
