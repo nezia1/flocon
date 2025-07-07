@@ -8,7 +8,7 @@
       --ask-sudo-password \
       --log-format internal-json \
       --keep-going \
-      --flake $XDG_CONFIG_HOME/flocon |& nom --json
+      --flake $HOME/.config/flocon |& nom --json
   '';
 in {
   config = {
