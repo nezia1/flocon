@@ -205,9 +205,5 @@ in {
           };
         });
     };
-
-    environment.sessionVariables = {
-      GDK_SCALE = 1;
-    };
   };
 }
