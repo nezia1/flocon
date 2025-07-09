@@ -26,9 +26,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "22612ebbdf9748ad303eddbee1c036f75136ff31",
-      "url": "https://github.com/imbypass/base16-discord/archive/22612ebbdf9748ad303eddbee1c036f75136ff31.tar.gz",
-      "hash": "0lzni90bsw2gb92m1z69x3znwq4x6lk43q52z3hyqncidhwm8ii0"
+      "revision": "7b6281d4d4e8f56ec5c442aa7fe6bb3a31b9c92d",
+      "url": "https://github.com/imbypass/base16-discord/archive/7b6281d4d4e8f56ec5c442aa7fe6bb3a31b9c92d.tar.gz",
+      "hash": "062k0anvifncrd2s7andp6pxm44i894dxqvvc0fc26q0fpn1hlxa"
     },
     "foot": {
       "type": "Git",
@@ -38,9 +38,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d9675a714016553264ae3b77fee785c6c49d2b6d",
+      "revision": "968bc05c32a2e68282fd28e840b06ac63556d82e",
       "url": null,
-      "hash": "1nlyxixalyz879d9wi0xqigg4f50mb16aqgl3pvk7cb3f4v5dqyh"
+      "hash": "1wzxm5hyfapw2hfjawgf743fcx9ki5g4jsfhdp7qk3v5klacklx7"
     },
     "tinted-terminal": {
       "type": "Git",
@@ -51,9 +51,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "7d7fb0075167311fa46a531f8237de568b946a13",
-      "url": "https://github.com/tinted-theming/tinted-terminal/archive/7d7fb0075167311fa46a531f8237de568b946a13.tar.gz",
-      "hash": "07bdjqkr5j1xs7271yyf2r3hrw8kzs2lfnrrx4sppvw97n0g7z4w"
+      "revision": "319a52dc04f7e4f3ace922b3e620ea195b6557b9",
+      "url": "https://github.com/tinted-theming/tinted-terminal/archive/319a52dc04f7e4f3ace922b3e620ea195b6557b9.tar.gz",
+      "hash": "1p9b6ynnbhgsdry5j967xva242n42ir67yxdpp2wcwfni6vbrfky"
     },
     "tt-schemes": {
       "type": "Git",
@@ -64,9 +64,9 @@
       },
       "branch": "spec-0.11",
       "submodules": false,
-      "revision": "b15ea410ff2091a064a92d0f6b8bae80a2f27798",
-      "url": "https://github.com/tinted-theming/schemes/archive/b15ea410ff2091a064a92d0f6b8bae80a2f27798.tar.gz",
-      "hash": "10h1jzwmj8d51643agdclnpl4za2m4yjlkzmmbph4pyc094gfg54"
+      "revision": "5a775c6ffd6e6125947b393872cde95867d85a2a",
+      "url": "https://github.com/tinted-theming/schemes/archive/5a775c6ffd6e6125947b393872cde95867d85a2a.tar.gz",
+      "hash": "09niwd8wc1a7z1s1r554q58h05i15vbxvppngnv1cd853afq33rc"
     }
   },
   "version": 5
