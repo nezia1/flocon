@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (builtins) match;
+  inherit (builtins) attrValues match;
   inherit (lib.attrsets) filterAttrs optionalAttrs;
   inherit (lib.lists) singleton;
 
@@ -168,11 +168,10 @@
             fold = true;
             context.enable = true;
             autotagHtml = true;
-            grammars = [
-              pkgs.vimPlugins.nvim-treesitter.builtGrammars.nix
-              pkgs.vimPlugins.nvim-treesitter.builtGrammars.c
-              pkgs.vimPlugins.nvim-treesitter.builtGrammars.python
-            ];
+            grammars = attrValues {
+              inherit (pkgs.vimPlugins.nvim-treesitter.builtGrammars) nix c python;
+              inherit (pkgs.vimPlugins.nvim-treesitter-parsers) qmljs qmldir;
+            };
           };
 
           debugger.nvim-dap = {
@@ -189,6 +188,17 @@
             enable = true;
             languages = ["en" "fr"];
             programmingWordlist.enable = true;
+          };
+
+          luaConfigRC = {
+            qmlls-setup = ''
+              local lspconfig = require('lspconfig')
+              lspconfig.qmlls.setup({
+                cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"},
+                filetypes = {"qml", "qmljs"},
+                root_dir = lspconfig.util.root_pattern("*.qmlproject", "*.qml", "CMakeLists.txt", ".git"),
+              })
+            '';
           };
         }
         // (optionalAttrs styleCfg.enable {
