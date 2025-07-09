@@ -66,7 +66,6 @@ in {
 
       ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
       ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
-      ", XF86AudioMedia, exec, XDG_CURRENT_DESKTOP=gnome gnome-control-center"
     ];
     binde = [
       "$mod Alt, l, exec, loginctl lock-session"

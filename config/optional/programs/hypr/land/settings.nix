@@ -8,36 +8,6 @@
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
 
-  universal-gnome-control-center = let
-    gnome-control-center = pkgs.gnome-control-center.overrideAttrs (old: {
-      postInstall =
-        old.postInstall
-        + ''
-          dir=$out/share/applications
-          for panel in $dir/*
-          do
-            [ "$panel" = "$dir/gnome-network-panel.desktop" ] && continue
-            [ "$panel" = "$dir/gnome-wifi-panel.desktop" ] && continue
-            [ "$panel" = "$dir/gnome-wwan-panel.desktop" ] && continue
-            [ "$panel" = "$dir/gnome-sharing-panel.desktop" ] && continue
-            [ "$panel" = "$dir/gnome-wacom-panel.desktop" ] && continue
-            rm "$panel"
-          done
-        '';
-    });
-  in
-    pkgs.symlinkJoin {
-      name = "${gnome-control-center.name}-universal";
-      paths = [gnome-control-center];
-      nativeBuildInputs = [
-        pkgs.makeWrapper
-      ];
-      postBuild = ''
-        wrapProgram $out/bin/gnome-control-center \
-          --set XDG_CURRENT_DESKTOP gnome
-      '';
-    };
-
   styleCfg = config.local.style;
 in {
   programs.hyprland = {
@@ -72,7 +42,6 @@ in {
   hj = {
     packages = [
       inputs'.hyprwm-contrib.packages.grimblast
-      universal-gnome-control-center
     ];
 
     rum.desktops.hyprland = {
@@ -109,25 +78,32 @@ in {
             "special:mixer_gui, on-created-empty:pavucontrol"
           ];
 
-          windowrulev2 = [
-            # fixes fullscreen windows (mostly games)
-            "stayfocused, initialtitle:^()$, initialclass:^(steam)$"
-            "minsize 1 1, initialtitle:^()$, initialclass:^(steam)$"
-            "maximize, initialtitle:^(\S+)$, initialclass:^(steamwebhelper)$"
+          windowrule =
+            [
+              # fixes fullscreen windows (mostly games)
+              "stayfocused, initialtitle:^()$, initialclass:^(steam)$"
+              "minsize 1 1, initialtitle:^()$, initialclass:^(steam)$"
+              "maximize, initialtitle:^(\S+)$, initialclass:^(steamwebhelper)$"
 
-            "immediate, initialclass:^(steam_app_)(.*)$"
-            "fullscreen, initialclass:^(steam_app_)(.*)$"
+              "immediate, initialclass:^(steam_app_)(.*)$"
+              "fullscreen, initialclass:^(steam_app_)(.*)$"
 
-            # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
-            "idleinhibit always, fullscreen:1"
+              # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
+              "idleinhibit always, fullscreen:1"
 
-            "float, title:^(Picture-in-Picture)$"
-            "pin, title:^(Picture-in-Picture)$"
-          ];
+              "float, title:^(Picture-in-Picture)$"
+              "pin, title:^(Picture-in-Picture)$"
+            ]
+            # make polkit-kde-authentication-agent-1 a centered floating window
+            ++ (map (rule: rule + ", class:^(org.kde.polkit-kde-authentication-agent-1)$") [
+              "float"
+              "center 1"
+              "stayfocused"
+              "size 30% 25%"
+              "focusonactivate"
+            ]);
 
           render = {
-            explicit_sync = 1;
-            explicit_sync_kms = 1;
             expand_undersized_textures = false;
           };
 
