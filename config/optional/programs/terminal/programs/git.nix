@@ -7,6 +7,13 @@
 in {
   config = {
     hj = {
+      files = {
+        ".config/lazygit/config.yml".source = pkgs.writers.writeYAML "lazygit-config" {
+          git = {
+            overrideGpg = true;
+          };
+        };
+      };
       packages = builtins.attrValues {
         inherit
           (pkgs)
