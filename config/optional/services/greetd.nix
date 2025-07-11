@@ -48,7 +48,8 @@ in {
         inherit (styleCfg.gtk.theme) name package;
       };
       iconTheme = {
-        inherit (styleCfg.gtk.iconTheme) name package;
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
       };
 
       extraCss = config.hj.rum.misc.gtk.css.gtk4;
