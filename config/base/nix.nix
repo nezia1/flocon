@@ -46,6 +46,7 @@ in {
         "cinny-4.2.3"
         "cinny-unwrapped-4.2.3"
         "segger-jlink-qt4-810"
+        "olm-3.2.16"
       ];
       segger-jlink.acceptLicense = true;
     };
