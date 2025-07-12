@@ -363,16 +363,15 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1751640591,
-        "narHash": "sha256-LBaxbR6cWJt+yhumDfugJcIKLDnIKnRxdR7iHLSEhGs=",
-        "owner": "nezia1",
+        "lastModified": 1752303056,
+        "narHash": "sha256-LzojKFWAAreWyH56aupj/MLwuPPnnyzplw/xdbavC9c=",
+        "owner": "feel-co",
         "repo": "hjem",
-        "rev": "21ea224e81305316abb6413d62e949c178a8867e",
+        "rev": "3093a74542b30f8155954d585d0ae2401e3adbe5",
         "type": "github"
       },
       "original": {
-        "owner": "nezia1",
-        "ref": "per-user-services",
+        "owner": "feel-co",
         "repo": "hjem",
         "type": "github"
       }
@@ -1233,15 +1232,15 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1749547788,
-        "narHash": "sha256-n6fd0pb7zd6fVstSzNUEm7qc3NJdPkmDLulGtARQkCI=",
-        "owner": "Gerg-L",
+        "lastModified": 1749906619,
+        "narHash": "sha256-/9Ww10kYopxfCNNnNDwENTubs7Wzqlw+O6PJAHNOYQw=",
+        "owner": "feel-co",
         "repo": "smfh",
-        "rev": "c2dfd2c142a80d9f4ef3b22b65ba1cc6b6d5d40c",
+        "rev": "39f5c06153f63100376bc607b1465850b6df77fd",
         "type": "github"
       },
       "original": {
-        "owner": "Gerg-L",
+        "owner": "feel-co",
         "repo": "smfh",
         "type": "github"
       }

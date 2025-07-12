@@ -64,9 +64,8 @@
       };
     };
 
-    # TODO: switch to upstream once per user services get merged
     hjem = {
-      url = "github:nezia1/hjem/per-user-services";
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
