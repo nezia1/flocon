@@ -2,10 +2,12 @@
   lib,
   pkgs,
   config,
+  self,
   ...
 }: let
   inherit (lib.strings) toLower;
-  # TODO: modularize when not lazy (taking inspo from https://github.com/rice-cracker-dev/rnc/blob/dd41577374eecf5655b69f554d3cf58474c4157f/modules/home/theme/qtct.nix)
+  # TODO: modularize kvantum (taking inspo from https://github.com/rice-cracker-dev/rnc/blob/dd41577374eecf5655b69f554d3cf58474c4157f/modules/home/theme/qtct.nix)
+  # TODO: add global state for kvantum/qtct themes
   variant = "Mocha";
   accent = "lavender";
 
@@ -35,26 +37,28 @@
 
   ini = pkgs.formats.ini {};
 in {
+  hjem.extraModules = [self.hjemModules.qtct];
+
   qt = {
     enable = true;
     platformTheme = "qt5ct";
     style = "kvantum";
   };
 
-  hj.packages = [
-    qtctTheme
-    kvantumTheme
-  ];
-
-  hj.files = {
-    ".config/Kvantum/kvantum.kvconfig".source = ini.generate "kvantum-config" {
-      General.theme = "catppuccin-mocha-lavender";
+  hj = {
+    local.misc.qtct = {
+      enable = true;
+      qt5.settings = qtctConf;
+      qt6.settings = qtctConf;
     };
 
-    ".config/qt5ct/qt5ct.conf".source = ini.generate "qt5ct-config" qtctConf;
-    ".config/qt6ct/qt6ct.conf".source = ini.generate "qt6ct-config" qtctConf;
+    files = {
+      # https://discourse.nixos.org/t/catppuccin-kvantum-not-working/43727/14
+      ".config/Kvantum/catppuccin-${toLower variant}-${accent}".source = "${kvantumTheme}/share/Kvantum/catppuccin-${toLower variant}-${accent}";
 
-    # https://discourse.nixos.org/t/catppuccin-kvantum-not-working/43727/14
-    ".config/Kvantum/catppuccin-${toLower variant}-${accent}".source = "${kvantumTheme}/share/Kvantum/catppuccin-${toLower variant}-${accent}";
+      ".config/Kvantum/kvantum.kvconfig".source = ini.generate "kvantum-config" {
+        General.theme = "catppuccin-mocha-lavender";
+      };
+    };
   };
 }
