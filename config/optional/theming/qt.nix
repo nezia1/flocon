@@ -19,6 +19,11 @@
       color_scheme_path = "${qtctTheme}/share/qt5ct/colors/Catppuccin-Mocha.conf";
     };
 
+    Fonts = {
+      fixed = ''"monospace,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+      general = ''"sans-serif,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+    };
+
     Interface = {
       activate_item_on_single_click = 1;
       underline_shortcut = 1;
