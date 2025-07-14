@@ -105,7 +105,17 @@
           };
           lsp = {
             enable = true;
-            lspconfig.enable = true;
+            lspconfig = {
+              enable = true;
+              sources = {
+                qmlls = ''
+                  lspconfig.qmlls.setup {
+                    capabilities = capabilities,
+                    cmd = {"${pkgs.kdePackages.qtdeclarative}/bin/qmlls", "-E"}
+                  }
+                '';
+              };
+            };
             formatOnSave = true;
             mappings = {
               addWorkspaceFolder = "<leader>wa";
@@ -188,17 +198,6 @@
             enable = true;
             languages = ["en" "fr"];
             programmingWordlist.enable = true;
-          };
-
-          luaConfigRC = {
-            qmlls-setup = ''
-              local lspconfig = require('lspconfig')
-              lspconfig.qmlls.setup({
-                cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"},
-                filetypes = {"qml", "qmljs"},
-                root_dir = lspconfig.util.root_pattern("*.qmlproject", "*.qml", "CMakeLists.txt", ".git"),
-              })
-            '';
           };
         }
         // (optionalAttrs styleCfg.enable {
