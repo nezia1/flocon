@@ -58,6 +58,8 @@
   ];
 
   hyprland = [
+    ../config/optional/services/brightness.nix
+
     ../config/optional/programs/hypr
     ../config/optional/programs/walker
     ../config/optional/programs/swaybg.nix
