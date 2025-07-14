@@ -16,6 +16,7 @@ in {
 
         inherit
           (pkgs)
+          cinny-desktop
           devenv
           entr
           fastfetch
@@ -24,7 +25,6 @@ in {
           hyfetch
           imhex
           logisim-evolution
-          nheko
           obsidian
           playerctl
           proton-pass
