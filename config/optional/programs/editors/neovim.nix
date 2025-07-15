@@ -192,7 +192,18 @@
           binds.whichKey.enable = true;
           filetree.neo-tree.enable = true;
 
-          telescope.enable = true;
+          telescope = {
+            enable = true;
+            extensions = [
+              {
+                name = "fzf";
+                packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+                setup = {
+                  fzf = {fuzzy = true;};
+                };
+              }
+            ];
+          };
 
           spellcheck = {
             enable = true;
