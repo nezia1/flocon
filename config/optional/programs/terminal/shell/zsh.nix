@@ -1,15 +1,26 @@
 {pkgs, ...}: let
-  inherit (pkgs) writeShellScriptBin;
-  rbld = writeShellScriptBin "rbld" ''
-    sudo -v || exit
+  inherit (builtins) attrValues;
+  inherit (pkgs) writeShellApplication;
 
-    nixos-rebuild "$@" \
-      --no-reexec \
-      --ask-sudo-password \
-      --log-format internal-json \
-      --keep-going \
-      --flake $HOME/.config/flocon |& nom --json
-  '';
+  rbld = writeShellApplication {
+    name = "rbld";
+    runtimeInputs = attrValues {
+      inherit
+        (pkgs)
+        nixos-rebuild-ng
+        nix-output-monitor
+        ;
+    };
+    text = ''
+      sudo -v || exit
+      nixos-rebuild \
+        --sudo \
+        --no-reexec \
+        --log-format internal-json \
+        --flake "$HOME/.config/flocon" "$@" |&
+        nom --json || exit 1
+    '';
+  };
 in {
   config = {
     programs.zsh.enable = true;
