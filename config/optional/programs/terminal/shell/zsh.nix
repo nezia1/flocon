@@ -15,6 +15,10 @@ in {
     programs.zsh.enable = true;
     hj = {
       packages = [rbld];
+      environment.sessionVariables = {
+        ZELLIJ_AUTO_ATTACH = "true";
+        ZELLIJ_AUTO_EXIT = "true";
+      };
       rum.programs.zsh = {
         enable = true;
         initConfig = ''
@@ -55,6 +59,9 @@ in {
           # TODO: switch to the hjr module once integrations get upstreamed
           # zoxide integration
           eval "$(zoxide init zsh)"
+
+          # TODO: switch to the hjr module once zellij gets upstreamed
+          eval "$(zellij setup --generate-auto-start zsh)"
 
           . "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
         '';
