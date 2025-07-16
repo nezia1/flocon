@@ -8,6 +8,7 @@
   inherit (builtins) attrValues match;
   inherit (lib.attrsets) filterAttrs optionalAttrs;
   inherit (lib.lists) singleton;
+  inherit (lib.meta) getExe;
 
   styleCfg = config.local.style;
 
@@ -105,6 +106,8 @@
           };
           lsp = {
             enable = true;
+            inlayHints.enable = true;
+
             lspconfig = {
               enable = true;
               sources = {
@@ -138,6 +141,15 @@
           autopairs.nvim-autopairs.enable = true;
           autocomplete.nvim-cmp.enable = true;
 
+          lsp.servers = {
+            nixd = {
+              enable = true;
+              cmd = [
+                (getExe pkgs.nixd)
+                "--semantic-tokens=true"
+              ];
+            };
+          };
           languages = {
             enableExtraDiagnostics = true;
             enableFormat = true;
@@ -145,10 +157,7 @@
 
             nix = {
               enable = true;
-              lsp = {
-                enable = true;
-                server = "nil";
-              };
+              lsp.enable = false;
             };
             clang = {
               enable = true;
