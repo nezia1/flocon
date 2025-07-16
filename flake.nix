@@ -10,6 +10,9 @@
       systems = ["x86_64-linux"];
     };
   inputs = {
+    # TODO: remove once PR gets merged
+    nixpkgs-kdl.url = "github:NixOS/nixpkgs?ref=pull/412029/head";
+
     # so we can .follow it
     systems.url = "github:nix-systems/default-linux";
 

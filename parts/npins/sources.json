@@ -30,6 +30,19 @@
       "url": "https://github.com/imbypass/base16-discord/archive/7b6281d4d4e8f56ec5c442aa7fe6bb3a31b9c92d.tar.gz",
       "hash": "062k0anvifncrd2s7andp6pxm44i894dxqvvc0fc26q0fpn1hlxa"
     },
+    "base16-zellij": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "ralsina",
+        "repo": "base16-zellij"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "943eedbbcdfd6764267332d713ff4ca2de6f3d66",
+      "url": "https://github.com/ralsina/base16-zellij/archive/943eedbbcdfd6764267332d713ff4ca2de6f3d66.tar.gz",
+      "hash": "17gcv3z621sqhqvzxhvlx86x5wy9l14dgfh0n7x7262js7hsl1is"
+    },
     "foot": {
       "type": "Git",
       "repository": {
