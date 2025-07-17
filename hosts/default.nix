@@ -83,6 +83,7 @@ in {
         ++ hyprland
         ++ [
           ./vamos
+          ../config/optional/programs/games.nix
           inputs.nixos-hardware.nixosModules.framework-13-7040-amd
         ];
     };
@@ -95,6 +96,7 @@ in {
         ++ hyprland
         ++ [
           ./solaire
+          ../config/optional/programs/games.nix
         ];
     };
 
