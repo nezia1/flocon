@@ -1,0 +1,9 @@
+
+simplified_ui true
+default_mode "locked"
+show_startup_tips false
+ui {
+  pane_frames {
+    rounded_corners true
+  }
+}
