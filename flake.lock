@@ -990,22 +990,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-kdl": {
-      "locked": {
-        "lastModified": 1751871178,
-        "narHash": "sha256-iy/uTCjq40Pb6yvwbWQzIFXJ3sODzk7OgDMnxm+IBAI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e41739278171a011ae1080d0e51a573ef93e0221",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/412029/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1743296961,
@@ -1191,7 +1175,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-kdl": "nixpkgs-kdl",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "split-monitor-workspaces": "split-monitor-workspaces",
