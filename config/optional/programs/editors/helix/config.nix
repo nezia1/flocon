@@ -42,6 +42,7 @@ in {
               name = "nix";
               language-servers = ["nixd"];
               formatter.command = getExe pkgs.alejandra;
+              auto-format = true;
             }
           ];
           language-server = {
