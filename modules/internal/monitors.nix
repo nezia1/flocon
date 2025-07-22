@@ -37,7 +37,7 @@ in {
           };
           scale = mkOption {
             type = float;
-            default = 1;
+            default = 1.0;
           };
         };
       }
