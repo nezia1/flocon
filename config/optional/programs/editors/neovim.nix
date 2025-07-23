@@ -180,6 +180,10 @@
               enable = true;
               dap.enable = true;
             };
+            rust = {
+              enable = true;
+              dap.enable = true;
+            };
           };
 
           treesitter = {
