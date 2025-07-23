@@ -3,9 +3,12 @@
   config,
   ...
 }: let
-  inherit (builtins) length filter;
+  inherit (builtins) all length filter map concatStringsSep;
   inherit (lib.options) mkOption;
-  inherit (lib.types) listOf bool float int str submodule;
+  inherit (lib.types) listOf bool float int str submodule nullOr;
+  inherit (lib.trivial) pipe;
+
+  cfg = config.local.monitors;
 in {
   options.local.monitors = mkOption {
     type = listOf (
@@ -32,9 +35,22 @@ in {
             default = 60;
           };
           position = mkOption {
-            type = str;
-            default = "auto";
+            type = nullOr (submodule {
+              # x and y are set as nullable so that we may give a more explicit error in assertions!
+              options = {
+                x = mkOption {
+                  type = nullOr int;
+                  default = null;
+                };
+                y = mkOption {
+                  type = nullOr int;
+                  default = null;
+                };
+              };
+            });
+            default = null;
           };
+
           scale = mkOption {
             type = float;
             default = 1.0;
@@ -45,12 +61,27 @@ in {
     default = [];
   };
   config = {
-    assertions = [
+    assertions = let
+      numMonitors = length cfg;
+      numPrimaryMonitors = length (filter checks.isPrimary cfg);
+      checks = {
+        positionValid = m: m.position != null -> (m.position.x != null && m.position.y != null);
+        isPrimary = m: m.primary;
+      };
+      affectedMonitorsNames = check:
+        pipe cfg [
+          (filter check)
+          (map (m: m.name))
+          (concatStringsSep ", ")
+        ];
+    in [
       {
-        assertion =
-          ((length config.local.monitors) != 0)
-          -> ((length (filter (m: m.primary) config.local.monitors)) == 1);
-        message = "Exactly one monitor must be set to primary.";
+        assertion = (numMonitors != 0) -> (numPrimaryMonitors == 1);
+        message = "Exactly one monitor must be set to primary. Affected monitors: ${affectedMonitorsNames checks.isPrimary}";
+      }
+      {
+        assertion = all checks.positionValid cfg;
+        message = "If position is set, x and y need to be set. Affected monitors: ${affectedMonitorsNames checks.positionValid}";
       }
     ];
   };
