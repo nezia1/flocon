@@ -5,8 +5,23 @@
   config,
   ...
 }: let
+  inherit (builtins) concatStringsSep toString;
   inherit (lib.attrsets) optionalAttrs;
   inherit (lib.modules) mkIf;
+
+  toMonitorConf = m: let
+    toResolutionString = res: rr: "${toString res.width}x${toString res.height}@${toString rr}";
+    toPositionString = pos:
+      if pos != null
+      then "${toString pos.x}x${toString pos.y}"
+      else "0x0";
+  in
+    concatStringsSep ", " [
+      m.name
+      (toResolutionString m.resolution m.refreshRate)
+      (toPositionString m.position)
+      (toString m.scale)
+    ];
 
   styleCfg = config.local.style;
 in {
@@ -61,13 +76,7 @@ in {
             no_hardware_cursors = 1;
           };
 
-          monitor = [
-            "eDP-1, preferred, auto, 1.33"
-            "Unknown-1,disabled"
-
-            "HDMI-A-1, preferred, 0x0, 1"
-            "DP-1, highres, 1920x0, 1"
-          ];
+          monitor = map toMonitorConf config.local.monitors;
 
           workspace = [
             "special:terminal, on-created-empty:ghostty"
