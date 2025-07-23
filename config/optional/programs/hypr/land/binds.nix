@@ -18,7 +18,7 @@ in {
       "$mod, w, exec, ${run "librewolf"}"
       ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
       "$mod, q, killactive"
-      "$mod SHIFT, q, exec, loginctl terminate-session \"$XDG_SESSION_ID\""
+      "$mod SHIFT, q, exec, loginctl terminate-user \"\""
       "CTRL, Print, exec, ${runOnce "grimblast"} --notify --freeze copysave area"
 
       "$mod, h, movefocus, l"
