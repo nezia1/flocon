@@ -22,18 +22,22 @@ in {
             type = bool;
             default = false;
           };
-          width = mkOption {
-            type = int;
-            example = 1920;
-          };
-          height = mkOption {
-            type = int;
-            example = 1080;
+
+          resolution = {
+            width = mkOption {
+              type = int;
+              example = 1920;
+            };
+            height = mkOption {
+              type = int;
+              example = 1080;
+            };
           };
           refreshRate = mkOption {
             type = int;
             default = 60;
           };
+
           position = mkOption {
             type = nullOr (submodule {
               # x and y are set as nullable so that we may give a more explicit error in assertions!
