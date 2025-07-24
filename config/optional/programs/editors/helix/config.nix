@@ -21,6 +21,9 @@
         (pkgs)
         nixd
         alejandra
+        deno
+        marksman
+        harper
         ;
     };
   in
@@ -55,22 +58,39 @@ in {
         };
       };
 
-      ".config/helix/languages.toml".source = settingsFormat.generate "helix-language-config" {
-        language = [
-          {
-            name = "nix";
-            language-servers = ["nixd"];
-            formatter.command = "alejandra";
-            auto-format = true;
-          }
-        ];
-        language-server = {
-          nixd.args = [
-            "--semantic-tokens"
-            "--inlay-hints"
-          ];
+      ".config/helix/languages.toml".source = let
+        # https://github.com/fufexan/dotfiles/blob/41a68a6fa4312c2e83a813641fcc005e190b1116/home/editors/helix/languages.nix#L9-L12
+        deno = lang: {
+          command = "deno";
+          args = ["fmt" "-" "--ext" lang];
         };
-      };
+      in
+        settingsFormat.generate "helix-language-config" {
+          language = [
+            {
+              name = "nix";
+              language-servers = ["nixd"];
+              formatter.command = "alejandra";
+              auto-format = true;
+            }
+            {
+              name = "markdown";
+              language-servers = ["marksman" "harper-ls"];
+              formatter = deno "md";
+              auto-format = true;
+            }
+          ];
+          language-server = {
+            nixd.args = [
+              "--semantic-tokens"
+              "--inlay-hints"
+            ];
+            harper-ls = {
+              command = "harper-ls";
+              args = ["--stdio"];
+            };
+          };
+        };
 
       ".config/helix/themes/base16.toml".source = theme;
     };
