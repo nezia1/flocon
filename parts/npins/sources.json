@@ -30,6 +30,19 @@
       "url": "https://github.com/imbypass/base16-discord/archive/7dffeb4e9da416e2857b4ee3349ec533b70418c8.tar.gz",
       "hash": "1pfn2aypm395wx7rgchcdr7w652gvwr2i1j18sm33rx7ix09wpx6"
     },
+    "base16-helix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "tinted-theming",
+        "repo": "base16-helix"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "27cf1e66e50abc622fb76a3019012dc07c678fac",
+      "url": "https://github.com/tinted-theming/base16-helix/archive/27cf1e66e50abc622fb76a3019012dc07c678fac.tar.gz",
+      "hash": "1hxsda3swj2qynh81k80vdz39grlm09il37v7g74gjqqb7w0q96h"
+    },
     "base16-zellij": {
       "type": "Git",
       "repository": {
