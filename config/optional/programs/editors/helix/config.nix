@@ -24,6 +24,8 @@
         deno
         marksman
         harper
+        basedpyright
+        ruff
         ;
     };
   in
@@ -79,6 +81,18 @@ in {
               formatter = deno "md";
               auto-format = true;
             }
+            {
+              name = "python";
+              language-servers = [
+                "basedpyright"
+                "ruff"
+              ];
+              formatter = {
+                command = "ruff";
+                args = ["format" "-"];
+              };
+              auto-format = true;
+            }
           ];
           language-server = {
             nixd.args = [
@@ -87,6 +101,10 @@ in {
             ];
             harper-ls = {
               command = "harper-ls";
+              args = ["--stdio"];
+            };
+            basedpyright = {
+              command = "basedpyright-langserver";
               args = ["--stdio"];
             };
           };
