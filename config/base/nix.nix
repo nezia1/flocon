@@ -43,10 +43,8 @@ in {
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "cinny-4.2.3"
-        "cinny-unwrapped-4.2.3"
-        "segger-jlink-qt4-810"
-        "olm-3.2.16"
+        # https://github.com/NixOS/nixpkgs/issues/360897
+        "libsoup-2.74.3"
       ];
       segger-jlink.acceptLicense = true;
     };
