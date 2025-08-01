@@ -35,6 +35,7 @@ in {
           "org/gnome/desktop/interface" = {
             gtk-theme = gtk.theme.name;
             icon-theme = gtk.iconTheme.name;
+            color-scheme = "prefer-${styleCfg.colors.scheme.variant}";
           };
         };
       };
