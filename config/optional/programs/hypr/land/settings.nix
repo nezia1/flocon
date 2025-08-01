@@ -27,8 +27,8 @@
 in {
   programs.hyprland = {
     enable = true;
-    package = inputs'.hyprland.packages.hyprland;
-    portalPackage = inputs'.hyprland.packages.xdg-desktop-portal-hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     withUWSM = true;
     systemd.setPath.enable = true;
   };
@@ -62,7 +62,7 @@ in {
     rum.desktops.hyprland = {
       enable = true;
       plugins = [
-        inputs'.split-monitor-workspaces.packages.default
+        pkgs.hyprlandPlugins.hyprsplit
       ];
       settings =
         {
@@ -151,8 +151,8 @@ in {
             middle_click_paste = false;
           };
           plugin = {
-            split-monitor-workspaces = {
-              count = 4;
+            hyprsplit = {
+              num_workspaces = 4;
             };
           };
         }
