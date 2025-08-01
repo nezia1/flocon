@@ -47,6 +47,7 @@
     ../config/optional/programs/xdg.nix
 
     ../config/optional/services/documentation.nix
+    ../config/optional/services/docker.nix
     ../config/optional/services/flatpak.nix
     ../config/optional/services/keyd.nix
     ../config/optional/services/kmscon.nix
