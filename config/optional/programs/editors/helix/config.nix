@@ -50,12 +50,20 @@ in {
         editor = {
           line-number = "relative";
           auto-format = true;
-          cursor-shape.insert = "bar";
+          cursor-shape = {
+            insert = "bar";
+            normal = "block";
+            select = "underline";
+          };
           soft-wrap.enable = true;
           completion-timeout = 5;
           end-of-line-diagnostics = "hint";
           inline-diagnostics = {
             cursor-line = "warning";
+          };
+          indent-guides = {
+            character = "|";
+            render = true;
           };
         };
       };
