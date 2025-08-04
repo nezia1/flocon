@@ -26,6 +26,7 @@
         harper
         basedpyright
         ruff
+        yaml-language-server
         ;
     };
   in
@@ -99,6 +100,11 @@ in {
                 command = "ruff";
                 args = ["format" "-"];
               };
+              auto-format = true;
+            }
+            {
+              name = "yaml";
+              language-servers = ["yaml-language-server"];
               auto-format = true;
             }
           ];

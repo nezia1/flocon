@@ -379,11 +379,11 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1752303056,
-        "narHash": "sha256-LzojKFWAAreWyH56aupj/MLwuPPnnyzplw/xdbavC9c=",
+        "lastModified": 1754244549,
+        "narHash": "sha256-ByZ81/QttgSS1mQYttnaoMw2WnqMvQ6HCxBPOioKrOA=",
         "owner": "feel-co",
         "repo": "hjem",
-        "rev": "3093a74542b30f8155954d585d0ae2401e3adbe5",
+        "rev": "ee5c671eeba5cddd94f2c7de3c36f019fae5854e",
         "type": "github"
       },
       "original": {
