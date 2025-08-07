@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  inherit (lib.meta) getExe;
   toINI = lib.generators.toINI {};
 in {
   config = {
@@ -19,22 +20,20 @@ in {
       };
     };
 
-    hm.systemd.user.services.gammastep = {
-      Unit = {
-        Description = "Gammastep colour temperature adjuster";
-        After = ["graphical-session.target"];
-        Wants = ["geoclue-agent.service"];
-      };
+    systemd.user.services.gammastep = {
+      description = "Gammastep colour temperature adjuster";
+      after = ["graphical-session.target"];
+      wants = ["geoclue-agent.service"];
 
-      Service = {
+      serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.gammastep}/bin/gammastep-indicator";
+        ExecStart = getExe pkgs.gammastep;
         Restart = "on-failure";
         RestartSec = 3;
         Slice = "background-graphical.slice";
       };
 
-      Install.WantedBy = ["graphical-session.target"];
+      wantedBy = ["graphical-session.target"];
     };
   };
 }
