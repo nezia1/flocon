@@ -75,6 +75,24 @@
     ../config/optional/services/power.nix
     ../config/optional/services/swaync.nix
   ];
+
+  niri = [
+    ../config/optional/services/brightness.nix
+
+    ../config/optional/programs/niri
+    ../config/optional/programs/walker
+    ../config/optional/programs/swaybg.nix
+    ../config/optional/programs/waybar.nix
+    ../config/optional/programs/wlogout.nix
+
+    ../config/optional/services/gammastep.nix
+    ../config/optional/services/gnome.nix
+    ../config/optional/services/greetd.nix
+    ../config/optional/services/logind.nix
+    ../config/optional/services/power.nix
+    ../config/optional/services/swaync.nix
+    ../config/optional/services/xwayland-satellite.nix
+  ];
 in {
   flake.nixosConfigurations = {
     vamos = mkNixosSystem {
@@ -83,6 +101,7 @@ in {
         base
         ++ workstation
         ++ hyprland
+        ++ niri
         ++ [
           ./vamos
           ../config/optional/programs/games.nix
