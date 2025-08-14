@@ -45,8 +45,8 @@
 in {
   hj = {
     packages = [helixWrapped];
-    files = {
-      ".config/helix/config.toml".source = settingsFormat.generate "helix-config" {
+    xdg.config.files = {
+      "helix/config.toml".source = settingsFormat.generate "helix-config" {
         theme = "base16";
         editor = {
           line-number = "relative";
@@ -67,9 +67,15 @@ in {
             render = true;
           };
         };
+        keys = {
+          normal = {
+            # https://yazi-rs.github.io/docs/tips/#helix-with-zellij
+            "C-y" = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}";
+          };
+        };
       };
 
-      ".config/helix/languages.toml".source = let
+      "helix/languages.toml".source = let
         # https://github.com/fufexan/dotfiles/blob/41a68a6fa4312c2e83a813641fcc005e190b1116/home/editors/helix/languages.nix#L9-L12
         deno = lang: {
           command = "deno";
@@ -124,7 +130,20 @@ in {
           };
         };
 
-      ".config/helix/themes/base16.toml".source = theme;
+      "helix/themes/base16.toml".source = theme;
+
+      "helix/yazi-picker.sh".source = pkgs.writeShellScript "yazi-picker" ''
+        paths=$(yazi "$2" --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+
+        if [[ -n "$paths" ]]; then
+        	zellij action toggle-floating-panes
+        	zellij action write 27 # send <Escape> key
+        	zellij action write-chars ":$1 $paths"
+        	zellij action write 13 # send <Enter> key
+        else
+        	zellij action toggle-floating-panes
+        fi
+      '';
     };
   };
 }
