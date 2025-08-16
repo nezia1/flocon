@@ -102,6 +102,11 @@ in {
 
               "float, title:^(Picture-in-Picture)$"
               "pin, title:^(Picture-in-Picture)$"
+
+              "float,class:^(xdg-desktop-portal-hyprland)$"
+              "float, class:(org.freedesktop.impl.portal.desktop.kde)"
+              "size 900 600, class:(org.freedesktop.impl.portal.desktop.kde)"
+              "center, class:(org.freedesktop.impl.portal.desktop.kde)"
             ]
             # make polkit-kde-authentication-agent-1 a centered floating window
             ++ (map (rule: rule + ", class:^(org.kde.polkit-kde-authentication-agent-1)$") [
