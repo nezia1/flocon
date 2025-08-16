@@ -48,7 +48,7 @@ in {
               ff = false;
               conflictstyle = "diff3";
             };
-            diff.external = "difft diff";
+            diff.external = "difft";
 
             core = {
               attributesfile = "~/.gitattributes";
