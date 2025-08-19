@@ -27,6 +27,9 @@
         basedpyright
         ruff
         yaml-language-server
+        rust-analyzer
+        rustfmt
+        clippy
         ;
     };
   in
@@ -69,8 +72,16 @@ in {
         };
         keys = {
           normal = {
-            # https://yazi-rs.github.io/docs/tips/#helix-with-zellij
-            "C-y" = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}";
+            space = {
+              # https://github.com/helix-editor/helix/wiki/Recipes#advanced-file-explorer-with-yazi
+              e = [
+                ":sh rm -f /tmp/unique-file-h21a434"
+                ":insert-output yazi '%{buffer_name}' --chooser-file=/tmp/unique-file-h21a434"
+                ":insert-output echo \"x1b[?1049h\" > /dev/tty"
+                ":open %sh{cat /tmp/unique-file-h21a434}"
+                ":redraw"
+              ];
+            };
           };
         };
       };
@@ -113,6 +124,11 @@ in {
               language-servers = ["yaml-language-server"];
               auto-format = true;
             }
+            {
+              name = "rust";
+              language-servers = ["rust-analyzer"];
+              auto-format = true;
+            }
           ];
           language-server = {
             nixd.args = [
@@ -126,6 +142,13 @@ in {
             basedpyright = {
               command = "basedpyright-langserver";
               args = ["--stdio"];
+            };
+            rust-analyzer = {
+              config = {
+                cargo.features = "all";
+                check.command = "clippy";
+                completion.callable.snippets = "add_parentheses";
+              };
             };
           };
         };
