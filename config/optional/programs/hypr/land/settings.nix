@@ -80,11 +80,10 @@ in {
 
           workspace = [
             "special:terminal, on-created-empty:ghostty"
-            "special:file_manager_gui, on-created-empty:pcmanfm"
-            "special:file_manager_tui, on-created-empty:ghostty -e yazi"
+            "special:file_manager_gui, on-created-empty:pcmanfm-qt"
 
-            "special:calculator_gui, on-created-empty:qalculate-gtk"
-            "special:mixer_gui, on-created-empty:pavucontrol"
+            "special:calculator_gui, on-created-empty:qalculate-qt"
+            "special:mixer_gui, on-created-empty:pavucontrol-qt"
           ];
 
           windowrule =

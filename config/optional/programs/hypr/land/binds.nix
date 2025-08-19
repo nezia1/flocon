@@ -52,7 +52,6 @@ in {
       "$mod, f, fullscreen, 1"
 
       "$mod, e, togglespecialworkspace, file_manager_gui"
-      "$mod SHIFT, e, togglespecialworkspace, file_manager_tui"
       "$mod , c, togglespecialworkspace, calculator_gui"
       "$mod, m, togglespecialworkspace, mixer_gui"
 

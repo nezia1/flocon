@@ -15,6 +15,11 @@ in {
           ;
 
         inherit
+          (pkgs.lxqt)
+          pavucontrol-qt
+          ;
+
+        inherit
           (pkgs)
           cinny-desktop
           devenv
@@ -28,7 +33,7 @@ in {
           obsidian
           playerctl
           proton-pass
-          qalculate-gtk
+          qalculate-qt
           resources
           simple-scan
           vscode-fhs

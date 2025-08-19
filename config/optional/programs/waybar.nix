@@ -7,6 +7,7 @@
 }: let
   inherit (builtins) toJSON;
   inherit (lib.modules) mkIf;
+  inherit (lib.meta) getExe getExe';
 
   inherit (config.hj.rum.desktops.hyprland.settings.plugin.hyprsplit) num_workspaces;
 
@@ -15,7 +16,6 @@ in {
   hj = {
     packages = [
       pkgs.waybar
-      pkgs.pavucontrol
     ];
 
     files = {
@@ -84,7 +84,7 @@ in {
             ];
           };
           scroll-step = 1;
-          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+          on-click = getExe pkgs.lxqt.pavucontrol-qt;
           ignored-sinks = [
             "Easy Effects Sink"
           ];
@@ -102,7 +102,7 @@ in {
         "custom/power" = {
           format = "";
           tooltip = false;
-          on-click = "${pkgs.wlogout}/bin/wlogout";
+          on-click = getExe pkgs.wlogout;
         };
 
         "memory" = {
@@ -144,7 +144,7 @@ in {
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
-          on-click = "${inputs'.iwmenu.packages.default}/bin/iwmenu -i xdg -l walker";
+          on-click = "${getExe inputs'.iwmenu.packages.default} -i xdg -l walker";
         };
 
         "hyprland/window" = {
@@ -182,10 +182,10 @@ in {
           };
           return-type = "json";
           escape = true;
-          exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
-          exec = "${pkgs.swaynotificationcenter}/bin/swaync-client --subscribe-waybar";
-          on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-panel --skip-wait";
-          on-click-middle = "${pkgs.swaynotificationcenter}/bin/swaync-client --toggle-dnd --skip-wait";
+          exec-if = "which ${getExe' pkgs.swaynotificationcenter "swaync-client"}";
+          exec = "${getExe' pkgs.swaynotificationcenter "swaync-client"} --subscribe-waybar";
+          on-click = "${getExe' pkgs.swaynotificationcenter "swaync-client"} --toggle-panel --skip-wait";
+          on-click-middle = "${getExe' pkgs.swaynotificationcenter "swaync-client"} --toggle-dnd --skip-wait";
         };
       };
       ".config/waybar/style.css".text =
@@ -267,8 +267,8 @@ in {
       };
 
       Service = {
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
+        ExecStart = getExe pkgs.waybar;
+        ExecReload = "${getExe' pkgs.coreutils "kill"} -SIGUSR2 $MAINPID";
         Restart = "on-failure";
         Slice = "app-graphical.slice";
       };
