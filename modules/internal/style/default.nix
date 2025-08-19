@@ -82,11 +82,11 @@ in {
         name = mkOption {
           type = str;
           description = "The name for the icon theme that will be used for GTK programs";
-          default = "MoreWaita";
+          default = "Papirus-Dark";
         };
 
         package = mkPackageOption pkgs "GTK icon theme" {
-          default = "morewaita-icon-theme";
+          default = "papirus-icon-theme";
         };
       };
     };
