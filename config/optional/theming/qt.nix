@@ -20,8 +20,8 @@
     };
 
     Fonts = {
-      fixed = ''"monospace,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
-      general = ''"sans-serif,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+      fixed = ''"monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+      general = ''"sans-serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
     };
 
     Interface = {
