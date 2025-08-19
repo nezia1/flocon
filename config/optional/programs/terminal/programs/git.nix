@@ -56,6 +56,10 @@ in {
               fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
             };
             index.threads = true;
+
+            alias = {
+              sync = "!git fetch upstream && git rebase upstream/$(git branch --show-current)";
+            };
           };
         };
       };
