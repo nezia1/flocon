@@ -9,6 +9,11 @@
         gthumb
         papers
         ;
+
+      inherit
+        (pkgs.kdePackages)
+        arianna
+        ;
     };
   };
 }
