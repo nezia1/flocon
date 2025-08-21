@@ -14,7 +14,8 @@
     Appearance = {
       custom_palette = true;
       icon_theme = config.local.style.gtk.iconTheme.name;
-      standard_dialogs = "xdgdesktopportal";
+      # xdgdesktopportal is not used here because of a blocking call on the portal - https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/issues/17
+      standard_dialogs = "default";
       style = "kvantum-dark";
       color_scheme_path = "${qtctTheme}/share/qt5ct/colors/Catppuccin-Mocha.conf";
     };
