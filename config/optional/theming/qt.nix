@@ -21,8 +21,8 @@
     };
 
     Fonts = {
-      fixed = ''"monospace,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
-      general = ''"sans-serif,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+      fixed = ''"monospace,11.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
+      general = ''"sans-serif,11.5,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"'';
     };
 
     Interface = {
