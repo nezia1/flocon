@@ -1,11 +1,9 @@
 {
-  lib,
   pkgs,
   config,
   ...
 }: let
   inherit (config.local.vars.system) username;
-  inherit (lib.modules) mkForce;
 in {
   # TODO: switch to hjem when implemented
   hm.xdg = {
@@ -47,25 +45,14 @@ in {
     };
   };
   xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    config = {
-      common.default = ["hyprland" "kde"];
-    };
-    config = {
-      hyprland = {
-        default = [
-          "hyprland"
-          "kde"
-        ];
-        "org.freedesktop.impl.portal.FileChooser" = ["kde"];
-      };
-    };
-
-    extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
     ];
-
-    configPackages = mkForce [];
+    config.hyprland = {
+      default = ["hyprland" "gtk"];
+      "org.freedesktop.impl.portal.FileChooser" = "kde";
+      "org.freedesktop.impl.portal.Print" = "kde";
+    };
   };
 }
