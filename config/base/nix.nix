@@ -43,8 +43,7 @@ in {
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        # https://github.com/NixOS/nixpkgs/issues/360897
-        # "libsoup-2.74.3"
+        "libsoup-2.74.3"
       ];
       segger-jlink.acceptLicense = true;
     };

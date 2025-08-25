@@ -22,8 +22,7 @@ in {
 
         inherit
           (pkgs)
-          #This uses libsoup_2, which is deprecated and will rebuild webkitgtk entirely. https://github.com/cinnyapp/cinny-desktop/pull/429 will fix this
-          # cinny-desktop
+          cinny-desktop
           devenv
           entr
           fastfetch
