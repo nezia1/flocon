@@ -11,7 +11,8 @@ in {
         inherit
           (self'.packages)
           app2unit
-          mcuxpressoide
+          # Fails CI because of `requireFile`
+          # mcuxpressoide
           ;
 
         inherit
