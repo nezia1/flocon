@@ -1,0 +1,32 @@
+name: Cachix
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "parts/npins/sources.json"
+      - "parts/npins/default.nix"
+      - "flake.lock"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host:
+          - solaire
+          - vamos
+          - anastacia
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wimpysworld/nothing-but-nix@main
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: nezia
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - run: nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel.outPath"
