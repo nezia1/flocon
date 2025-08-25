@@ -12,6 +12,7 @@ _: {
         inputs'.agenix.packages.default
         pkgs.npins
         self'.formatter
+        pkgs.act
       ];
 
       shellHook = config.pre-commit.installationScript;
