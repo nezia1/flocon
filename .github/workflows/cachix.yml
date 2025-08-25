@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "parts/npins/sources.json"
-      - "parts/npins/default.nix"
-      - "flake.lock"
-
 jobs:
   build:
     runs-on: ubuntu-latest
