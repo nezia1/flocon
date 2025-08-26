@@ -24,4 +24,4 @@ jobs:
         with:
           name: nezia
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel.outPath"
+      - run: nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
