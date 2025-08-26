@@ -18,6 +18,8 @@ jobs:
       - uses: wimpysworld/nothing-but-nix@main
       - uses: cachix/install-nix-action@v31
         with:
+          extra_nix_config: |-
+            accept-flake-config = true
           github_access_token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Cachix
         uses: cachix/cachix-action@v15
