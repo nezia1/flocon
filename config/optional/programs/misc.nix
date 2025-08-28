@@ -22,7 +22,7 @@ in {
 
         inherit
           (pkgs)
-          cinny-desktop
+          element-desktop
           devenv
           entr
           fastfetch
