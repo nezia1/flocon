@@ -1,9 +1,7 @@
 _: {
-  services.logind = {
-    lidSwitch = "suspend";
-    extraConfig = ''
-      HandlePowerKey=ignore
-      HandlePowerKeyLongPress=poweroff
-    '';
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "poweroff";
   };
 }
