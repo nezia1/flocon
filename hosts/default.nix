@@ -52,6 +52,7 @@
     ../config/optional/services/flatpak.nix
     ../config/optional/services/keyd.nix
     ../config/optional/services/kmscon.nix
+    ../config/optional/services/kwallet.nix
     ../config/optional/services/location.nix
     ../config/optional/services/pipewire.nix
     ../config/optional/services/ssh.nix
