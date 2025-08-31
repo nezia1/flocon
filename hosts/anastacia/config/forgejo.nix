@@ -53,10 +53,8 @@ in {
           REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,::1/128";
         };
 
-        actions = {
-          ENABLED = true;
-          DEFAULT_ACTIONS_URL = "https://code.forgejo.org";
-        };
+        # TODO: setup runner
+        actions.ENABLED = false;
       };
     };
 
