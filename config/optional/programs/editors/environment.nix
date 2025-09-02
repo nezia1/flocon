@@ -9,7 +9,7 @@ _: {
     '';
     hj = {
       environment.sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = "hx";
       };
     };
   };
