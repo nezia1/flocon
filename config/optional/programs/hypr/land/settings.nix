@@ -55,6 +55,10 @@ in {
   '';
 
   hj = {
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+    };
+
     packages = [
       inputs'.hyprwm-contrib.packages.grimblast
     ];
