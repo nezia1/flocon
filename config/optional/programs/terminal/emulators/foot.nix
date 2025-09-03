@@ -39,11 +39,6 @@ in {
             include = mkIf styleCfg.enable "${footTheme}";
           };
 
-          colors = {
-            alpha = 0.8;
-            alpha-mode = "matching";
-          };
-
           cursor = {
             style = "beam";
             blink = true;
