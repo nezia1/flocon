@@ -149,6 +149,12 @@
       };
     };
 
+    slippi-nix = {
+      url = "github:lytedev/slippi-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

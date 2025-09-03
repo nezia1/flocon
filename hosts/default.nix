@@ -100,6 +100,7 @@ in {
         ++ [
           ./solaire
           ../config/optional/programs/games.nix
+          ../config/optional/hardware/gamecube.nix
         ];
     };
 
