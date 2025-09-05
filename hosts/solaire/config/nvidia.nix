@@ -5,7 +5,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   programs.coolercontrol.nvidiaSupport = true;
