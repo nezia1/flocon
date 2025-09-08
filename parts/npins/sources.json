@@ -26,9 +26,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "71e01c1766fdb4f4f3c86ea24054074c9f5f5647",
-      "url": "https://github.com/imbypass/base16-discord/archive/71e01c1766fdb4f4f3c86ea24054074c9f5f5647.tar.gz",
-      "hash": "1pngfzppp2zjhfrswwdraw1qb773mbqlz9wl6y4938lj49gggzba"
+      "revision": "8c28a59804fd48b0d359cd7f816656c5dc031626",
+      "url": "https://github.com/imbypass/base16-discord/archive/8c28a59804fd48b0d359cd7f816656c5dc031626.tar.gz",
+      "hash": "1p70fy8wsqh0nynikppxxw3fgb17j85hs9dpjgnp3bma15ffbxcg"
     },
     "base16-helix": {
       "type": "Git",
@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "ed7652db5056c3658afbc11c04e164e77da18650",
+      "revision": "1d9ac3f611f1b81983b095a2f96e36dba4d24da9",
       "url": null,
-      "hash": "0sqf3x9a8hj5j1zsf4absfi2hkcz44n8s2an89ph52rgp7kgdrhk"
+      "hash": "0cbv6diaq19hd118cpyvld85m78ycm8h3dpii91alzh97c9kx82y"
     },
     "tinted-terminal": {
       "type": "Git",
