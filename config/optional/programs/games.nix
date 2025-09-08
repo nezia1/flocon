@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   hj = {
     packages = [
       pkgs.mangohud
       pkgs.bolt-launcher
-      pkgs.lutris
       pkgs.qbittorrent
+      inputs'.nur.legacyPackages.repos.rogreat.faugus-launcher
+      pkgs.wowup-cf
     ];
   };
 
