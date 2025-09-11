@@ -129,6 +129,11 @@ in {
               language-servers = ["rust-analyzer"];
               auto-format = true;
             }
+            {
+              name = "qml";
+              language-servers = ["qmlls"];
+              auto-format = true;
+            }
           ];
           language-server = {
             nixd.args = [
@@ -149,6 +154,9 @@ in {
                 check.command = "clippy";
                 completion.callable.snippets = "add_parentheses";
               };
+            };
+            qmlls = {
+              command = "${pkgs.qt6.qtdeclarative}/bin/qmlls";
             };
           };
         };
