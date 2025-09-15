@@ -3,28 +3,55 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.writers) writeTOML;
   inherit (config.local.style.gtk) iconTheme;
+  ini = pkgs.formats.ini {};
+  toml = pkgs.formats.toml {};
 in {
-  # FIXME: seems to stop when another instance is launched
-  # hm.systemd.user.services.walker = {
-  #   Unit.Description = "Walker - Application Runner";
-  #   Install.WantedBy = ["graphical-session.target"];
-  #   Service = {
-  #     ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
-  #     Restart = "on-failure";
-  #   };
-  # };
-
   hj = {
-    packages = [pkgs.walker];
-    files = {
-      ".config/walker/config.toml".source = writeTOML "walker-config.toml" {
+    packages = [
+      pkgs.walker
+      pkgs.networkmanager_dmenu
+    ];
+    xdg.config.files = {
+      "networkmanager-dmenu/config.ini".source = ini.generate "networkmanager-dmenu.ini" {
+        dmenu = {
+          dmenu_command = "walker";
+          active_chars = "==";
+          highlight = true;
+          highlight_bold = true;
+          compact = false;
+          wifi_icons = " 󰤯󰤟󰤢󰤥󰤨";
+          format = "{name:<{max_len_name}s}  {sec:<{max_len_sec}s} {icon:>4}";
+          list_saved = false;
+          prompt = "Networks";
+        };
+
+        dmenu_passphrase = {
+          obscure = false;
+          obscure_color = "#222222";
+        };
+
+        pinentry = {
+          description = "Get network password";
+          prompt = "Password: ";
+        };
+
+        editor = {
+          terminal = "footclient";
+          gui_if_available = true;
+          gui = "nm-connection-editor";
+        };
+
+        nmdm = {
+          rescan_delay = 5;
+        };
+      };
+      "walker/config.toml".source = toml.generate "walker-config.toml" {
         app_launch_prefix = "uwsm app -- ";
         theme = "gtk";
       };
-      ".config/walker/themes/gtk.css".source = ./gtk.css;
-      ".config/walker/themes/gtk.toml".source = writeTOML "walker-gtk-config.toml" {
+      "walker/themes/gtk.css".source = ./gtk.css;
+      "walker/themes/gtk.toml".source = toml.generate "walker-gtk-config.toml" {
         ui.window.box = {
           max_height = 256;
           min_width = 512;
