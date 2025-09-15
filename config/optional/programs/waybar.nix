@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs',
   ...
 }: let
   inherit (builtins) toJSON;
@@ -144,7 +143,7 @@ in {
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
-          on-click = "${getExe inputs'.iwmenu.packages.default} -i xdg -l walker";
+          on-click = "networkmanager_dmenu";
         };
 
         "hyprland/window" = {
