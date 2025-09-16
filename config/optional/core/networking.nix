@@ -5,15 +5,9 @@
     networkmanager = {
       enable = true;
       wifi = {
-        backend = "iwd";
         powersave = false;
       };
       dns = "systemd-resolved";
-    };
-    wireless.iwd.settings = {
-      Network.EnableIPv6 = true;
-      Settings.AutoConnect = true;
-      General.AddressRandomization = "network";
     };
   };
   services.resolved = {
