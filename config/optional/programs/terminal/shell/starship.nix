@@ -45,7 +45,7 @@ in {
             "󰋞 /Pictures" = " ";
             "󰋞 /Videos" = " ";
 
-            "󰋞 /Projects" = "󱌢 ";
+            "󰈙 /Projects" = "󱌢 ";
 
             "󰋞 /.config" = " ";
           };
