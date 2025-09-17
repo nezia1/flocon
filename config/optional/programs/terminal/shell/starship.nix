@@ -9,6 +9,7 @@ in {
         zsh.enable = true;
       };
       settings = {
+        command_timeout = 2000; # this helps with bigger repos such as nixpkgs
         character = {
           success_symbol = "";
           error_symbol = "";
