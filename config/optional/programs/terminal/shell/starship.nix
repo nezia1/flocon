@@ -7,6 +7,7 @@ in {
       enable = true;
       integrations = {
         zsh.enable = true;
+        fish.enable = true;
       };
       settings = {
         command_timeout = 2000; # this helps with bigger repos such as nixpkgs
