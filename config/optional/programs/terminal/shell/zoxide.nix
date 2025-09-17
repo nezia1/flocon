@@ -1,7 +1,8 @@
-{pkgs, ...}: {
-  config = {
-    hj = {
-      packages = [pkgs.zoxide];
+{
+  hj.rum.programs.zoxide = {
+    enable = true;
+    integrations = {
+      zsh.enable = true;
     };
   };
 }
