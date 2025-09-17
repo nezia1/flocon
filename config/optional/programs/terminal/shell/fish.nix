@@ -33,6 +33,7 @@
   zoxideCfg = config.hj.rum.programs.zoxide;
 in {
   hj.packages = [rbld];
+  programs.fish.enable = true;
   hj.rum.programs.fish = {
     enable = true;
     aliases = {
