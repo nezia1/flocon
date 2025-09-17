@@ -37,8 +37,6 @@ in {
   hj.rum.programs.fish = {
     enable = true;
     aliases = {
-      ls = "lsd";
-
       lg = "lazygit";
       g = "git";
       gs = "git status";
@@ -68,6 +66,9 @@ in {
         # cannot use the abbrs option because of --position anywhere
         abbr -a --position anywhere -- --help '--help | bat -plhelp'
         abbr -a --position anywhere -- -h '-h | bat -plhelp'
+
+        # ls is already defined in fish, so we cannot use earlyConfigFiles as it will get overriden
+        alias ls lsd
       '';
     earlyConfigFiles = {
       theme =
