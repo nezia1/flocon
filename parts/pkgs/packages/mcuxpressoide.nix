@@ -23,6 +23,7 @@
     dontBuild = true;
     sourceRoot = "src";
 
+    outputs = ["out" "lib"];
     unpackPhase = ''
       # unpack tarball.
       mkdir -p deb src
@@ -38,48 +39,11 @@
     '';
 
     installPhase = ''
-      mkdir -p $out
-      cp -r etc lib opt usr $out
+      mkdir -p $out $lib
+      cp -r etc opt usr $out
+      cp -r lib $lib
       ln -s $out/usr/local/LinkServer_24.12.21 $out/usr/local/LinkServer
     '';
   };
-
-  mcuxpressoFhs = buildFHSEnv {
-    name = "mcuxpresso";
-    targetPkgs = pkgs:
-      (builtins.attrValues {
-        inherit
-          (pkgs)
-          gtk3
-          glib
-          freetype
-          fontconfig
-          zlib
-          ncurses5
-          dfu-util
-          ;
-
-        inherit
-          (pkgs.xorg)
-          libX11
-          libXtst
-          libXrender
-          libXcomposite
-          libXi
-          libXrandr
-          libXcursor
-          ;
-      })
-      ++ [
-        (pkgs.python3.withPackages (p: [
-          p.tkinter
-        ]))
-      ];
-
-    extraInstallCommands = ''
-      ln -s ${mcuxpresso}/lib $out/lib
-    '';
-    runScript = "${mcuxpresso}/usr/local/mcuxpressoide-${version}/ide/mcuxpressoide";
-  };
 in
-  mcuxpressoFhs
+  mcuxpresso
