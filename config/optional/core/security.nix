@@ -1,10 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.meta) getExe';
-in {
+{pkgs, ...}: {
   security = {
     polkit = {
       enable = true;
@@ -31,12 +25,12 @@ in {
     description = "polkit-kde-authentication-agent-1";
 
     wantedBy = ["graphical-session.target"];
-    wants = ["graphical-session.target"];
     after = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
 
     serviceConfig = {
       Type = "simple";
-      ExecStart = getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-authentication-agent-1";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
