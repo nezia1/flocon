@@ -30,6 +30,7 @@
         rust-analyzer
         rustfmt
         clippy
+        clang-tools
         ;
     };
   in
@@ -134,6 +135,12 @@ in {
               language-servers = ["qmlls"];
               auto-format = true;
             }
+            {
+              name = "c";
+              language-servers = ["clangd"];
+              formatter.command = "clang-format";
+              auto-format = true;
+            }
           ];
           language-server = {
             nixd.args = [
@@ -158,6 +165,9 @@ in {
             qmlls = {
               command = "${pkgs.qt6.qtdeclarative}/bin/qmlls";
             };
+            clangd = {
+              command = "clangd";
+            };
           };
         };
 
@@ -175,6 +185,17 @@ in {
         	zellij action toggle-floating-panes
         fi
       '';
+
+      "clangd/config.yaml".source = pkgs.writers.writeYAML "clangd-config.yaml" {
+        CompileFlags = {
+          Add = [
+            "-Wall"
+            "-Wextra"
+            "-Wpedantic"
+            "-std=c99"
+          ];
+        };
+      };
     };
   };
 }
