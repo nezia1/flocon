@@ -13,6 +13,7 @@
           file
           ripgrep
           yazi
+          distrobox
           ;
       };
     };
