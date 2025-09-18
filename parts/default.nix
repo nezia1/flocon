@@ -1,6 +1,7 @@
 {
   imports = [
     ./pkgs
+    ./templates
 
     ./args.nix
     ./deployments.nix
