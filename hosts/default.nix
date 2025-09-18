@@ -36,6 +36,7 @@
     ../config/optional/hardware/mcuxpresso.nix
     ../config/optional/hardware/printing.nix
     ../config/optional/hardware/graphics.nix
+    ../config/optional/hardware/virtualization.nix
 
     ../config/optional/programs/editors
     ../config/optional/programs/terminal
