@@ -28,6 +28,7 @@ in {
       "video"
       "wheel"
       "plugdev"
+      "libvirtd"
     ];
   };
 
