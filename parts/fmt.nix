@@ -8,7 +8,10 @@
       flakeCheck = false; # handled by git-hooks.nix
       programs = {
         alejandra.enable = true;
-        deadnix.enable = true;
+        deadnix = {
+          enable = true;
+          no-lambda-pattern-names = true;
+        };
         deno.enable = true;
       };
 
