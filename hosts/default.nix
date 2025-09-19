@@ -57,6 +57,7 @@
     ../config/optional/services/location.nix
     ../config/optional/services/pipewire.nix
     ../config/optional/services/ssh.nix
+    ../config/optional/services/syncthing.nix
 
     ../config/optional/theming
   ];
