@@ -1,9 +1,17 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib.trivial) boolToString;
 in {
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
+    overrideDevices = true;
+    overrideFolders = true;
+    dataDir = config.hj.directory;
+    user = config.local.vars.system.username;
     settings = {
       devices = {
         "solaire" = {id = "LKYQO62-4ZVQEDL-45VPUCQ-6MIGIMT-SXBWVUR-FAQR25U-J7XYCGX-ZITOZQY";};
