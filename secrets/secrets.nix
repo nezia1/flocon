@@ -6,4 +6,9 @@ in {
   "searx-env-file.age".publicKeys = [anastacia];
   "firefox-sync.age".publicKeys = [anastacia];
   "nix-access-tokens-github.age".publicKeys = [anastacia vamos solaire];
+
+  "syncthing-solaire-key.age".publicKeys = [solaire];
+  "syncthing-solaire-cert.age".publicKeys = [solaire];
+  "syncthing-vamos-key.age".publicKeys = [vamos];
+  "syncthing-vamos-cert.age".publicKeys = [vamos];
 }
