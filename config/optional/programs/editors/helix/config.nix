@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   config,
   pkgs,
@@ -46,6 +47,7 @@
       '';
     };
 
+  flakeOpts = "(builtins.getFlake \"${self}\").nixosConfigurations.${config.networking.hostName}.options";
   styleCfg = config.local.style;
 in {
   hj = {
@@ -145,13 +147,17 @@ in {
             {
               name = "java";
               language-servers = ["jdtls"];
+              auto-format = true;
             }
           ];
           language-server = {
-            nixd.args = [
-              "--semantic-tokens"
-              "--inlay-hints"
-            ];
+            nixd = {
+              args = [
+                "--semantic-tokens"
+                "--inlay-hints"
+                "--nixos-options-expr=${flakeOpts}"
+              ];
+            };
             harper-ls = {
               command = "harper-ls";
               args = ["--stdio"];
