@@ -19,6 +19,12 @@ in {
           devices = ["solaire" "vamos"];
         };
       };
+      ignores = [
+        ".git"
+        ".jj"
+        "node_modules"
+        ".direnv"
+      ];
     };
   };
 
