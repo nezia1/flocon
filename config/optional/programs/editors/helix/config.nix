@@ -31,6 +31,7 @@
         rustfmt
         clippy
         clang-tools
+        jdt-language-server
         ;
     };
   in
@@ -141,6 +142,10 @@ in {
               formatter.command = "clang-format";
               auto-format = true;
             }
+            {
+              name = "java";
+              language-servers = ["jdtls"];
+            }
           ];
           language-server = {
             nixd.args = [
@@ -167,6 +172,12 @@ in {
             };
             clangd = {
               command = "clangd";
+            };
+            jdtls = {
+              command = "jdtls";
+              args = [
+                "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+              ];
             };
           };
         };
