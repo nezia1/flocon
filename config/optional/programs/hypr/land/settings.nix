@@ -79,7 +79,6 @@ in {
           monitor = map toMonitorConf config.local.monitors;
 
           workspace = [
-            "special:terminal, on-created-empty:ghostty"
             "special:file_manager_gui, on-created-empty:pcmanfm-qt"
 
             "special:calculator_gui, on-created-empty:qalculate-qt"
