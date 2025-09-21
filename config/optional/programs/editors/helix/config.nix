@@ -209,7 +209,6 @@ in {
             "-Wall"
             "-Wextra"
             "-Wpedantic"
-            "-std=c99"
           ];
         };
       };
