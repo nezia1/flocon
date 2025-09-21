@@ -1,9 +1,24 @@
 {
+  pkgs,
   config,
   lib,
   ...
 }: let
   inherit (lib.trivial) boolToString;
+  inherit (builtins) concatStringsSep;
+  inherit (lib.attrsets) mapAttrs' nameValuePair;
+
+  stignore = let
+    ignores = [
+      "(?d)**/target"
+      "(?d)**/node_modules"
+      "(?d)**/site-packages"
+      "**/.git"
+      "**/.jj"
+      "**/*.direnv"
+    ];
+  in
+    pkgs.writeText "stignore-shared" (concatStringsSep "\n" ignores);
 in {
   services.syncthing = {
     enable = true;
@@ -27,14 +42,9 @@ in {
           devices = ["solaire" "vamos"];
         };
       };
-      ignores = [
-        ".git"
-        ".jj"
-        "node_modules"
-        ".direnv"
-      ];
     };
   };
 
+  hj.files = mapAttrs' (n: _: nameValuePair "${n}/.stignore" {source = stignore;}) config.services.syncthing.settings.folders;
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = boolToString true;
 }
