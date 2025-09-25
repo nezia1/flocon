@@ -30,6 +30,7 @@ in {
         package = foot;
         settings = {
           main = {
+            shell = "zellij -l welcome";
             term = "xterm-256color";
             font = concatStringsSep "," ["monospace:size=14"];
             bold-text-in-bright = "no";
