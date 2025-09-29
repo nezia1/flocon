@@ -21,5 +21,6 @@ in {
   environment.systemPackages = [
     gns3-gui
     pkgs.inetutils
+    pkgs.wireshark
   ];
 }
