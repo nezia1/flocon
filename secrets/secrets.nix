@@ -11,4 +11,5 @@ in {
   "syncthing-solaire-cert.age".publicKeys = [solaire];
   "syncthing-vamos-key.age".publicKeys = [vamos];
   "syncthing-vamos-cert.age".publicKeys = [vamos];
+  "attic-env.age".publicKeys = [anastacia];
 }
