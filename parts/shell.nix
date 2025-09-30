@@ -13,6 +13,7 @@ _: {
         pkgs.npins
         self'.formatter
         pkgs.act
+        pkgs.attic-client
       ];
 
       shellHook = config.pre-commit.installationScript;
