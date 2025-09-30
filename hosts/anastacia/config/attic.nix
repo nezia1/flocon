@@ -24,6 +24,7 @@ in {
 
       settings = {
         listen = "[::]:${port}";
+        api-endpoint = "https://attic.nezia.dev/";
 
         jwt = {};
 
@@ -36,7 +37,7 @@ in {
 
         storage = {
           type = "s3";
-          endpoint = "hel1.your-objectstorage.com";
+          endpoint = "https://hel1.your-objectstorage.com";
           region = "eu-central";
           bucket = "nezia";
         };
