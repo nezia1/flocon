@@ -30,6 +30,7 @@ in {
 
         database.url = "postgresql:///atticd?host=/run/postgresql";
 
+        compression.type = "zstd";
         garbage-collection = {
           interval = "12 hours";
           default-retention-period = "6 months";
