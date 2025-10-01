@@ -4,13 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_run:
-    workflows:
-      - "Update sources"
-    types:
-      - completed
-    branches:
-      - main
 jobs:
   build:
     runs-on: ubuntu-latest
