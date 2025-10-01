@@ -54,16 +54,11 @@ in {
           #
           # If 0, chunking is disabled entirely for newly-uploaded NARs.
           # If 1, all NARs are chunked.
-          nar-size-threshold = 64 * 1024; # 64 KiB
+          nar-size-threshold = 512 * 1024; # 512 KiB
 
-          # The preferred minimum size of a chunk, in bytes
-          min-size = 16 * 1024; # 16 KiB
-
-          # The preferred average size of a chunk, in bytes
-          avg-size = 64 * 1024; # 64 KiB
-
-          # The preferred maximum size of a chunk, in bytes
-          max-size = 256 * 1024; # 256 KiB
+          min-size = 256 * 1024; # 256 KiB
+          avg-size = 4 * 1024 * 1024; # 4 MiB
+          max-size = 16 * 1024 * 1024; # 16 MiB
         };
       };
     };
