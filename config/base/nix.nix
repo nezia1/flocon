@@ -47,8 +47,6 @@ in {
       allowUnfree = true;
       permittedInsecurePackages = [
         "libsoup-2.74.3"
-        # stremio
-        "qtwebengine-5.15.19"
       ];
       segger-jlink.acceptLicense = true;
     };

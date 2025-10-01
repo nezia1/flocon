@@ -3,9 +3,10 @@
     hj.packages = builtins.attrValues {
       inherit
         (pkgs)
-        spotify
-        stremio
+        # TODO: Insecure, wait for stremio-linux-shell or use the flatpak
+        # stremio
         celluloid
+        spotify
         gthumb
         papers
         ;
