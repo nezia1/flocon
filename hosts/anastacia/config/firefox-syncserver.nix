@@ -6,8 +6,10 @@
   inherit (builtins) toString;
 in {
   age.secrets.firefox-sync.file = ../../../secrets/firefox-sync.age;
+
   services = {
     mysql.package = pkgs.mariadb;
+
     firefox-syncserver = {
       enable = true;
       secrets = config.age.secrets.firefox-sync.path;
@@ -31,5 +33,13 @@ in {
         }
       '';
     };
+  };
+
+  users = {
+    users.firefox-syncserver = {
+      group = "firefox-syncserver";
+      isSystemUser = true;
+    };
+    groups.firefox-syncserver.members = ["firefox-syncserver"];
   };
 }
