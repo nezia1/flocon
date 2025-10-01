@@ -38,7 +38,7 @@ in {
 
         storage = {
           type = "s3";
-          endpoint = "https://hel1.your-objectstorage.com";
+          endpoint = "https://nbg1.your-objectstorage.com";
           region = "eu-central";
           bucket = "nezia";
         };
