@@ -77,6 +77,11 @@ in {
         }
       ];
       ensureDatabases = ["atticd"];
+      # Allows a local system user to authenticate only if their PostgreSQL username matches their system (Unix) username
+      authentication = lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     peer
+      '';
     };
 
     caddy.virtualHosts."attic.nezia.dev".extraConfig = ''
