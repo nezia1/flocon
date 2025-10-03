@@ -9,7 +9,7 @@
 
     nodes = {
       anastacia = {
-        hostname = "78.47.146.254";
+        hostname = "anastacia.tailc8ef51.ts.net";
         profiles.system = {
           sshUser = "root";
           path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos inputs.self.nixosConfigurations.anastacia;
