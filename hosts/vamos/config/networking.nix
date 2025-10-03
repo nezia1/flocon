@@ -17,7 +17,6 @@ in {
   '';
 
   # School related
-  services.tailscale.enable = true;
   environment.systemPackages = [
     gns3-gui
     pkgs.inetutils
