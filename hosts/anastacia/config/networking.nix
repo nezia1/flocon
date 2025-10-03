@@ -3,6 +3,7 @@
     hostName = "anastacia";
     useNetworkd = true;
     useDHCP = false;
+    enableIPv6 = true;
 
     nameservers = [
       "100.100.100.100"
