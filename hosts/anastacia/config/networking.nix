@@ -1,5 +1,6 @@
 {
   networking = {
+    hostName = "anastacia";
     useNetworkd = true;
     useDHCP = false;
 
