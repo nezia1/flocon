@@ -58,6 +58,7 @@
     ../config/optional/services/pipewire.nix
     ../config/optional/services/ssh.nix
     ../config/optional/services/syncthing.nix
+    ../config/optional/services/tailscale.nix
 
     ../config/optional/theming
   ];
@@ -108,6 +109,7 @@ in {
     anastacia = mkNixosSystem {
       system = "x86_64-linux";
       modules = [
+        inputs.agenix.nixosModules.default
         ../modules/internal # since we do not want to be using base for the server, but we still want the local options
         ./anastacia
       ];
