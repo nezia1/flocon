@@ -6,6 +6,6 @@
 
     allowedUDPPorts = [config.services.tailscale.port];
 
-    allowedTCPPorts = [22];
+    allowedTCPPorts = [22 80 443];
   };
 }
