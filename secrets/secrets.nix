@@ -18,4 +18,5 @@ in {
 
   "tailscale-auth-anastacia.age".publicKeys = [anastacia];
   "tailscale-auth.age".publicKeys = [vamos solaire];
+  "porkbun.age".publicKeys = [anastacia];
 }
