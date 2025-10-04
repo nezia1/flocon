@@ -18,12 +18,6 @@
       lowLatency.enable = true;
 
       extraConfig.pipewire = {
-        "80-default-sink" = {
-          "context.properties" = {
-            "default.audio.sink" = "effect_input.normalizer";
-          };
-        };
-
         "60-normalizer" = {
           "context.modules" = [
             {
@@ -71,7 +65,7 @@
                     "FL"
                     "FR"
                   ];
-                  "node.target" = "alsa_output.target";
+                  "node.target" = "@DEFAULT_SINK@";
                 };
               };
             }
