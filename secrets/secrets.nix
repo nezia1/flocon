@@ -20,4 +20,5 @@ in {
   "tailscale-auth.age".publicKeys = [vamos solaire];
   "porkbun.age".publicKeys = [anastacia];
   "harmonia.age".publicKeys = [anastacia];
+  "forgejo-runner-token.age".publicKeys = [anastacia];
 }
