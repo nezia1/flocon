@@ -9,6 +9,8 @@ in {
     forgejo-runner-token.file = ../../../../secrets/forgejo-runner-token.age;
   };
 
+  nix.settings.trusted-users = [config.users.users.gitea-runner.name];
+
   users = {
     groups.gitea-runner = {};
     users.gitea-runner = {
