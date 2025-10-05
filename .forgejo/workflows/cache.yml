@@ -21,10 +21,4 @@ jobs:
           extra_nix_config: |-
             accept-flake-config = true
           github_access_token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Attic
-        uses: ryanccn/attic-action@v0
-        with:
-          endpoint: ${{ vars.ATTIC_ENDPOINT }}
-          cache: ${{ vars.ATTIC_CACHE }}
-          token: ${{ secrets.ATTIC_TOKEN }}
       - run: nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
