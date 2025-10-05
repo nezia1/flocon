@@ -1,19 +1,24 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  caddy = pkgs.caddy.withPlugins {
+    plugins = [
+      "github.com/caddy-dns/porkbun@v0.3.1"
+    ];
+    hash = "sha256-PUHu+KPywdJMuPLHPtQhUaw3Cv1pED5XQ1MOzlT/6h4=";
+  };
+in {
+  age.secrets = {
+    porkbun.file = ../../../secrets/porkbun.age;
+  };
   services = {
     caddy = {
       enable = true;
-      package = pkgs.caddy;
+      package = caddy;
+      email = "anthony@nezia.dev";
     };
   };
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [80 443];
-
-    extraForwardRules = ''
-      ip6 saddr { ::/0 } accept
-    '';
-  };
-
-  networking.enableIPv6 = true;
+  systemd.services.caddy.serviceConfig.EnvironmentFile = config.age.secrets.porkbun.path;
 }

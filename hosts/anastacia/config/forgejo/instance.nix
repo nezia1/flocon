@@ -31,7 +31,8 @@ in {
         server = {
           DOMAIN = "git.nezia.dev";
           ROOT_URL = "https://${srv.DOMAIN}/";
-          HTTP_ADDR = "localhost";
+          HTTP_ADDR = "::1";
+          HTTP_PORT = 3000;
         };
         service = {
           DISABLE_REGISTRATION = true;
@@ -53,25 +54,22 @@ in {
           REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,::1/128";
         };
 
-        # TODO: setup runner
-        actions.ENABLED = false;
-      };
-    };
-
-    anubis.instances.forgejo = {
-      settings = {
-        TARGET = "http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT}";
-        BIND = ":60927";
-        BIND_NETWORK = "tcp";
-        METRICS_BIND = "127.0.0.1:29397";
-        METRICS_BIND_NETWORK = "tcp";
+        actions.ENABLED = true;
       };
     };
 
     caddy = {
       enable = true;
-      virtualHosts."git.nezia.dev".extraConfig = ''
-        reverse_proxy http://localhost${config.services.anubis.instances.forgejo.settings.BIND} {
+      virtualHosts."${srv.DOMAIN}".extraConfig = ''
+        tls {
+          resolvers 1.1.1.1
+          dns porkbun {
+            api_key {$PORKBUN_API_KEY}
+            api_secret_key {$PORKBUN_SECRET_KEY}
+          }
+        }
+
+        reverse_proxy http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT} {
           header_up X-Real-Ip {remote_host}
         }
       '';

@@ -56,9 +56,4 @@ in {
       };
     };
   };
-
-  # Open required ports
-  networking.firewall = {
-    allowedTCPPorts = [80 443]; # For Caddy
-  };
 }
