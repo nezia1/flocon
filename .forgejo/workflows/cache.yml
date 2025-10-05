@@ -15,4 +15,4 @@ jobs:
           - anastacia
     steps:
       - uses: actions/checkout@v4
-      - run: nix build --extra-experimental-features nix-command --extra-experimental-features flakes ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
+      - run: nix build --extra-experimental-features nix-command --extra-experimental-features flakes --accept-flake-config ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
