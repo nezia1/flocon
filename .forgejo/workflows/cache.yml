@@ -15,8 +15,8 @@ jobs:
           - anastacia
     steps:
       - uses: actions/checkout@v4
-      - uses: wimpysworld/nothing-but-nix@main
-      - uses: cachix/install-nix-action@v31
+      - uses: https://github.com/wimpysworld/nothing-but-nix@main
+      - uses: https://github.com/cachix/install-nix-action@v31
         with:
           extra_nix_config: |-
             accept-flake-config = true
