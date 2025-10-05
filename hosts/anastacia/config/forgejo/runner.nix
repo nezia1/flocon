@@ -38,10 +38,10 @@ in {
         # NOTE: changing (i.e adding or removing) labels causes your old registration token to expire
         # make sure your labels are final before deploying
         labels = [
-          "ubuntu-latest:docker://node:16-bullseye"
-          "ubuntu-22.04:docker://node:16-bullseye"
-          "ubuntu-20.04:docker://node:16-bullseye"
-          "ubuntu-18.04:docker://node:16-buster"
+          "ubuntu-latest:docker://ubuntu:latest"
+          "ubuntu-22.04:docker://ubuntu:22.04"
+          "ubuntu-20.04:docker://ubuntu:20.04"
+          "ubuntu-18.04:docker://ubuntu:18.04"
           "native:host"
         ];
 
