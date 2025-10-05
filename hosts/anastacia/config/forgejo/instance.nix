@@ -54,8 +54,7 @@ in {
           REVERSE_PROXY_TRUSTED_PROXIES = "127.0.0.1/8,::1/128";
         };
 
-        # TODO: setup runner
-        actions.ENABLED = false;
+        actions.ENABLED = true;
       };
     };
 
