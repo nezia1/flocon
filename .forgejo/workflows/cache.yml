@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: native
     strategy:
       matrix:
         host:
@@ -15,9 +15,4 @@ jobs:
           - anastacia
     steps:
       - uses: actions/checkout@v4
-      - uses: https://github.com/cachix/install-nix-action@v31
-        with:
-          extra_nix_config: |-
-            accept-flake-config = true
-          github_access_token: "${{ secrets.GITHUB_TOKEN }}"
       - run: nix build ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel"
