@@ -55,6 +55,7 @@ in {
           gnused
           nodejs
           wget
+          nix
 
           # useful to have in path
           jq
@@ -88,16 +89,6 @@ in {
             # Rebuild docker image(s) even if already present
             force_rebuild = false;
           };
-
-          # packages that'll be made available to the host
-          # when the runner is configured with a host execution label.
-          hostPackages = with pkgs; [
-            bash
-            curl
-            coreutils
-            wget
-            gitMinimal
-          ];
         };
       };
     };
