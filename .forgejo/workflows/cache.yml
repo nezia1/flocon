@@ -1,5 +1,4 @@
-name: Cache
-
+name: Cache hosts
 on:
   push:
     branches:
@@ -13,11 +12,16 @@ jobs:
           - solaire
           - vamos
           - anastacia
+    name: Build ${{ matrix.host }}
     steps:
-      - uses: actions/checkout@v4
-      - run: |
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
           nix build \
             --extra-experimental-features nix-command \
             --extra-experimental-features flakes \
-            --accept-flake-config ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
-            --out-link "$HOME/${{ matrix.host }}" # predictable location and separate hostnames to avoid gc
+            --accept-flake-config \
+            ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
+            --out-link "$HOME/${{ matrix.host }}"
