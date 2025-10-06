@@ -37,6 +37,7 @@ in {
           qalculate-qt
           resources
           simple-scan
+          tidal-hifi
           vscode-fhs
           wl-clipboard
           ;
