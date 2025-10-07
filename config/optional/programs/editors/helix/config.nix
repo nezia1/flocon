@@ -33,6 +33,7 @@
         clippy
         clang-tools
         jdt-language-server
+        fish-lsp
         ;
     };
   in
@@ -147,6 +148,11 @@ in {
             {
               name = "java";
               language-servers = ["jdtls"];
+              auto-format = true;
+            }
+            {
+              name = "fish";
+              language-servers = ["fish-lsp"];
               auto-format = true;
             }
           ];
