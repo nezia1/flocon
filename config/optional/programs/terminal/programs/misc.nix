@@ -14,6 +14,7 @@
           ripgrep
           yazi
           distrobox
+          tldr
           ;
       };
     };
