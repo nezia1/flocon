@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Update pinned sources
+    types: [completed]
 jobs:
   build:
     runs-on: native
