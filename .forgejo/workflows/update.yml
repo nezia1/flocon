@@ -1,0 +1,43 @@
+# Modified from https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/.github/workflows/npins.yml
+name: Update pinned sources
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 1 * *" # 4AM on 1st of every month
+    - cron: "0 0 15 * *" # 4AM on the 15th of every month
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.FORGEJO_TOKEN }}"
+
+      - name: "Install Nix"
+        uses: https://github.com/cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            backtrace = true
+            accept-flake-config = true
+          github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
+
+      - name: "Update flake inputs"
+        run: |
+          nix flake update
+
+      - name: "Update npins"
+        run: |
+          cd parts || exit
+          nix run nixpkgs#npins update
+
+      - name: "Commit Changes"
+        uses: https://github.com/stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_user_name: Forgejo Actions
+          commit_message: "[CI]: bump inputs"
+          commit_options: "--no-verify --signoff"
+          push_options: "--force"
