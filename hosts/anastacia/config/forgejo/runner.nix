@@ -39,11 +39,11 @@ in {
 
         # NOTE: changing (i.e adding or removing) labels causes your old registration token to expire
         # make sure your labels are final before deploying
+        # TODO: switch to ghcr.io/actions-oss/act/minimal/runner:ubuntu-{version} when https://github.com/actions-oss/act-docker-images/pull/2 gets merged
         labels = [
-          "ubuntu-latest:docker://ubuntu:latest"
-          "ubuntu-22.04:docker://ubuntu:22.04"
-          "ubuntu-20.04:docker://ubuntu:20.04"
-          "ubuntu-18.04:docker://ubuntu:18.04"
+          "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
+          "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:act-24.04"
+          "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
           "native:host"
         ];
 
