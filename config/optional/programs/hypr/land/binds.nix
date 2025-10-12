@@ -11,7 +11,7 @@ in {
   hj.rum.desktops.hyprland.settings = {
     "$mod" = "SUPER";
     bindr = [
-      "$mod, SUPER_L, exec, ${toggle "walker" false}"
+      "$mod, SUPER_L, exec, ${toggle "anyrun" false}"
     ];
     bind = [
       "$mod, Return, exec, ${run "footclient"}"
