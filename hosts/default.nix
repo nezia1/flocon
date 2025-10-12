@@ -42,6 +42,7 @@
     ../config/optional/programs/terminal
     ../config/optional/programs/comma.nix
     ../config/optional/programs/discord.nix
+    ../config/optional/programs/gns3.nix
     ../config/optional/programs/librewolf.nix
     ../config/optional/programs/media.nix
     ../config/optional/programs/misc.nix
@@ -66,8 +67,8 @@
   hyprland = [
     ../config/optional/services/brightness.nix
 
+    ../config/optional/programs/anyrun
     ../config/optional/programs/hypr
-    ../config/optional/programs/walker
     ../config/optional/programs/swaybg.nix
     ../config/optional/programs/waybar.nix
     ../config/optional/programs/wlogout.nix
