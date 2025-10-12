@@ -1,6 +1,6 @@
 {inputs', ...}: {
   hj = {
-    packages = [inputs'.anyrun.packages.anyrun-with-all-plugins];
+    packages = [inputs'.anyrun.packages.anyrun-provider inputs'.anyrun.packages.anyrun-with-all-plugins];
     files = {
       ".config/anyrun/config.ron".source = ./config.ron;
       ".config/anyrun/applications.ron".text = ''
@@ -12,7 +12,7 @@
           // to determine what terminal to use.
           terminal: Some(Terminal(
             // The main terminal command
-            command: "ghostty -e",
+            command: "footclient",
             // What arguments should be passed to the terminal process to run the command correctly
             // {} is replaced with the command in the desktop entry
             args: "app2unit -- {}",
@@ -39,7 +39,6 @@
           max_entries: 5,
         )
       '';
-      ".config/anyrun/style.css".source = ./style.css;
     };
   };
 }
