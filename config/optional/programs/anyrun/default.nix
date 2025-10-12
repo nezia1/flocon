@@ -1,6 +1,29 @@
-{inputs', ...}: {
+{
+  lib,
+  inputs',
+  ...
+}: let
+  inherit (lib.meta) getExe;
+  anyrun = inputs'.anyrun.packages.anyrun-with-all-plugins;
+  anyrunProvider = inputs'.anyrun.packages.anyrun-provider;
+in {
+  systemd.user.services.anyrun = {
+    description = "Anyrun daemon";
+    script = "${getExe anyrun} daemon";
+    partOf = ["graphical-session.target"];
+    after = ["graphical-session.target"];
+    wantedBy = ["graphical-session.target"];
+    serviceConfig = {
+      Restart = "on-failure";
+      KillMode = "process";
+    };
+  };
   hj = {
-    packages = [inputs'.anyrun.packages.anyrun-provider inputs'.anyrun.packages.anyrun-with-all-plugins];
+    packages = [
+      anyrun
+      anyrunProvider
+    ];
+
     files = {
       ".config/anyrun/config.ron".source = ./config.ron;
       ".config/anyrun/applications.ron".text = ''
