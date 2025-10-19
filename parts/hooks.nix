@@ -8,7 +8,7 @@
       settings.hooks = {
         treefmt = {
           enable = true;
-          package = config.treefmt.build.wrapper;
+          package = config.formatter;
         };
       };
     };

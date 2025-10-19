@@ -161,11 +161,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # dependency pinning to prevent duplicate versions
     flake-utils = {
       url = "github:numtide/flake-utils";
