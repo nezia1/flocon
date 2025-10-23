@@ -3,16 +3,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        host:
-          - solaire
-          - vamos
-          - anastacia
-    name: Build ${{ matrix.host }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

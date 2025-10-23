@@ -11,12 +11,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: "Checkout"
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           token: "${{ secrets.FORGEJO_TOKEN }}"
 
-      - name: "Install Nix"
+      - name: Install Nix
         uses: https://github.com/cachix/install-nix-action@v31
         with:
           extra_nix_config: |
@@ -25,16 +25,19 @@ jobs:
             accept-flake-config = true
           github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
 
-      - name: "Update flake inputs"
+      - name: Update flake inputs
         run: |
           nix flake update
 
-      - name: "Update npins"
+      - name: Update npins
         run: |
           cd parts || exit
           nix run nixpkgs#npins update
-
-      - name: "Commit Changes"
+      - name: Run checks on new version
+        uses: https://github.com/benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Run flake checks
+      - name: Commit changes
         uses: https://github.com/stefanzweifel/git-auto-commit-action@v5
         with:
           commit_user_name: Forgejo Actions
