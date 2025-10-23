@@ -1,11 +1,12 @@
 {config, ...}: {
   services.xserver.videoDrivers = ["nvidia"];
+
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   programs.coolercontrol.nvidiaSupport = true;
