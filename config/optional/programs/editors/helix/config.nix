@@ -34,6 +34,8 @@
         clang-tools
         jdt-language-server
         fish-lsp
+        tinymist
+        tombi
         ;
     };
   in
@@ -155,6 +157,16 @@ in {
               language-servers = ["fish-lsp"];
               auto-format = true;
             }
+            {
+              name = "typst";
+              auto-format = true;
+              language-servers = ["tinymist"];
+            }
+            {
+              name = "toml";
+              language-servers = ["tombi"];
+              auto-format = true;
+            }
           ];
           language-server = {
             nixd = {
@@ -190,6 +202,21 @@ in {
               args = [
                 "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
               ];
+            };
+            tinymist = {
+              command = "tinymist";
+              config = {
+                exportPdf = "onType";
+                outputPath = "$root/target/$dir/$name";
+                formatterMode = "typstyle";
+                formatterPrintWidth = 80;
+                preview.browsing.args = ["--data-plane-host=127.0.0.1:0" "--invert-colors=never" "--open"];
+                projectResolution = "lockDatabase";
+              };
+            };
+            tombi = {
+              command = "tombi";
+              args = ["lsp"];
             };
           };
         };
