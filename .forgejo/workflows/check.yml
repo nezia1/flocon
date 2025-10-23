@@ -18,7 +18,7 @@ jobs:
             experimental-features = nix-command flakes
             backtrace = true
             accept-flake-config = true
-            github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
+          github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
       - name: Run checks
         run: nix flake check
 
