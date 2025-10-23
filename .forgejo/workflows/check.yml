@@ -1,0 +1,30 @@
+name: Run flake checks
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host:
+          - solaire
+          - vamos
+          - anastacia
+    name: Build ${{ matrix.host }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: https://github.com/cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            backtrace = true
+            accept-flake-config = true
+            github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
+      - name: Run checks
+        run: nix flake check
+
+                                                                      
