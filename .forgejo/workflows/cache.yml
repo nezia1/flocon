@@ -1,12 +1,11 @@
 name: Cache hosts
 on:
-  push:
-    branches:
-      - main
   workflow_run:
     workflows:
       - Update pinned sources
+      - Run flake checks
     types: [completed]
+    
 jobs:
   build:
     runs-on: native
