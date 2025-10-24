@@ -10,14 +10,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Install Nix
-        uses: https://github.com/cachix/install-nix-action@v31
+      - name: Install Lix
+        uses: https://github.com/DeterminateSystems/nix-installer-action@v3
         with:
+          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
+          logger: pretty
+          github-token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
           extra_nix_config: |
             experimental-features = nix-command flakes
             accept-flake-config = true
             sandbox = true
-          github_access_token: ${{ secrets.ACTUAL_GITHUB_TOKEN }}
+
       - name: Run checks
         run: nix flake check
 
