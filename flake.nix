@@ -64,10 +64,7 @@
       };
     };
 
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hjem.follows = "hjem-rum/hjem";
 
     # FIXME: back to upstream when https://github.com/snugnug/hjem-rum/pull/140 gets merged
     hjem-rum = {
