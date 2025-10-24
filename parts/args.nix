@@ -1,5 +1,6 @@
 {inputs, ...}: {
   perSystem = {
+    config,
     system,
     pkgs,
     lib,
@@ -22,6 +23,7 @@
     in {
       inherit lib myLib;
       pins = pinnedSources;
+      pkgs = config.legacyPackages;
     };
   };
 }
