@@ -15,6 +15,8 @@
 
     # nix related
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # TODO: use regular forgejo package when https://nixpkgs-tracker.ocfox.me/?pr=454500 gets into unstable
+    nixpkgs-forgejo-13.url = "github:NixOS/nixpkgs/pull/453018/head";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 

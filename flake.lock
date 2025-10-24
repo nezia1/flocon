@@ -1077,6 +1077,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-forgejo-13": {
+      "locked": {
+        "lastModified": 1760728751,
+        "narHash": "sha256-L9WZoj52ciFFJoBvkcSTFnlM1u2PmXTx79cyHauYcbU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "28233c66015badf3a0843928f7db61a916c8ce06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/453018/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1754788789,
@@ -1300,6 +1316,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-forgejo-13": "nixpkgs-forgejo-13",
         "nur": "nur",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",

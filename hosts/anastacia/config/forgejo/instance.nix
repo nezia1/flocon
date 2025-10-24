@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs',
   ...
 }: let
   inherit (builtins) attrNames concatStringsSep map readDir;
@@ -20,7 +21,7 @@ in {
   services = {
     forgejo = {
       enable = true;
-      package = pkgs.forgejo;
+      package = inputs'.nixpkgs-forgejo-13.legacyPackages.forgejo;
       lfs.enable = true;
       database.type = "postgres";
       dump = {
