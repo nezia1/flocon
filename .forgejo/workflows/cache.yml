@@ -1,12 +1,21 @@
 name: Cache hosts
 on:
-  workflow_run:
-    workflows:
-      - Update pinned sources
-      - Run flake checks
-    types: [completed]
-    
+  push:
+    branches:
+      - main
 jobs:
+  check:
+    runs-on: native
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run checks
+        run: |
+          nix flake check \
+            --extra-experimental-features nix-command \
+            --extra-experimental-features flakes \
+            --accept-flake-config
+
   build:
     runs-on: native
     strategy:
@@ -16,10 +25,10 @@ jobs:
           - vamos
           - anastacia
     name: Build ${{ matrix.host }}
+    needs: [check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Build
         run: |
           nix build \
