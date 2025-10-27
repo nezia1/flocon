@@ -4,12 +4,12 @@
   ...
 }: {
   hj = {
-    packages = [
-      pkgs.mangohud
-      pkgs.bolt-launcher
-      pkgs.qbittorrent
+    packages = with pkgs; [
+      mangohud
+      bolt-launcher
+      qbittorrent
+      wowup-cf
       inputs'.nur.legacyPackages.repos.rogreat.faugus-launcher
-      pkgs.wowup-cf
     ];
   };
 
@@ -18,6 +18,7 @@
       enable = true;
       gamescopeSession.enable = true;
       extraCompatPackages = [pkgs.proton-ge-bin];
+      protontricks.enable = true;
     };
     gamemode.enable = true;
     gamescope = {
