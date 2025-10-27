@@ -160,6 +160,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    tidaluna.url = "github:inrixia/tidaluna";
     # dependency pinning to prevent duplicate versions
     flake-utils = {
       url = "github:numtide/flake-utils";

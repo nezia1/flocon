@@ -1,20 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   config = {
-    hj.packages = builtins.attrValues {
-      inherit
-        (pkgs)
-        # TODO: Insecure, wait for stremio-linux-shell or use the flatpak
-        # stremio
-        celluloid
-        spotify
-        gthumb
-        papers
-        ;
-
-      inherit
-        (pkgs.kdePackages)
-        arianna
-        ;
-    };
+    hj.packages = with pkgs; [
+      celluloid
+      gthumb
+      papers
+      kdePackages.arianna
+      inputs'.tidaluna.packages.default
+    ];
   };
 }
