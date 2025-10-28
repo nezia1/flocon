@@ -71,6 +71,10 @@ in {
       ", XF86PowerOff, exec, ${toggle "wlogout" true}"
     ];
 
+    bindl = [
+      ", switch:on:Lid Switch, exec, systemctl suspend"
+    ];
+
     bindel = [
       ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
