@@ -8,7 +8,7 @@ _: {
   }: {
     devShells.default = pkgs.mkShell {
       packages = [
-        inputs'.deploy-rs.packages.default
+        pkgs.deploy-rs.deploy-rs
         inputs'.agenix.packages.default
         pkgs.npins
         self'.formatter

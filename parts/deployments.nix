@@ -1,24 +1,24 @@
 {
   inputs,
   self,
+  withSystem,
   ...
 }: {
   flake.deploy = {
     autoRollback = true;
     magicRollback = true;
-
     nodes = {
-      anastacia = {
+      anastacia = withSystem "x86_64-linux" ({pkgs, ...}: {
         hostname = "anastacia.tailc8ef51.ts.net";
         profiles.system = {
           sshUser = "root";
-          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos inputs.self.nixosConfigurations.anastacia;
+          path = pkgs.deploy-rs.lib.activate.nixos inputs.self.nixosConfigurations.anastacia;
         };
-      };
+      });
     };
   };
 
-  perSystem = {system, ...}: {
-    checks = inputs.deploy-rs.lib.${system}.deployChecks self.deploy;
+  perSystem = {pkgs, ...}: {
+    checks = pkgs.deploy-rs.lib.deployChecks self.deploy;
   };
 }

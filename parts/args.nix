@@ -12,6 +12,9 @@
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
+      overlays = [
+        inputs.deploy-rs.overlays.default
+      ];
     };
 
     _module.args = let
