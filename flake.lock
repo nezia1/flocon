@@ -1172,11 +1172,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1761917293,
-        "narHash": "sha256-0XSGkqe2XR3YZbqpxbJnOnNDYRD5N/eLNyISKuFcdJI=",
+        "lastModified": 1761918852,
+        "narHash": "sha256-5YfjT2L9lr6r2KZ8Qorit+dDt4ctu7gVy7l4YqWn+BI=",
         "owner": "nezia1",
         "repo": "nezia.dev",
-        "rev": "a15ca48ebcd57079e8dbb4d6b0f5d325f925ac01",
+        "rev": "73d8deb3486d11ca89bac576459db369f308db6d",
         "type": "github"
       },
       "original": {
@@ -1553,11 +1553,11 @@
         "typst-fontawesome": "typst-fontawesome"
       },
       "locked": {
-        "lastModified": 1761914880,
-        "narHash": "sha256-c1YXw4H9XRDHSl5WWxcRmQ+UjEpNso9/Tu8b8p4YNUY=",
+        "lastModified": 1761918827,
+        "narHash": "sha256-JVSdXm4RuExu/6ks+u1gpNC3fvyggYqLpneUgpI03Es=",
         "owner": "nezia1",
         "repo": "resume",
-        "rev": "35a247c66c6097387d8fbe1d3d33864307693a7d",
+        "rev": "e4e1465e1f75a99ff6e53e27452054a6f652c67e",
         "type": "github"
       },
       "original": {
