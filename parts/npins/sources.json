@@ -26,9 +26,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "7822d5750db263241bcee8ae4a985d5c1b1a6879",
-      "url": "https://github.com/imbypass/base16-discord/archive/7822d5750db263241bcee8ae4a985d5c1b1a6879.tar.gz",
-      "hash": "09981smn73z30hy0cwmj33lhxaqpwj228z7cw28zx92p0djnbkv2"
+      "revision": "976bb54825e0478e88cff0d3a22c7986d83893ef",
+      "url": "https://github.com/imbypass/base16-discord/archive/976bb54825e0478e88cff0d3a22c7986d83893ef.tar.gz",
+      "hash": "1gqwx5879zwv86p6lp19yf3xzahhs439l9b8zqvq65a2ayd59mb3"
     },
     "base16-helix": {
       "type": "Git",
@@ -39,9 +39,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "27cf1e66e50abc622fb76a3019012dc07c678fac",
-      "url": "https://github.com/tinted-theming/base16-helix/archive/27cf1e66e50abc622fb76a3019012dc07c678fac.tar.gz",
-      "hash": "1hxsda3swj2qynh81k80vdz39grlm09il37v7g74gjqqb7w0q96h"
+      "revision": "d646af9b7d14bff08824538164af99d0c521b185",
+      "url": "https://github.com/tinted-theming/base16-helix/archive/d646af9b7d14bff08824538164af99d0c521b185.tar.gz",
+      "hash": "0g63rmk37n3anfvdpkgh9j54gyfssy17clz6fy3qpcr78qcrzkcv"
     },
     "base16-zellij": {
       "type": "Git",
@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "96605bf52fa3794ee2f13739831ad92229b4b3a3",
+      "revision": "5ae4955e834831b5680baaad7c4f974e407ffb7a",
       "url": null,
-      "hash": "0d5azji9sdnqqlzl7h1dqwj3pw9d8510xbz0ks74258vlspr2jbd"
+      "hash": "1vcck69ph3pw5zzbmlpbw804x9dxccy6f74pr14m3x5ckkr73hki"
     },
     "tinted-terminal": {
       "type": "Git",
