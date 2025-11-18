@@ -26,8 +26,8 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "976bb54825e0478e88cff0d3a22c7986d83893ef",
-      "url": "https://github.com/imbypass/base16-discord/archive/976bb54825e0478e88cff0d3a22c7986d83893ef.tar.gz",
+      "revision": "33bc6342a293338d1ed1e355924b42d85d6bb9b9",
+      "url": "https://github.com/imbypass/base16-discord/archive/33bc6342a293338d1ed1e355924b42d85d6bb9b9.tar.gz",
       "hash": "1gqwx5879zwv86p6lp19yf3xzahhs439l9b8zqvq65a2ayd59mb3"
     },
     "base16-helix": {
@@ -64,9 +64,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "5ae4955e834831b5680baaad7c4f974e407ffb7a",
+      "revision": "c9abab08079a0b6eeb4f3fc9beb80eb5fd621730",
       "url": null,
-      "hash": "1vcck69ph3pw5zzbmlpbw804x9dxccy6f74pr14m3x5ckkr73hki"
+      "hash": "0ar0rmn2k62wcay5ns8ymc76c54zp25nz7n2ca3cpcsynrp4rd2v"
     },
     "tinted-terminal": {
       "type": "Git",
@@ -77,9 +77,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "c8c2bfbf973ddbc0b3025922d1a79c4d4a5b2023",
-      "url": "https://github.com/tinted-theming/tinted-terminal/archive/c8c2bfbf973ddbc0b3025922d1a79c4d4a5b2023.tar.gz",
-      "hash": "0ph40h9lqbyvmjzn4w68kc2v7yq697wp03413gzrw2zgnhg06c4g"
+      "revision": "a02083e2cb96a810555780cd8a8412535a99c47a",
+      "url": "https://github.com/tinted-theming/tinted-terminal/archive/a02083e2cb96a810555780cd8a8412535a99c47a.tar.gz",
+      "hash": "091d2pg8r9d1g3d56aqgwvkcyf94lfkxf9lll933hn5xy0pi453h"
     },
     "tt-schemes": {
       "type": "Git",
@@ -90,9 +90,9 @@
       },
       "branch": "spec-0.11",
       "submodules": false,
-      "revision": "317a5e10c35825a6c905d912e480dfe8e71c7559",
-      "url": "https://github.com/tinted-theming/schemes/archive/317a5e10c35825a6c905d912e480dfe8e71c7559.tar.gz",
-      "hash": "0hxa5gjvglpyvidfa3lfn5i6alwk1d53vh332aa31nzhdvqjd2bp"
+      "revision": "4ac26dc99141c1b2a26eb7fefe46e22e07eec77c",
+      "url": "https://github.com/tinted-theming/schemes/archive/4ac26dc99141c1b2a26eb7fefe46e22e07eec77c.tar.gz",
+      "hash": "1m2s612y97k3qc3x2lyg62h0zzdlkp27smxnpwsampiy7fs93gx6"
     }
   },
   "version": 5
