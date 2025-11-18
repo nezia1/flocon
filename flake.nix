@@ -132,11 +132,6 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs = {
