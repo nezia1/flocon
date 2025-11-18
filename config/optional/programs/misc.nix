@@ -37,7 +37,6 @@ in {
           qalculate-qt
           resources
           simple-scan
-          vscode-fhs
           wl-clipboard
           ;
       };
