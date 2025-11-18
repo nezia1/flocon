@@ -9,7 +9,6 @@
       bolt-launcher
       qbittorrent
       wowup-cf
-      inputs'.nur.legacyPackages.repos.rogreat.faugus-launcher
     ];
   };
 
