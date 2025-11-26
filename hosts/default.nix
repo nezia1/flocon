@@ -77,7 +77,6 @@
     ../config/optional/services/gnome.nix
     ../config/optional/services/logind.nix
     ../config/optional/services/power.nix
-    ../config/optional/services/swaync.nix
   ];
 in {
   flake.nixosConfigurations = {
