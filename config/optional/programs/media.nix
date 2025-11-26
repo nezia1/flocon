@@ -9,7 +9,7 @@
       gthumb
       papers
       kdePackages.arianna
-      inputs'.tidaluna.packages.default
+      # inputs'.tidaluna.packages.default
     ];
   };
 }

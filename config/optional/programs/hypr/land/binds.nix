@@ -1,32 +1,13 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  inherit (builtins) substring;
-
+let
   # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
-  toggle = program: app2unit: let
-    prog = substring 0 14 program;
-  in "pkill '^${prog}\$' || ${lib.optionalString app2unit "app2unit -- "} ${program}";
   runOnce = program: "pgrep ${program} || app2unit -- ${program}";
   run = program: "app2unit -- ${program}";
-
-  toggleAnyrun = pkgs.writeShellScript "toggle-anyrun" ''
-    if pgrep -f '/bin/anyrun$'; then
-      anyrun close
-      else
-        anyrun
-    fi
-
-  '';
 in {
   hj.rum.desktops.hyprland.settings = {
     "$mod" = "SUPER";
-    bindr = [
-      "$mod, SUPER_L, exec, ${toggleAnyrun}"
-    ];
+
     bind = [
+      "$mod, Space, exec, dms ipc call spotlight toggle"
       "$mod, Return, exec, ${run "footclient"}"
       "$mod, w, exec, ${run "librewolf"}"
       ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
@@ -66,7 +47,7 @@ in {
       "$mod , c, togglespecialworkspace, calculator_gui"
       "$mod, m, togglespecialworkspace, mixer_gui"
 
-      ", XF86PowerOff, exec, ${toggle "wlogout" true}"
+      ", XF86PowerOff, exec, dms ipc call powermenu toggle"
     ];
 
     bindl = [
@@ -74,9 +55,9 @@ in {
     ];
 
     bindel = [
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 5"
+      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 5"
+      ", XF86AudioMute, exec, dms ipc call audio mute"
 
       ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
       ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"

@@ -1,16 +1,11 @@
 {
-  lib,
   myLib,
   inputs',
-  config,
   ...
 }: let
-  inherit (lib.meta) getExe;
   inherit (myLib.generators) toHyprConf;
 
   inherit (inputs'.hypridle.packages) hypridle;
-
-  hyprlock = getExe config.hj.rum.programs.hyprlock.package;
 in {
   hj = {
     packages = [hypridle];
@@ -18,8 +13,7 @@ in {
       ".config/hypr/hypridle.conf".text = toHyprConf {
         attrs = {
           general = {
-            lock_cmd = "pidof ${hyprlock} || ${hyprlock}";
-            unlock_cmd = "pkill --signal SIGUSR1 ${hyprlock}";
+            lock_cmd = "dms ipc call lock lock";
             before_sleep_cmd = "loginctl lock-session";
             after_sleep_cmd = "hyprctl dispatch dpms on";
           };
@@ -31,7 +25,7 @@ in {
             }
             {
               timeout = 330; # 5.5m
-              on-timeout = "hyprctl dipsatch dpms off";
+              on-timeout = "hyprctl dispatch dpms off";
               on-resume = "hyprctl dispatch dpms on";
             }
             {
