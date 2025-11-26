@@ -45,4 +45,10 @@
 
   # Allow full access to environment / PATH
   systemd.user.services.dms.environment = lib.mkForce {};
+
+  security.pam.services = {
+    greetd.fprintAuth = false;
+    greetd.kwallet.enable = true;
+    dankshell.fprintAuth = false;
+  };
 }

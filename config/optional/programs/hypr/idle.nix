@@ -13,8 +13,6 @@ in {
       ".config/hypr/hypridle.conf".text = toHyprConf {
         attrs = {
           general = {
-            lock_cmd = "dms ipc call lock lock";
-            before_sleep_cmd = "loginctl lock-session";
             after_sleep_cmd = "hyprctl dispatch dpms on";
           };
 
