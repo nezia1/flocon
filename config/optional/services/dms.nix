@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   config,
   ...
@@ -7,7 +8,6 @@
     inputs.dms.nixosModules.dankMaterialShell
     inputs.dms.nixosModules.greeter
   ];
-
   programs.dankMaterialShell = {
     enable = true;
 
@@ -42,4 +42,7 @@
       };
     };
   };
+
+  # Allow full access to environment / PATH
+  systemd.user.services.dms.environment = lib.mkForce {};
 }
