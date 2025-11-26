@@ -274,6 +274,48 @@
         "type": "github"
       }
     },
+    "dgop": {
+      "inputs": {
+        "nixpkgs": [
+          "dms",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762435535,
+        "narHash": "sha256-QhzRn7pYN35IFpKjjxJAj3GPJECuC+VLhoGem3ezycc=",
+        "owner": "AvengeMedia",
+        "repo": "dgop",
+        "rev": "6cf638dde818f9f8a2e26d0243179c43cb3458d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "dgop",
+        "type": "github"
+      }
+    },
+    "dms": {
+      "inputs": {
+        "dgop": "dgop",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764179179,
+        "narHash": "sha256-rGWYQt4ncHMuAl755gtFu4SNqAxShE0UB71KrzJjzfs=",
+        "owner": "AvengeMedia",
+        "repo": "DankMaterialShell",
+        "rev": "d7b39634e6978b6a0ffafa5ce3b77322a3fbd818",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "DankMaterialShell",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1561,6 +1603,7 @@
         "base16": "base16",
         "basix": "basix",
         "deploy-rs": "deploy-rs",
+        "dms": "dms",
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
@@ -1762,11 +1805,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1763454970,
-        "narHash": "sha256-b9+pF5xBifq/44jwKi5B/jXBBJTgu0CNDiJByfepRaM=",
+        "lastModified": 1763661740,
+        "narHash": "sha256-9+9EjH6lNfxAVjS7+XO09MgAD+KYmVA3sXs5FlUsg/o=",
         "owner": "inrixia",
         "repo": "tidaluna",
-        "rev": "b2ebf1b2a117ce9f4c5601b033a84083d9e9a571",
+        "rev": "aa0125d933537001a268d62d688d4bdae4f09963",
         "type": "github"
       },
       "original": {
