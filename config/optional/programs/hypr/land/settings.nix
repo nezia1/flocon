@@ -49,19 +49,6 @@ in {
 
     rum.desktops.hyprland = {
       enable = true;
-      plugins = [
-        # TODO: use upstream when versions match
-        # pkgs.hyprlandPlugins.hyprsplit
-        (pkgs.hyprlandPlugins.hyprsplit.overrideAttrs {
-          version = "0.51.1";
-          src = pkgs.fetchFromGitHub {
-            owner = "shezdy";
-            repo = "hyprsplit";
-            tag = "v0.51.1";
-            hash = "sha256-7cnfq7fXgJHkmHyvRwx8UsUdUwUEN4A1vUGgsSb4SmI=";
-          };
-        })
-      ];
       settings =
         {
           exec-once = ["${pkgs.xorg.xrandr}/bin/xrandr --output 'DP-1' --primary"];
@@ -82,12 +69,12 @@ in {
           windowrule =
             [
               # fixes fullscreen windows (mostly games)
-              "stayfocused, initialtitle:^()$, initialclass:^(steam)$"
-              "minsize 1 1, initialtitle:^()$, initialclass:^(steam)$"
-              "maximize, initialtitle:^(\S+)$, initialclass:^(steamwebhelper)$"
+              "stayfocused, initialTitle:^()$, initialClass:^(steam)$"
+              "minsize 1 1, initialTitle:^()$, initialClass:^(steam)$"
+              "maximize, initialTitle:^(\S+)$, initialClass:^(steamwebhelper)$"
 
-              "immediate, initialclass:^(steam_app_)(.*)$"
-              "fullscreen, initialclass:^(steam_app_)(.*)$"
+              "immediate, initialClass:^(steam_app_)(.*)$"
+              "fullscreen, initialClass:^(steam_app_)(.*)$"
 
               # inhibit idle on fullscreen apps (avoids going idle on games when playing with gamepad)
               "idleinhibit always, fullscreen:1"
@@ -144,11 +131,6 @@ in {
             force_default_wallpaper = 0;
             disable_hyprland_logo = true;
             middle_click_paste = false;
-          };
-          plugin = {
-            hyprsplit = {
-              num_workspaces = 4;
-            };
           };
         }
         // (optionalAttrs styleCfg.enable {
