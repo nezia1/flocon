@@ -70,12 +70,11 @@
     ../config/optional/programs/anyrun
     ../config/optional/programs/hypr
     ../config/optional/programs/swaybg.nix
-    ../config/optional/programs/waybar.nix
     ../config/optional/programs/wlogout.nix
 
+    ../config/optional/services/dms.nix
     ../config/optional/services/gammastep.nix
     ../config/optional/services/gnome.nix
-    ../config/optional/services/greetd.nix
     ../config/optional/services/logind.nix
     ../config/optional/services/power.nix
     ../config/optional/services/swaync.nix
