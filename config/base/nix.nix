@@ -19,6 +19,9 @@ in {
 
   nix = {
     settings = {
+      max-jobs = "auto";
+      http-connections = 50;
+      sandbox = true;
       accept-flake-config = true;
       warn-dirty = false;
       auto-optimise-store = true;
