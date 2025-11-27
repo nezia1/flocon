@@ -73,7 +73,6 @@
     ../config/optional/programs/wlogout.nix
 
     ../config/optional/services/dms.nix
-    ../config/optional/services/gammastep.nix
     ../config/optional/services/gnome.nix
     ../config/optional/services/logind.nix
     ../config/optional/services/power.nix
