@@ -59,8 +59,8 @@ in {
       ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 5"
       ", XF86AudioMute, exec, dms ipc call audio mute"
 
-      ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
-      ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
+      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 10 \"\""
+      ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 10 \"\""
     ];
     binde = [
       "$mod Alt, l, exec, loginctl lock-session"
