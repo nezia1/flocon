@@ -67,10 +67,7 @@
   hyprland = [
     ../config/optional/services/brightness.nix
 
-    ../config/optional/programs/anyrun
     ../config/optional/programs/hypr
-    ../config/optional/programs/swaybg.nix
-    ../config/optional/programs/wlogout.nix
 
     ../config/optional/services/dms.nix
     ../config/optional/services/gnome.nix
