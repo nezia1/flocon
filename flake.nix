@@ -71,6 +71,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    emacs-config = {
+      url = "github:nezia1/emacs-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hjem.follows = "hjem-rum/hjem";
 
     # FIXME: back to upstream when https://github.com/snugnug/hjem-rum/pull/140 gets merged

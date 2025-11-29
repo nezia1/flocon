@@ -316,6 +316,26 @@
         "type": "github"
       }
     },
+    "emacs-config": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764417732,
+        "narHash": "sha256-8saFIJ+MrI58pqbUOyJM8sYXZ4heNJ005AOfhnDRAqo=",
+        "owner": "nezia1",
+        "repo": "emacs-config",
+        "rev": "52aa66b7c3e0a4a81f4f0321ec1a442e981acdcd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nezia1",
+        "repo": "emacs-config",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1604,6 +1624,7 @@
         "basix": "basix",
         "deploy-rs": "deploy-rs",
         "dms": "dms",
+        "emacs-config": "emacs-config",
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
