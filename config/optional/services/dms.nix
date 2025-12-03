@@ -8,6 +8,7 @@
     inputs.dms.nixosModules.dankMaterialShell
     inputs.dms.nixosModules.greeter
   ];
+
   programs.dankMaterialShell = {
     enable = true;
 
@@ -41,6 +42,10 @@
         path = "/tmp/dms-greeter.log";
       };
     };
+  };
+
+  hj.environment.sessionVariables = {
+    DMS_ENABLE_MATUGEN = 0;
   };
 
   # Allow full access to environment / PATH
