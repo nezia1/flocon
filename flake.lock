@@ -1809,11 +1809,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1763661740,
-        "narHash": "sha256-9+9EjH6lNfxAVjS7+XO09MgAD+KYmVA3sXs5FlUsg/o=",
+        "lastModified": 1764579385,
+        "narHash": "sha256-g3MlIEtchapa1RXFJZ6sd4w48tRmOM2FB8iEImaUDV4=",
         "owner": "inrixia",
         "repo": "tidaluna",
-        "rev": "aa0125d933537001a268d62d688d4bdae4f09963",
+        "rev": "af2a18b8eaf9cf45a978b367536f7739ecb6d4d1",
         "type": "github"
       },
       "original": {
