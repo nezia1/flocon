@@ -1,6 +1,5 @@
 let
   # thanks https://github.com/fufexan/dotfiles/blob/c0b3c77d95ce1f574a87e7f7ead672ca0d951245/home/programs/wayland/hyprland/binds.nix#L16-L20
-  runOnce = program: "pgrep ${program} || app2unit -- ${program}";
   run = program: "app2unit -- ${program}";
 in {
   hj.rum.desktops.hyprland.settings = {
@@ -10,10 +9,10 @@ in {
       "$mod, Space, exec, dms ipc call spotlight toggle"
       "$mod, Return, exec, ${run "footclient"}"
       "$mod, w, exec, ${run "librewolf"}"
-      ", Print, exec, ${runOnce "grimblast"} --notify copysave output"
+      ", Print, exec, dms screenshot full"
       "$mod, q, killactive"
       "$mod SHIFT, q, exec, loginctl terminate-user \"\""
-      "CTRL, Print, exec, ${runOnce "grimblast"} --notify --freeze copysave area"
+      "CTRL, Print, exec, dms screenshot"
 
       "$mod, h, movefocus, l"
       "$mod, j, movefocus, d"

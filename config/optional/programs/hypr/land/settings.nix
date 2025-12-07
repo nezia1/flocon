@@ -43,10 +43,6 @@ in {
       NIXOS_OZONE_WL = 1;
     };
 
-    packages = [
-      inputs'.hyprwm-contrib.packages.grimblast
-    ];
-
     rum.desktops.hyprland = {
       enable = true;
       settings =
