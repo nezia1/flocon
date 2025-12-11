@@ -47,6 +47,7 @@ in {
       enable = true;
       settings =
         {
+          xwayland.force_zero_scaling = true;
           exec-once = ["${pkgs.xorg.xrandr}/bin/xrandr --output 'DP-1' --primary"];
 
           cursor = {
