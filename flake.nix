@@ -15,6 +15,7 @@
 
     # nix related
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-discord-krisp-fix.url = "github:NixOS/nixpkgs/pull/424232/head";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
