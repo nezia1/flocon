@@ -19,6 +19,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    niri = {
+      url = "github:yalter/niri";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

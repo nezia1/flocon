@@ -74,6 +74,17 @@
     ../config/optional/services/logind.nix
     ../config/optional/services/power.nix
   ];
+
+  niri = [
+    ../config/optional/services/brightness.nix
+
+    ../config/optional/programs/niri
+
+    ../config/optional/services/dms.nix
+    ../config/optional/services/gnome.nix
+    ../config/optional/services/logind.nix
+    ../config/optional/services/power.nix
+  ];
 in {
   flake.nixosConfigurations = {
     vamos = mkNixosSystem {
@@ -94,6 +105,7 @@ in {
         base
         ++ workstation
         ++ hyprland
+        ++ niri
         ++ [
           ./solaire
           ../config/optional/programs/games.nix
