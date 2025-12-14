@@ -25,7 +25,7 @@
     # kdl
     ''
       xwayland-satellite {
-                 path "${getExe pkgs.xwayland-satellite}"
+                 path "${getExe inputs'.xwayland-satellite.packages.default}"
            }
     '';
 in {
@@ -46,6 +46,4 @@ in {
         cursorsConfigFile
         xwaylandConfig
       ]));
-
-  hj.packages = [pkgs.xwayland-satellite];
 }

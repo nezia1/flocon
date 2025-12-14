@@ -169,6 +169,13 @@
     };
 
     tidaluna.url = "github:inrixia/tidaluna";
+
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     # dependency pinning to prevent duplicate versions
     flake-utils = {
       url = "github:numtide/flake-utils";
