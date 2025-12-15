@@ -33,11 +33,8 @@ binds {
   // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
   // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-  // Example brightness key mappings for brightnessctl.
-  // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-  // but you need to manually put each argument in separate "" quotes.
-  XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 10 \"\""; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 10 \"\""; }
 
   // Open/close the Overview: a zoomed-out view of workspaces and windows.
   // You can also move the mouse into the top-left hot corner,
