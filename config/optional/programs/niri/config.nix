@@ -38,10 +38,10 @@ in {
     pkgs.writeText "niri-config"
     (concatStringsSep "\n"
       (map (file: ''include "${file}"'') [
-        ./top-level.kdl
         ./binds.kdl
         ./inputs.kdl
         ./layout.kdl
+        ./miscellaneous.kdl
         ./window-rules.kdl
         cursorsConfigFile
         xwaylandConfig
