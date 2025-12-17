@@ -46,14 +46,12 @@ in {
   };
   xdg.portal = {
     extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
       kdePackages.kwallet
     ];
-    config.hyprland = {
+    config.common = {
       default = ["hyprland" "gtk"];
-      "org.freedesktop.impl.portal.FileChooser" = "kde";
-      "org.freedesktop.impl.portal.Print" = "kde";
       "org.freedesktop.impl.portal.Secret" = "kwallet";
     };
   };
