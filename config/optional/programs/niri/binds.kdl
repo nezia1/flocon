@@ -15,20 +15,20 @@ binds {
 
   Mod+Return hotkey-overlay-title="Open Terminal: foot" { spawn "footclient"; }
   Mod+W hotkey-overlay-title="Open Browser: Librewolf" { spawn "librewolf"; }
-  Mod+Space hotkey-overlay-title="Open spotlight search" { spawn-sh "dms ipc call spotlight toggle"; }
+  Mod+Space hotkey-overlay-title="Open spotlight search" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   Super+Alt+L hotkey-overlay-title="Lock the screen" { spawn-sh "loginctl lock-session"; }
 
-  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "dms ipc call audio increment 5"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "dms ipc call audio decrement 5"; }
-  XF86AudioMute        allow-when-locked=true { spawn-sh "dms ipc call audio"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume increase"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume decrease"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
 
   XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
   XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
   XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
   XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 10 \"\""; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 10 \"\""; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
   // Open/close the Overview: a zoomed-out view of workspaces and windows.
   // You can also move the mouse into the top-left hot corner,
