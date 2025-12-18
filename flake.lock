@@ -1553,6 +1553,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766058328,
+        "narHash": "sha256-W/dYsj41sH8ioyGm+cfBdg+BQxZrwHs4FwGDE1J8BnA=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "9d9695d609724550144d9f759e6ed604faacd47f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat_5",
@@ -1682,6 +1702,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-discord-krisp-fix": "nixpkgs-discord-krisp-fix",
+        "noctalia": "noctalia",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "slippi-nix": "slippi-nix",
