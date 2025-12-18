@@ -64,17 +64,6 @@
     ../config/optional/theming
   ];
 
-  hyprland = [
-    ../config/optional/services/brightness.nix
-
-    ../config/optional/programs/hypr
-
-    ../config/optional/services/dms.nix
-    ../config/optional/services/gnome.nix
-    ../config/optional/services/logind.nix
-    ../config/optional/services/power.nix
-  ];
-
   niri = [
     ../config/optional/services/brightness.nix
 
@@ -107,7 +96,6 @@ in {
       modules =
         base
         ++ workstation
-        ++ hyprland
         ++ niri
         ++ [
           ./solaire
