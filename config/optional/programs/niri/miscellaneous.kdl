@@ -9,4 +9,8 @@ gestures {
     }
 }
 
+switch-events {
+    lid-close { spawn "loginctl" "suspend"; }
+ }
+ 
 prefer-no-csd
