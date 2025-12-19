@@ -5,8 +5,4 @@
   ];
   # enable the systemd service
   services.noctalia-shell.enable = true;
-
-  security.pam.services = {
-    noctalia-shell.fprintAuth = false;
-  };
 }

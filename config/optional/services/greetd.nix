@@ -56,6 +56,7 @@ in {
 
     security.pam.services = {
       greetd.fprintAuth = false;
+      login.fprintAuth = false;
       greetd.kwallet.enable = true;
     };
   };
