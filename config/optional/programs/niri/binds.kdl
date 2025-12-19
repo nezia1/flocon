@@ -29,6 +29,7 @@ binds {
 
   XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
+  XF86PowerOff { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
 
   // Open/close the Overview: a zoomed-out view of workspaces and windows.
   // You can also move the mouse into the top-left hot corner,
