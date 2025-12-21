@@ -1,12 +1,12 @@
-{config, ...}: let
-  noctalia = "noctalia-shell ipc call";
+{lib, ...}: let
+  dms = "dms ipc call";
 in {
-  systemd.user.services.swayidle.path = [config.services.noctalia-shell.package];
+  systemd.user.services.swayidle.path = lib.mkForce [];
   hj.xdg.config.files."swayidle/config".text = ''
-    lock "${noctalia} lockScreen lock"
+    lock "${dms} lock lock"
     before-sleep "loginctl lock-session"
 
-    timeout 600 "${noctalia} lockScreen lock"
+    timeout 600 "${dms} lock lock"
     timeout 1200 "niri msg action power-off-monitors"
   '';
 }

@@ -5,11 +5,11 @@
   ...
 }: {
   imports = [
-    inputs.dms.nixosModules.dankMaterialShell
+    inputs.dms.nixosModules.dank-material-shell
     inputs.dms.nixosModules.greeter
   ];
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
 
     systemd = {
@@ -19,13 +19,9 @@
 
     # Core features
     enableSystemMonitoring = true; # System monitoring widgets (dgop)
-    enableClipboard = true; # Clipboard history manager
     enableVPN = true; # VPN management widget
-    enableBrightnessControl = true; # Backlight/brightness controls
-    enableColorPicker = true; # Color picker tool
     enableAudioWavelength = true; # Audio visualizer (cava)
     enableCalendarEvents = true; # Calendar integration (khal)
-    enableSystemSound = true; # System sound effects
 
     greeter = {
       enable = true;
