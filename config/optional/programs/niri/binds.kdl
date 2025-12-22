@@ -18,17 +18,17 @@ binds {
   Mod+Space hotkey-overlay-title="Open spotlight search" { spawn-sh "dms ipc call spotlight toggle"; }
   Super+Alt+L hotkey-overlay-title="Lock the screen" { spawn-sh "loginctl lock-session"; }
 
-  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "dms ipc call volume increment"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "dms ipc call volume decrement"; }
-  XF86AudioMute        allow-when-locked=true { spawn-sh "dms ipc call volume mute"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "dms ipc call audio increment 5"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "dms ipc call audio decrement 5"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "dms ipc call audio mute"; }
 
   XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
   XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
   XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
   XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 5 \"\""; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 5 \"\""; }
   XF86PowerOff { spawn-sh "dms ipc call powermenu toggle"; }
 
   // Open/close the Overview: a zoomed-out view of workspaces and windows.
