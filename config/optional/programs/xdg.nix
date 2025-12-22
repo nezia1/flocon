@@ -48,11 +48,20 @@ in {
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
       kdePackages.kwallet
     ];
-    config.common = {
-      default = ["hyprland" "gtk"];
-      "org.freedesktop.impl.portal.Secret" = "kwallet";
+    config = {
+      niri = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = "kde";
+        "org.freedesktop.impl.portal.Secret" = "kwallet";
+      };
+      hyprland = {
+        default = ["hyprland" "gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = "kde";
+        "org.freedesktop.impl.portal.Secret" = "kwallet";
+      };
     };
   };
 }
