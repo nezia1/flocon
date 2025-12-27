@@ -73,6 +73,7 @@
     ../config/optional/services/gnome.nix
     ../config/optional/services/power.nix
     ../config/optional/services/swayidle.nix
+    ../config/optional/services/udiskie.nix
   ];
 in {
   flake.nixosConfigurations = {
