@@ -17,4 +17,5 @@ input {
 
     focus-follows-mouse
     disable-power-key-handling
+    warp-mouse-to-focus
 }
