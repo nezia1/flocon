@@ -1,8 +1,10 @@
 {
+  lib,
   pkgs,
   config,
   ...
 }: let
+  inherit (lib.modules) mkForce;
   inherit (config.local.vars.system) username;
 in {
   # TODO: switch to hjem when implemented
@@ -52,7 +54,7 @@ in {
       kdePackages.kwallet
     ];
     config = {
-      niri = {
+      niri = mkForce {
         default = ["hyprland" "gtk"];
         "org.freedesktop.impl.portal.FileChooser" = "kde";
         "org.freedesktop.impl.portal.Secret" = "kwallet";
