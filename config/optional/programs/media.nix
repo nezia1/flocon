@@ -1,15 +1,11 @@
-{
-  pkgs,
-  inputs',
-  ...
-}: {
+{pkgs, ...}: {
   config = {
     hj.packages = with pkgs; [
       celluloid
       gthumb
       papers
       kdePackages.arianna
-      inputs'.tidaluna.packages.default
+      tidal-hifi
     ];
   };
 }
