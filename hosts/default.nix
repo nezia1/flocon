@@ -74,6 +74,7 @@
     ../config/optional/services/power.nix
     ../config/optional/services/swayidle.nix
     ../config/optional/services/udiskie.nix
+    ../config/optional/services/logind.nix
   ];
 in {
   flake.nixosConfigurations = {
