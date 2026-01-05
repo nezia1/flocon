@@ -1422,22 +1422,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-discord-krisp-fix": {
-      "locked": {
-        "lastModified": 1752534602,
-        "narHash": "sha256-6zNn0D5848w/vKcVndkAloixplo+QM6154rTyKEcQ1s=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "4d68add87c87542a0034c0eb3404885aef9d8d68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/424232/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1754788789,
@@ -1767,7 +1751,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
-        "nixpkgs-discord-krisp-fix": "nixpkgs-discord-krisp-fix",
         "noctalia": "noctalia",
         "nvf": "nvf",
         "pre-commit-hooks": "pre-commit-hooks_2",
