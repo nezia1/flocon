@@ -54,10 +54,9 @@ in {
       kdePackages.kwallet
     ];
     config = {
-      niri = mkForce {
-        default = ["hyprland" "gtk"];
-        "org.freedesktop.impl.portal.FileChooser" = "kde";
-        "org.freedesktop.impl.portal.Secret" = "kwallet";
+      niri = {
+        "org.freedesktop.impl.portal.FileChooser" = mkForce "kde";
+        "org.freedesktop.impl.portal.Secret" = mkForce "kwallet";
       };
       hyprland = {
         default = ["hyprland" "gtk"];
