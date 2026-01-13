@@ -133,6 +133,11 @@
       };
     };
 
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nezia_dev = {
       url = "github:nezia1/nezia.dev";
       inputs.nixpkgs.follows = "nixpkgs";

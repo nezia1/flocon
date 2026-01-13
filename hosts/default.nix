@@ -49,6 +49,7 @@
     ../config/optional/programs/pcmanfm.nix
     ../config/optional/programs/xdg.nix
 
+    ../config/optional/services/audio.nix
     ../config/optional/services/documentation.nix
     ../config/optional/services/docker.nix
     ../config/optional/services/flatpak.nix
@@ -56,7 +57,6 @@
     ../config/optional/services/kmscon.nix
     ../config/optional/services/kwallet.nix
     ../config/optional/services/location.nix
-    ../config/optional/services/pipewire.nix
     ../config/optional/services/ssh.nix
     ../config/optional/services/syncthing.nix
     ../config/optional/services/tailscale.nix
