@@ -27,5 +27,8 @@
   hj.packages = with pkgs; [
     bitwig-studio
     qpwgraph
+    wineWowPackages.yabridge
+    yabridge
+    yabridgectl
   ];
 }
