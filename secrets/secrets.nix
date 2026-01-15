@@ -10,6 +10,7 @@ in {
   "nix-access-tokens-github.age".publicKeys = [anastacia vamos solaire];
 
   "wg-private-key-hepia.age".publicKeys = [vamos];
+  "eduroam.age".publicKeys = [vamos];
 
   "syncthing-solaire-key.age".publicKeys = [solaire];
   "syncthing-solaire-cert.age".publicKeys = [solaire];

@@ -33,7 +33,7 @@
     ../config/optional/core/security.nix
 
     ../config/optional/hardware/bluetooth.nix
-    ../config/optional/hardware/mcuxpresso.nix
+    # ../config/optional/hardware/mcuxpresso.nix
     ../config/optional/hardware/printing.nix
     ../config/optional/hardware/graphics.nix
     ../config/optional/hardware/virtualization.nix
