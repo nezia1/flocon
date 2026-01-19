@@ -1,7 +1,7 @@
 {pkgs, ...}: let
-  discord = pkgs.vesktop.override {
-    withTTS = false;
-    withSystemVencord = true;
+  discord = pkgs.discord.override {
+    withMoonlight = true;
+    withOpenASAR = true;
   };
 in {
   config = {
