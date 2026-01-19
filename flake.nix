@@ -51,6 +51,11 @@
       };
     };
 
+    audio_nix = {
+      url = "github:polygon/audio.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     base16.url = "github:SenchoPens/base16.nix";
 
     basix = {
