@@ -88,4 +88,5 @@
   ];
 
   services.hardware.openrgb.enable = true;
+  virtualisation.waydroid.enable = true;
 }
