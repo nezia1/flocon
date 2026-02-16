@@ -1288,26 +1288,6 @@
         "type": "github"
       }
     },
-    "musnix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1767232402,
-        "narHash": "sha256-li+h6crnhc5Zqs+M6pn7D7M0W9M63ECNennDjRgzioE=",
-        "owner": "musnix",
-        "repo": "musnix",
-        "rev": "d65f98e0b1f792365f1705653d7b2d266ceeff6e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "musnix",
-        "repo": "musnix",
-        "type": "github"
-      }
-    },
     "naersk": {
       "inputs": {
         "fenix": "fenix",
@@ -1880,7 +1860,6 @@
         "hyprlock": "hyprlock",
         "hyprwm-contrib": "hyprwm-contrib",
         "iwmenu": "iwmenu",
-        "musnix": "musnix",
         "nezia_dev": "nezia_dev",
         "niri": "niri",
         "nix-gaming": "nix-gaming",

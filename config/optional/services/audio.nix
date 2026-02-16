@@ -1,17 +1,5 @@
-{
-  inputs,
-  inputs',
-  self',
-  pkgs,
-  ...
-}: {
-  imports = [inputs.musnix.nixosModules.default];
+{pkgs, ...}: {
   security.rtkit.enable = true;
-
-  musnix = {
-    enable = true;
-    rtcqs.enable = true;
-  };
 
   services.pipewire = {
     enable = true;
@@ -25,15 +13,6 @@
     socketActivation = true;
     wireplumber.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    inputs'.audio_nix.packages.bitwig-studio6-latest
-    qpwgraph
-    wineWowPackages.yabridge
-    yabridge
-    yabridgectl
-    distrho-ports
-  ];
 
   hj.xdg.config.files."pipewire/pipewire.conf.d/99-deepfilternet.conf" = {
     text = builtins.toJSON {
