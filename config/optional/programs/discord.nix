@@ -1,8 +1,5 @@
 {pkgs, ...}: let
-  discord = pkgs.discord.override {
-    withMoonlight = true;
-    withOpenASAR = true;
-  };
+  discord = pkgs.discord;
 in {
   config = {
     hj = {
