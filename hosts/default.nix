@@ -42,7 +42,6 @@
     ../config/optional/programs/terminal
     ../config/optional/programs/comma.nix
     ../config/optional/programs/discord.nix
-    ../config/optional/programs/gns3.nix
     ../config/optional/programs/librewolf.nix
     ../config/optional/programs/media.nix
     ../config/optional/programs/misc.nix
