@@ -1,6 +1,7 @@
 {
   lib,
   inputs,
+  inputs',
   config,
   ...
 }: {
@@ -11,6 +12,9 @@
 
   programs.dank-material-shell = {
     enable = true;
+    package = inputs'.dms.packages.default.overrideAttrs {
+      patches = [../../../assets/dms-named_dbus.patch];
+    };
 
     systemd = {
       enable = true; # Systemd service for auto-start
@@ -45,7 +49,13 @@
   };
 
   # Allow full access to environment / PATH
-  systemd.user.services.dms.environment = lib.mkForce {};
+  systemd.user.services.dms = {
+    environment = lib.mkForce {};
+    serviceConfig = {
+      Type = "dbus";
+      BusName = "org.dank.MaterialShell";
+    };
+  };
 
   security.pam.services = {
     greetd.fprintAuth = false;

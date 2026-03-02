@@ -1,0 +1,21 @@
+diff --git a/internal/server/freedesktop/manager.go b/internal/server/freedesktop/manager.go
+index 054f859e..6d1b3175 100644
+--- a/internal/server/freedesktop/manager.go
++++ b/internal/server/freedesktop/manager.go
+@@ -21,6 +21,16 @@ func NewManager() (*Manager, error) {
+ 		sessionConn = nil
+ 	}
+ 
++	if sessionConn != nil {
++		reply, err := sessionConn.RequestName("org.dank.MaterialShell", dbus.NameFlagDoNotQueue)
++		if err != nil {
++			return nil, fmt.Errorf("failed to request name on bus: %w", err)
++		}
++		if reply != dbus.RequestNameReplyPrimaryOwner {
++			return nil, fmt.Errorf("dms name already owned by another process")
++		}
++	}
++
+ 	m := &Manager{
+ 		state: &FreedeskState{
+ 			Accounts:    AccountsState{},
