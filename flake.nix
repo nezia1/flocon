@@ -182,7 +182,8 @@
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      # https://github.com/Supreeeme/xwayland-satellite/blob/10f985b84cdbcc3bbf35b3e7e43d1b2a84fa9ce2/flake.nix#L7-L8
+      inputs.rust-overlay.follows = "";
     };
 
     # dependency pinning to prevent duplicate versions
