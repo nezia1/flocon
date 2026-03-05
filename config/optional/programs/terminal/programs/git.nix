@@ -61,6 +61,12 @@ in {
               sync = "!git fetch upstream && git rebase upstream/$(git branch --show-current)";
             };
           };
+
+          ignore = ''
+            \#*\#
+            *~
+            .#*
+          '';
         };
       };
       files.".gitattributes".text = ''
