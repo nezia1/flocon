@@ -14,7 +14,7 @@
       "version": "v48.1",
       "revision": "3a40e0dedd3e363d1cdcab506137949177907c16",
       "url": "https://api.github.com/repos/somepaulo/MoreWaita/tarball/v48.1",
-      "hash": "119nw9hc3ipdjkz14js66gb9j6sl7r84x319b2zp0m0323icij6p",
+      "hash": "sha256-18jI4hADVHC/WCmMTlA+VBuZ1jNGSxL+lO3GwWDiNoU=",
       "frozen": true
     },
     "base16-discord": {
@@ -28,7 +28,7 @@
       "submodules": false,
       "revision": "263240c32cba022c9b00642ce4b9ffdf46643d43",
       "url": "https://github.com/imbypass/base16-discord/archive/263240c32cba022c9b00642ce4b9ffdf46643d43.tar.gz",
-      "hash": "06chs1b7qn7pyg4j4r1pxpimv9xj7mnnmqbwaq53m08d5rzma2wb"
+      "hash": "sha256-iwtVfy4NgToKVnzham09sqdd4+03ZCLJ8/dYfFbQkBk="
     },
     "base16-helix": {
       "type": "Git",
@@ -41,7 +41,7 @@
       "submodules": false,
       "revision": "d646af9b7d14bff08824538164af99d0c521b185",
       "url": "https://github.com/tinted-theming/base16-helix/archive/d646af9b7d14bff08824538164af99d0c521b185.tar.gz",
-      "hash": "0g63rmk37n3anfvdpkgh9j54gyfssy17clz6fy3qpcr78qcrzkcv"
+      "hash": "sha256-m82fGUYns4uHd+ZTdoLX2vlHikzwzdu2s2rYM2bNwzw="
     },
     "base16-zellij": {
       "type": "Git",
@@ -54,7 +54,7 @@
       "submodules": false,
       "revision": "943eedbbcdfd6764267332d713ff4ca2de6f3d66",
       "url": "https://github.com/ralsina/base16-zellij/archive/943eedbbcdfd6764267332d713ff4ca2de6f3d66.tar.gz",
-      "hash": "17gcv3z621sqhqvzxhvlx86x5wy9l14dgfh0n7x7262js7hsl1is"
+      "hash": "sha256-Ogaq4dFSGHH6sQC610igyfPSDep0w/43hlgHYf7Y7J0="
     },
     "foot": {
       "type": "Git",
@@ -66,7 +66,7 @@
       "submodules": false,
       "revision": "42e04c5c8741f739295f7da0b1bb1effda95547f",
       "url": null,
-      "hash": "0gw10v15ywps4v2m1c6d71yz44izcxx03ysl0q3lbd6swbn9rp17"
+      "hash": "sha256-J9yc7OLatEUHBlT7AXpnPxLyfTjNsFDFJvpyX8IGgT8="
     },
     "tinted-terminal": {
       "type": "Git",
@@ -79,7 +79,7 @@
       "submodules": false,
       "revision": "d34c828c037ebaa7e871994376ed049f39075686",
       "url": "https://github.com/tinted-theming/tinted-terminal/archive/d34c828c037ebaa7e871994376ed049f39075686.tar.gz",
-      "hash": "1ajkjnj1w7hpv3ph3d7jgxa142l02j6bfai791xgpgbm1i9dq375"
+      "hash": "sha256-5QzcUgx1vft6SCcqt4wUgAoSVH/ytAHv2BceHqSVU6o="
     },
     "tt-schemes": {
       "type": "Git",
@@ -92,8 +92,8 @@
       "submodules": false,
       "revision": "6563443434dd05b006782f6c3ca63026b4249733",
       "url": "https://github.com/tinted-theming/schemes/archive/6563443434dd05b006782f6c3ca63026b4249733.tar.gz",
-      "hash": "1w8dpajg86kwaasbmwiqxk97brjy20v3yml6yrghjz6n6nj136di"
+      "hash": "sha256-sZkRpDXWfAlf9oZWPzYQXuZ10uw48rq0Unwa9KS6DfE="
     }
   },
-  "version": 5
+  "version": 7
 }
