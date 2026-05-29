@@ -10,9 +10,11 @@ in {
 
   services = {
     harmonia = {
-      enable = true;
-      signKeyPaths = [config.age.secrets.harmonia.path];
-      settings.bind = "[::]:${toString port}";
+      cache = {
+        enable = true;
+        signKeyPaths = [config.age.secrets.harmonia.path];
+        settings.bind = "[::]:${toString port}";
+      };
     };
 
     caddy = {
