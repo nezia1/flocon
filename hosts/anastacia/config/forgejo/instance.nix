@@ -69,7 +69,7 @@ in {
           }
         }
 
-        reverse_proxy http://${srv.HTTP_ADDR}:${toString srv.HTTP_PORT} {
+        reverse_proxy http://[${srv.HTTP_ADDR}]:${toString srv.HTTP_PORT} {
           header_up X-Real-Ip {remote_host}
         }
       '';
