@@ -24,4 +24,5 @@ in {
   "porkbun.age".publicKeys = [anastacia];
   "harmonia.age".publicKeys = [anastacia];
   "forgejo-runner-token.age".publicKeys = [anastacia];
+  "hass.yaml.age".publicKeys = [anastacia];
 }
