@@ -38,6 +38,8 @@ in {
           resources
           simple-scan
           wl-clipboard
+          vscodium-fhs
+          zed-editor
           ;
       };
 

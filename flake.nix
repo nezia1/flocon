@@ -192,7 +192,7 @@
       inputs.systems.follows = "systems";
     };
 
-    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat.url = "github:nixos/flake-compat";
   };
   nixConfig = {
     extra-substituters = [
@@ -202,7 +202,7 @@
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
       "https://anyrun.cachix.org"
-      "https://cache.nezia.dev"
+      # "https://cache.nezia.dev"
       "https://cache.nixos-cuda.org"
     ];
     extra-trusted-public-keys = [

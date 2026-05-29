@@ -65,4 +65,11 @@ in {
         cursorsConfigFile
         xwaylandConfigFile
       ]));
+
+  systemd.services.lock-on-sleep = {
+    path = [pkgs.systemd];
+    before = ["sleep.target"];
+    wantedBy = ["sleep.target"];
+    script = "loginctl lock-sessions";
+  };
 }

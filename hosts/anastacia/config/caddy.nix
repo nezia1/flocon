@@ -7,7 +7,7 @@
     plugins = [
       "github.com/caddy-dns/porkbun@v0.3.1"
     ];
-    hash = "sha256-C+eTduZvOlewyzOxtTqmmWXL2yVqAq/ltq+XrzD1otY=";
+    hash = "sha256-BKUsUoBE1IjnD9Xu8kTVkbRqqk2qvNtFDD/pvVkfRmI=";
   };
 in {
   age.secrets = {

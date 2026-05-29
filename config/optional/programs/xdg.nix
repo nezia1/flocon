@@ -12,6 +12,7 @@ in {
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = true;
       desktop = "${config.hj.directory}/Desktop";
       documents = "${config.hj.directory}/Documents";
       music = "${config.hj.directory}/Music";
