@@ -75,6 +75,10 @@
     ../config/optional/services/udiskie.nix
     ../config/optional/services/logind.nix
   ];
+
+  gnome = [
+    ../config/optional/programs/gnome
+  ];
 in {
   flake.nixosConfigurations = {
     vamos = mkNixosSystem {
@@ -82,7 +86,7 @@ in {
       modules =
         base
         ++ workstation
-        ++ niri
+        ++ gnome
         ++ [
           ./vamos
           ../config/optional/programs/games.nix
@@ -108,6 +112,8 @@ in {
       modules = [
         inputs.agenix.nixosModules.default
         ../modules/internal # since we do not want to be using base for the server, but we still want the local options
+        ../config/base/locales.nix
+        ../config/optional/services/location.nix
         ./anastacia
       ];
     };
