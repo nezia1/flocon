@@ -25,8 +25,8 @@ in {
 
   config = mkIf cfg.enable {
     packages = [cfg.package];
-    xdg.config.files = {
-      "jj/config.toml".source = mkIf (cfg.settings != {}) (toml.generate "jj-config.toml" cfg.settings);
+    xdg.config.files = mkIf (cfg.settings != {}) {
+      "jj/config.toml".source = toml.generate "jj-config.toml" cfg.settings;
     };
   };
 }
