@@ -10,10 +10,12 @@ in {
       SSH_ASKPASS = getExe pkgs.kdePackages.ksshaskpass;
       SSH_ASKPASS_REQUIRE = "prefer";
     };
-    files = {
-      ".ssh/config".text = ''
+    files.".ssh/config" = {
+      text = ''
         AddKeysToAgent yes
       '';
+      type = "copy";
+      permissions = "600";
     };
   };
 }
