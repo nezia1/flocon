@@ -2,13 +2,20 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  retroarch = pkgs.retroarch-bare.wrapper {
+    cores = with pkgs.libretro; [
+      fbneo
+    ];
+  };
+in {
   hj = {
     packages = with pkgs; [
       mangohud
       bolt-launcher
       qbittorrent
       wowup-cf
+      retroarch
     ];
   };
 
