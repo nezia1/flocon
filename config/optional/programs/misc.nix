@@ -39,7 +39,8 @@ in {
           simple-scan
           wl-clipboard
           vscodium-fhs
-          zed-editor
+          zed-editor-fhs
+          gemini-cli
           ;
       };
 
