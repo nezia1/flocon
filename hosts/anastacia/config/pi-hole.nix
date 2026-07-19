@@ -8,7 +8,7 @@
         # See <https://docs.pi-hole.net/ftldns/configfile/>
         dns = {
           listeningMode = "ALL";
-          upstreams = ["9.9.9.9"];
+          upstreams = ["9.9.9.9" "149.112.112.112"];
           hosts = [
             "192.168.1.50 pihole.home.arpa"
           ];
