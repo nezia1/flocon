@@ -41,6 +41,7 @@ in {
           vscodium-fhs
           zed-editor-fhs
           gemini-cli
+          thunderbird
           ;
       };
 
