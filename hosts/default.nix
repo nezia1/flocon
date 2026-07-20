@@ -59,8 +59,6 @@
     ../config/optional/services/ssh.nix
     ../config/optional/services/syncthing.nix
     ../config/optional/services/tailscale.nix
-
-    ../config/optional/theming
   ];
 
   niri = [
@@ -74,6 +72,8 @@
     ../config/optional/services/swayidle.nix
     ../config/optional/services/udiskie.nix
     ../config/optional/services/logind.nix
+
+    ../config/optional/theming
   ];
 
   gnome = [
@@ -106,7 +106,6 @@ in {
           ../config/optional/hardware/gamecube.nix
         ];
     };
-
     anastacia = mkNixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -115,6 +114,18 @@ in {
         ../config/base/locales.nix
         ../config/optional/services/location.nix
         ./anastacia
+      ];
+    };
+
+    ranni = mkNixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        inputs.agenix.nixosModules.default
+        inputs.disko.nixosModules.default
+        ../modules/internal # since we do not want to be using base for the server, but we still want the local options
+        ../config/base/locales.nix
+        ../config/optional/services/location.nix
+        ./ranni
       ];
     };
   };

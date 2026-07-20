@@ -3,8 +3,6 @@
     enable = true;
     allowPing = true;
 
-    trustedInterfaces = ["tailscale0"];
-
     allowedUDPPorts = [config.services.tailscale.port];
 
     allowedTCPPorts = [22 80 443];

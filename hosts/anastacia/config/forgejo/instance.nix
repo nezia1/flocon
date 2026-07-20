@@ -62,11 +62,7 @@ in {
       enable = true;
       virtualHosts."${srv.DOMAIN}".extraConfig = ''
         tls {
-          resolvers 1.1.1.1
-          dns porkbun {
-            api_key {$PORKBUN_API_KEY}
-            api_secret_key {$PORKBUN_SECRET_KEY}
-          }
+          get_certificate tailscale
         }
 
         reverse_proxy http://[${srv.HTTP_ADDR}]:${toString srv.HTTP_PORT} {
